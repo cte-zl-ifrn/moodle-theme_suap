@@ -45,6 +45,14 @@ class boostnavbar extends \theme_boost\boostnavbar {
 
         $this->breadcrumb_participants();
 
+        if ($this->page->context->contextlevel == CONTEXT_USER) {
+            $this->remove('courses');
+            // Remove the course category breadcrumb nodes.
+            foreach ($this->items as $key => $item) {
+                // Remove if it is a course category breadcrumb node.
+                $this->remove($item->key, \breadcrumb_navigation_node::TYPE_CATEGORY);
+            }
+        }
         if ($this->page->context->contextlevel == CONTEXT_COURSECAT) {
             // Remove the 'Permissions' navbar node in the Check permissions page.
             if ($this->page->pagetype === 'admin-roles-check') {
