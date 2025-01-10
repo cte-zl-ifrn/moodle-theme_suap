@@ -43,6 +43,8 @@ class boostnavbar extends \theme_boost\boostnavbar {
         // Defines whether section items with an action should be removed by default.
         $removesections = true;
 
+        $this->breadcrumb_participants();
+
         if ($this->page->context->contextlevel == CONTEXT_COURSECAT) {
             // Remove the 'Permissions' navbar node in the Check permissions page.
             if ($this->page->pagetype === 'admin-roles-check') {
