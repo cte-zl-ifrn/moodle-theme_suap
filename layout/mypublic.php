@@ -165,10 +165,10 @@ $profile_picture_alt = $user->imagealt;
 
 $all_certificates = array();
 
-// Get user certificates (plugin custom Certificates)
+// Get user certificates (plugin Course Certificates)
 $tool_certificates = $DB->get_records('tool_certificate_issues', array('userid' => $id));
 
-// Get user certificates (plugin custom certificates)
+// Get user certificates (plugin Custom certificates)
 $custom_certificates = $DB->get_records('customcert_issues', array('userid' => $id));
 
 if (!empty($tool_certificates)) {
@@ -241,7 +241,7 @@ $templatecontext = [
     'userdescription' => $user->description,
     'userpictureurl' => $profile_picture_url,
     'userpicturealt' => $profile_picture_alt,
-    'hascertificates' => !empty($custom_certificates),
+    'hascertificates' => !empty($all_certificates),
     'certificates' => $all_certificates,
     'hasbadges' => !empty($badges),
     'badges' => $badges_formated,
