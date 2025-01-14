@@ -87,7 +87,6 @@ define(['jquery', 'core/templates', 'core/notification', 'message_popup/notifica
         NotificationRepository.markAllAsRead ({
             useridto: userid,
         }).then(function(response) {
-            console.log('Todas as notificações foram marcadas como lidas: ', response)
             getNotifications(0);
             getUnreadCount();
         })
@@ -99,6 +98,7 @@ define(['jquery', 'core/templates', 'core/notification', 'message_popup/notifica
         if (initial) {
             allMessages.innerHTML = '';
         }
+        data.notloading = true;
 
         Templates.renderForPromise('theme_suap/notification_list', data)
         .then(({html, js}) => {

@@ -58,6 +58,7 @@
         transition: all .1s ease-in;
         border: 1px solid transparent;
         cursor: pointer;
+        min-height: 62px;
         &.unread {
             background-color: var(--light);
             margin: 0px;
