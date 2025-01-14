@@ -306,37 +306,25 @@ div[role="main"] {
         }
     }
 
-}
-
-.frontpage-course-card.skeleton {
-    // background-color: #f0f0f0;
-    border-radius: 4px;
-    margin-right: 1%;
-    padding: 20px;
-    width: 24%;
-}
-
-.skeleton-image {
-    height: 170px;
-}
-
-.skeleton-image-placeholder {
-    // background-color: #ccc;
-    height: 100%;
-}
-
-.skeleton-category {
-    // background-color: #e0e0e0;
-    height: 20px;
-    margin: 25px 0 0 15px;
-    width: 90px;
-}
-
-.skeleton-name {
-    // background-color: #e0e0e0;
-    height: 20px;
-    margin: 25px 0 0 15px;
-    width: 300px;
+    .skeleton-image {
+        height: 170px;
+    }
+    
+    .skeleton-image-placeholder {
+        height: 100%;
+    }
+    
+    .skeleton-category {
+        height: 20px;
+        margin: 25px 0 0 15px;
+        width: 90px;
+    }
+    
+    .skeleton-name {
+        height: 20px;
+        margin: 25px 0 0 15px;
+        width: 300px;
+    }
 }
 
 .skeleton {
