@@ -42,6 +42,15 @@
     }
 }}
 
+{{^notloading}}
+    <div class="notification-card skeleton"></div>
+    <div class="notification-card skeleton"></div>
+    <div class="notification-card skeleton"></div>
+    <div class="notification-card skeleton"></div>
+    <div class="notification-card skeleton"></div>
+    <div class="notification-card skeleton"></div>
+{{/notloading}}
+
 {{#notifications}}
     <div class="notification-card {{^read}}unread{{/read}}" data-region="notification-shortened" data-id="{{id}}">
         <h3 class="card-title">{{shortenedsubject}}</h3>
@@ -52,8 +61,10 @@
     </div>
 {{/notifications}}
 
+{{#notloading}} 
 {{^notifications}}
     <div class="empty-message" data-region="empty-message">
         {{#str}} nonotifications, message {{/str}}
     </div>
 {{/notifications}}
+{{/notloading}}
