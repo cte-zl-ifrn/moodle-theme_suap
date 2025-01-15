@@ -21,6 +21,7 @@
     }
     .drawer {
         width: var(--drawer-open);
+        height: auto;
     }
     .drawer-content.active-drawer {
         width: var(--drawer-open);
