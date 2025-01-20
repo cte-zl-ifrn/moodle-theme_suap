@@ -63,6 +63,6 @@ $THEME->layouts = [
     ],
     'mypublic' => [
         'file' => 'mypublic.php',
-        'regions' => [], // , 'side-post'
+        'regions' => ['side-pre'], // , 'side-post'
     ],
 ];
