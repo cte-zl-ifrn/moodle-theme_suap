@@ -91,11 +91,6 @@ if ($PAGE->pagetype === 'enrol-index') {
 
 $conf = get_config('theme_suap');
 
-$topmenuon = $conf->layouttype;
-if($topmenuon) {
-    $extraclasses[] = 'topmenuon';
-}
-
 $frontpage_buttons_configtextarea = parse_configtextarea_string($conf->frontpage_buttons_configtextarea);
 $frontpage_buttons_configtextarea_when_user_logged = parse_configtextarea_string($conf->frontpage_buttons_configtextarea_when_user_logged);
 
@@ -169,7 +164,6 @@ $templatecontext = [
     'getUserPreference' => $getUserPreference,
     'isenrolpage' => $is_enrol_course_page,
     'enrolpage_and_guestuser' => $enrolpage_and_guestuser,
-    'topmenuon' => $topmenuon,
     'frontpage_buttons_configtextarea' => $frontpage_buttons_configtextarea,
     'frontpage_buttons_configtextarea_when_user_logged' => $frontpage_buttons_configtextarea_when_user_logged,
     'addcontentblockbutton' => $addcontentblockbutton,

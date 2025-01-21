@@ -158,7 +158,6 @@ $templatecontext = [
     'frontpage_buttons_configtextarea_when_user_logged' => $frontpage_buttons_configtextarea_when_user_logged,
     'frontpage_main_courses_title' => $conf->frontpage_main_courses_title,
     'learningpaths' => $learningpaths,
-    'topmenuon' => true, // Menu superior é sempre ativo na frontpage
     'viewnavbar' => $viewNavbar,
     'loggedin_and_notguestuser' => isloggedin() && !isguestuser(),
 ];
