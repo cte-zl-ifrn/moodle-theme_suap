@@ -130,9 +130,14 @@ $is_admin = is_siteadmin($USER->id);
 
 $userid = $USER->id;
 
-//pega a preferencia no banco
+// pega a preferencia no banco
 $getUserPreference = get_user_preferences('visual_preference');
 
+// região de blocos apenas na página inicial dos cursos
+if ($PAGE->pagelayout == 'course') {
+    $addcontentblockbutton = $OUTPUT->addblockbutton('content');
+    $contentblocks = $OUTPUT->custom_block_region('content');
+}
 
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
@@ -167,5 +172,7 @@ $templatecontext = [
     'topmenuon' => $topmenuon,
     'frontpage_buttons_configtextarea' => $frontpage_buttons_configtextarea,
     'frontpage_buttons_configtextarea_when_user_logged' => $frontpage_buttons_configtextarea_when_user_logged,
+    'addcontentblockbutton' => $addcontentblockbutton,
+    'contentblocks' => $contentblocks,
 ];
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);
