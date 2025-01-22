@@ -99,10 +99,10 @@
             font: var(--font-heading5);
             color: var(--dark-light);
         }
-        #conversation-actions-menu-button {
+        button {
             transform: rotate(90deg);
         }
-        #conversation-actions-menu {
+        .dropdown-menu {
             right: 0;
             left: auto !important;
         }

@@ -4,8 +4,6 @@
     }
     
     #region-main {
-        background-color: transparent;
-
         [role="main"] {
             > h2:not([class]) {
                 display: none;
