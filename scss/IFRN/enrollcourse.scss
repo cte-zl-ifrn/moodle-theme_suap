@@ -3,19 +3,21 @@
         display: none;
     }
     
-    #region-main [role="main"] {
+    #region-main {
+        background-color: transparent;
 
-        > h2:not([class]) {
-            display: none;
+        [role="main"] {
+            > h2:not([class]) {
+                display: none;
+            }
+            > .generalbox > form {
+                display: none;
+            }
+            #notice, .continuebutton {
+                display: none;
+            }
         }
-        > .generalbox > form {
-            display: none;
-        }
-        #notice, .continuebutton {
-            display: none;
-        }
-
-    }
+    } 
 
     .enrol-header {
         padding-block: 2rem;

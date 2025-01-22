@@ -5,14 +5,12 @@
 
 .counter-close .navbar-suap {
     width: calc(100% - var(--counter-close) - 32px);
-    position: fixed;
 }
 
 .counteroff .navbar-suap {
     width: 100%;
     display: flex;
     gap: 1rem;
-    position: fixed;
     .navbar-suap-container {
         position: static;
         @include media-breakpoint-down(sm) {
@@ -53,11 +51,13 @@
 
 .navbar-suap { 
     width: calc(100% - var(--counter-default) - 32px);
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     z-index: 1030;
     transition: all .2s ease-out;
+    background-color: var(--general-white);
+    min-height: 30px;
 
     &-ava-name {
         display: none;
@@ -150,6 +150,15 @@
         }
     }
 }
+
+.layout-width-expanded {
+    #page-wrapper {
+        background: var(--bg-green-gradient);
+    }
+    .navbar-suap {
+        background-color: var(--bg-green);
+    }
+} 
 
 .custom-switch{
     padding-left: 2.3rem;
