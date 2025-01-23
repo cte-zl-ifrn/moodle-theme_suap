@@ -1,9 +1,18 @@
 <nav class="notloggedinmenu" aria-label="{{#str}}sitemenubar, admin{{/str}}">
-    <select>
-        <option value="pt-br">🇧🇷</option>
-        <option value="es">🇪🇸</option>
-        <option value="en">🇺🇸</option>
-    </select>
+    <div class="dropdown show">
+        <a id="lang-menu-toggle" href="#" role="button" data-toggle="dropdown" class="dropdown-toggle">
+            {{langactive}}
+        </a>
+        <div role="menu" class="dropdown-menu" aria-labelledby="lang-menu-toggle">
+        {{#langnodes}}
+            <a role="menuitem" class="dropdown-item {{#isactive}}active{{/isactive}}" href="{{url}}">
+                {{flag}}
+            </a>
+        {{/langnodes}}
+        </div>
+    </div>
     <span></span>
-    <a href="{{config.wwwroot}}/login/" class="bnt btn-primary">Acessar</a>
+    <a href="{{config.wwwroot}}/login/" class="bnt btn-primary">
+        {{#str}} login, core {{/str}}
+    </a>
 </nav>

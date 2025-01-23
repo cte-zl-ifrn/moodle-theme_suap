@@ -1,7 +1,6 @@
-[data-region="right-hand-drawer"].drawer  {
+.drawers [data-region="right-hand-drawer"].drawer  {
 
     position: static;
-    width: var(--drawer-open);
     height: 100%;
     &:focus {
         outline: none;
@@ -100,10 +99,10 @@
             font: var(--font-heading5);
             color: var(--dark-light);
         }
-        #conversation-actions-menu-button {
+        button {
             transform: rotate(90deg);
         }
-        #conversation-actions-menu {
+        .dropdown-menu {
             right: 0;
             left: auto !important;
         }

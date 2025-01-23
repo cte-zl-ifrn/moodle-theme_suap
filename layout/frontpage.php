@@ -114,6 +114,49 @@ foreach ($learningpaths_records as $learningpath) {
     $learningpaths[] = $learningpath_obj;
 }
 
+// Menu de linguagem
+$langs = \get_string_manager()->get_list_of_translations();
+$currentlang = \current_language();
+
+$flags = [
+    'en' => '🇺🇸',
+    'pt_br' => '🇧🇷',
+    'es' => '🇪🇸',
+];
+
+$nodes = [];
+foreach ($langs as $langtype => $langname) {
+    $isactive = $langtype == $currentlang;
+    $attributes = [];
+
+    $flag = isset($flags[$langtype]) ? $flags[$langtype] : '🌐';
+
+    if (!$isactive) {
+        $attributes[] = [
+            'key' => 'lang',
+            'value' => get_html_lang_attribute_value($langtype),
+        ];
+    };
+
+    $node = [
+        'title' => $langname,
+        'text' => $langname,
+        'flag' => $flag,
+        'link' => true,
+        'isactive' => $isactive,
+        'url' => $isactive ? new \moodle_url('#') : new \moodle_url($this->page->url, ['lang' => $langtype]),
+    ];
+    if (!empty($attributes)) {
+        $node['attributes'] = $attributes;
+    }
+
+    $nodes[] = $node;
+
+    if ($isactive) {
+        $activelanguage = $flag;
+    }
+}
+
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
@@ -158,9 +201,10 @@ $templatecontext = [
     'frontpage_buttons_configtextarea_when_user_logged' => $frontpage_buttons_configtextarea_when_user_logged,
     'frontpage_main_courses_title' => $conf->frontpage_main_courses_title,
     'learningpaths' => $learningpaths,
-    'topmenuon' => true, // Menu superior é sempre ativo na frontpage
     'viewnavbar' => $viewNavbar,
     'loggedin_and_notguestuser' => isloggedin() && !isguestuser(),
+    'langnodes' => $nodes,
+    'langactive' => $activelanguage,
 ];
 
 echo $OUTPUT->render_from_template('theme_suap/frontpage', $templatecontext);

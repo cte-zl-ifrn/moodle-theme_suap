@@ -30,9 +30,9 @@ define(['jquery', 'core/templates', 'core/notification', 'message_popup/notifica
 
     let notificationToggler = document.querySelector('[data-drawer="drawer-notifications"]');
     let countContainer = notificationToggler.querySelector('[data-region="count-container"]');
-    const userid = document.querySelector('[data-userid]').getAttribute('data-userid');
     
     let notificationContainer = document.querySelector('#drawer-notifications');
+    const userid = notificationContainer.getAttribute('data-userid');
     const markAllReadButton = notificationContainer.querySelector('[data-action="mark-all-read"]');
     let loadingIcon = document.querySelector('[data-region="loading-icon-container"]');
 
@@ -47,12 +47,14 @@ define(['jquery', 'core/templates', 'core/notification', 'message_popup/notifica
                 limit: limit,
                 offset: offset
             }).done(function(data) {
-                if (data.notifications.length > 0) {
-                    renderNotifications(data, initial);
-                    if (data.notifications.length < limit) {
-                        resolve(true);
-                    }
+                console.log(data)
+                // if (data.notifications.length > 0) {
+                renderNotifications(data, initial);
+                if (data.notifications.length < limit) {
+                    resolve(true);
                 }
+                // }
+
             }).fail(function(error) {
                 console.error(error);
                 reject(error);

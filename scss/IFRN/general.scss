@@ -4,6 +4,10 @@ ul, ol {
     padding: 0px;
 }
 
+#region-main {
+    background-color: transparent;
+}
+
 .suap-backdrop {
     z-index: 1031;
     position: fixed;
@@ -197,9 +201,6 @@ ul, ol {
     }
 }
 
-.topmenuon #page.page-suap {
-    margin-top: 80px;
-}
 #page.page-suap {
     margin-top: 54px;
 }
@@ -211,10 +212,10 @@ ul, ol {
 .counteroff .page-suap {
     margin-left: 0;
 }
-.content {
-    max-width: 830px;
-    margin: 0 auto;
-}
+// .content {
+//     max-width: 830px;
+//     margin: 0 auto;
+// }
 .counter-close .page-suap {
     margin-left: var(--counter-close);
 }

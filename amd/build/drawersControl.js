@@ -35,6 +35,30 @@ define(["core_user/repository"], function (RepositoryUser) {
 
     const searchForm = document.querySelector(".searchform-js");
 
+    //Abre gaveta clicada e fecha outras que estiverem abertas
+    var openDrawer = (toggler) => {
+        toggler.addEventListener("click", () => {
+            let drawerId = toggler.getAttribute("data-drawer");
+            let drawer = document.getElementById(drawerId);
+
+            if (drawer.classList.contains('active-drawer')) { //close drawer
+                drawer.classList.remove('active-drawer');
+                toggler.classList.remove('active-toggler');
+                body.classList.remove('drawer-open');
+            } else { //open drawer
+                closeAllDrawers(drawers, drawersToggler);
+                drawer.classList.add('active-drawer');
+                toggler.classList.add('active-toggler');
+                body.classList.add('drawer-open');
+
+                if (window.innerWidth <= breakpointSM) {
+                    body.classList.remove('counter-open-mobile');
+                }
+
+            }
+        });
+    }
+
     var closeAllDrawers = function (drawers) {
         body.classList.remove("drawer-open");
         drawers.forEach((drawer) => {
@@ -111,26 +135,7 @@ define(["core_user/repository"], function (RepositoryUser) {
         });
 
         drawersToggler.forEach((toggler) => {
-            toggler.addEventListener("click", () => {
-                let drawerId = toggler.getAttribute("data-drawer");
-                let drawer = document.getElementById(drawerId);
-
-                if (drawer.classList.contains('active-drawer')) { //close drawer
-                    drawer.classList.remove('active-drawer');
-                    toggler.classList.remove('active-toggler');
-                    body.classList.remove('drawer-open');
-                } else { //open drawer
-                    closeAllDrawers(drawers, drawersToggler);
-                    drawer.classList.add('active-drawer');
-                    toggler.classList.add('active-toggler');
-                    body.classList.add('drawer-open');
-
-                    if (window.innerWidth <= breakpointSM) {
-                        body.classList.remove('counter-open-mobile');
-                    }
-
-                }
-            });
+            openDrawer(toggler);
         });
 
         closeButtons.forEach((button) => {

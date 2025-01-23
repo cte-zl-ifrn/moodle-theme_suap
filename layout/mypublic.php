@@ -108,7 +108,7 @@ $navbar = $OUTPUT->navbar();
 $isloggedin = isloggedin();
 $is_admin = is_siteadmin($USER->id);
 
-$userid = $USER->id;
+// $userid = $USER->id;
 
 //pega a preferencia no banco
 $getUserPreference = get_user_preferences('visual_preference');
@@ -122,31 +122,32 @@ require_once($CFG->libdir . '/badgeslib.php');
 
 global $DB;
 
-$id             = optional_param('id', 0, PARAM_INT); // User id.
+$userid         = optional_param('id', 0, PARAM_INT); // User id.
 $courseid       = optional_param('course', SITEID, PARAM_INT); // course id (defaults to Site).
 // $showallcourses = optional_param('showallcourses', 0, PARAM_INT);
 
 // See your own profile by default.
-if (empty($id)) {
+if (empty($userid)) {
     require_login();
-    $id = $USER->id;
+    $userid = $USER->id;
 }
 
 if($courseid != 1) {
     $notCourseContextProfile = true;    
 }
 
-$user = core_user::get_user($id);
-// $course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
+$user = core_user::get_user($userid);
+
+// edit profile button
 $has_edit_button = false;
 
-if ($is_admin || $USER->id == $id) {
+if ($is_admin || $USER->id == $userid) {
     $useremail = $user->email;
     $has_edit_button = true;
 }
 
 $edit_itens = array(
-    'id' => $id,
+    'id' => $userid,
     'course' => $courseid,
     'returnto' => 'profile'
 );
@@ -155,6 +156,11 @@ if($is_admin) {
     $edit_url = new moodle_url('/user/editadvanced.php', $edit_itens);
 } else {
     $edit_url = new moodle_url('/user/edit.php', $edit_itens);
+}
+
+// Send message button
+if ($USER->id != $userid) {
+    $message_url = new moodle_url('/message/index.php', ['id' => $userid]);
 }
 
 // Get profile image and alternative text
@@ -166,10 +172,10 @@ $profile_picture_alt = $user->imagealt;
 $all_certificates = array();
 
 // Get user certificates (plugin Course Certificates)
-$tool_certificates = $DB->get_records('tool_certificate_issues', array('userid' => $id));
+$tool_certificates = $DB->get_records('tool_certificate_issues', array('userid' => $userid));
 
 // Get user certificates (plugin Custom certificates)
-$custom_certificates = $DB->get_records('customcert_issues', array('userid' => $id));
+$custom_certificates = $DB->get_records('customcert_issues', array('userid' => $userid));
 
 if (!empty($tool_certificates)) {
     foreach ($tool_certificates as $cert) {
@@ -197,7 +203,7 @@ if (!empty($custom_certificates)) {
             'datereceived' => date('d/m/Y', $cert->timecreated),
             'name' => $certificate_name,
             'link' => new moodle_url('/mod/customcert/my_certificates.php', array(
-                'userid' => $id,
+                'userid' => $userid,
                 'certificateid' => $cert->customcertid,
                 'downloadcert' => 1
             ))
@@ -212,7 +218,7 @@ usort($all_certificates, function ($a, $b) {
 
 
 // Get user badges
-$badges = badges_get_user_badges($id);
+$badges = badges_get_user_badges($userid);
 $badges_formated = array();
 
 if (!empty($badges)) {
@@ -265,10 +271,11 @@ $templatecontext = [
     'headercontent' => $headercontent,
     'addblockbutton' => $addblockbutton,
     'navbar' => $navbar,
-    'userid' => $userid,
+    'useridprofile' => $userid,
     'rolename' => $rolestr,
     'isloggedin' => $isloggedin,
     'is_admin' => $is_admin,
+    'userid' => $USER->id,
     'theme_suap_items_user_menu_admin' => theme_suap_add_admin_items_user_menu(), 
     'getUserPreference' => $getUserPreference,
     'not_course_context_profile' => $notCourseContextProfile
