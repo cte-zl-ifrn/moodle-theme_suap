@@ -23,11 +23,12 @@ define(["core/str"], function (str) {
             courseArea.innerHTML = '';
 
             if(courses.length == 0) {
-                str.get_string('nomorecourses', 'core').then(value => {
-                    nomorecourse = value;
-                    courseArea.innerHTML = '<p>' + value + '</p>';
-                })
+                const nomorecourses = await str.get_string('nomorecourses', 'core');
+                courseArea.innerHTML = '<p>' + nomorecourses + '</p>';
             }
+
+            const workload_string = await str.get_string('workload', 'theme_suap');
+            const hours = await str.get_string('hours', 'core');
 
             courses.forEach(course => {
                 const certificateArea = course.has_certificate !== "Sim" ? '' : `
@@ -44,8 +45,8 @@ define(["core/str"], function (str) {
                 `;
                 const workloadArea = !course.workload ? '' : `
                     <div class="course-workload">
-                        <p class="course-workload-text">Carga Horária</p>
-                        <span class="course-workload-value">${course.workload + " horas"}</span>
+                        <p class="course-workload-text">${workload_string}</p>
+                        <span class="course-workload-value">${course.workload + " " + hours}</span>
                     </div>
                 `;
                 courseArea.innerHTML += `

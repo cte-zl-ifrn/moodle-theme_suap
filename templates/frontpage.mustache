@@ -72,10 +72,10 @@
                             <div class=frontpage-hero-main-header-filter>
                                 <div>
                                     <i class="fa fa-search"></i>
-                                    <input type="text" placeholder="Pesquisar" id="search">
+                                    <input type="text" placeholder="{{#str}}search, core{{/str}}" id="search">
                                 </div>
                                 <button id="filter-courses" class="btn btn-primary">
-                                    Filtrar
+                                    {{#str}}filter, theme_suap{{/str}}
                                     <span id="filter-badge" class="filter-badge" style="display: none;">0</span>
                                 </button>
                             </div>
@@ -115,33 +115,33 @@
 
     <div class="filter-area" id="filter-area">
         <div class="filter-header">
-            <span class="filter-header-title">Filtros</span>
+            <span class="filter-header-title">{{#str}}filter, theme_suap{{/str}}</span>
             <button id="close-filter" class="filter-header-close-button">
                 <img src="{{config.wwwroot}}/theme/suap/pix/close.svg" alt="Fechar">
             </button>
         </div>
         <div class="filter-content">
             <div class="filter-content-workload-column">
-                <h5 class="filter-content-column-title">Carga Horária</h5>
-                <label><input type="checkbox" value="10"> até 10 horas</label>
-                <label><input type="checkbox" value="20"> até 20 horas</label>
-                <label><input type="checkbox" value="30"> até 30 horas</label>
-                <label><input type="checkbox" value="40"> até 40 horas</label>
-                <label><input type="checkbox" value="50"> até 50 horas</label>
-                <label><input type="checkbox" value="60"> até 60 horas</label>
-                <label><input type="checkbox" value="70"> até 70 horas</label>
-                <label><input type="checkbox" value="80"> até 80 horas</label>
+                <h5 class="filter-content-column-title">{{#str}}workload, theme_suap{{/str}}</h5>
+                <label><input type="checkbox" value="10"> {{#str}} upto_hours, theme_suap, 10 {{/str}}</label>
+                <label><input type="checkbox" value="20"> {{#str}} upto_hours, theme_suap, 20 {{/str}}</label>
+                <label><input type="checkbox" value="30"> {{#str}} upto_hours, theme_suap, 30 {{/str}}</label>
+                <label><input type="checkbox" value="40"> {{#str}} upto_hours, theme_suap, 40 {{/str}}</label>
+                <label><input type="checkbox" value="50"> {{#str}} upto_hours, theme_suap, 50 {{/str}}</label>
+                <label><input type="checkbox" value="60"> {{#str}} upto_hours, theme_suap, 60 {{/str}}</label>
+                <label><input type="checkbox" value="70"> {{#str}} upto_hours, theme_suap, 70 {{/str}}</label>
+                <label><input type="checkbox" value="80"> {{#str}} upto_hours, theme_suap, 80 {{/str}}</label>
             </div>
             <div class="filter-content-certificate-column">
-                <h5 class="filter-content-column-title">Certificado</h5>
-                <label><input type="checkbox" value="Sim"> Sim</label>
-                <label><input type="checkbox" value="Não"> Não</label>
+                <h5 class="filter-content-column-title">{{#str}}certificate, theme_suap{{/str}}</h5>
+                <label><input type="checkbox" value="{{#str}}yes, core{{/str}}"> {{#str}}yes, core{{/str}}</label>
+                <label><input type="checkbox" value="{{#str}}no, core{{/str}}"> {{#str}}no, core{{/str}}</label>
             </div>
             <div class="filter-content-lang-column">
-                <h5 class="filter-content-column-title">Idioma</h5>
-                <label><input type="checkbox" value="pt_br"> Português</label>
-                <label><input type="checkbox" value="es"> Espanhol</label>
-                <label><input type="checkbox" value="en"> Inglês</label>
+                <h5 class="filter-content-column-title">{{#str}}language, core{{/str}}</h5>
+                <label><input type="checkbox" value="pt_br"> {{#str}}pt-br, theme_suap{{/str}}</label>
+                <label><input type="checkbox" value="es"> {{#str}}es, theme_suap{{/str}}</label>
+                <label><input type="checkbox" value="en"> {{#str}}english, core{{/str}}</label>
             </div>
             <div class="filter-content-learningpath-column">
                 <h5 class="filter-content-column-title">Trilha</h5>
@@ -151,8 +151,8 @@
             </div>
         </div>
         <div class="filter-footer">
-            <button id="clear-filter" class="filter-footer-clear-button">Limpar Seleção</button>
-            <button id="apply-filter" class="filter-footer-apply-button">Aplicar Filtros</button>
+            <button id="clear-filter" class="filter-footer-clear-button">{{#str}}clearfilters, core{{/str}}</button>
+            <button id="apply-filter" class="filter-footer-apply-button">{{#str}}applyfilters, core{{/str}}</button>
     </div>
 </div>
 
