@@ -50,6 +50,9 @@
             color: var(--primary);
             border-radius: 1.5rem;
             transition: .1s all ease-in;
+            #view-overview-all-messages-toggle, #view-overview-unreadmessages-toggle {
+                display: none;
+            }
             &.expanded {
                 background-color: var(--primary);
                 color: var(--general-white);

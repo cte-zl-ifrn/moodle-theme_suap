@@ -44,6 +44,14 @@ $string['drawer_user'] = "User menu";
 $string['allconversations'] = "All";
 $string['unreadmessages'] = "Unread";
 
+// Frontpage aditional strings 
+$string['filter'] = 'Filters';
+$string['workload'] = 'Total hours';
+$string['certificate'] = 'Certificate';
+$string['pt-br'] = 'Portuguese';
+$string['es'] = 'Spanish';
+$string['upto_hours'] = 'Up to {$a} hours';
+
 // frontpage-settings.php
 $string['frontpagesettings'] = 'Frontpage settings';
 $string['frontpage_title'] = 'Frontpage title';
