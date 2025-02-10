@@ -27,26 +27,28 @@ define(["core/str"], function (str) {
                 courseArea.innerHTML = '<p>' + nomorecourses + '</p>';
             }
 
-            const workload_string = await str.get_string('workload', 'theme_suap');
-            const hours = await str.get_string('hours', 'core');
+            const certificate_str = await str.get_string('certificate', 'theme_suap'); 
+            const workload_str = await str.get_string('workload', 'theme_suap');
+            const hours_str = await str.get_string('hours', 'core');
+            const language_str = await str.get_string('language', 'core');
 
             courses.forEach(course => {
                 const certificateArea = course.has_certificate !== "Sim" ? '' : `
                     <div class="course-certificate">
-                        <p class="course-certificate-text">Certificado</p>
+                        <p class="course-certificate-text">${certificate_str}</p>
                         <span class="course-certificate-value"><img src="${baseurl}/theme/suap/pix/checkmark-circle-outline.svg" alt=""></span>
                     </div>
                 `;
                 const langArea = !course.lang ? '' : `
                     <div class="course-lang">
-                        <p class="course-lang-text">Idioma</p>
+                        <p class="course-lang-text">${language_str}</p>
                         <span class="course-lang-value">${selectLangFlag(course.lang)}</span>
                     </div>
                 `;
                 const workloadArea = !course.workload ? '' : `
                     <div class="course-workload">
-                        <p class="course-workload-text">${workload_string}</p>
-                        <span class="course-workload-value">${course.workload + " " + hours}</span>
+                        <p class="course-workload-text">${workload_str}</p>
+                        <span class="course-workload-value">${course.workload + " " + hours_str}</span>
                     </div>
                 `;
                 courseArea.innerHTML += `
