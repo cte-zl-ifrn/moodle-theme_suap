@@ -64,7 +64,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      *
      * @return string HTML renderizado do menu de idiomas.
      */
-    public function suap_lang_menu() {
+    public function lang_menu_flags() {
         $langs = \get_string_manager()->get_list_of_translations();
         $currentlang = \current_language();
 
@@ -112,7 +112,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             'langnodes' => $nodes,          // Lista de idiomas disponíveis
         ];
     
-        return $this->render_from_template('theme_suap/notloggedinmenu', $data);
+        return $this->render_from_template('theme_suap/lang_menu_flags', $data);
     }
 
 }

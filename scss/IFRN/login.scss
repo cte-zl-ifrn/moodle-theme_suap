@@ -1,23 +1,14 @@
 .login-container {
     max-width: 460px;
     padding: 2rem;
-    // padding-top: 1rem;
     border-radius: .5rem;
-    width: 100%;    
+    width: 100%;
+    .lang-menu-flags {
+        margin-top: -1rem;
+    }    
 }   
 
 .loginform {
-    .login-languagemenu {
-        justify-content: flex-end;
-        margin-top: -1rem;
-        .dropdown-toggle {
-            color: var(--primary);
-            &:hover {
-                color: var(--primary-dark);
-            }
-        }
-    }
-
     h1.login-heading {
         font: var(--font-heading1);
         font-size: 1.5rem;
