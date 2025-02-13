@@ -1,0 +1,19 @@
+.lang-menu-flags {
+    display: flex;
+    justify-content: flex-end;
+    // margin-top: -1rem;
+
+    .dropdown-menu {
+        min-width: auto;
+        &.show {
+            display: grid;
+            gap: .5rem;
+        }
+        .dropdown-item {
+            padding: .5rem;
+            &.active {
+                background-color: var(--light-dark);
+            }
+        }
+    }
+}
