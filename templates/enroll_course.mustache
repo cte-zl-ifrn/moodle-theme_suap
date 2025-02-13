@@ -31,7 +31,7 @@
         <img src="{{imageurl}}">
         <div class="enrol-header-cta-button">
             {{#self_enrolment}}
-                <form autocomplete="off" action="{{{wwwroot}}}/enrol/index.php?id={{self_enrolment.id}}" method="post" accept-charset="utf-8" class="mform">
+                <form id="enrol-form" autocomplete="off" action="{{{wwwroot}}}/enrol/index.php?id={{self_enrolment.id}}" method="post" accept-charset="utf-8" class="mform">
                     <input type="hidden" name="id" value="{{self_enrolment.id}}" />
                     <input type="hidden" name="instance" value="{{self_enrolment.instance}}" />
                     <input type="hidden" name="sesskey" value="{{self_enrolment.sesskey}}" />
@@ -45,7 +45,9 @@
 
 
                     <div class="mt-3">
-                        <input type="submit" class="btn btn-tertiary" name="submitbutton" value="{{#str}} enrolme, enrol_self {{/str}}">
+                        <button id="enrol-button" type="submit" class="btn btn-tertiary" name="submitbutton" value="{{#str}} enrolme, enrol_self {{/str}}">
+                            {{#str}} enrolme, enrol_self {{/str}}
+                        </button>
                     </div>
                 </form>
             {{/self_enrolment}}
@@ -57,34 +59,43 @@
     </div>
 </div>
 
-{{#summary}}
-    <div class="enrol-course-tabs">
-        <ul class="nav">
-            <li><a class="nav-link active" data-toggle="pill" href="#course-general">Visão Geral</a></li>
-            <li><a class="nav-link" data-toggle="pill" href="#course-teacher">Docente</a></li>
-            <li><a class="nav-link" data-toggle="pill" href="#course-reviews">Comentários</a></li>
-        </ul>
+<div class="enrol-course-tabs">
+    <ul class="nav">
+        <li><a class="nav-link active" data-toggle="pill" href="#course-general">Visão Geral</a></li>
+        <li><a class="nav-link" data-toggle="pill" href="#course-teacher">Docente</a></li>
+        <li><a class="nav-link" data-toggle="pill" href="#course-reviews">Comentários</a></li>
+    </ul>
 
-        <div class="tab-content">
-            <div id="course-general" class="tab-pane fade in active">
+    <div class="tab-content">
+        <div id="course-general" class="tab-pane fade in active">
+            {{#summary}}
                 {{{summary}}}
-            </div>
-            <div id="course-teacher" class="tab-pane fade">
-                {{#teachers}}
-                    <div class="teacher-item">
-                        {{{pic}}}
-                        <div class="">
-                            <h2 class="teacher-name">{{firstname}} {{lastname}}</h2>
-                            <div>
+            {{/summary}}
+            {{^summary}}
+                <p><i>Sem descrição do curso por enquanto</i></p>
+            {{/summary}}
+
+        </div>
+        <div id="course-teacher" class="tab-pane fade">
+            {{#teachers}}
+                <div class="teacher-item">
+                    {{{pic}}}
+                    <div class="">
+                        <h2 class="teacher-name">{{firstname}} {{lastname}}</h2>
+                        <div>
+                            {{#description}}
                                 {{{description}}}
-                            </div>
+                            {{/description}}
+                            {{^description}}
+                                <p><i>Sem descrição do Docente</i></p>
+                            {{/description}}
                         </div>
                     </div>
-                {{/teachers}}
-            </div>
-            <div id="course-reviews" class="tab-pane fade">
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-            </div>
+                </div>
+            {{/teachers}}
+        </div>
+        <div id="course-reviews" class="tab-pane fade">
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
         </div>
     </div>
-{{/summary}}
+</div>
