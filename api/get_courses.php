@@ -9,7 +9,6 @@ $courses_per_page = max(1, optional_param('limit', 8, PARAM_INT));
 $query = optional_param('search', '', PARAM_TEXT);
 $workload = optional_param('workload', '', PARAM_TEXT);
 $certificate = optional_param('certificate', '', PARAM_TEXT);
-$lang = optional_param('lang', '', PARAM_TEXT);
 $learningpath = optional_param('learningpath', '', PARAM_TEXT);
 
 // Nega requisições que não sejam internas
@@ -37,14 +36,6 @@ if (!empty($query)) {
     $params['query'] = '%' . $query . '%';
 }
 
-// TODO: Validar se lang é um valor válido entre os idiomas disponíveis
-if (!empty($lang)) {
-    $lang_values = explode(',', $lang);
-    list($lang_query, $lang_params) = $DB->get_in_or_equal($lang_values, SQL_PARAMS_NAMED, 'lang');
-    $sql_conditions[] = "lang $lang_query";
-    $params = array_merge($params, $lang_params);
-}
-
 // TODO: Validar workloads
 
 if (!empty($learningpath)) {
@@ -64,7 +55,7 @@ if (!empty($learningpath)) {
 }
 
 $sql = "
-SELECT id, fullname, category, lang
+SELECT id, fullname, category
 FROM {course}
 WHERE visible = 1 AND id != 1" . (!empty($sql_conditions) ? ' AND ' . implode(' AND ', $sql_conditions) : '') . "
 ORDER BY id";
@@ -81,6 +72,8 @@ foreach ($courses as $course) {
 
     $category = $categories[$course->category];
     $custom_fields_metadata = \core_course\customfield\course_handler::create()->export_instance_data_object($course->id, true);
+
+    $course_lang = isset($custom_fields_metadata->linguagem_conteúdo) ? $custom_fields_metadata->linguagem_conteúdo : 'pt_br';
 
     if (!empty($workload)) {
         $workload_values = explode(',', $workload);
@@ -118,12 +111,12 @@ foreach ($courses as $course) {
     $course_response = new stdClass();
     $course_response->has_certificate = $custom_fields_metadata->tem_certificado;
     $course_response->workload = $custom_fields_metadata->carga_horaria;
+    $course_response->lang = $course_lang;
     $course_response->id = $course->id;
     $course_response->fullname = $course->fullname;
     $course_response->category_name = $category->name;
     $course_response->category_url = $category->url;
     $course_response->image_url = $image_url;
-    $course_response->lang = $course->lang;
     $course_response->url = "{$CFG->wwwroot}/course/view.php?id={$course->id}";
 
     $courses_response[] = $course_response;
