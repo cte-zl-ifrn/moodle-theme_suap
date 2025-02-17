@@ -73,7 +73,7 @@ foreach ($courses as $course) {
     $category = $categories[$course->category];
     $custom_fields_metadata = \core_course\customfield\course_handler::create()->export_instance_data_object($course->id, true);
 
-    $course_lang = isset($custom_fields_metadata->linguagem_conteúdo) ? $custom_fields_metadata->linguagem_conteúdo : 'pt_br';
+    $course_lang = isset($custom_fields_metadata->linguagem_conteúdo) ? $custom_fields_metadata->linguagem_conteúdo : '';
 
     if (!empty($workload)) {
         $workload_values = explode(',', $workload);
