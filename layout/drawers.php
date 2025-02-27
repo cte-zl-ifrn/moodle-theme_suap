@@ -31,7 +31,7 @@ require_once($CFG->dirroot . '/course/lib.php');
 $addblockbutton = $OUTPUT->addblockbutton();
 
 // User role for course context
-if(isloggedin()) {
+if (isloggedin()) {
     $rolestr;
     $context = context_course::instance($COURSE->id);
     $roles = get_user_roles($context, $USER->id, true);
@@ -132,6 +132,8 @@ $getUserPreference = get_user_preferences('visual_preference');
 if ($PAGE->pagelayout == 'course') {
     $addcontentblockbutton = $OUTPUT->addblockbutton('content');
     $contentblocks = $OUTPUT->custom_block_region('content');
+    $addfooterblockbutton = $OUTPUT->addblockbutton('footerblock');
+    $footerblocks = $OUTPUT->custom_block_region('footerblock');
 }
 
 $templatecontext = [
@@ -160,7 +162,7 @@ $templatecontext = [
     'isloggedin' => $isloggedin,
     'isguestuser' => isguestuser(),
     'is_admin' => $is_admin,
-    'theme_suap_items_user_menu_admin' => theme_suap_add_admin_items_user_menu(), 
+    'theme_suap_items_user_menu_admin' => theme_suap_add_admin_items_user_menu(),
     'getUserPreference' => $getUserPreference,
     'isenrolpage' => $is_enrol_course_page,
     'enrolpage_and_guestuser' => $enrolpage_and_guestuser,
@@ -168,5 +170,7 @@ $templatecontext = [
     'frontpage_buttons_configtextarea_when_user_logged' => $frontpage_buttons_configtextarea_when_user_logged,
     'addcontentblockbutton' => $addcontentblockbutton,
     'contentblocks' => $contentblocks,
+    'addfooterblockbutton' => $addfooterblockbutton,
+    'footerblocks' => $footerblocks,
 ];
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);
