@@ -48,7 +48,6 @@ class course_renderer extends \core_course_renderer
         if (!$imageurl) {
             $imageurl = $CFG->wwwroot . '/theme/suap/pix/default-course-image.webp';
         }
-
         $enrolment_methods = enrol_get_instances($course->id, true);
         $enrolment_types = [];
 
@@ -88,6 +87,7 @@ class course_renderer extends \core_course_renderer
             'workload' => $custom_fields['carga_horaria'],
             'has_certificate' => $custom_fields['tem_certificado'],
             'teacher_image' => $CFG->wwwroot . '/theme/suap/pix/default-course-image.webp',
+            'course_id' => $course->id,
         ];
         echo $OUTPUT->render_from_template('theme_suap/enroll_course', $templatecontext);
     }
