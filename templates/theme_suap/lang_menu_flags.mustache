@@ -1,0 +1,12 @@
+<div class="lang-menu-flags dropdown show">
+    <a id="lang-menu-toggle" href="#" role="button" title="{{#str}}language, core{{/str}}" data-toggle="dropdown" class="dropdown-toggle">
+        {{langactive}}
+    </a>
+    <div role="menu" class="dropdown-menu" aria-labelledby="lang-menu-toggle">
+    {{#langnodes}}
+        <a role="menuitem" class="dropdown-item {{#isactive}}active{{/isactive}}" href="{{{url}}}">
+            {{flag}}
+        </a>
+    {{/langnodes}}
+    </div>
+</div>

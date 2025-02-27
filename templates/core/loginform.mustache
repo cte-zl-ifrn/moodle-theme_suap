@@ -100,11 +100,6 @@
 }}
 
 <div class="loginform">
-    {{#languagemenu}}
-        <div class="login-languagemenu mb-3">
-            {{>core/action_menu}}
-        </div>
-    {{/languagemenu}}
     {{#logourl}}
         <div id="loginlogo" class="login-logo">
             <img id="logoimage" src="{{logourl}}" class="img-fluid" alt="{{sitename}}"/>
@@ -146,7 +141,7 @@
             </div>
         </div>
         <div class="login-divider">
-            <span class="login-or">ou</span>
+            <span class="login-or">{{#str}} operator_or, core {{/str}}</span>
         </div>
     {{/hasidentityproviders}}
 

@@ -55,6 +55,64 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return $this->render_from_template('core/navbar', $newnav);
     }
 
+    /**
+     * Gera o menu de seleção de idiomas com bandeiras.
+     *
+     * Esta função obtém a lista de idiomas disponíveis no Moodle, 
+     * identifica o idioma atual e constrói um menu de seleção de idioma 
+     * com as respectivas bandeiras.
+     *
+     * @return string HTML renderizado do menu de idiomas.
+     */
+    public function lang_menu_flags() {
+        $langs = \get_string_manager()->get_list_of_translations();
+        $currentlang = \current_language();
 
+        $flags = [
+            'en' => '🇺🇸',
+            'pt_br' => '🇧🇷',
+            'es' => '🇪🇸',
+        ];
+
+        $nodes = [];
+        foreach ($langs as $langtype => $langname) {
+            $isactive = $langtype == $currentlang;
+            $attributes = [];
+
+            $flag = isset($flags[$langtype]) ? $flags[$langtype] : '🌐';
+
+            if (!$isactive) {
+                $attributes[] = [
+                    'key' => 'lang',
+                    'value' => get_html_lang_attribute_value($langtype),
+                ];
+            };
+
+            $node = [
+                'title' => $langname,
+                'text' => $langname,
+                'flag' => $flag,
+                'link' => true,
+                'isactive' => $isactive,
+                'url' => $isactive ? new \moodle_url('#') : new \moodle_url($this->page->url, ['lang' => $langtype]),
+            ];
+            if (!empty($attributes)) {
+                $node['attributes'] = $attributes;
+            }
+
+            $nodes[] = $node;
+
+            if ($isactive) {
+                $activelanguage = $flag;
+            }
+        }
+
+        $data = [
+            'langactive' => $activelanguage, // Língua atualmente selecionada
+            'langnodes' => $nodes,          // Lista de idiomas disponíveis
+        ];
+    
+        return $this->render_from_template('theme_suap/lang_menu_flags', $data);
+    }
 
 }
