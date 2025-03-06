@@ -85,16 +85,20 @@ $regionmainsettingsmenu = $buildregionmainsettings ? $OUTPUT->region_main_settin
 $header = $PAGE->activityheader;
 $headercontent = $header->export_for_template($renderer);
 
-if(!isloggedin() || isguestuser()) {
+if (!isloggedin() || isguestuser()) {
     $extraclasses[] = 'counteroff';
 }
 
 //Usuário possui capacidade de editar página
-if (has_capability('moodle/course:manageactivities', $PAGE->context) || 
-    (!isloggedin() || isguestuser()) ) {
+if (
+    has_capability('moodle/course:manageactivities', $PAGE->context) ||
+    (!isloggedin() || isguestuser())
+) {
     $extraclasses[] = 'editswitchon';
     $viewNavbar = true;
 }
+// pega a preferencia no banco
+$getUserPreference = get_user_preferences('visual_preference');
 
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
 
@@ -113,6 +117,47 @@ foreach ($learningpaths_records as $learningpath) {
     $learningpath_obj->name = $learningpath->name;
     $learningpaths[] = $learningpath_obj;
 }
+
+
+$preferences_submenu = [
+    [
+        'title' => get_string('editmyprofile'),
+        'url' => '/user/editadvanced.php'
+    ],
+    [
+        'title' =>  get_string('changepassword'),
+        'url' => '/login/change_password.php'
+    ],
+    [
+        'title' => get_string('notificationpreferences', 'message'),
+        'url' => '/message/notificationpreferences.php'
+    ],
+];
+
+$menu_obj = new stdClass();
+$menu_obj->title = get_string('userpreferences');
+$menu_obj->itemtype = 'submenu-link';
+$menu_obj->submenuid = 'user-preference';
+$menu_obj->submenulink = true;
+
+array_unshift($primarymenu["user"]["items"], $menu_obj);
+
+$submenu_obj = new stdClass();
+$submenu_obj->id = 'user-preference';
+$submenu_obj->title = get_string('preferences');
+
+foreach ($preferences_submenu as $_submenu):
+    $submenu_obj->items[] = [
+        'title' => $_submenu['title'],
+        'text' => $_submenu['title'],
+        'link' => true,
+        'isactive' => false,
+        'url' => new core\url($_submenu['url'])
+    ];
+endforeach;
+
+$primarymenu["user"]["submenus"][] = $submenu_obj;
+
 
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
@@ -159,6 +204,7 @@ $templatecontext = [
     'frontpage_main_courses_title' => $conf->frontpage_main_courses_title,
     'learningpaths' => $learningpaths,
     'viewnavbar' => $viewNavbar,
+    'getUserPreference' => $getUserPreference,
     'loggedin_and_notguestuser' => isloggedin() && !isguestuser(),
 ];
 
