@@ -122,7 +122,7 @@ foreach ($learningpaths_records as $learningpath) {
 $preferences_submenu = [
     [
         'title' => get_string('editmyprofile'),
-        'url' => '/user/editadvanced.php'
+        'url' => '/user/edit.php?id=' . $USER->id
     ],
     [
         'title' =>  get_string('changepassword'),
@@ -133,31 +133,32 @@ $preferences_submenu = [
         'url' => '/message/notificationpreferences.php'
     ],
 ];
+if ($primarymenu["user"]["items"]):
+    $menu_obj = new stdClass();
+    $menu_obj->title = get_string('userpreferences');
+    $menu_obj->itemtype = 'submenu-link';
+    $menu_obj->submenuid = 'user-preference';
+    $menu_obj->submenulink = true;
 
-$menu_obj = new stdClass();
-$menu_obj->title = get_string('userpreferences');
-$menu_obj->itemtype = 'submenu-link';
-$menu_obj->submenuid = 'user-preference';
-$menu_obj->submenulink = true;
+    //array_unshift($primarymenu["user"]["items"], $menu_obj);
+    $primarymenu["user"]["items"][3] = $menu_obj;
 
-array_unshift($primarymenu["user"]["items"], $menu_obj);
+    $submenu_obj = new stdClass();
+    $submenu_obj->id = 'user-preference';
+    $submenu_obj->title = get_string('preferences');
 
-$submenu_obj = new stdClass();
-$submenu_obj->id = 'user-preference';
-$submenu_obj->title = get_string('preferences');
+    foreach ($preferences_submenu as $_submenu):
+        $submenu_obj->items[] = [
+            'title' => $_submenu['title'],
+            'text' => $_submenu['title'],
+            'link' => true,
+            'isactive' => false,
+            'url' => new core\url($_submenu['url'])
+        ];
+    endforeach;
 
-foreach ($preferences_submenu as $_submenu):
-    $submenu_obj->items[] = [
-        'title' => $_submenu['title'],
-        'text' => $_submenu['title'],
-        'link' => true,
-        'isactive' => false,
-        'url' => new core\url($_submenu['url'])
-    ];
-endforeach;
-
-$primarymenu["user"]["submenus"][] = $submenu_obj;
-
+    $primarymenu["user"]["submenus"][] = $submenu_obj;
+endif;
 
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
