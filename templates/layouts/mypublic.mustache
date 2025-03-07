@@ -52,162 +52,205 @@
 {{> theme_boost/head }}
 
 <body {{{ bodyattributes }}}>
-{{> core/local/toast/wrapper}}
-<div id="page-wrapper" class="d-print-block">
+    {{> core/local/toast/wrapper}}
+    <div id="page-wrapper" class="d-print-block">
 
-    {{{ output.standard_top_of_body_html }}}
+        {{{ output.standard_top_of_body_html }}}
 
-    {{#isloggedin}}
+        {{#isloggedin}}
 
-    {{> theme_suap/counter}}
+            {{> theme_suap/counter}}
 
-    {{! </nav> }}
-    {{/isloggedin}}
+            {{! </nav> }}
+        {{/isloggedin}}
         {{!> theme_boost/navbar }}
 
-    {{> theme_suap/navbar}}
+        {{> theme_suap/navbar}}
 
-    <div id="page" data-region="mainpage" data-usertour="scroller" class="page-suap {{#courseindexopen}}show-drawer-left{{/courseindexopen}} {{#blockdraweropen}}show-drawer-right{{/blockdraweropen}} drag-container">   
-        <div class="max-width-suap">
-            
-            {{#not_course_context_profile}}
-                {{{ output.full_header }}}
-            {{/not_course_context_profile}}
+        <div id="page" data-region="mainpage" data-usertour="scroller" class="page-suap {{#courseindexopen}}show-drawer-left{{/courseindexopen}} {{#blockdraweropen}}show-drawer-right{{/blockdraweropen}} drag-container">
+            <div class="max-width-suap">
 
-            {{#secondarymoremenu}}
-                <div class="secondary-navigation d-print-none">
-                    {{> core/moremenu}}
-                </div>
-            {{/secondarymoremenu}}
+                {{#not_course_context_profile}}
+                    {{{ output.full_header }}}
+                {{/not_course_context_profile}}
 
-            <div id="page-content" class="pb-3 d-print-block">
-            
-                {{! <div id="region-main-box"> }}
+                {{#secondarymoremenu}}
+                    <div class="secondary-navigation d-print-none">
+                        {{> core/moremenu}}
+                    </div>
+                {{/secondarymoremenu}}
 
-                {{#hasregionmainsettingsmenu}}
-                <div id="region-main-settings-menu" class="d-print-none">
-                    <div> {{{ regionmainsettingsmenu }}} </div>
-                </div>
-                {{/hasregionmainsettingsmenu}}
+                <div id="page-content" class="pb-3 d-print-block">
 
-                <section id="region-main" aria-label="{{#str}}content{{/str}}">
+                    {{! <div id="region-main-box"> }}
 
                     {{#hasregionmainsettingsmenu}}
-                        <div class="region_main_settings_menu_proxy"></div>
+                        <div id="region-main-settings-menu" class="d-print-none">
+                            <div> {{{ regionmainsettingsmenu }}} </div>
+                        </div>
                     {{/hasregionmainsettingsmenu}}
-                    {{{ output.course_content_header }}}
-                    {{#headercontent}}
-                        {{> core/activity_header }}
-                    {{/headercontent}}
-                    {{#overflow}}
-                        <div class="container-fluid tertiary-navigation">
-                            <div class="navitem">
-                                {{> core/url_select}}
+
+                    <section id="region-main" aria-label="{{#str}}content{{/str}}">
+
+                        {{#hasregionmainsettingsmenu}}
+                            <div class="region_main_settings_menu_proxy"></div>
+                        {{/hasregionmainsettingsmenu}}
+                        {{{ output.course_content_header }}}
+                        {{#headercontent}}
+                            {{> core/activity_header }}
+                        {{/headercontent}}
+                        {{#overflow}}
+                            <div class="container-fluid tertiary-navigation">
+                                <div class="navitem">
+                                    {{> core/url_select}}
+                                </div>
                             </div>
-                        </div>
-                    {{/overflow}}
+                        {{/overflow}}
 
 
-                    {{! New profile view }}
-                    <div class="profile-view-suap">
-                        <div class="profile-header">
-                            <h1 class="user-title">{{#str}}profile{{/str}}</h1>
-                            <div class="profile-header-buttons">
-                                <a id="message-user-button"
-                                class="btn btn-secondary drawer-toggler" 
-                                role="button" 
-                                data-drawer="drawer-messages" 
-                                data-conversationid="0"
-                                data-userid="{{useridprofile}}"
-                                href="#">
-                                    <i class="fa-regular fa-comment"></i>
-                                    {{#str}}message,core{{/str}}
-                                </a>
-                                {{#haseditbutton}}
-                                <a class="btn btn-secondary" href="{{{editprofile}}}">
-                                    <i class="fa-solid fa-pencil"></i>
-                                    {{#str}}editmyprofile{{/str}}
-                                </a>
-                                {{/haseditbutton}}
+                        {{! New profile view }}
+                        <div class="profile-view-suap">
+                            <div class="profile-header">
+                                <h1 class="user-title">{{#str}}profile{{/str}}</h1>
+                                <div class="profile-header-buttons">
+                                    <a id="message-user-button"
+                                        class="btn btn-secondary drawer-toggler"
+                                        role="button"
+                                        data-drawer="drawer-messages"
+                                        data-conversationid="0"
+                                        data-userid="{{useridprofile}}"
+                                        href="#">
+                                        <i class="fa-regular fa-comment"></i>
+                                        {{#str}}message,core{{/str}}
+                                    </a>
+                                    {{#haseditbutton}}
+                                        <a class="btn btn-secondary" href="{{{editprofile}}}">
+                                            <i class="fa-solid fa-pencil"></i>
+                                            {{#str}}editmyprofile{{/str}}
+                                        </a>
+                                    {{/haseditbutton}}
+                                </div>
                             </div>
-                        </div>
-                        <div class="user-group-suap contact-container">
-                            <img src="{{ userpictureurl }}" alt="{{userpicturealt}}">
-                            <div class="user-contacts">
-                                <h2 class="user-title">{{userfullname}}</h2>
-                                <p class="user-role">{{ rolename }}</p>
-                                <span class="user-mail">{{ useremail }}</span>
+                            <div class="user-group-suap contact-container">
+                                <img src="{{ userpictureurl }}" alt="{{userpicturealt}}">
+                                <div class="user-contacts">
+                                    <h2 class="user-title">{{userfullname}}</h2>
+                                    <p class="user-role">{{ rolename }}</p>
+                                    <span class="user-mail">{{ useremail }}</span>
+                                </div>
                             </div>
-                        </div>
-                        {{#userdescription}}
-                        <div class="user-group-suap aboutme-container">
-                            <h2 class="aboutme-title">{{#str}} aboutme, theme_suap {{/str}}</h2>                                                        
-                            <p>{{{ userdescription }}}</p>
-                        </div>
-                        {{/userdescription}}   
+                            {{#userdescription}}
+                                <div class="user-group-suap aboutme-container">
+                                    <h2 class="aboutme-title">{{#str}} aboutme, theme_suap {{/str}}</h2>
+                                    <p>{{{ userdescription }}}</p>
+                                </div>
+                            {{/userdescription}}
+                            {{^userdescription}}
+                                <div class="user-group-suap aboutme-container">
+                                    <h2 class="aboutme-title">{{#str}} aboutme, theme_suap {{/str}}</h2>
+                                    <p>
+                                    {{#is_my_profile}}
+                                        <i>Se descreva para sua comunidade.</i>
+                                    {{/is_my_profile}}
+                                    {{^is_my_profile}}
+                                         <i>Sem descrição por enquanto.</i>
+                                    {{/is_my_profile}}
+                                    </p>
+                                </div>
+                            {{/userdescription}}
 
-                        {{#hascertificates}}
-                        <div class="user-group-suap">
-                            <h2>{{#str}} certificates, theme_suap {{/str}}</h2>
-                            <div class="cert-container">
-                            {{#certificates}}
-                                <div class="cert-item">
-                                    <img src="{{config.wwwroot}}/theme/suap/pix/cert-preview.png">
-                                    <div class="cert-item-info">
-                                        <h3>{{name}}</h3>
-                                        <p class="issued-date">{{#str}} dateawarded, badges {{/str}}: {{datereceived}}</p>
-                                        <a class="btn btn-tertiary" href="{{{link}}}">Abrir</a>
+
+                            {{#hascertificates}}
+                                <div class="user-group-suap">
+                                    <h2>{{#str}} certificates, theme_suap {{/str}}</h2>
+                                    <div class="cert-container">
+                                        {{#certificates}}
+                                            <div class="cert-item">
+                                                <img src="{{config.wwwroot}}/theme/suap/pix/cert-preview.png">
+                                                <div class="cert-item-info">
+                                                    <h3>{{name}}</h3>
+                                                    <p class="issued-date">{{#str}} dateawarded, badges {{/str}}: {{datereceived}}</p>
+                                                    {{#is_my_profile}}
+                                                    <a class="btn btn-tertiary" target="_blank" href="{{{link}}}">Abrir</a>
+                                                    <a class="btn btn-tertiary" target="_blank" href="{{{linkedin_url}}}">Enviar para Linkedin</a>
+                                                    {{/is_my_profile}}
+                                                </div>
+                                            </div>
+                                        {{/certificates}}
                                     </div>
                                 </div>
-                            {{/certificates}}
-                            </div>
+                            {{/hascertificates}}
+                            {{^hascertificates}}
+                                <div class="user-group-suap">
+                                    <h2>{{#str}} certificates, theme_suap {{/str}}</h2>
+                                    <div class="cert-container">
+                                        <p>
+                                        {{#is_my_profile}}
+                                            <i>Conclua algum curso para obter certificado.</i>
+                                        {{/is_my_profile}}
+                                        {{^is_my_profile}}
+                                            <i>Sem certificado.</i>
+                                        {{/is_my_profile}}
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/hascertificates}}
+
+                            {{#hasbadges}}
+                                <div class="user-group-suap">
+                                    <h2 class="user-title">{{#str}} badges, badges {{/str}}</h2>
+                                    <div class="badges-container">
+                                        {{#badges}}
+                                            <a title="{{name}}" href="{{link}}" class="badge-item">
+                                                <img src="{{imageurl}}">
+                                                <h3 class="badge-title">{{name}}</h3>
+                                            </a>
+                                        {{/badges}}
+                                    </div>
+                                </div>
+                            {{/hasbadges}}
+                            {{^hasbadges}}
+                                <div class="user-group-suap">
+                                    <h2 class="user-title">{{#str}} badges, badges {{/str}}</h2>
+                                    <div class="badges-container">
+                                         <p>
+                                        {{#is_my_profile}}
+                                            <i> Explore nossos cursos para obter emblemas</i>
+                                        {{/is_my_profile}}
+                                        {{^is_my_profile}}
+                                            <i>Nenhum emblema para ser exibido.</i>
+                                        {{/is_my_profile}}
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/hasbadges}}
+
                         </div>
-                        {{/hascertificates}}
 
-                        {{#hasbadges}}
-                        <div class="user-group-suap">
-                            <h2 class="user-title">{{#str}} badges, badges {{/str}}</h2>
-                            <div class="badges-container">
-                            {{#badges}}
-                                <a title="{{name}}" href="{{link}}" class="badge-item">
-                                    <img src="{{imageurl}}">                                    
-                                    <h3 class="badge-title">{{name}}</h3>
-                                </a>
-                            {{/badges}}
-                            </div>
-                        </div>
-                        {{/hasbadges}}
+                        {{{ output.main_content }}}
 
-                    </div>
+                        {{{ output.activity_navigation }}}
+                        {{{ output.course_content_footer }}}
+                    </section>
 
-
-
-
-
-                    {{{ output.main_content }}}
-
-                    {{{ output.activity_navigation }}}
-                    {{{ output.course_content_footer }}}
-                </section>
-
-                {{! </div> }}
+                    {{! </div> }}
+                </div>
+                {{> theme_boost/footer }}
             </div>
-            {{> theme_boost/footer }}
         </div>
     </div>
-</div>
 
 
 
 </body>
+
 </html>
 
 
 {{#js}}
-M.util.js_pending('theme_boost/loader');
-require(['theme_boost/loader', 'theme_boost/drawer'], function(Loader, Drawer) {
+    M.util.js_pending('theme_boost/loader');
+    require(['theme_boost/loader', 'theme_boost/drawer'], function(Loader, Drawer) {
     Drawer.init();
     M.util.js_complete('theme_boost/loader');
-});
+    });
 {{/js}}
-

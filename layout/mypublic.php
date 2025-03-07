@@ -31,7 +31,7 @@ require_once($CFG->dirroot . '/course/lib.php');
 $addblockbutton = $OUTPUT->addblockbutton();
 
 // User role for course context
-if(isloggedin()) {
+if (isloggedin()) {
     $rolestr;
     $context = context_course::instance($COURSE->id);
     $roles = get_user_roles($context, $USER->id, true);
@@ -44,7 +44,6 @@ if(isloggedin()) {
         }
         $rolestr = implode(', ', $rolestr);
     }
-
 }
 
 if (isloggedin()) {
@@ -124,6 +123,7 @@ global $DB;
 
 $userid         = optional_param('id', 0, PARAM_INT); // User id.
 $courseid       = optional_param('course', SITEID, PARAM_INT); // course id (defaults to Site).
+$sitename       = format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
 // $showallcourses = optional_param('showallcourses', 0, PARAM_INT);
 
 // See your own profile by default.
@@ -132,8 +132,8 @@ if (empty($userid)) {
     $userid = $USER->id;
 }
 
-if($courseid != 1) {
-    $notCourseContextProfile = true;    
+if ($courseid != 1) {
+    $notCourseContextProfile = true;
 }
 
 $user = core_user::get_user($userid);
@@ -152,14 +152,18 @@ $edit_itens = array(
     'returnto' => 'profile'
 );
 
-if($is_admin) {
+if ($is_admin) {
     $edit_url = new moodle_url('/user/editadvanced.php', $edit_itens);
 } else {
     $edit_url = new moodle_url('/user/edit.php', $edit_itens);
 }
 
+// My profile
+$is_my_profile = $USER->id == $userid;
+
 // Send message button
 if ($USER->id != $userid) {
+
     $message_url = new moodle_url('/message/index.php', ['id' => $userid]);
 }
 
@@ -180,15 +184,27 @@ $custom_certificates = $DB->get_records('customcert_issues', array('userid' => $
 if (!empty($tool_certificates)) {
     foreach ($tool_certificates as $cert) {
         $certificate_name = $DB->get_field('tool_certificate_templates', 'name', array('id' => $cert->id));
-        
+
         $contextid = context_system::instance()->id;  // Obtém o contexto do sistema
         $fileurl = moodle_url::make_pluginfile_url($contextid, 'tool_certificate', 'issues', $cert->id, '/', $cert->code . '.pdf', false);
+
+        if ($cert->expires > 0) {
+            $expirationYear = date('Y', $cert->expires);
+            $expirationMonth = date('m', $cert->expires);
+        }
+
+        $createdYear = date('Y', ($cert->timecreated));
+        $createdMonth = date('m', ($cert->timecreated));
+        $cert_url = new moodle_url('/admin/tool/certificates/index.php', ['code' => $cert->code]);
+        $cert_url_encoded = urlencode($cert_url->__toString());
+        $linkedin_url = "https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name={$certificate_name}&organizationName={$sitename}&issueYear={$createdYear}&issueMonth={$createdMonth}&expirationYear={$expirationYear}&expirationMonth={$expirationMonth}&certId={$cert->code}&certUrl={$cert_url_encoded}";
 
         $all_certificates[] = array(
             'certificateid' => $cert->id,
             'datereceived' => date('d/m/Y', $cert->timecreated),
             'name' => $certificate_name,
-            'link' => $fileurl
+            'link' => $fileurl,
+            'linkedin_url' => $linkedin_url
         );
     }
 }
@@ -222,11 +238,10 @@ $badges = badges_get_user_badges($userid);
 $badges_formated = array();
 
 if (!empty($badges)) {
-    foreach ($badges as $badge) {        
+    foreach ($badges as $badge) {
         $badgeObj = new badge($badge->id);
         $badge_context = $badgeObj->get_context();
-        $imageurl = moodle_url::make_pluginfile_url($badge_context->id, 'badges', 'badgeimage', $badge->id, '/', 'f1', FALSE); 
-        
+        $imageurl = moodle_url::make_pluginfile_url($badge_context->id, 'badges', 'badgeimage', $badge->id, '/', 'f1', FALSE);
         $badge_link = new moodle_url('/badges/badge.php', ['hash' => $badge->uniquehash]);
 
         $badges_formated[] = array(
@@ -251,7 +266,7 @@ $templatecontext = [
     'certificates' => $all_certificates,
     'hasbadges' => !empty($badges),
     'badges' => $badges_formated,
-    'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
+    'sitename' => $sitename,
     'output' => $OUTPUT,
     'sidepreblocks' => $blockshtml,
     'hasblocks' => $hasblocks,
@@ -276,8 +291,9 @@ $templatecontext = [
     'isloggedin' => $isloggedin,
     'is_admin' => $is_admin,
     'userid' => $USER->id,
-    'theme_suap_items_user_menu_admin' => theme_suap_add_admin_items_user_menu(), 
+    'theme_suap_items_user_menu_admin' => theme_suap_add_admin_items_user_menu(),
     'getUserPreference' => $getUserPreference,
+    'is_my_profile' => $is_my_profile,
     'not_course_context_profile' => $notCourseContextProfile
 ];
 echo $OUTPUT->render_from_template('theme_suap/layouts/mypublic', $templatecontext);
