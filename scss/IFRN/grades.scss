@@ -1,0 +1,40 @@
+.counter-close {
+    &.path-grade-report-grader .gradeparent th.header {
+        left: var(--counter-close) !important;
+    }
+    .stickyfooter .sticky-footer-content-wrapper {
+        margin-left: var(--counter-close);
+    }
+}
+
+.counter-close.drawer-open.path-grade-report-grader .gradeparent th.header {
+    left: calc(var(--counter-close) + var(--drawer-open)) !important;
+}
+
+.drawer-open.path-grade-report-grader .gradeparent th.header {
+    left: calc(var(--counter-default) + var(--drawer-open)) !important;
+}
+
+.path-grade-report-grader .gradeparent th.header {
+    left: var(--counter-default) !important;
+}
+
+.path-grade-report-grader .gradeparent {
+
+    .heading .cell, .cell.category, .avg .cell {
+        background-color: var(--light-lighter);
+    }
+
+    .user.cell {
+        font: var(--font-button2);
+        a {
+            color: var(--primary);
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        th.header {
+            left: var(--counter-close) !important;
+        }
+    }
+}
