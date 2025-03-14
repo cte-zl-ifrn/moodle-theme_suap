@@ -134,6 +134,13 @@ if ($PAGE->pagelayout == 'course') {
     $contentblocks = $OUTPUT->custom_block_region('content');
 }
 
+// Content button não aparece na área de administração
+$context_now = $PAGE->context;
+$is_active_contentbutton = false;
+if ($context_now->contextlevel !== CONTEXT_SYSTEM) {
+    $is_active_contentbutton = true;
+}
+
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
@@ -168,5 +175,8 @@ $templatecontext = [
     'frontpage_buttons_configtextarea_when_user_logged' => $frontpage_buttons_configtextarea_when_user_logged,
     'addcontentblockbutton' => $addcontentblockbutton,
     'contentblocks' => $contentblocks,
+    'contentbutton' => get_string('contentbutton', 'theme_suap'),
+    'contentbuttonurl' => $CFG->wwwroot.'/course/view.php?id='.$COURSE->id,
+    'isactivecontentbutton' => $is_active_contentbutton
 ];
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);
