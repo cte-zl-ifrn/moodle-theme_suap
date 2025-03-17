@@ -139,15 +139,13 @@
                                     <span class="user-mail">{{ useremail }}</span>
                                 </div>
                             </div>
-                            {{#userdescription}}
-                                <div class="user-group-suap aboutme-container">
-                                    <h2 class="aboutme-title">{{#str}} aboutme, theme_suap {{/str}}</h2>
+
+                            <div class="user-group-suap aboutme-container">
+                                <h2 class="aboutme-title">{{#str}} aboutme, theme_suap {{/str}}</h2>
+                                {{#userdescription}}
                                     <p>{{{ userdescription }}}</p>
-                                </div>
-                            {{/userdescription}}
-                            {{^userdescription}}
-                                <div class="user-group-suap aboutme-container">
-                                    <h2 class="aboutme-title">{{#str}} aboutme, theme_suap {{/str}}</h2>
+                                {{/userdescription}}
+                                {{^userdescription}}
                                     <p>
                                     {{#is_my_profile}}
                                         <i>{{#str}} describe_yourself,theme_suap {{/str}}</i>
@@ -156,14 +154,13 @@
                                          <i>{{#str}} no_description,theme_suap {{/str}}</i>
                                     {{/is_my_profile}}
                                     </p>
-                                </div>
-                            {{/userdescription}}
+                                {{/userdescription}}
+                            </div>
 
-
-                            {{#hascertificates}}
-                                <div class="user-group-suap">
-                                    <h2 class="user-title">{{#str}} certificates, theme_suap {{/str}}</h2>
-                                    <div class="cert-container">
+                            <div class="user-group-suap">
+                                <h2 class="user-title">{{#str}} certificates, theme_suap {{/str}}</h2>
+                                <div class="cert-container">
+                                    {{#hascertificates}}
                                         {{#certificates}}
                                             <div class="cert-item">
                                                 <img src="{{config.wwwroot}}/theme/suap/pix/cert-preview.png">
@@ -177,13 +174,8 @@
                                                 </div>
                                             </div>
                                         {{/certificates}}
-                                    </div>
-                                </div>
-                            {{/hascertificates}}
-                            {{^hascertificates}}
-                                <div class="user-group-suap">
-                                    <h2 class="user-title">{{#str}} certificates, theme_suap {{/str}}</h2>
-                                    <div class="cert-container">
+                                    {{/hascertificates}}
+                                    {{^hascertificates}}
                                         <p>
                                         {{#is_my_profile}}
                                             <i>{{#str}} no_your_certificates,theme_suap {{/str}}</i>
@@ -192,28 +184,23 @@
                                             <i>{{#str}} no_certificates,theme_suap {{/str}}</i>
                                         {{/is_my_profile}}
                                         </p>
-                                    </div>
+                                    {{/hascertificates}}
                                 </div>
-                            {{/hascertificates}}
+                            </div>
 
-                            {{#hasbadges}}
-                                <div class="user-group-suap">
-                                    <h2 class="user-title">{{#str}} badges, badges {{/str}}</h2>
-                                    <div class="badges-container">
+                            <div class="user-group-suap">
+                                <h2 class="user-title">{{#str}} badges, badges {{/str}}</h2>
+                                <div class="badges-container">
+                                    {{#hasbadges}}
                                         {{#badges}}
                                             <a title="{{name}}" href="{{link}}" class="badge-item">
                                                 <img src="{{imageurl}}">
                                                 <h3 class="badge-title">{{name}}</h3>
                                             </a>
                                         {{/badges}}
-                                    </div>
-                                </div>
-                            {{/hasbadges}}
-                            {{^hasbadges}}
-                                <div class="user-group-suap">
-                                    <h2 class="user-title">{{#str}} badges, badges {{/str}}</h2>
-                                    <div class="badges-container">
-                                         <p>
+                                    {{/hasbadges}}
+                                    {{^hasbadges}}
+                                        <p>
                                         {{#is_my_profile}}
                                             <i> {{#str}} no_your_badges,theme_suap {{/str}}</i>
                                         {{/is_my_profile}}
@@ -221,9 +208,9 @@
                                             <i>{{#str}} no_badges,theme_suap {{/str}}</i>
                                         {{/is_my_profile}}
                                         </p>
-                                    </div>
+                                    {{/hasbadges}}
                                 </div>
-                            {{/hasbadges}}
+                            </div>
 
                         </div>
 
