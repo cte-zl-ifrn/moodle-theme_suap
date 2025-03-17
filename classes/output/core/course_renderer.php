@@ -9,8 +9,10 @@ use core_course\external\course_summary_exporter;
 
 use core_course\customfield\course_handler;
 
-class course_renderer extends \core_course_renderer {
-    public function frontpage() {
+class course_renderer extends \core_course_renderer
+{
+    public function frontpage()
+    {
         global $CFG, $SITE;
 
         $output = '';
@@ -24,9 +26,9 @@ class course_renderer extends \core_course_renderer {
      * @param stdClass $course
      * @return string
      */
-    public function course_info_box(stdClass $course) {
+    public function course_info_box(stdClass $course)
+    {
         global $OUTPUT, $DB;
-
         // Pega os custom fields que tiver no curso
         $handler = course_handler::create();
         $datas = $handler->get_instance_data($course->id, true);
@@ -46,10 +48,9 @@ class course_renderer extends \core_course_renderer {
         if (!$imageurl) {
             $imageurl = $CFG->wwwroot . '/theme/suap/pix/default-course-image.webp';
         }
-
         $enrolment_methods = enrol_get_instances($course->id, true);
         $enrolment_types = [];
-        
+
         $self_enrolment = null;
         foreach ($enrolment_methods as $method) {
             $enrolment_types[] = $method->enrol;
@@ -65,26 +66,41 @@ class course_renderer extends \core_course_renderer {
             }
         };
 
+        $clist = new \core_course_list_element($course);
+        $teachers = $clist->get_course_contacts();
+        $list_teachers = [];
+
+        foreach ($teachers as $teach) {
+            $record = $DB->get_record("user", ["id" => $teach['user']->id]);
+            $record->pic =  $OUTPUT->user_picture($record, ['size' => 100, 'link' => true]);
+
+            $list_teachers[] = $record;
+        }
+
         $templatecontext = [
             'fullcoursename' => $course->fullname,
             'summary' => $course->summary,
+            'teachers' => $list_teachers,
             'category' => $category->name,
             'imageurl' => $imageurl,
             'self_enrolment' => $self_enrolment,
             'workload' => $custom_fields['carga_horaria'],
             'has_certificate' => $custom_fields['tem_certificado'],
             'teacher_image' => $CFG->wwwroot . '/theme/suap/pix/default-course-image.webp',
+            'course_id' => $course->id,
         ];
         echo $OUTPUT->render_from_template('theme_suap/enroll_course', $templatecontext);
     }
 
-    protected function get_course_category($categoryid) {
+    protected function get_course_category($categoryid)
+    {
         global $DB;
 
         return $DB->get_record('course_categories', ['id' => $categoryid]);
     }
 
-    protected function render_courses() {
+    protected function render_courses()
+    {
         global $OUTPUT;
 
         $output = html_writer::start_div('course-area');
@@ -95,10 +111,10 @@ class course_renderer extends \core_course_renderer {
             $output .= html_writer::start_div('course-image-container skeleton-image');
             $output .= html_writer::tag('div', '', ['class' => 'skeleton-image-placeholder skeleton']);
             $output .= html_writer::end_div();
-            
+
             $output .= html_writer::tag('span', '', ['class' => 'skeleton-category skeleton']);
             $output .= html_writer::tag('p', '', ['class' => 'skeleton-name skeleton']);
-        
+
             $output .= html_writer::end_div();
         }
 

@@ -31,7 +31,7 @@ require_once($CFG->dirroot . '/course/lib.php');
 $addblockbutton = $OUTPUT->addblockbutton();
 
 // User role for course context
-if(isloggedin()) {
+if (isloggedin()) {
     $rolestr;
     $context = context_course::instance($COURSE->id);
     $roles = get_user_roles($context, $USER->id, true);
@@ -132,7 +132,51 @@ $getUserPreference = get_user_preferences('visual_preference');
 if ($PAGE->pagelayout == 'course') {
     $addcontentblockbutton = $OUTPUT->addblockbutton('content');
     $contentblocks = $OUTPUT->custom_block_region('content');
+    $addfooterblockbutton = $OUTPUT->addblockbutton('footerblock');
+    $footerblocks = $OUTPUT->custom_block_region('footerblock');
 }
+
+if ($primarymenu["user"]["items"]):
+    $preferences_submenu = [
+        [
+            'title' => get_string('editmyprofile'),
+            'url' => '/user/edit.php?id=' . $USER->id
+        ],
+        [
+            'title' =>  get_string('changepassword'),
+            'url' => '/login/change_password.php'
+        ],
+        [
+            'title' => get_string('notificationpreferences', 'message'),
+            'url' => '/message/notificationpreferences.php'
+        ],
+    ];
+
+    $menu_obj = new stdClass();
+    $menu_obj->title = get_string('userpreferences');
+    $menu_obj->itemtype = 'submenu-link';
+    $menu_obj->submenuid = 'user-preference';
+    $menu_obj->submenulink = true;
+
+    $primarymenu["user"]["items"][3] = $menu_obj;
+
+    $submenu_obj = new stdClass();
+    $submenu_obj->id = 'user-preference';
+    $submenu_obj->title = get_string('preferences');
+
+    foreach ($preferences_submenu as $_submenu):
+        $submenu_obj->items[] = [
+            'title' => $_submenu['title'],
+            'text' => $_submenu['title'],
+            'link' => true,
+            'isactive' => false,
+            'url' => new core\url($_submenu['url'])
+        ];
+    endforeach;
+
+    $primarymenu["user"]["submenus"][] = $submenu_obj;
+endif;
+
 
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
@@ -160,7 +204,7 @@ $templatecontext = [
     'isloggedin' => $isloggedin,
     'isguestuser' => isguestuser(),
     'is_admin' => $is_admin,
-    'theme_suap_items_user_menu_admin' => theme_suap_add_admin_items_user_menu(), 
+    'theme_suap_items_user_menu_admin' => theme_suap_add_admin_items_user_menu(),
     'getUserPreference' => $getUserPreference,
     'isenrolpage' => $is_enrol_course_page,
     'enrolpage_and_guestuser' => $enrolpage_and_guestuser,
@@ -168,5 +212,10 @@ $templatecontext = [
     'frontpage_buttons_configtextarea_when_user_logged' => $frontpage_buttons_configtextarea_when_user_logged,
     'addcontentblockbutton' => $addcontentblockbutton,
     'contentblocks' => $contentblocks,
+    'addfooterblockbutton' => $addfooterblockbutton,
+    'footerblocks' => $footerblocks,
+    'contentbutton' => get_string('contentbutton', 'theme_suap'),
+    'contentbuttonurl' => $CFG->wwwroot.'/course/view.php?id='.$COURSE->id,
+    'isactivecontentbutton' => theme_suap_is_contentbutton_active(),
 ];
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);
