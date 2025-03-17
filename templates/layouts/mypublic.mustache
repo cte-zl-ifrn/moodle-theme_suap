@@ -150,10 +150,10 @@
                                     <h2 class="aboutme-title">{{#str}} aboutme, theme_suap {{/str}}</h2>
                                     <p>
                                     {{#is_my_profile}}
-                                        <i>Se descreva para sua comunidade.</i>
+                                        <i>{{#str}} describe_yourself,theme_suap {{/str}}</i>
                                     {{/is_my_profile}}
                                     {{^is_my_profile}}
-                                         <i>Sem descrição por enquanto.</i>
+                                         <i>{{#str}} no_description,theme_suap {{/str}}</i>
                                     {{/is_my_profile}}
                                     </p>
                                 </div>
@@ -162,7 +162,7 @@
 
                             {{#hascertificates}}
                                 <div class="user-group-suap">
-                                    <h2>{{#str}} certificates, theme_suap {{/str}}</h2>
+                                    <h2 class="user-title">{{#str}} certificates, theme_suap {{/str}}</h2>
                                     <div class="cert-container">
                                         {{#certificates}}
                                             <div class="cert-item">
@@ -182,14 +182,14 @@
                             {{/hascertificates}}
                             {{^hascertificates}}
                                 <div class="user-group-suap">
-                                    <h2>{{#str}} certificates, theme_suap {{/str}}</h2>
+                                    <h2 class="user-title">{{#str}} certificates, theme_suap {{/str}}</h2>
                                     <div class="cert-container">
                                         <p>
                                         {{#is_my_profile}}
-                                            <i>Conclua algum curso para obter certificado.</i>
+                                            <i>{{#str}} no_your_certificates,theme_suap {{/str}}</i>
                                         {{/is_my_profile}}
                                         {{^is_my_profile}}
-                                            <i>Sem certificado.</i>
+                                            <i>{{#str}} no_certificates,theme_suap {{/str}}</i>
                                         {{/is_my_profile}}
                                         </p>
                                     </div>
@@ -215,10 +215,10 @@
                                     <div class="badges-container">
                                          <p>
                                         {{#is_my_profile}}
-                                            <i> Explore nossos cursos para obter emblemas</i>
+                                            <i> {{#str}} no_your_badges,theme_suap {{/str}}</i>
                                         {{/is_my_profile}}
                                         {{^is_my_profile}}
-                                            <i>Nenhum emblema para ser exibido.</i>
+                                            <i>{{#str}} no_badges,theme_suap {{/str}}</i>
                                         {{/is_my_profile}}
                                         </p>
                                     </div>

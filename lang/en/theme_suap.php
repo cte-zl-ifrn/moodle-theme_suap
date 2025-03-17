@@ -112,6 +112,12 @@ $string['contentbutton'] = 'Content';
 // Profile aditional strings
 $string['aboutme'] = 'About me';
 $string['certificates'] = 'Certificates';
+$string['describe_yourself'] = 'Describe yourself to your community';
+$string['no_your_certificates'] = 'Complete a course to obtain certificates';
+$string['no_your_badges'] = 'Explore our courses to earn badges';
+$string['no_description'] = 'No description yet';
+$string['no_certificates'] = 'No certificates';
+$string['no_badges'] = 'No badges to display';
 
 // Setting layout navigation menu
 $string['layouttype'] = 'Always show top menu';
