@@ -121,3 +121,14 @@ function theme_suap_add_admin_items_user_menu(): ?array {
 
     return $items;
 }
+
+function theme_suap_is_contentbutton_active() {
+    global $PAGE;
+    $context_now = $PAGE->context;
+
+    if ($context_now->contextlevel !== CONTEXT_SYSTEM) {
+        return true;
+    }
+
+    return false;
+}

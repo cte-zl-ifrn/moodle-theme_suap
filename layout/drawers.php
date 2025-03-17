@@ -177,12 +177,6 @@ if ($primarymenu["user"]["items"]):
     $primarymenu["user"]["submenus"][] = $submenu_obj;
 endif;
 
-// Content button não aparece na área de administração
-$context_now = $PAGE->context;
-$is_active_contentbutton = false;
-if ($context_now->contextlevel !== CONTEXT_SYSTEM) {
-    $is_active_contentbutton = true;
-}
 
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
@@ -222,6 +216,6 @@ $templatecontext = [
     'footerblocks' => $footerblocks,
     'contentbutton' => get_string('contentbutton', 'theme_suap'),
     'contentbuttonurl' => $CFG->wwwroot.'/course/view.php?id='.$COURSE->id,
-    'isactivecontentbutton' => $is_active_contentbutton
+    'isactivecontentbutton' => theme_suap_is_contentbutton_active(),
 ];
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);
