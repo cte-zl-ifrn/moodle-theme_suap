@@ -139,79 +139,80 @@
                                     <span class="user-mail">{{ useremail }}</span>
                                 </div>
                             </div>
-                            {{#userdescription}}
-                                <div class="user-group-suap aboutme-container">
-                                    <h2 class="aboutme-title">{{#str}} aboutme, theme_suap {{/str}}</h2>
+
+                            <div class="user-group-suap aboutme-container">
+                                <h2 class="aboutme-title">{{#str}} aboutme, theme_suap {{/str}}</h2>
+                                {{#userdescription}}
                                     <p>{{{ userdescription }}}</p>
-                                </div>
-                            {{/userdescription}}
-                            {{^userdescription}}
-                                <div class="user-group-suap aboutme-container">
-                                    <h2 class="aboutme-title">{{#str}} aboutme, theme_suap {{/str}}</h2>
+                                {{/userdescription}}
+                                {{^userdescription}}
                                     <p>
-                                        <i>Se descreva para sua comunidade.</i>
+                                    {{#is_my_profile}}
+                                        <i>{{#str}} describe_yourself,theme_suap {{/str}}</i>
+                                    {{/is_my_profile}}
+                                    {{^is_my_profile}}
+                                         <i>{{#str}} no_description,theme_suap {{/str}}</i>
+                                    {{/is_my_profile}}
                                     </p>
-                                </div>
-                            {{/userdescription}}
+                                {{/userdescription}}
+                            </div>
 
-
-                            {{#hascertificates}}
-                                <div class="user-group-suap">
-                                    <h2>{{#str}} certificates, theme_suap {{/str}}</h2>
-                                    <div class="cert-container">
+                            <div class="user-group-suap">
+                                <h2 class="user-title">{{#str}} certificates, theme_suap {{/str}}</h2>
+                                <div class="cert-container">
+                                    {{#hascertificates}}
                                         {{#certificates}}
                                             <div class="cert-item">
                                                 <img src="{{config.wwwroot}}/theme/suap/pix/cert-preview.png">
                                                 <div class="cert-item-info">
                                                     <h3>{{name}}</h3>
                                                     <p class="issued-date">{{#str}} dateawarded, badges {{/str}}: {{datereceived}}</p>
-                                                    <a class="btn btn-tertiary" href="{{{link}}}">Abrir</a>
+                                                    {{#is_my_profile}}
+                                                    <a class="btn btn-tertiary" target="_blank" href="{{{link}}}">Abrir</a>
+                                                    <a class="btn btn-tertiary" target="_blank" href="{{{linkedin_url}}}">Enviar para Linkedin</a>
+                                                    {{/is_my_profile}}
                                                 </div>
                                             </div>
                                         {{/certificates}}
-                                    </div>
-                                </div>
-                            {{/hascertificates}}
-                            {{^hascertificates}}
-                                <div class="user-group-suap">
-                                    <h2>{{#str}} certificates, theme_suap {{/str}}</h2>
-                                    <div class="cert-container">
+                                    {{/hascertificates}}
+                                    {{^hascertificates}}
                                         <p>
-                                            <i>Conclua algum curso para obter certificado.</i>
+                                        {{#is_my_profile}}
+                                            <i>{{#str}} no_your_certificates,theme_suap {{/str}}</i>
+                                        {{/is_my_profile}}
+                                        {{^is_my_profile}}
+                                            <i>{{#str}} no_certificates,theme_suap {{/str}}</i>
+                                        {{/is_my_profile}}
                                         </p>
-                                    </div>
+                                    {{/hascertificates}}
                                 </div>
-                            {{/hascertificates}}
+                            </div>
 
-                            {{#hasbadges}}
-                                <div class="user-group-suap">
-                                    <h2 class="user-title">{{#str}} badges, badges {{/str}}</h2>
-                                    <div class="badges-container">
+                            <div class="user-group-suap">
+                                <h2 class="user-title">{{#str}} badges, badges {{/str}}</h2>
+                                <div class="badges-container">
+                                    {{#hasbadges}}
                                         {{#badges}}
                                             <a title="{{name}}" href="{{link}}" class="badge-item">
                                                 <img src="{{imageurl}}">
                                                 <h3 class="badge-title">{{name}}</h3>
                                             </a>
                                         {{/badges}}
-                                    </div>
-                                </div>
-                            {{/hasbadges}}
-                            {{^hasbadges}}
-                                <div class="user-group-suap">
-                                    <h2 class="user-title">{{#str}} badges, badges {{/str}}</h2>
-                                    <div class="badges-container">
+                                    {{/hasbadges}}
+                                    {{^hasbadges}}
                                         <p>
-                                            <i> Explore nossos cursos para obter emblemas</i>
+                                        {{#is_my_profile}}
+                                            <i> {{#str}} no_your_badges,theme_suap {{/str}}</i>
+                                        {{/is_my_profile}}
+                                        {{^is_my_profile}}
+                                            <i>{{#str}} no_badges,theme_suap {{/str}}</i>
+                                        {{/is_my_profile}}
                                         </p>
-                                    </div>
+                                    {{/hasbadges}}
                                 </div>
-                            {{/hasbadges}}
+                            </div>
 
                         </div>
-
-
-
-
 
                         {{{ output.main_content }}}
 

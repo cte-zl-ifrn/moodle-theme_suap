@@ -111,6 +111,12 @@ $string['contentbutton'] = 'Conteúdo';
 // Profile aditional strings
 $string['aboutme'] = 'Sobre mim';
 $string['certificates'] = 'Certificados';
+$string['describe_yourself'] = 'Se descreva para a sua comunidade';
+$string['no_your_certificates'] = 'Conclua algum curso para obter certificados';
+$string['no_your_badges'] = 'Explore os nossos cursos para obter emblemas';
+$string['no_description'] = 'Sem descrição por enquanto';
+$string['no_certificates'] = 'Sem certificados';
+$string['no_badges'] = 'Nenhum emblema para ser exibido';
 
 // Setting layout navigation menu
 $string['layouttype'] = 'Sempre mostrar o menu superior';
