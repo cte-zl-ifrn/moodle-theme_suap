@@ -183,7 +183,8 @@ $custom_certificates = $DB->get_records('customcert_issues', array('userid' => $
 
 if (!empty($tool_certificates)) {
     foreach ($tool_certificates as $cert) {
-        $certificate_name = $DB->get_field('tool_certificate_templates', 'name', array('id' => $cert->id));
+        $cert_data = json_decode($cert->data);
+        $certificate_name = $cert_data->coursefullname;
 
         $contextid = context_system::instance()->id;  // Obtém o contexto do sistema
         $fileurl = moodle_url::make_pluginfile_url($contextid, 'tool_certificate', 'issues', $cert->id, '/', $cert->code . '.pdf', false);
