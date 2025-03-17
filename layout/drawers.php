@@ -177,6 +177,7 @@ if ($primarymenu["user"]["items"]):
     $primarymenu["user"]["submenus"][] = $submenu_obj;
 endif;
 
+
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
@@ -213,5 +214,8 @@ $templatecontext = [
     'contentblocks' => $contentblocks,
     'addfooterblockbutton' => $addfooterblockbutton,
     'footerblocks' => $footerblocks,
+    'contentbutton' => get_string('contentbutton', 'theme_suap'),
+    'contentbuttonurl' => $CFG->wwwroot.'/course/view.php?id='.$COURSE->id,
+    'isactivecontentbutton' => theme_suap_is_contentbutton_active(),
 ];
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);

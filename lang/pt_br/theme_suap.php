@@ -105,6 +105,9 @@ $string['frontpage_button_courses_desc'] = '';
 $string['frontpage_button_learningpaths'] = 'Trilhas';
 $string['frontpage_button_learningpaths_desc'] = '';
 
+// Incourse aditional strings
+$string['contentbutton'] = 'Conteúdo';
+
 // Profile aditional strings
 $string['aboutme'] = 'Sobre mim';
 $string['certificates'] = 'Certificados';

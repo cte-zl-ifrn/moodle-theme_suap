@@ -394,7 +394,7 @@ ul, ol {
     padding: .5rem 1rem;
     background-color: var(--primary);
     border-radius: 40px;
-    font: var(--font-button1);
+    font: var(--font-button2);
     border: none;
     &:hover, &:focus {
         background-color: var(--primary-dark);
@@ -405,9 +405,10 @@ ul, ol {
 
 .btn-secondary {
     background-color: var(--light);
-    // color: var(--general-white);
-    font: var(--font-heading5);
+    font: var(--font-button2);
+    color: var(--dark);
     border-radius: 40px;
+    padding: .5rem 1rem;
     border: none;
     gap: .25rem;
     &:hover {

@@ -1,0 +1,20 @@
+.secondary-navigation {
+    .nav-link {
+        font: var(--font-button2);
+        color: var(--primary);
+        &.active {
+            color: var(--dark);
+            border-bottom-color: var(--primary);
+            &:hover {
+                border-bottom-color: var(--primary);
+            }
+        }
+        &:hover {
+            background-color: var(--light-lighter);
+        }
+    }
+
+    .nav-item[data-key="coursehome"] {
+        display: none;
+    }
+}
