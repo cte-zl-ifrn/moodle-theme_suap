@@ -87,6 +87,10 @@ if ($PAGE->pagetype === 'enrol-index') {
         $enrolpage_and_guestuser = true;
         $extraclasses[] = 'counteroff';
     }
+
+    // Get the current language course
+    $lang_data = $OUTPUT->get_lang_menu_data();
+    $active_lang = $lang_data['langactivename'];
 }
 
 $conf = get_config('theme_suap');

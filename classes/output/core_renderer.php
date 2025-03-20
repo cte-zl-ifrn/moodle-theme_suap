@@ -64,7 +64,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      *
      * @return string HTML renderizado do menu de idiomas.
      */
-    public function lang_menu_flags() {
+    public function get_lang_menu_data() {
         $langs = \get_string_manager()->get_list_of_translations();
         $currentlang = \current_language();
 
@@ -104,15 +104,26 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
             if ($isactive) {
                 $activelanguage = $flag;
+                $activelanguagename = $langname;
             }
         }
 
-        $data = [
+        return [
             'langactive' => $activelanguage, // Língua atualmente selecionada
+            'langactivename' => $activelanguagename, // Nome da língua atualmente selecionada
             'langnodes' => $nodes,          // Lista de idiomas disponíveis
         ];
     
         return $this->render_from_template('theme_suap/lang_menu_flags', $data);
     }
 
+    /**
+     * Renderiza o menu de seleção de idiomas com bandeiras.
+     *
+     * @return string HTML renderizado do menu.
+     */
+    public function lang_menu_flags() {
+        $data = $this->get_lang_menu_data();
+        return $this->render_from_template('theme_suap/lang_menu_flags', $data);
+    }
 }
