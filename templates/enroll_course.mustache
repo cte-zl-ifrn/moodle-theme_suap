@@ -70,9 +70,15 @@
 
 <div class="enrol-course-tabs">
     <ul class="nav">
-        <li><a class="nav-link active" data-toggle="pill" href="#course-general">Visão Geral</a></li>
-        <li><a class="nav-link" data-toggle="pill" href="#course-teacher">Docente</a></li>
-        <li><a class="nav-link" data-toggle="pill" href="#course-reviews">Comentários</a></li>
+        <li><a class="nav-link active" data-toggle="pill" href="#course-general">
+            {{#str}}overview, theme_suap{{/str}}
+        </a></li>
+        <li><a class="nav-link" data-toggle="pill" href="#course-teacher">
+            {{#str}}instructor, theme_suap{{/str}}
+        </a></li>
+        <li><a class="nav-link" data-toggle="pill" href="#course-reviews">
+            {{#str}}comments, theme_suap{{/str}}
+        </a></li>
     </ul>
 
     <div class="tab-content">
@@ -81,7 +87,7 @@
                 {{{summary}}}
             {{/summary}}
             {{^summary}}
-                <p><i>Sem descrição do curso por enquanto</i></p>
+                <p><i>{{#str}}no_description_course, theme_suap{{/str}}</i></p>
             {{/summary}}
 
         </div>
@@ -96,7 +102,9 @@
                                 {{{description}}}
                             {{/description}}
                             {{^description}}
-                                <p><i>Sem descrição do Docente</i></p>
+                                <p><i>
+                                    {{#str}}no_description_instructor, theme_suap{{/str}}
+                                </i></p>
                             {{/description}}
                         </div>
                     </div>

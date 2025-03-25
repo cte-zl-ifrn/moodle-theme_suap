@@ -121,6 +121,11 @@ $string['no_badges'] = 'Nenhum emblema para ser exibido';
 // Enrolment aditional strings
 $string['issue_certificate'] = 'Emitir certificado';
 $string['login'] = 'Realizar login';
+$string['no_description_course'] = 'Sem descrição do curso por enquanto'; 
+$string['overview'] = 'Visão geral';
+$string['instructor'] = 'Docente';
+$string['comments'] = 'Comentários';
+$string['no_description_instructor'] = 'Sem descrição do docente';
 
 // Setting layout navigation menu
 $string['layouttype'] = 'Sempre mostrar o menu superior';
