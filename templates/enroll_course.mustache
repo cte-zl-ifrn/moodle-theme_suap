@@ -7,7 +7,7 @@
                 <div class="topic-item">
                     <i class="fa-regular fa-clock"></i>
                     <span>
-                        {{workload}} horas
+                        {{workload}} {{#str}}hours, core{{/str}}
                     </span>
                 </div>
             {{/workload}}
@@ -15,14 +15,14 @@
                 <div class="topic-item">
                     <i class="fa-regular fa-circle-check"></i>
                     <span>
-                        Emite certificado
+                        {{#str}}issue_certificate, theme_suap{{/str}}
                     </span>
                 </div>
             {{/has_certificate}}
             <div class="topic-item">
-                <i class="fa-regular fa-clock"></i>
+                <i class="fa-regular fa-comment"></i>
                 <span>
-                    Idioma português
+                    {{#str}}language, core{{/str}} {{langactivename}}
                 </span>
             </div>
         </div>
@@ -39,21 +39,30 @@
                     <input type="hidden" name="mform_isexpanded_id_selfheader" value="1" />
 
                     {{#require_password}}
-                        <label for="enrolpassword" class="d-inline word-break">Enrolment key</label>
-                        <input type="password" class="form-control" name="enrolpassword" id="enrolpassword" value="" autocomplete="new-password">
+                        <label for="enrolpassword" class="d-inline word-break">
+                            {{#str}}enrolmentkey, core_group{{/str}}
+                        </label>
+                        <input type="password" class="form-control enrol-password" name="enrolpassword" id="enrolpassword" value="" autocomplete="new-password">
                     {{/require_password}}
 
-
-                    <div class="mt-3">
+                    {{^isguestuser}}
                         <button id="enrol-button" type="submit" class="btn btn-tertiary" name="submitbutton" value="{{#str}} enrolme, enrol_self {{/str}}">
                             {{#str}} enrolme, enrol_self {{/str}}
                         </button>
-                    </div>
+                    {{/isguestuser}}
+                    {{#isguestuser}}
+                        <a href="{{{wwwroot}}}/login" class="btn btn-tertiary">
+                            {{#str}} login, theme_suap {{/str}}
+                        </a>
+                    {{/isguestuser}}
+
                 </form>
             {{/self_enrolment}}
             {{^self_enrolment}}
-                {{#str}} notenrollable, enrol {{/str}}
-                <a href="{{{config.wwwroot}}}?redirect=0" class="btn btn-tertiary">Voltar</a>
+                <p>{{#str}} notenrollable, enrol {{/str}}</p>
+                <a href="{{{config.wwwroot}}}?redirect=0" class="btn btn-tertiary">
+                    {{#str}} back, core {{/str}}
+                </a>
             {{/self_enrolment}}
         </div>
     </div>

@@ -118,6 +118,10 @@ $string['no_description'] = 'Sem descrição por enquanto';
 $string['no_certificates'] = 'Sem certificados';
 $string['no_badges'] = 'Nenhum emblema para ser exibido';
 
+// Enrolment aditional strings
+$string['issue_certificate'] = 'Emitir certificado';
+$string['login'] = 'Realizar login';
+
 // Setting layout navigation menu
 $string['layouttype'] = 'Sempre mostrar o menu superior';
 $string['layouttype_desc'] = 'O menu superior é usado nos Moodles que não estão integrados ao Painel AVA';

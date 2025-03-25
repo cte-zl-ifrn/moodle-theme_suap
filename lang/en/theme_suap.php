@@ -119,6 +119,10 @@ $string['no_description'] = 'No description yet';
 $string['no_certificates'] = 'No certificates';
 $string['no_badges'] = 'No badges to display';
 
+// Enrolment aditional strings
+$string['issue_certificate'] = 'Issue certificate';
+$string['login'] = 'Log in';
+
 // Setting layout navigation menu
 $string['layouttype'] = 'Always show top menu';
 $string['layouttype_desc'] = 'The top navigation menu is used in Moodle that are not integrated into the Painel AVA';

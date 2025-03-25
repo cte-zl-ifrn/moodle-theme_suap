@@ -77,6 +77,9 @@ class course_renderer extends \core_course_renderer
             $list_teachers[] = $record;
         }
 
+        // Get the current language course
+        $lang_data = $OUTPUT->get_lang_menu_data();
+
         $templatecontext = [
             'fullcoursename' => $course->fullname,
             'summary' => $course->summary,
@@ -88,6 +91,8 @@ class course_renderer extends \core_course_renderer
             'has_certificate' => $custom_fields['tem_certificado'],
             'teacher_image' => $CFG->wwwroot . '/theme/suap/pix/default-course-image.webp',
             'course_id' => $course->id,
+            'langactivename' => $lang_data['langactivename'],
+            'isguestuser' => isguestuser(),
         ];
         echo $OUTPUT->render_from_template('theme_suap/enroll_course', $templatecontext);
     }
