@@ -93,6 +93,10 @@
         .teacher-item {
             display: flex;
             gap: 1.5rem;
+            background-color: var(--light-lighter);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
             img {
                 object-fit: cover;
                 width: 100px;
