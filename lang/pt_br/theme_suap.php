@@ -124,6 +124,7 @@ $string['login'] = 'Realizar login';
 $string['no_description_course'] = 'Sem descrição do curso por enquanto'; 
 $string['overview'] = 'Visão geral';
 $string['instructor'] = 'Docente';
+$string['instructors'] = 'Docentes';
 $string['comments'] = 'Comentários';
 $string['no_description_instructor'] = 'Sem descrição do docente';
 

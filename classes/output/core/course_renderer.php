@@ -70,12 +70,14 @@ class course_renderer extends \core_course_renderer
         $teachers = $clist->get_course_contacts();
         $list_teachers = [];
 
-        foreach ($teachers as $teach) {
-            $record = $DB->get_record("user", ["id" => $teach['user']->id]);
+        foreach ($teachers as $teacher) {
+            $record = $DB->get_record("user", ["id" => $teacher['user']->id]);
             $record->pic =  $OUTPUT->user_picture($record, ['size' => 100, 'link' => true]);
 
             $list_teachers[] = $record;
         }
+
+        $are_teachers = count($list_teachers) > 1;
 
         // Get the current language course
         $lang_data = $OUTPUT->get_lang_menu_data();
@@ -84,12 +86,12 @@ class course_renderer extends \core_course_renderer
             'fullcoursename' => $course->fullname,
             'summary' => $course->summary,
             'teachers' => $list_teachers,
+            'are_teachers' => $are_teachers,
             'category' => $category->name,
             'imageurl' => $imageurl,
             'self_enrolment' => $self_enrolment,
             'workload' => $custom_fields['carga_horaria'],
             'has_certificate' => $custom_fields['tem_certificado'],
-            'teacher_image' => $CFG->wwwroot . '/theme/suap/pix/default-course-image.webp',
             'course_id' => $course->id,
             'langactivename' => $lang_data['langactivename'],
             'isguestuser' => isguestuser(),

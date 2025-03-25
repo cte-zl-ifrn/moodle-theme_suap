@@ -125,6 +125,7 @@ $string['login'] = 'Log in';
 $string['no_description_course'] = 'No course description available yet'; 
 $string['overview'] = 'Overview';
 $string['instructor'] = 'Instructor';
+$string['instructors'] = 'Instructors';
 $string['comments'] = 'Comments';
 $string['no_description_instructor'] = 'No instructor description available';
 

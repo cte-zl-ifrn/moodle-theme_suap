@@ -74,7 +74,12 @@
             {{#str}}overview, theme_suap{{/str}}
         </a></li>
         <li><a class="nav-link" data-toggle="pill" href="#course-teacher">
-            {{#str}}instructor, theme_suap{{/str}}
+            {{#are_teachers}}
+                {{#str}}instructors, theme_suap{{/str}}
+            {{/are_teachers}}
+            {{^are_teachers}}
+                {{#str}}instructor, theme_suap{{/str}}
+            {{/are_teachers}}
         </a></li>
         <li><a class="nav-link" data-toggle="pill" href="#course-reviews">
             {{#str}}comments, theme_suap{{/str}}
