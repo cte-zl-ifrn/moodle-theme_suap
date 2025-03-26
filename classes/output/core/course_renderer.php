@@ -79,6 +79,10 @@ class course_renderer extends \core_course_renderer
 
         $are_teachers = count($list_teachers) > 1;
 
+        global $PAGE;
+        $request_url = $CFG->wwwroot . '/theme/suap/api/get_teacher_data.php';
+        $PAGE->requires->js_call_amd('theme_suap/teacher_data', 'init', [$request_url]);
+
         // Get the current language course
         $lang_data = $OUTPUT->get_lang_menu_data();
 
