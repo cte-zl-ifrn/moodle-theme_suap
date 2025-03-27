@@ -128,6 +128,8 @@ $string['instructor'] = 'Instructor';
 $string['instructors'] = 'Instructors';
 $string['comments'] = 'Comments';
 $string['no_description_instructor'] = 'No instructor description available';
+$string['students'] = 'students';
+$string['courses'] = 'courses';
 
 // Setting layout navigation menu
 $string['layouttype'] = 'Always show top menu';

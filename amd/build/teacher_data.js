@@ -26,16 +26,19 @@ define(["core/str"], function(str) {
 
     }
 
-    function renderTeacherData(teacherData) {
+    async function renderTeacherData(teacherData) {
+        const studentsString = await str.getString('students', 'theme_suap');
+        const coursesString = await str.getString('courses', 'theme_suap');
+
         teacherData.forEach((teacher, i) => {
             teacherDataContainers[i].innerHTML = `
                 <div data-info="students">
                     <i class="fa-solid fa-user-group"></i>
-                    <span>${teacher.totalstudents} alunos</span>
+                    <span>${teacher.totalstudents} ${studentsString}</span>
                 </div>
                 <div data-info="courses">
                     <i class="fa-regular fa-file-lines"></i>
-                    <span>${teacher.courses.length} cursos</span>
+                    <span>${teacher.courses.length} ${coursesString}</span>
                 </div>
             `;    
         });
