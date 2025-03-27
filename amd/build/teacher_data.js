@@ -27,8 +27,8 @@ define(["core/str"], function(str) {
     }
 
     async function renderTeacherData(teacherData) {
-        const studentsString = await str.getString('students', 'theme_suap');
-        const coursesString = await str.getString('courses', 'theme_suap');
+        const studentsString = await str.getString('students', 'core');
+        const coursesString = await str.getString('courses', 'core');
 
         teacherData.forEach((teacher, i) => {
             teacherDataContainers[i].innerHTML = `

@@ -127,8 +127,6 @@ $string['instructor'] = 'Docente';
 $string['instructors'] = 'Docentes';
 $string['comments'] = 'Comentários';
 $string['no_description_instructor'] = 'Sem descrição do docente';
-$string['students'] = 'alunos';
-$string['courses'] = 'cursos';
 
 // Setting layout navigation menu
 $string['layouttype'] = 'Sempre mostrar o menu superior';
