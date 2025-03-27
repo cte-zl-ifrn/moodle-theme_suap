@@ -100,18 +100,19 @@
             {{#teachers}}
                 <div class="teacher-item">
                     {{{pic}}}
-                    <div class="">
+                    <div class="teacher-item-container">
                         <h2 class="teacher-name">{{firstname}} {{lastname}}</h2>
-                        <div>
-                            {{#description}}
-                                {{{description}}}
-                            {{/description}}
-                            {{^description}}
-                                <p><i>
-                                    {{#str}}no_description_instructor, theme_suap{{/str}}
-                                </i></p>
-                            {{/description}}
-                        </div>
+                        
+                        {{#description}}
+                            {{{description}}}
+                        {{/description}}
+                        {{^description}}
+                            <p><i>
+                                {{#str}}no_description_instructor, theme_suap{{/str}}
+                            </i></p>
+                        {{/description}}
+                        
+                        <div data-render="teacher-numbers"></div>
                     </div>
                 </div>
             {{/teachers}}
