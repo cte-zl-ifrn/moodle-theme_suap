@@ -106,6 +106,24 @@
             .teacher-name {
                 font: var(--font-heading2);
             }
+            .teacher-numbers {
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+                i {
+                    font-size: 14px;
+                    color: var(--secondary); 
+                    margin-right: .5rem;
+                    width: 16px;
+                    &::before {
+                        display: flex;
+                        justify-content: center;
+                    }   
+                }
+                .courses-number i {
+                    font-size: 16px;
+                }
+            }
         }
     }
 

@@ -32,11 +32,11 @@ define(["core/str"], function(str) {
 
         teacherData.forEach((teacher, i) => {
             teacherDataContainers[i].innerHTML = `
-                <div data-info="students">
+                <div class="students-number">
                     <i class="fa-solid fa-user-group"></i>
                     <span>${teacher.totalstudents} ${studentsString}</span>
                 </div>
-                <div data-info="courses">
+                <div class="courses-number">
                     <i class="fa-regular fa-file-lines"></i>
                     <span>${teacher.courses.length} ${coursesString}</span>
                 </div>
