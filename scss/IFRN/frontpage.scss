@@ -143,6 +143,7 @@ div[role="main"] {
     gap: 2rem;
     flex-wrap: wrap;
     margin-bottom: 2rem;
+    min-height: 380px;
 
     @include media-breakpoint-down(lg) {
         grid-template-columns: 1fr 1fr;
