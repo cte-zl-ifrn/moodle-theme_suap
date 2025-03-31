@@ -167,6 +167,18 @@ if ($USER->id != $userid) {
     $message_url = new moodle_url('/message/index.php', ['id' => $userid]);
 }
 
+$myrolestr;
+$myroles = get_user_roles($context, $userid, true);
+
+if (empty($myroles)) {
+    $myrolestr = "";
+} else {
+    foreach ($myroles as $myrole) {
+        $myrolestr[] = role_get_name($myrole, $context);
+    }
+    $myrolestr = implode(', ', $myrolestr);
+}
+
 // Get profile image and alternative text
 $profile_picture = new user_picture($user);
 $profile_picture->size = 50;
@@ -214,6 +226,7 @@ if (!empty($custom_certificates)) {
     foreach ($custom_certificates as $cert) {
         $certificate_name = $DB->get_field('customcert', 'name', array('id' => $cert->customcertid));
 
+
         $all_certificates[] = array(
             'certificateid' => $cert->customcertid,
             'dateraw' => $cert->timecreated,
@@ -245,12 +258,27 @@ if (!empty($badges)) {
         $imageurl = moodle_url::make_pluginfile_url($badge_context->id, 'badges', 'badgeimage', $badge->id, '/', 'f1', FALSE);
         $badge_link = new moodle_url('/badges/badge.php', ['hash' => $badge->uniquehash]);
 
+        $createdYear = date('Y', ($badge->timecreated));
+        $createdMonth = date('m', ($badge->timecreated));
+        $expirationYear = '';
+        $expirationMonth = '';
+
+        if ($badge->expiredate) {
+            $expirationYear = date('Y', $badge->expiredate);
+            $expirationMonth = date('m', $cert->expiredate);
+        }
+
+        $badge_linkedin = "https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name={$badge->name}
+        &organizationName={$badge->issuername}&issueYear={$createdYear}&issueMonth={$createdMonth}&expirationYear={$expirationYear}
+        &expirationMonth={$expirationMonth}&certId={$badge->uniquehash}";
+
         $badges_formated[] = array(
             'name' => $badge->name,
             'description' => $badge->description,
             'datereceived' => date('d/m/Y', $badge_issued->dateissued),
             'imageurl' => $imageurl,
-            'link' => $badge_link
+            'link' => $badge_link,
+            'badgelink' => $badge_linkedin
         );
     }
 }
@@ -289,6 +317,7 @@ $templatecontext = [
     'navbar' => $navbar,
     'useridprofile' => $userid,
     'rolename' => $rolestr,
+    'myrolename' => $myrolestr,
     'isloggedin' => $isloggedin,
     'is_admin' => $is_admin,
     'userid' => $USER->id,
@@ -297,7 +326,7 @@ $templatecontext = [
     'is_my_profile' => $is_my_profile,
     'not_course_context_profile' => $notCourseContextProfile,
     'contentbutton' => get_string('contentbutton', 'theme_suap'),
-    'contentbuttonurl' => $CFG->wwwroot.'/course/view.php?id='.$COURSE->id,
+    'contentbuttonurl' => $CFG->wwwroot . '/course/view.php?id=' . $COURSE->id,
     'isactivecontentbutton' => theme_suap_is_contentbutton_active(),
 ];
 echo $OUTPUT->render_from_template('theme_suap/layouts/mypublic', $templatecontext);
