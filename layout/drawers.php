@@ -79,6 +79,8 @@ if (!$courseindex) {
 }
 
 // Checar se está na página de enrol de curso
+$is_enrol_course_page = false;
+$enrolpage_and_guestuser = false;
 if ($PAGE->pagetype === 'enrol-index') {
     $is_enrol_course_page = true;
     $extraclasses[] = 'layout-width-expanded';
@@ -210,12 +212,12 @@ $templatecontext = [
     'enrolpage_and_guestuser' => $enrolpage_and_guestuser,
     'frontpage_buttons_configtextarea' => $frontpage_buttons_configtextarea,
     'frontpage_buttons_configtextarea_when_user_logged' => $frontpage_buttons_configtextarea_when_user_logged,
-    'addcontentblockbutton' => $addcontentblockbutton,
-    'contentblocks' => $contentblocks,
-    'addfooterblockbutton' => $addfooterblockbutton,
-    'footerblocks' => $footerblocks,
+    'addcontentblockbutton' => isset($addcontentblockbutton) ? $addcontentblockbutton : '',
+    'contentblocks' => isset($contentblocks) ? $contentblocks : '',
+    'addfooterblockbutton' => isset($addfooterblockbutton) ? $addfooterblockbutton : '',
+    'footerblocks' => isset($footerblocks) ? $footerblocks : '',
     'contentbutton' => get_string('contentbutton', 'theme_suap'),
-    'contentbuttonurl' => $CFG->wwwroot.'/course/view.php?id='.$COURSE->id,
+    'contentbuttonurl' => $CFG->wwwroot . '/course/view.php?id=' . $COURSE->id,
     'isactivecontentbutton' => theme_suap_is_contentbutton_active(),
 ];
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);
