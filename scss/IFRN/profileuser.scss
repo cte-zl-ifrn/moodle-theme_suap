@@ -12,6 +12,9 @@
     }
     .profile-header {
         display: flex;
+        @media (max-width: 768px) {
+            display: block !important;
+        }
         justify-content: space-between;
         margin-bottom: 1rem;
         .user-title {
@@ -30,6 +33,10 @@
         &.contact-container {
             display: flex;
             gap: 1rem;
+            @media (max-width: 768px) {
+                display: block !important;
+                text-align: center;
+            }
             img {
                 border-radius: 50%;
                 height: 80px;
@@ -115,6 +122,21 @@
             grid-template-columns: 1fr;
             img {
                 display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .page-context-header {
+        display: block !important;
+        padding-left: 15px;
+        width: 320px;
+
+        .header-button-group {
+            margin-left: 0 !important;
+            #message-user-button {
+                padding-left: 0 !important;
             }
         }
     }
