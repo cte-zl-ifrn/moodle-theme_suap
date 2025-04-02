@@ -106,7 +106,7 @@ function theme_suap_user_preferences(): array
 function theme_suap_add_admin_items_user_menu(): ?array
 {
     $items = [];
-    if (isset($USER) && is_siteadmin($USER->id)) {
+    if (is_siteadmin()) {
         $items[] = [
             'link' => [
                 'title' => get_string('administrationsite', 'core'),
