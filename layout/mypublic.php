@@ -255,6 +255,8 @@ if (!empty($badges)) {
     }
 }
 
+include('_submenu_userpreference.php');
+
 $templatecontext = [
     'userfullname' => fullname($user),
     'useremail' => $useremail,
@@ -297,7 +299,7 @@ $templatecontext = [
     'is_my_profile' => $is_my_profile,
     'not_course_context_profile' => $notCourseContextProfile,
     'contentbutton' => get_string('contentbutton', 'theme_suap'),
-    'contentbuttonurl' => $CFG->wwwroot.'/course/view.php?id='.$COURSE->id,
+    'contentbuttonurl' => $CFG->wwwroot . '/course/view.php?id=' . $COURSE->id,
     'isactivecontentbutton' => theme_suap_is_contentbutton_active(),
 ];
 echo $OUTPUT->render_from_template('theme_suap/layouts/mypublic', $templatecontext);
