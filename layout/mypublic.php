@@ -284,6 +284,7 @@ if (!empty($badges)) {
 }
 
 include('_submenu_userpreference.php');
+include('_menu_order.php');
 
 $templatecontext = [
     'userfullname' => fullname($user),
@@ -310,6 +311,7 @@ $templatecontext = [
     'mobileprimarynav' => $primarymenu['mobileprimarynav'],
     'usermenu' => $primarymenu['user'],
     'langmenu' => $primarymenu['lang'],
+    'logout' => $_logoutlink,
     'forceblockdraweropen' => $forceblockdraweropen,
     'regionmainsettingsmenu' => $regionmainsettingsmenu,
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
