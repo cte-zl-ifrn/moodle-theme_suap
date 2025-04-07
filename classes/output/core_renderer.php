@@ -39,10 +39,23 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         $output = parent::standard_head_html();
 
-        $output .= '<link rel="preconnect" href="https://fonts.googleapis.com">
-                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">';
-        
+        global $CFG;
+        $theme_folder = $CFG->wwwroot . '/theme/suap';
+
+        $output .= <<<HTML
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="{$theme_folder}/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="{$theme_folder}/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="{$theme_folder}/favicon/favicon-16x16.png" />
+        <link rel="manifest" href="{$theme_folder}/favicon/site.webmanifest" />
+        <link rel="mask-icon" href="{$theme_folder}/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+        HTML;
+
         return $output;
     }
     /**
