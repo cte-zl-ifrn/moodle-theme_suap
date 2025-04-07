@@ -36,7 +36,7 @@ define(['jquery', 'core/templates', 'core/notification', 'message_popup/notifica
     const markAllReadButton = notificationContainer.querySelector('[data-action="mark-all-read"]');
     let loadingIcon = document.querySelector('[data-region="loading-icon-container"]');
 
-    //Api de notificações
+    // Api de notificações
     function getNotifications(offset, initial = true, isFetching = false) {
         const limit = LIMIT_NOTIFICATION;
 
@@ -47,13 +47,10 @@ define(['jquery', 'core/templates', 'core/notification', 'message_popup/notifica
                 limit: limit,
                 offset: offset
             }).done(function(data) {
-                console.log(data)
-                // if (data.notifications.length > 0) {
                 renderNotifications(data, initial);
                 if (data.notifications.length < limit) {
                     resolve(true);
                 }
-                // }
 
             }).fail(function(error) {
                 console.error(error);

@@ -4,6 +4,10 @@ ul, ol {
     padding: 0px;
 }
 
+p {
+    font: var(--font-paragraph1);
+}
+
 #region-main {
     background-color: transparent;
 }
@@ -390,6 +394,12 @@ ul, ol {
     border: 2px solid var(--primary)
 }
 
+.btn-icon-text {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+}
+
 .btn-primary {
     padding: .5rem 1rem;
     background-color: var(--primary);
@@ -413,7 +423,6 @@ ul, ol {
     gap: .25rem;
     &:hover {
         background-color: var(--light-dark);
-        // color: var(--general-white);
     }
 }
 

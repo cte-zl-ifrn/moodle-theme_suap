@@ -70,24 +70,35 @@ class course_renderer extends \core_course_renderer
         $teachers = $clist->get_course_contacts();
         $list_teachers = [];
 
-        foreach ($teachers as $teach) {
-            $record = $DB->get_record("user", ["id" => $teach['user']->id]);
+        foreach ($teachers as $teacher) {
+            $record = $DB->get_record("user", ["id" => $teacher['user']->id]);
             $record->pic =  $OUTPUT->user_picture($record, ['size' => 100, 'link' => true]);
 
             $list_teachers[] = $record;
         }
 
+        $are_teachers = count($list_teachers) > 1;
+
+        global $PAGE;
+        $request_url = $CFG->wwwroot . '/theme/suap/api/get_teacher_data.php';
+        $PAGE->requires->js_call_amd('theme_suap/teacher_data', 'init', [$request_url]);
+
+        // Get the current language course
+        $lang_data = $OUTPUT->get_lang_menu_data();
+
         $templatecontext = [
             'fullcoursename' => $course->fullname,
             'summary' => $course->summary,
             'teachers' => $list_teachers,
+            'are_teachers' => $are_teachers,
             'category' => $category->name,
             'imageurl' => $imageurl,
             'self_enrolment' => $self_enrolment,
             'workload' => $custom_fields['carga_horaria'],
             'has_certificate' => $custom_fields['tem_certificado'],
-            'teacher_image' => $CFG->wwwroot . '/theme/suap/pix/default-course-image.webp',
             'course_id' => $course->id,
+            'langactivename' => $lang_data['langactivename'],
+            'isguestuser' => isguestuser(),
         ];
         echo $OUTPUT->render_from_template('theme_suap/enroll_course', $templatecontext);
     }

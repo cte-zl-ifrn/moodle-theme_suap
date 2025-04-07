@@ -1,4 +1,4 @@
-<div class="enrol-header">
+<div class="enrol-header" id="course-infos" data-courseid="{{course_id}}">
     <div class="enrol-header-info">
         <span class="enrol-header-tag">{{category}}</span>
         <h1>{{fullcoursename}}</h1>
@@ -7,7 +7,7 @@
                 <div class="topic-item">
                     <i class="fa-regular fa-clock"></i>
                     <span>
-                        {{workload}} horas
+                        {{workload}} {{#str}}hours, core{{/str}}
                     </span>
                 </div>
             {{/workload}}
@@ -15,14 +15,14 @@
                 <div class="topic-item">
                     <i class="fa-regular fa-circle-check"></i>
                     <span>
-                        Emite certificado
+                        {{#str}}issue_certificate, theme_suap{{/str}}
                     </span>
                 </div>
             {{/has_certificate}}
             <div class="topic-item">
-                <i class="fa-regular fa-clock"></i>
+                <i class="fa-regular fa-comment"></i>
                 <span>
-                    Idioma português
+                    {{#str}}language, core{{/str}} {{langactivename}}
                 </span>
             </div>
         </div>
@@ -39,21 +39,30 @@
                     <input type="hidden" name="mform_isexpanded_id_selfheader" value="1" />
 
                     {{#require_password}}
-                        <label for="enrolpassword" class="d-inline word-break">Enrolment key</label>
-                        <input type="password" class="form-control" name="enrolpassword" id="enrolpassword" value="" autocomplete="new-password">
+                        <label for="enrolpassword" class="d-inline word-break">
+                            {{#str}}enrolmentkey, core_group{{/str}}
+                        </label>
+                        <input type="password" class="form-control enrol-password" name="enrolpassword" id="enrolpassword" value="" autocomplete="new-password">
                     {{/require_password}}
 
-
-                    <div class="mt-3">
+                    {{^isguestuser}}
                         <button id="enrol-button" type="submit" class="btn btn-tertiary" name="submitbutton" value="{{#str}} enrolme, enrol_self {{/str}}">
                             {{#str}} enrolme, enrol_self {{/str}}
                         </button>
-                    </div>
+                    {{/isguestuser}}
+                    {{#isguestuser}}
+                        <a href="{{{wwwroot}}}/login" class="btn btn-tertiary">
+                            {{#str}} login, theme_suap {{/str}}
+                        </a>
+                    {{/isguestuser}}
+
                 </form>
             {{/self_enrolment}}
             {{^self_enrolment}}
-                {{#str}} notenrollable, enrol {{/str}}
-                <a href="{{{config.wwwroot}}}?redirect=0" class="btn btn-tertiary">Voltar</a>
+                <p>{{#str}} notenrollable, enrol {{/str}}</p>
+                <a href="{{{config.wwwroot}}}?redirect=0" class="btn btn-tertiary">
+                    {{#str}} back, core {{/str}}
+                </a>
             {{/self_enrolment}}
         </div>
     </div>
@@ -61,9 +70,20 @@
 
 <div class="enrol-course-tabs">
     <ul class="nav">
-        <li><a class="nav-link active" data-toggle="pill" href="#course-general">Visão Geral</a></li>
-        <li><a class="nav-link" data-toggle="pill" href="#course-teacher">Docente</a></li>
-        <li><a class="nav-link" data-toggle="pill" href="#course-reviews">Comentários</a></li>
+        <li><a class="nav-link active" data-toggle="pill" href="#course-general">
+            {{#str}}overview, theme_suap{{/str}}
+        </a></li>
+        <li><a class="nav-link" data-toggle="pill" href="#course-teacher">
+            {{#are_teachers}}
+                {{#str}}instructors, theme_suap{{/str}}
+            {{/are_teachers}}
+            {{^are_teachers}}
+                {{#str}}instructor, theme_suap{{/str}}
+            {{/are_teachers}}
+        </a></li>
+        <li><a class="nav-link" data-toggle="pill" href="#course-reviews">
+            {{#str}}comments, theme_suap{{/str}}
+        </a></li>
     </ul>
 
     <div class="tab-content">
@@ -72,7 +92,7 @@
                 {{{summary}}}
             {{/summary}}
             {{^summary}}
-                <p><i>Sem descrição do curso por enquanto</i></p>
+                <p><i>{{#str}}no_description_course, theme_suap{{/str}}</i></p>
             {{/summary}}
 
         </div>
@@ -80,16 +100,19 @@
             {{#teachers}}
                 <div class="teacher-item">
                     {{{pic}}}
-                    <div class="">
+                    <div class="teacher-item-container">
                         <h2 class="teacher-name">{{firstname}} {{lastname}}</h2>
-                        <div>
-                            {{#description}}
-                                {{{description}}}
-                            {{/description}}
-                            {{^description}}
-                                <p><i>Sem descrição do Docente</i></p>
-                            {{/description}}
-                        </div>
+                        
+                        {{#description}}
+                            {{{description}}}
+                        {{/description}}
+                        {{^description}}
+                            <p><i>
+                                {{#str}}no_description_instructor, theme_suap{{/str}}
+                            </i></p>
+                        {{/description}}
+                        
+                        <div class="teacher-numbers" data-render="teacher-numbers"></div>
                     </div>
                 </div>
             {{/teachers}}
