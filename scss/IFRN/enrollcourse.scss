@@ -97,6 +97,10 @@
             border-radius: 1rem;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
+            @media (max-width: 768px) {
+                display: block !important;
+                text-align: center;
+            }
             img {
                 object-fit: cover;
                 width: 100px;

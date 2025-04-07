@@ -79,6 +79,8 @@ if (!$courseindex) {
 }
 
 // Checar se está na página de enrol de curso
+$is_enrol_course_page = false;
+$enrolpage_and_guestuser = false;
 if ($PAGE->pagetype === 'enrol-index') {
     $is_enrol_course_page = true;
     $extraclasses[] = 'layout-width-expanded';
@@ -136,47 +138,7 @@ if ($PAGE->pagelayout == 'course') {
     $footerblocks = $OUTPUT->custom_block_region('footerblock');
 }
 
-if ($primarymenu["user"]["items"]):
-    $preferences_submenu = [
-        [
-            'title' => get_string('editmyprofile'),
-            'url' => '/user/edit.php?id=' . $USER->id
-        ],
-        [
-            'title' =>  get_string('changepassword'),
-            'url' => '/login/change_password.php'
-        ],
-        [
-            'title' => get_string('notificationpreferences', 'message'),
-            'url' => '/message/notificationpreferences.php'
-        ],
-    ];
-
-    $menu_obj = new stdClass();
-    $menu_obj->title = get_string('userpreferences');
-    $menu_obj->itemtype = 'submenu-link';
-    $menu_obj->submenuid = 'user-preference';
-    $menu_obj->submenulink = true;
-
-    $primarymenu["user"]["items"][3] = $menu_obj;
-
-    $submenu_obj = new stdClass();
-    $submenu_obj->id = 'user-preference';
-    $submenu_obj->title = get_string('preferences');
-
-    foreach ($preferences_submenu as $_submenu):
-        $submenu_obj->items[] = [
-            'title' => $_submenu['title'],
-            'text' => $_submenu['title'],
-            'link' => true,
-            'isactive' => false,
-            'url' => new core\url($_submenu['url'])
-        ];
-    endforeach;
-
-    $primarymenu["user"]["submenus"][] = $submenu_obj;
-endif;
-
+include('_submenu_userpreference.php');
 
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
@@ -210,12 +172,12 @@ $templatecontext = [
     'enrolpage_and_guestuser' => $enrolpage_and_guestuser,
     'frontpage_buttons_configtextarea' => $frontpage_buttons_configtextarea,
     'frontpage_buttons_configtextarea_when_user_logged' => $frontpage_buttons_configtextarea_when_user_logged,
-    'addcontentblockbutton' => $addcontentblockbutton,
-    'contentblocks' => $contentblocks,
-    'addfooterblockbutton' => $addfooterblockbutton,
-    'footerblocks' => $footerblocks,
+    'addcontentblockbutton' => isset($addcontentblockbutton) ? $addcontentblockbutton : '',
+    'contentblocks' => isset($contentblocks) ? $contentblocks : '',
+    'addfooterblockbutton' => isset($addfooterblockbutton) ? $addfooterblockbutton : '',
+    'footerblocks' => isset($footerblocks) ? $footerblocks : '',
     'contentbutton' => get_string('contentbutton', 'theme_suap'),
-    'contentbuttonurl' => $CFG->wwwroot.'/course/view.php?id='.$COURSE->id,
+    'contentbuttonurl' => $CFG->wwwroot . '/course/view.php?id=' . $COURSE->id,
     'isactivecontentbutton' => theme_suap_is_contentbutton_active(),
 ];
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);

@@ -108,6 +108,10 @@
         .dropdown-menu {
             right: 0;
             left: auto !important;
+
+            @media (max-width: 640px) {
+                left: -80px !important;
+            }
         }
     }
 
@@ -232,7 +236,12 @@
             display: none;
         }
     }
-
+    @media (max-width: 768px) {
+        .footer-container textarea {
+            margin: 4px auto;
+            width: 95%;
+        }
+    }
     //Settings
     .view-settings-header {
         margin-inline: .5rem;

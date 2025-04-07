@@ -135,7 +135,7 @@
                                 <img src="{{ userpictureurl }}" alt="{{userpicturealt}}">
                                 <div class="user-contacts">
                                     <h2 class="user-title">{{userfullname}}</h2>
-                                    <p class="user-role">{{ rolename }}</p>
+                                    <p class="user-role">{{ myrolename }}</p>
                                     <span class="user-mail">{{ useremail }}</span>
                                 </div>
                             </div>
@@ -193,10 +193,16 @@
                                 <div class="badges-container">
                                     {{#hasbadges}}
                                         {{#badges}}
-                                            <a title="{{name}}" href="{{link}}" class="badge-item">
+                                            <div class="badge-item">
+                                            <a title="{{name}}" href="{{link}}" class="">
                                                 <img src="{{imageurl}}">
-                                                <h3 class="badge-title">{{name}}</h3>
+                                                <h3 class="badge-title text-center">{{name}}</h3>
                                             </a>
+                                            {{#is_my_profile}}
+                                            <br>
+                                            <a class="btn btn-tertiary" target="_blank" href="{{{badgelink}}}">Enviar para Linkedin</a>
+                                            {{/is_my_profile}}
+                                            </div>
                                         {{/badges}}
                                     {{/hasbadges}}
                                     {{^hasbadges}}

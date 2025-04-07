@@ -29,6 +29,10 @@ define(["jquery", "core_user/repository"], function ($, Repository) {
         const countcontent = document.querySelector("#counter-content");
         const preferenceName = "visual_preference";
 
+        var settingsvisual = document.getElementById('settingsvisual').outerHTML;
+        document.querySelector('[aria-labelledby="carousel-item-title-user-preference"]').insertAdjacentHTML("beforeBegin", settingsvisual);
+        document.getElementById('settingsvisual').remove();
+
         document
             .getElementById("preferVisual")
             .addEventListener("change", function () {
@@ -58,6 +62,7 @@ define(["jquery", "core_user/repository"], function ($, Repository) {
                 document.getElementById("preferVisual").checked = false;
             }
         });
+
     };
 
     return {
