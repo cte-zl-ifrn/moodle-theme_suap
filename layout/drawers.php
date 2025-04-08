@@ -137,9 +137,13 @@ if ($PAGE->pagelayout == 'course') {
     $addfooterblockbutton = $OUTPUT->addblockbutton('footerblock');
     $footerblocks = $OUTPUT->custom_block_region('footerblock');
 }
+if ($primarymenu["user"]["items"]):
+    // submenu com as configurações de preferencia do usuario
+    include('_submenu_userpreference.php');
 
-include('_submenu_userpreference.php');
-include('_menu_order.php');
+    // alteração na ordenação do menu
+    include('_menu_order.php');
+endif;
 
 
 $templatecontext = [

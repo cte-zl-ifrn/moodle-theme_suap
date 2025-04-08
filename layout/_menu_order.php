@@ -1,40 +1,32 @@
 <?php
-//Get item user preferences
-$key_preference = array_search(
-    get_string('userpreferences'),
-    array_map(fn($p) => $p->title, $primarymenu["user"]["items"])
-);
-$_preference = array_splice($primarymenu["user"]["items"], $key_preference, 1)[0];
-array_unshift($primarymenu["user"]["items"], $_preference);
 
-//Get language menu
-$key_language = array_search(
-    get_string('language'),
-    array_map(fn($p) => $p->title, $primarymenu["user"]["items"])
-);
-$_language = array_splice($primarymenu["user"]["items"], $key_language, 1)[0];
-array_unshift($primarymenu["user"]["items"], $_language);
+$_menu_items = &$primarymenu["user"]["items"];
 
-//Remove preferences from menu
-$key_preferences = array_search(
-    get_string('preferences'),
-    array_map(fn($p) => $p->title, $primarymenu["user"]["items"])
-);
-array_splice($primarymenu["user"]["items"], $key_preferences, 1)[0];
+$key_userpreference = array_search(get_string('userpreferences'), array_map(fn($p) => $p->title, $_menu_items));
+$_userpreference = array_splice($_menu_items, $key_userpreference, 1)[0];
 
-//Get logout link to be last one
-$key_logout = array_search(
-    get_string('logout'),
-    array_map(fn($p) => $p->title, $primarymenu["user"]["items"])
-);
-$_logoutlink = array_splice($primarymenu["user"]["items"], $key_logout, 1)[0];
+$key_language = array_search(get_string('language'), array_map(fn($p) => $p->title, $_menu_items));
+$_language = array_splice($_menu_items, $key_language, 1)[0];
 
-//Add flags to language
-for ($i = 0; $i < count($primarymenu["user"]["submenus"][0]->items); $i++) {
-    if ($primarymenu["user"]["submenus"][0]->items[$i]['title'] == "English ‎(en)‎"):
-        $primarymenu["user"]["submenus"][0]->items[$i]['text'] .= ' 🇺🇸';
+$key_preferences = array_search(get_string('preferences'), array_map(fn($p) => $p->title, $_menu_items));
+$p = array_splice($_menu_items, $key_preferences, 1)[0];
+
+$key_logout = array_search(get_string('logout'), array_map(fn($p) => $p->title, $_menu_items));
+$_logoutlink = array_splice($_menu_items, $key_logout, 1)[0];
+
+// alterar a ordem dos menus de preferencia de usuario e de idioma
+array_unshift($_menu_items, $_userpreference);
+array_unshift($_menu_items, $_language);
+
+// adiciona a bandeira no texto do idioma
+$langs = \get_string_manager()->get_list_of_translations();
+$_submenu_items = &$primarymenu["user"]["submenus"][0]->items;
+
+for ($i = 0; $i < count($_submenu_items); $i++) {
+    if ($_submenu_items[$i]['title'] == $langs['en']):
+        $_submenu_items[$i]['text'] .= ' 🇺🇸';
     endif;
-    if ($primarymenu["user"]["submenus"][0]->items[$i]['title'] == "Português - Brasil ‎(pt_br)‎"):
-        $primarymenu["user"]["submenus"][0]->items[$i]['text'] .= ' 🇧🇷';
+    if ($_submenu_items[$i]['title'] == $langs['pt_br']):
+        $_submenu_items[$i]['text'] .= ' 🇧🇷';
     endif;
 }

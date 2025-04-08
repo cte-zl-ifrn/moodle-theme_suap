@@ -119,8 +119,13 @@ foreach ($learningpaths_records as $learningpath) {
 }
 
 
-include('_submenu_userpreference.php');
-include('_menu_order.php');
+if ($primarymenu["user"]["items"]):
+    // submenu com as configurações de preferencia do usuario
+    include('_submenu_userpreference.php');
+
+    // alteração na ordenação do menu
+    include('_menu_order.php');
+endif;
 
 
 $templatecontext = [
