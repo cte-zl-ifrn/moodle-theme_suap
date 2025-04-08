@@ -68,6 +68,10 @@ if ($counterClose) {
     $extraclasses[] = 'counter-close';
 }
 
+if (isguestuser()) {
+    $extraclasses[] = 'guestuser';
+}
+
 $blockshtml = $OUTPUT->blocks('side-pre');
 $hasblocks = (strpos($blockshtml, 'data-block=') !== false || !empty($addblockbutton));
 if (!$hasblocks) {
