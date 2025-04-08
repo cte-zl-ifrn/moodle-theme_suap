@@ -33,7 +33,7 @@ define(["core/str"], function (str) {
             const language_str = await str.get_string('language', 'core');
 
             courses.forEach(course => {
-                const certificateArea = course.has_certificate !== "Sim" ? '' : `
+                const certificateArea = !course.has_certificate ? '' : `
                     <div class="course-certificate">
                         <p class="course-certificate-text">${certificate_str}</p>
                         <span class="course-certificate-value"><img src="${baseurl}/theme/suap/pix/checkmark-circle-outline.svg" alt=""></span>

@@ -72,6 +72,14 @@ foreach ($courses as $course) {
 
     $category = $categories[$course->category];
     $custom_fields_metadata = \core_course\customfield\course_handler::create()->export_instance_data_object($course->id, true);
+    
+    $raw_datas = \core_course\customfield\course_handler::create()->get_instance_data($course->id, true);
+    foreach ($raw_datas as $data) {
+        $shortname = $data->get_field()->get('shortname');
+        if ($shortname === 'tem_certificado') {
+            $custom_fields_metadata->tem_certificado = $data->get_value();
+        }
+    }
 
     $course_lang = isset($custom_fields_metadata->linguagem_conteúdo) ? $custom_fields_metadata->linguagem_conteúdo : '';
 
@@ -111,7 +119,7 @@ foreach ($courses as $course) {
     $course_response = new stdClass();
     $course_response->has_certificate = $custom_fields_metadata->tem_certificado;
     $course_response->workload = $custom_fields_metadata->carga_horaria;
-    $course_response->lang = $course_lang;
+    $course_response->lang = $custom_fields_metadata->linguagem_conteúdo;
     $course_response->id = $course->id;
     $course_response->fullname = $course->fullname;
     $course_response->category_name = $category->name;
