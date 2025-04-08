@@ -200,6 +200,8 @@ function($, Popover) {
 
 
 {{#js}}
+require(['theme_suap/drawersControl'], (module) => module.init());
+
 const guestuser = document.querySelector('.guestuser');
 if(!guestuser) {
     require(['theme_suap/userPreference'], (module) => module.init());
@@ -209,7 +211,6 @@ if(!guestuser) {
     require(['theme_suap/notifications'], (module) => module.init());
 }
 
-require(['theme_suap/drawersControl'], (module) => module.init());
 
 require(['jquery', 'message_popup/notification_popover_controller'], function($, Controller) {
     var container = $('.popover-region-notifications');
