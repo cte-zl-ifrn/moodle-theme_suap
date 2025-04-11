@@ -1,0 +1,43 @@
+.navbar-suap {
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        font: var(--font-button3);
+        margin-bottom: 0;
+        margin-block: .5rem; // 8px
+        padding: 0;
+        border-radius: 0;
+        a {
+            color: var(--primary);
+        }
+    
+        span {
+            color: var(--dark-light);
+                
+        }
+    
+        .breadcrumb-item{
+            max-width: 18rem;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0;
+            span{
+                max-width: 28rem;
+                display: block;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            i {
+                margin-right: 0;
+            }
+        }
+    
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: " / ";
+            padding-inline: .5rem; //8px
+        }
+    }
+}
