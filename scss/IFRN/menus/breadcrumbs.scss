@@ -23,6 +23,9 @@
             overflow: hidden;
             text-overflow: ellipsis;
             padding: 0;
+            &.dropdown {
+                display: none;
+            }
             span{
                 max-width: 28rem;
                 display: block;
@@ -40,4 +43,23 @@
             padding-inline: .5rem; //8px
         }
     }
+
+    @include media-breakpoint-down(sm) {
+        .breadcrumb:has(> .breadcrumb-item:nth-child(3)) {
+            // esconder intermediários, exceto o dropdown
+            .breadcrumb-item:not(.dropdown):nth-child(n+2):nth-last-child(n+2) {
+                display: none;
+            }
+
+            // garantir que o dropdown apareça
+            .breadcrumb-item.dropdown {
+                display: list-item;
+                overflow: visible;
+                .dropdown-toggle {
+                    display: flex;
+                }
+            }
+        }
+    }
+
 }
