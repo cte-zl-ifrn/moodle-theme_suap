@@ -62,20 +62,11 @@
     <div class="custom-control custom-switch">
         <input type="checkbox" class="custom-control-input" id="preferVisual" >
         <label class="custom-control-label" for="preferVisual">
-            Preferência visual: parte inferior
+            Menu na parte inferior
         </label>
     </div>
 </div>
 <div class="dropdown-divider"></div>
-
-
-{{#theme_suap_items_user_menu_admin}}
-    {{#link}}  
-        <a href="{{{url}}}" class="drawer-item dropdown-item" role="menuitem" tabindex="-1">
-            {{title}}
-        </a>
-    {{/link}}
-{{/theme_suap_items_user_menu_admin}}
 
 {{#items}}
     {{#link}}
@@ -100,5 +91,20 @@
             {{title}}
         </a>
     {{/submenulink}}
-    {{#divider}}<div class="dropdown-divider"></div>{{/divider}}
 {{/items}}
+
+{{#theme_suap_items_user_menu_admin}}
+    {{#link}}  
+        <a href="{{{url}}}" class="drawer-item dropdown-item" role="menuitem" tabindex="-1">
+            {{title}}
+        </a>
+    {{/link}}
+{{/theme_suap_items_user_menu_admin}}
+
+{{#logout}}
+    {{#logout}}  
+        <a href="{{{url}}}" class="drawer-item dropdown-item" role="menuitem" tabindex="-1">
+            {{title}}
+        </a>
+    {{/logout}}
+{{/logout}}

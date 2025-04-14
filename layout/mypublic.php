@@ -283,7 +283,13 @@ if (!empty($badges)) {
     }
 }
 
-include('_submenu_userpreference.php');
+if ($primarymenu["user"]["items"]):
+    // submenu com as configurações de preferencia do usuario
+    include('_submenu_userpreference.php');
+
+    // alteração na ordenação do menu
+    include('_menu_order.php');
+endif;
 
 $templatecontext = [
     'userfullname' => fullname($user),
@@ -310,6 +316,7 @@ $templatecontext = [
     'mobileprimarynav' => $primarymenu['mobileprimarynav'],
     'usermenu' => $primarymenu['user'],
     'langmenu' => $primarymenu['lang'],
+    'logout' => $_logoutlink,
     'forceblockdraweropen' => $forceblockdraweropen,
     'regionmainsettingsmenu' => $regionmainsettingsmenu,
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),

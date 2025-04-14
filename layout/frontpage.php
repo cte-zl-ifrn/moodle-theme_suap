@@ -119,7 +119,13 @@ foreach ($learningpaths_records as $learningpath) {
 }
 
 
-include('_submenu_userpreference.php');
+if ($primarymenu["user"]["items"]):
+    // submenu com as configurações de preferencia do usuario
+    include('_submenu_userpreference.php');
+
+    // alteração na ordenação do menu
+    include('_menu_order.php');
+endif;
 
 
 $templatecontext = [
@@ -139,6 +145,7 @@ $templatecontext = [
     'theme_suap_items_user_menu_admin' => theme_suap_add_admin_items_user_menu(),
     'usermenu' => $primarymenu['user'],
     'langmenu' => $primarymenu['lang'],
+    'logout' => $_logoutlink,
     'forceblockdraweropen' => $forceblockdraweropen,
     'regionmainsettingsmenu' => $regionmainsettingsmenu,
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
