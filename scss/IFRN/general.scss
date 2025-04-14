@@ -216,10 +216,6 @@ p {
 .counteroff .page-suap {
     margin-left: 0;
 }
-// .content {
-//     max-width: 830px;
-//     margin: 0 auto;
-// }
 .counter-close .page-suap {
     margin-left: var(--counter-close);
 }
@@ -255,7 +251,9 @@ p {
 }
 
 @include media-breakpoint-down(sm) {
-    
+    .page-suap {
+        padding: .75rem; //12px
+    }
     .counter {
         width: var(--counter-close);
         .counter-option {

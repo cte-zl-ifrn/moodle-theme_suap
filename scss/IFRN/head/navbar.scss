@@ -1,5 +1,5 @@
 .counter-close .navbar-suap {
-    width: calc(100% - var(--counter-close) - 32px);
+    width: calc(100% - var(--counter-close) - 16px);
 }
 
 .counteroff .navbar-suap {
@@ -8,9 +8,6 @@
     gap: 1rem;
     .navbar-suap-container {
         position: static;
-        @include media-breakpoint-down(sm) {
-            margin-left: 1rem;
-        }
     }
 
     &-ava-name {
@@ -23,9 +20,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        @include media-breakpoint-down(sm) {
-            display: none;
-        }
 
         a {
             font: var(--font-heading1);
@@ -45,7 +39,7 @@
 }
 
 .navbar-suap { 
-    width: calc(100% - var(--counter-default) - 32px);
+    width: calc(100% - var(--counter-default) - 16px);
     position: fixed;
     top: 0;
     right: 0;
@@ -67,11 +61,11 @@
         gap: 10px;
         box-shadow: 0px 4px 4px 0px #00000040;
         background-color: var(--general-white);
-        border-radius: 16px;
+        border-radius: 1rem;
         z-index: 1030;
         padding: .5rem 1rem;
-        margin-top: 8px;
-        margin-right: 16px;
+        margin-top: .5rem;
+        margin-right: 1rem;
     }
 
     .navbar-suap-pos {
@@ -79,10 +73,6 @@
         margin-left: 32px;
     }
 
-    @include media-breakpoint-down(sm) {
-        width: calc(100% - var(--counter-close) - 32px);
-    }
-    
     .editmode-switch-form{
         border-left: 1px solid var(--light-dark);
         padding-left: 1rem;
@@ -145,4 +135,24 @@
 }
 .text-primary{
     color: var(--primary) !important;
+}
+
+@include media-breakpoint-down(sm) {
+    .counter-close .navbar-suap {
+        width: calc(100% - var(--counter-close) - 8px);
+    }
+    .counteroff .navbar-suap {
+        .navbar-suap-container {
+            margin-left: 1rem;
+        }
+        &-ava-name {
+            display: none;
+        }
+    }
+
+    .navbar-suap {
+        .navbar-suap-container {
+            margin-right: .5rem;
+        }
+    }
 }
