@@ -23,7 +23,7 @@ define(["core/str"], function(str) {
         toggle.setAttribute('data-toggle', 'dropdown');
         toggle.setAttribute('aria-haspopup', 'true');
         toggle.setAttribute('aria-expanded', 'false');
-        toggle.textContent = '…';
+        toggle.textContent = '•••';
         dropdownLi.appendChild(toggle);
 
         // 5) Cria o <div class="dropdown-menu">

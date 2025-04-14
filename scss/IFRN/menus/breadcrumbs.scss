@@ -1,7 +1,7 @@
 .navbar-suap {
     .breadcrumb {
         display: flex;
-        align-items: center;
+        // align-items: center;
         font: var(--font-button3);
         margin-bottom: 0;
         margin-block: .5rem; // 8px
@@ -25,6 +25,13 @@
             padding: 0;
             &.dropdown {
                 display: none;
+                button {
+                    line-height: .5;
+                    color: var(--primary);
+                    &:hover {
+                        color: var(--primary-dark);
+                    }
+                }
             }
             span{
                 max-width: 28rem;
