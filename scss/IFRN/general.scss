@@ -358,21 +358,6 @@ p {
     max-width: var(--max-width-layout-expanded);
 }
 
-.breadcrumb { 
-    background-color: var(--general-white);
-    pointer-events: all;
-    box-shadow: 0px 4px 4px 0px #00000040;
-    padding: 1rem;
-    margin-top: .5rem;
-    margin-left: 1rem;
-    border-radius: 1rem;
-    ol {
-        display: flex;
-        flex-wrap: nowrap;
-        white-space: nowrap;
-    }
-}
-
 .secondary-navigation .navigation {
     padding: 0px;
     margin-inline: 0px;
@@ -381,10 +366,6 @@ p {
     }
 }
 
-
-.drawer-open .breadcrumb {
-    margin-left: calc(var(--drawer-open) * -1);
-}
 
 .custom-control-input:checked~.custom-control-label::before{
     background-color: var(--primary);
