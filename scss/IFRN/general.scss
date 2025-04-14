@@ -207,6 +207,9 @@ p {
 
 #page.page-suap {
     margin-top: 54px;
+    .page-header-headings h1 {
+        font: var(--font-heading1);
+    }
 }
 .page-suap {
     margin-left: var(--counter-default);
@@ -252,7 +255,10 @@ p {
 
 @include media-breakpoint-down(sm) {
     .page-suap {
-        padding: .75rem; //12px
+        padding: 1.5rem .75rem; //24px 12px
+    }
+    #page.page-suap .page-header-headings h1 {
+        font: var(--font-heading2);
     }
     .counter {
         width: var(--counter-close);
