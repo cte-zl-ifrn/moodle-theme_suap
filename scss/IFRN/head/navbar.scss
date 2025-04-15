@@ -108,13 +108,6 @@
     padding-left: 2.3rem;
 }
 
-#navbar-breadcrumb::after{
-    float: right;
-    padding-right: .5rem;
-    color: #6a737b;
-    content: "/"
-}
-
 .custom-switch .custom-control-label::before{
     width: 28px;
     height: 16px;
@@ -151,6 +144,7 @@
     }
 
     .navbar-suap {
+        width: calc(100% - var(--counter-close) - 8px);
         .navbar-suap-container {
             margin-right: .5rem;
         }
