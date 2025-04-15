@@ -1,3 +1,7 @@
+body {
+    color: var(--dark);
+}
+
 ul, ol {
     list-style: none;
     margin: 0px;
@@ -207,6 +211,9 @@ p {
 
 #page.page-suap {
     margin-top: 54px;
+    .page-header-headings h1 {
+        font: var(--font-heading1);
+    }
 }
 .page-suap {
     margin-left: var(--counter-default);
@@ -216,10 +223,6 @@ p {
 .counteroff .page-suap {
     margin-left: 0;
 }
-// .content {
-//     max-width: 830px;
-//     margin: 0 auto;
-// }
 .counter-close .page-suap {
     margin-left: var(--counter-close);
 }
@@ -255,7 +258,12 @@ p {
 }
 
 @include media-breakpoint-down(sm) {
-    
+    .page-suap {
+        padding: 1.5rem .75rem; //24px 12px
+    }
+    #page.page-suap .page-header-headings h1 {
+        font: var(--font-heading2);
+    }
     .counter {
         width: var(--counter-close);
         .counter-option {

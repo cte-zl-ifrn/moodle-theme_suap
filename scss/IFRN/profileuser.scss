@@ -126,18 +126,3 @@
         }
     }
 }
-
-@media (max-width: 768px) {
-    .page-context-header {
-        display: block !important;
-        padding-left: 15px;
-        width: 320px;
-
-        .header-button-group {
-            margin-left: 0 !important;
-            #message-user-button {
-                padding-left: 0 !important;
-            }
-        }
-    }
-}
