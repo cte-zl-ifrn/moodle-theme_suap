@@ -12,9 +12,7 @@
     }
     .profile-header {
         display: flex;
-        @media (max-width: 768px) {
-            display: block !important;
-        }
+        gap: .5rem;
         justify-content: space-between;
         margin-bottom: 1rem;
         .user-title {
@@ -33,10 +31,6 @@
         &.contact-container {
             display: flex;
             gap: 1rem;
-            @media (max-width: 768px) {
-                display: block !important;
-                text-align: center;
-            }
             img {
                 border-radius: 50%;
                 height: 80px;
@@ -52,6 +46,7 @@
             }
             .user-mail {
                 font: var(--font-heading4);
+                word-break: break-word;
             }
         }
 
@@ -118,10 +113,22 @@
     }
 
     @include media-breakpoint-down(sm) {
-        .user-group-suap .cert-container {
-            grid-template-columns: 1fr;
-            img {
-                display: none;
+        .profile-header {
+            flex-direction: column;
+        }
+        .user-group-suap {
+            &.contact-container {
+                gap: .5rem;
+                img {
+                    height: 50px;
+                    width: 50px;
+                }                  
+            }
+            .cert-container {
+                grid-template-columns: 1fr;
+                img {
+                    display: none;
+                }
             }
         }
     }
