@@ -30,6 +30,22 @@ require_once($CFG->dirroot . '/course/lib.php');
 // Add block button in editing mode.
 $addblockbutton = $OUTPUT->addblockbutton();
 
+// User role for course context
+if (isloggedin()) {
+    $rolestr;
+    $context = context_course::instance($COURSE->id);
+    $roles = get_user_roles($context, $USER->id, true);
+
+    if (empty($roles)) {
+        $rolestr = "";
+    } else {
+        foreach ($roles as $role) {
+            $rolestr[] = role_get_name($role, $context);
+        }
+        $rolestr = implode(', ', $rolestr);
+    }
+}
+
 if (isloggedin()) {
     $courseindexopen = (get_user_preferences('drawer-open-index', true) == true);
     $blockdraweropen = (get_user_preferences('drawer-open-block') == true);
@@ -47,6 +63,15 @@ if ($courseindexopen) {
     $extraclasses[] = 'drawer-open-index';
 }
 
+$counterClose = get_user_preferences('theme_suap_counter_close');
+if ($counterClose) {
+    $extraclasses[] = 'counter-close';
+}
+
+if (isguestuser()) {
+    $extraclasses[] = 'guestuser';
+}
+
 $blockshtml = $OUTPUT->blocks('side-pre');
 $hasblocks = (strpos($blockshtml, 'data-block=') !== false || !empty($addblockbutton));
 if (!$hasblocks) {
@@ -56,6 +81,24 @@ $courseindex = core_course_drawer();
 if (!$courseindex) {
     $courseindexopen = false;
 }
+
+// Checar se está na página de enrol de curso
+$is_enrol_course_page = false;
+$enrolpage_and_guestuser = false;
+if ($PAGE->pagetype === 'enrol-index') {
+    $is_enrol_course_page = true;
+    $extraclasses[] = 'layout-width-expanded';
+    $extraclasses[] = 'enrol-page';
+    if (isguestuser()) {
+        $enrolpage_and_guestuser = true;
+        $extraclasses[] = 'counteroff';
+    }
+}
+
+$conf = get_config('theme_suap');
+
+$frontpage_buttons_configtextarea = parse_configtextarea_string($conf->frontpage_buttons_configtextarea);
+$frontpage_buttons_configtextarea_when_user_logged = parse_configtextarea_string($conf->frontpage_buttons_configtextarea_when_user_logged);
 
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
 $forceblockdraweropen = $OUTPUT->firstview_fakeblocks();
@@ -83,6 +126,29 @@ $header = $PAGE->activityheader;
 $headercontent = $header->export_for_template($renderer);
 $navbar = $OUTPUT->navbar();
 
+$isloggedin = isloggedin();
+$is_admin = is_siteadmin($USER->id);
+
+$userid = $USER->id;
+
+// pega a preferencia no banco
+$getUserPreference = get_user_preferences('visual_preference');
+
+// região de blocos apenas na página inicial dos cursos
+if ($PAGE->pagelayout == 'course') {
+    $addcontentblockbutton = $OUTPUT->addblockbutton('content');
+    $contentblocks = $OUTPUT->custom_block_region('content');
+    $addfooterblockbutton = $OUTPUT->addblockbutton('footerblock');
+    $footerblocks = $OUTPUT->custom_block_region('footerblock');
+}
+if ($primarymenu["user"]["items"]):
+    // submenu com as configurações de preferencia do usuario
+    include('_submenu_userpreference.php');
+
+    // alteração na ordenação do menu
+    include('_menu_order.php');
+endif;
+
 
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
@@ -98,6 +164,7 @@ $templatecontext = [
     'mobileprimarynav' => $primarymenu['mobileprimarynav'],
     'usermenu' => $primarymenu['user'],
     'langmenu' => $primarymenu['lang'],
+    'logout' => $_logoutlink,
     'forceblockdraweropen' => $forceblockdraweropen,
     'regionmainsettingsmenu' => $regionmainsettingsmenu,
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
@@ -105,6 +172,23 @@ $templatecontext = [
     'headercontent' => $headercontent,
     'addblockbutton' => $addblockbutton,
     'navbar' => $navbar,
+    'userid' => $userid,
+    'rolename' => $rolestr,
+    'isloggedin' => $isloggedin,
+    'isguestuser' => isguestuser(),
+    'is_admin' => $is_admin,
+    'theme_suap_items_user_menu_admin' => theme_suap_add_admin_items_user_menu(),
+    'getUserPreference' => $getUserPreference,
+    'isenrolpage' => $is_enrol_course_page,
+    'enrolpage_and_guestuser' => $enrolpage_and_guestuser,
+    'frontpage_buttons_configtextarea' => $frontpage_buttons_configtextarea,
+    'frontpage_buttons_configtextarea_when_user_logged' => $frontpage_buttons_configtextarea_when_user_logged,
+    'addcontentblockbutton' => isset($addcontentblockbutton) ? $addcontentblockbutton : '',
+    'contentblocks' => isset($contentblocks) ? $contentblocks : '',
+    'addfooterblockbutton' => isset($addfooterblockbutton) ? $addfooterblockbutton : '',
+    'footerblocks' => isset($footerblocks) ? $footerblocks : '',
+    'contentbutton' => get_string('contentbutton', 'theme_suap'),
+    'contentbuttonurl' => $CFG->wwwroot . '/course/view.php?id=' . $COURSE->id,
+    'isactivecontentbutton' => theme_suap_is_contentbutton_active(),
 ];
-
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);

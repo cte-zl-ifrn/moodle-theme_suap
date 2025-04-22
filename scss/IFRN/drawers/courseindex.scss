@@ -1,0 +1,40 @@
+#drawer-index {
+    .courseindex-item.pageitem {
+        background-color: var(--light);
+        a {
+            color: var(--dark-darker);
+        }
+    }
+
+    div.courseindex-item {
+        .courseindex-link {
+            color: var(--secondary);
+        }
+        .courseindex-chevron {
+            background-color: var(--secondary-light);
+            border-radius: 1.5rem;
+            position: relative;
+            width: 22px;
+            margin-right: .5rem;
+            &.collapsed {
+                background-color: var(--light);
+                + .courseindex-link {
+                    color: var(--dark);
+                }
+            }
+            .collapsed-icon, .expanded-icon {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .expanded-icon i {
+                color: var(--secondary-dark);
+            }
+        }
+    }
+}
+.drawer-content{
+    .drawerheader{
+        display: none;
+    }
+}

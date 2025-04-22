@@ -17,7 +17,7 @@ $string['brandcolor'] = 'Brand colour';
 // The brand colour setting description.                                                                                            
 $string['brandcolor_desc'] = 'The accent colour.';     
 // A description shown in the admin theme selector.                                                                                                                                                                                    
-$string['configtitle'] = 'SUAP settings';                                                                                          
+$string['configtitle'] = 'SUAP theme settings';                                                                                          
 // Name of the first settings tab.                                                                                                  
 $string['generalsettings'] = 'General settings';                                                                                                                                                                                    
 // Preset files setting.                                                                                                            
@@ -36,3 +36,99 @@ $string['rawscss_desc'] = 'Use this field to provide SCSS or CSS code which will
 $string['rawscsspre'] = 'Raw initial SCSS';                                                                                         
 // Raw initial SCSS setting help text.                                                                                              
 $string['rawscsspre_desc'] = 'In this field you can provide initialising SCSS code, it will be injected before everything else. Most of the time you will use this setting to define variables.';
+
+// Drawers aditional strings 
+$string['drawer_course_index'] = "Course index";
+$string['drawer_blocks'] = "Blocks";
+$string['drawer_user'] = "User menu";
+$string['allconversations'] = "All";
+$string['unreadmessages'] = "Unread";
+
+// Frontpage aditional strings 
+$string['filter'] = 'Filters';
+$string['workload'] = 'Total hours';
+$string['certificate'] = 'Certificate';
+$string['pt-br'] = 'Portuguese';
+$string['es'] = 'Spanish';
+$string['upto_hours'] = 'Up to {$a} hours';
+
+// frontpage-settings.php
+$string['frontpagesettings'] = 'Frontpage settings';
+$string['frontpage_title'] = 'Frontpage title';
+$string['frontpage_title_desc'] = '';
+$string['frontpage_buttons_configtextarea'] = 'Frontpage buttons configuration';
+$string['frontpage_buttons_configtextarea_desc'] = 'Delete the (/n) snippet and press "Enter" to apply the line break';
+$string['frontpage_button_home'] = 'Home';
+$string['frontpage_button_about'] = 'About';
+$string['hero_title'] = 'Hero title';
+$string['hero_title_desc'] = '';
+$string['hero_subtitle'] = 'Hero subtitle';
+$string['hero_subtitle_desc'] = '';
+$string['hero_first_column_number'] = 'Hero first column number';
+$string['hero_first_column_number_desc'] = '';
+$string['hero_first_column_description'] = 'Hero first column description';
+$string['hero_first_column_description_desc'] = '';
+$string['hero_first_column_text'] = 'Hero first column text';
+$string['hero_first_column_text_desc'] = '';
+$string['hero_second_column_number'] = 'Hero second column number';
+$string['hero_second_column_number_desc'] = '';
+$string['hero_second_column_description'] = 'Hero second column description';
+$string['hero_second_column_description_desc'] = '';
+$string['hero_second_column_text'] = 'Hero second column text';
+$string['hero_second_column_text_desc'] = '';
+$string['hero_third_column_number'] = 'Hero third column number';
+$string['hero_third_column_number_desc'] = '';
+$string['hero_third_column_description'] = 'Hero third column description';
+$string['hero_third_column_description_desc'] = '';
+$string['hero_third_column_text'] = 'Hero third column text';
+$string['hero_third_column_text_desc'] = '';
+$string['hero_fourth_column_number'] = 'Hero fourth column number';
+$string['hero_fourth_column_number_desc'] = '';
+$string['hero_fourth_column_description'] = 'Hero fourth column description';
+$string['hero_fourth_column_description_desc'] = '';
+$string['hero_fourth_column_text'] = 'Hero fourth column text';
+$string['hero_fourth_column_text_desc'] = '';
+$string['hero_button_text'] = 'Hero button text';
+$string['hero_button_text_desc'] = '';
+
+$string['hero_configtextarea_test'] = 'Hero configtextarea test';
+$string['hero_configtextarea_test_desc'] = '';
+
+$string['pagination_secret'] = 'Pagination secret';
+$string['pagination_secret_desc'] = 'It is necessary to create a token in the web services section of Moodle for mobile devices';
+
+$string['frontpage_main_courses_title'] = 'Frontpage main courses title';
+$string['frontpage_main_courses_title_desc'] = '';
+$string['frontpage_buttons_configtextarea_when_user_logged'] = 'Frontpage buttons configuration when user is logged';
+$string['frontpage_buttons_configtextarea_when_user_logged_desc'] = 'Delete the (/n) snippet and press "Enter" to apply the line break';
+$string['frontpage_button_courses'] = 'Courses';
+$string['frontpage_button_courses_desc'] = '';
+$string['frontpage_button_learningpaths'] = 'Learning paths';
+$string['frontpage_button_learningpaths_desc'] = '';
+
+// Incourse aditional strings
+$string['contentbutton'] = 'Content';
+
+// Profile aditional strings
+$string['aboutme'] = 'About me';
+$string['certificates'] = 'Certificates';
+$string['describe_yourself'] = 'Describe yourself to your community';
+$string['no_your_certificates'] = 'Complete a course to obtain certificates';
+$string['no_your_badges'] = 'Explore our courses to earn badges';
+$string['no_description'] = 'No description yet';
+$string['no_certificates'] = 'No certificates';
+$string['no_badges'] = 'No badges to display';
+
+// Enrolment aditional strings
+$string['issue_certificate'] = 'Issue certificate';
+$string['login'] = 'Log in';
+$string['no_description_course'] = 'No course description available yet'; 
+$string['overview'] = 'Overview';
+$string['instructor'] = 'Instructor';
+$string['instructors'] = 'Instructors';
+$string['comments'] = 'Comments';
+$string['no_description_instructor'] = 'No instructor description available';
+
+// Setting layout navigation menu
+$string['layouttype'] = 'Always show top menu';
+$string['layouttype_desc'] = 'The top navigation menu is used in Moodle that are not integrated into the Painel AVA';

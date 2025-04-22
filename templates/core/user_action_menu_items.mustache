@@ -57,19 +57,28 @@
         ]
     }
 }}
+
+<div class="drawer-item" id="settingsvisual">
+    <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="preferVisual" >
+        <label class="custom-control-label" for="preferVisual">
+            Menu na parte inferior
+        </label>
+    </div>
+</div>
+<div class="dropdown-divider"></div>
+
 {{#items}}
     {{#link}}
-        <li class="drawer-item">
-            <a href="{{{url}}}" class="dropdown-item" role="menuitem" tabindex="-1">
-                {{#pixicon}}
-                    {{#pix}}{{pixicon}}{{/pix}}
-                {{/pixicon}}
-                {{^pixicon}}
-                    {{#imgsrc}}<img aria-hidden="true" src="{{imgsrc}}" alt="{{title}}"/>{{/imgsrc}}
-                {{/pixicon}}
-                {{title}}
-            </a>
-        </li>
+        <a href="{{{url}}}" class="drawer-item dropdown-item" role="menuitem" tabindex="-1">
+            {{#pixicon}}
+                {{#pix}}{{pixicon}}{{/pix}}
+            {{/pixicon}}
+            {{^pixicon}}
+                {{#imgsrc}}<img aria-hidden="true" src="{{imgsrc}}" alt="{{title}}"/>{{/imgsrc}}
+            {{/pixicon}}
+            {{title}}
+        </a>
     {{/link}}
     {{#submenulink}}
         <a href="#" class="carousel-navigation-link dropdown-item" role="menuitem" tabindex="-1" data-carousel-target-id="carousel-item-{{submenuid}}">
@@ -83,3 +92,19 @@
         </a>
     {{/submenulink}}
 {{/items}}
+
+{{#theme_suap_items_user_menu_admin}}
+    {{#link}}  
+        <a href="{{{url}}}" class="drawer-item dropdown-item" role="menuitem" tabindex="-1">
+            {{title}}
+        </a>
+    {{/link}}
+{{/theme_suap_items_user_menu_admin}}
+
+{{#logout}}
+    {{#logout}}  
+        <a href="{{{url}}}" class="drawer-item dropdown-item" role="menuitem" tabindex="-1">
+            {{title}}
+        </a>
+    {{/logout}}
+{{/logout}}

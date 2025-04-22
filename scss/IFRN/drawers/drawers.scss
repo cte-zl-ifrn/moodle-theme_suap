@@ -1,0 +1,228 @@
+.drawers {
+    &.show-drawer-right {
+        margin-right: 0 !important;
+    }
+    pointer-events: all;
+    .drawer-content {
+        position: absolute;
+        width: 0px;
+        height: calc(100vh - 132px);
+        margin-top: 64px;
+        overflow: hidden;
+        background-color: var(--light-lighter);
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        box-shadow: var(--shadow-primary);
+        transition: width 0.2s ease-in;
+        &#drawer-user {
+            display: grid;
+            grid-template-rows: auto 1fr;
+        }
+    }
+    .drawer {
+        width: var(--drawer-open);
+        height: auto;
+    }
+    .drawer-content.active-drawer {
+        width: var(--drawer-open);
+    }
+
+    .drawer-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--light-dark);
+        padding: 1rem;
+        min-width: var(--drawer-open);
+
+        &.open-message {
+            .drawer-header-tools {
+                display: none;
+            }
+            .drawer-header-info {
+                .return-notification {
+                    display: block;
+                }
+                .fa-regular.fa-bell {
+                    display: none;
+                }
+            }
+        }
+
+        .drawer-header-info {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            .return-notification {
+                display: none;
+                color: var(--dark);
+            }
+        }
+        .drawer-header-tools {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            .tool-item {
+                color: var(--dark);
+                background-color: var(--light);
+                border-radius: 1rem;
+                padding: 6px;
+                border: none;
+                display: flex;
+                align-items: center;
+                &:hover, &:focus {
+                    color: var(--primary);
+                    background-color: var(--primary-light);
+                }
+                .badge {
+                    background-color: var(--secondary-dark);
+                }
+            }
+
+            .drawer-close {
+                display: flex;
+                align-items: center;
+                height: 1.5rem; //24px
+                // padding-inline: 8px;
+                color: var(--danger-dark );
+                background-color: var(--danger-light);
+                border-radius: 1rem;
+                &:hover {
+                    color: var(--danger-light);
+                    background-color: var(--danger-dark);
+                }
+            }
+
+            #courseindexdrawercontrols button {
+                padding-inline: 4px;
+            }
+        }
+        h2 {
+            font: var(--font-heading2);
+            margin-bottom: 0;
+            white-space: nowrap;
+        }
+        .drawer-close {
+            color: var(--danger-dark);
+            background-color: var(--danger-light);
+            border-radius: 1rem;
+            padding-inline: 6px;
+        }
+    }
+
+    .drawer-list {
+        padding: 1rem;
+        position: relative;
+        height: 100%;
+        a {
+            padding: 0.5rem 1rem;
+            display: inline-block;
+            width: 100%;
+            font: var(--font-button2);
+            color: var(--dark);
+            border-radius: 2rem;
+            &:hover {
+                background-color: var(--light);
+            }
+        }
+        .drawer-item:last-child {
+            width: calc(100% - 2rem);
+            margin-top: auto;
+            background-color: var(--danger-light);
+            color: var(--danger-dark);
+            border-radius: 40px;
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            &:hover {
+                background-color: var(--danger-dark);
+                color: var(--danger-light);
+            }  
+        }  
+    }
+
+    // menu de usuário
+    #usermenu-carousel {
+        .carousel-inner {
+            overflow: visible;
+        }
+        .carousel-item:not(.submenu) .carousel-navigation-link::after {
+            position: absolute;
+            right: 1.5rem;
+            font-family: 'Font Awesome 6 Free';
+            content: "\f054";
+            font-size: 1rem;
+            color: var(--dark);
+        } 
+        .carousel-navigation-link span {
+            pointer-events: none;
+        }
+        .dropdown-item::before {
+            top: .8rem;
+            left: .8rem;
+        }
+    }
+    .usermenu, #usermenu-carousel, .carousel-inner, .carousel-item {
+        height: 100%;
+        position: static;
+    }
+    #settingsvisual {
+        padding-bottom: .5rem;
+    }
+}
+
+#drawer-index,
+#drawer-blocks {
+    .drawer {
+        position: static;
+        background-color: transparent;
+        &.not-initialized {
+            display: block;
+        }
+    }
+    .drawercontent {
+        z-index: 0;
+        height: calc(100vh - 189px);
+    }
+}
+
+#nav-notification-popover-container {
+    &.collapsed {
+        .popover-region-container {
+            opacity: 1;
+            visibility: visible;
+            height: 100%;
+            width: 100%;
+            position: static;
+            background-color: transparent;
+            border: none;
+        }
+    }
+    .popover-region-container {
+        .content-item-container {
+            margin-inline: 1.5rem;
+            padding-inline: 0px;
+            width: auto;
+            .view-more {
+                right: 0px;
+            }
+            .content-item-body {
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+    .popover-region-toggle {
+        display: none;
+    }
+}
+.content-reverse {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 95%;
+    justify-content: space-between;
+}
+
+.content-original {
+    display: flex;
+    flex-direction: column-reverse;
+}

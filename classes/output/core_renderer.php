@@ -18,6 +18,8 @@ namespace theme_suap\output;
 
 defined('MOODLE_INTERNAL') || die;
 
+use theme_suap\api\api;
+
 /**
  * Renderers to align Moodle's HTML with that expected by Bootstrap
  *
@@ -37,14 +39,25 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         $output = parent::standard_head_html();
 
-        $output .= '<link rel="preconnect" href="https://fonts.googleapis.com">
-                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">';
-        
+        global $CFG;
+        $theme_folder = $CFG->wwwroot . '/theme/suap';
+
+        $output .= <<<HTML
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="{$theme_folder}/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="{$theme_folder}/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="{$theme_folder}/favicon/favicon-16x16.png" />
+        <link rel="manifest" href="{$theme_folder}/favicon/site.webmanifest" />
+        <link rel="mask-icon" href="{$theme_folder}/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+        HTML;
+
         return $output;
     }
-
-     
     /**
      * Renders the "breadcrumb" for all pages in boost.
      *
@@ -55,5 +68,75 @@ class core_renderer extends \theme_boost\output\core_renderer {
         return $this->render_from_template('core/navbar', $newnav);
     }
 
+    /**
+     * Gera o menu de seleção de idiomas com bandeiras.
+     *
+     * Esta função obtém a lista de idiomas disponíveis no Moodle, 
+     * identifica o idioma atual e constrói um menu de seleção de idioma 
+     * com as respectivas bandeiras.
+     *
+     * @return string HTML renderizado do menu de idiomas.
+     */
+    public function get_lang_menu_data() {
+        $langs = \get_string_manager()->get_list_of_translations();
+        $currentlang = \current_language();
 
+        $flags = [
+            'en' => '🇺🇸',
+            'pt_br' => '🇧🇷',
+            'es' => '🇪🇸',
+        ];
+
+        $nodes = [];
+        foreach ($langs as $langtype => $langname) {
+            $isactive = $langtype == $currentlang;
+            $attributes = [];
+
+            $flag = isset($flags[$langtype]) ? $flags[$langtype] : '🌐';
+
+            if (!$isactive) {
+                $attributes[] = [
+                    'key' => 'lang',
+                    'value' => get_html_lang_attribute_value($langtype),
+                ];
+            };
+
+            $node = [
+                'title' => $langname,
+                'text' => $langname,
+                'flag' => $flag,
+                'link' => true,
+                'isactive' => $isactive,
+                'url' => $isactive ? new \moodle_url('#') : new \moodle_url($this->page->url, ['lang' => $langtype]),
+            ];
+            if (!empty($attributes)) {
+                $node['attributes'] = $attributes;
+            }
+
+            $nodes[] = $node;
+
+            if ($isactive) {
+                $activelanguage = $flag;
+                $activelanguagename = $langname;
+            }
+        }
+
+        return [
+            'langactive' => $activelanguage, // Língua atualmente selecionada
+            'langactivename' => $activelanguagename, // Nome da língua atualmente selecionada
+            'langnodes' => $nodes,          // Lista de idiomas disponíveis
+        ];
+    
+        return $this->render_from_template('theme_suap/lang_menu_flags', $data);
+    }
+
+    /**
+     * Renderiza o menu de seleção de idiomas com bandeiras.
+     *
+     * @return string HTML renderizado do menu.
+     */
+    public function lang_menu_flags() {
+        $data = $this->get_lang_menu_data();
+        return $this->render_from_template('theme_suap/lang_menu_flags', $data);
+    }
 }
