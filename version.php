@@ -5,8 +5,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'theme_suap';
-$plugin->release   = '0.1.008';
-$plugin->version = 2025_04_23_008;
+$plugin->release   = '0.1.009';
+$plugin->version = 2025_04_24_009;
 $plugin->maturity = MATURITY_ALPHA;
 
 $plugin->requires = 2016_07_07_00;
