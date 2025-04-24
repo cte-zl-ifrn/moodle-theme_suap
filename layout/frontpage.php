@@ -16,9 +16,9 @@ global $DB;
 // Add block button in editing mode.
 $addblockbutton = $OUTPUT->addblockbutton();
 
-user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
-user_preference_allow_ajax_update('drawer-open-index', PARAM_BOOL);
-user_preference_allow_ajax_update('drawer-open-block', PARAM_BOOL);
+user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA); # TODO: essa função foi depreciada
+user_preference_allow_ajax_update('drawer-open-index', PARAM_BOOL); # TODO: essa função foi depreciada
+user_preference_allow_ajax_update('drawer-open-block', PARAM_BOOL); # TODO: essa função foi depreciada
 
 if (isloggedin()) {
     $courseindexopen = (get_user_preferences('drawer-open-index', true) == true);
@@ -177,5 +177,6 @@ $templatecontext = [
     'getUserPreference' => $getUserPreference,
     'loggedin_and_notguestuser' => isloggedin() && !isguestuser(),
 ];
+// throw new Exception("Error Processing Request", 1);
 
 echo $OUTPUT->render_from_template('theme_suap/frontpage', $templatecontext);
