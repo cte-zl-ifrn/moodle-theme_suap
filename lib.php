@@ -105,6 +105,7 @@ function theme_suap_user_preferences(): array
  */
 function theme_suap_add_admin_items_user_menu(): ?array
 {
+    global $CFG;
     $items = [];
     if (is_siteadmin()) {
         $items[] = [
