@@ -9,7 +9,8 @@ $preferences_submenu = [
         'url' => '/badges/mybackpack.php',
     ],
     [
-        'title' => get_string('mybadges', 'badges'),
+        # TODO: qual é o novo?
+        'title' => 'badges',
         'url' => '/badges/mybadges.php',
     ],
     [
