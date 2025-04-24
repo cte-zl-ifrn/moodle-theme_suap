@@ -55,10 +55,11 @@ if (!empty($learningpath)) {
 }
 
 $sql = "
-SELECT id, fullname, category
-FROM {course}
-WHERE visible = 1 AND id != 1" . (!empty($sql_conditions) ? ' AND ' . implode(' AND ', $sql_conditions) : '') . "
-ORDER BY id";
+SELECT c.id, c.fullname, c.category
+FROM {course} as c INNER JOIN {enrol} AS e ON (c.id = e.courseid)
+WHERE c.visible = 1 AND c.id != 1 AND e.enrol = 'self' AND e.status = 0 " . (!empty($sql_conditions) ? ' AND ' . implode(' AND ', $sql_conditions) : '') . "
+ORDER BY c.id DESC
+";
 
 // Executa a consulta de forma segura
 $courses = $DB->get_records_sql($sql, $params);
@@ -72,7 +73,7 @@ foreach ($courses as $course) {
 
     $category = $categories[$course->category];
     $custom_fields_metadata = \core_course\customfield\course_handler::create()->export_instance_data_object($course->id, true);
-    
+
     $raw_datas = \core_course\customfield\course_handler::create()->get_instance_data($course->id, true);
     foreach ($raw_datas as $data) {
         $shortname = $data->get_field()->get('shortname');
@@ -91,7 +92,7 @@ foreach ($courses as $course) {
             continue;
         }
         foreach ($workload_values as $value) {
-            
+
             if ($course_workload <= (int)$value) {
                 $is_valid_workload = true;
                 break;
