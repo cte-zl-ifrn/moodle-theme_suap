@@ -141,14 +141,8 @@ if ($PAGE->pagelayout == 'course') {
     $addfooterblockbutton = $OUTPUT->addblockbutton('footerblock');
     $footerblocks = $OUTPUT->custom_block_region('footerblock');
 }
-if ($primarymenu["user"]["items"]):
-    // submenu com as configurações de preferencia do usuario
-    include('_submenu_userpreference.php');
 
-    // alteração na ordenação do menu
-    include('_menu_order.php');
-endif;
-
+include('_menu.php');
 
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),

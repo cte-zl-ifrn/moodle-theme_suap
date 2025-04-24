@@ -1,4 +1,6 @@
 <?php
+defined('MOODLE_INTERNAL') || die();
+
 $preferences_submenu = [
     [
         'title' => get_string('externalblogs', 'blog'),
