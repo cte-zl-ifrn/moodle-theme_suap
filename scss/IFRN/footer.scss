@@ -29,9 +29,9 @@
                 font: var(--font-button1);
                 background-color: var(--light);
                 padding: 8px 16px;
-                border-radius: 12px;
+                border-radius: 40px;
                 width: fit-content;
-                margin: 20px 0;
+                margin-block: 2rem;
             }
 
             p {
@@ -45,11 +45,11 @@
                 margin: 20px 0;
 
                 a {
-                    margin-right: 1rem;
+                    margin-right: 2rem;
 
                     i {
                         color: var(--general-white);
-                        font-size: 22px;
+                        font-size: 25px;
                     }
                 }
             }
@@ -79,8 +79,7 @@
     .frontpage-footer-credits {
         display: flex;
         justify-content: space-between;
-        align-items: end;
-        padding: 30px 0 0 0;
+        padding-top: 30px;
         margin-top: 40px;
         border-top: 1px solid var(--light-lighter);
 
@@ -92,14 +91,12 @@
 
         .frontpage-footer-credits-links {
             display: flex;
-            justify-content: end;
-            align-items: end;
+            gap: 2rem;
 
             a {
                 color: var(--light-dark);
                 text-decoration: none;
                 font: var(--font-heading4);
-                margin-left: 30px;
             }
         }
     }
@@ -107,6 +104,10 @@
     @include media-breakpoint-down(md) {
         .frontpage-footer-content .frontpage-footer-content-second-section {
             display: none;
+        }
+        .frontpage-footer-credits {
+            flex-direction: column;
+            gap: 2rem;
         }
     }
 }
