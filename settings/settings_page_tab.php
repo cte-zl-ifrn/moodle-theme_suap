@@ -37,6 +37,21 @@ class settings_page_tab extends admin_settingpage {
         $this->add($setting);
     }
 
+    public function add_setting_confightmleditor($name, $updatecallback = false, $default = '') {
+        $setting = new admin_setting_confightmleditor(
+            "{$this->theme_name}/$name", 
+            get_string($name, $this->theme_name), 
+            get_string("{$name}_desc", $this->theme_name), 
+            $default
+        );
+
+        if ($updatecallback) {
+            $setting->set_updatedcallback('theme_reset_all_caches');
+        }
+
+        $this->add($setting);
+    }
+
     public function add_setting_configcheckbox($name, $default = 0) {
         $this->add(new admin_setting_configcheckbox(
             "{$this->theme_name}/$name", 

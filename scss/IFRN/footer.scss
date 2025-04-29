@@ -12,7 +12,7 @@
     .frontpage-footer-content {
         display: flex;
         justify-content: space-between;
-        gap: 1rem;
+        gap: 4rem;
 
         .frontpage-footer-content-first-section {
             display: flex;
@@ -57,20 +57,31 @@
 
         .frontpage-footer-content-second-section {
             display: flex;
-            justify-content: end;
-
-            :first-child {
-                margin-left: 0 !important;
+            justify-content: space-between;
+            flex-grow: 0;
+            gap: 3rem;
+            color: var(--general-white);
+            // Se tiver 3 e 3 ou mais colunas dentro
+            &:has(> div:nth-of-type(3):last-of-type) {
+                flex-grow: 1;
+                max-width: 507px;
             }
-
-            .frontpage-footer-content-second-section-column {
+            &:has(> div:nth-of-type(3)) {
+                flex-grow: 1;
+            }
+            
+            span {
+                display: inline-block;
+                font: var(--font-heading2);
+                margin-bottom: 1.5rem;
+            }
+            ul {
                 display: flex;
                 flex-direction: column;
-                margin-left: 70px;
+                gap: 1rem;
                 font: var(--font-button2);
-
-                :first-child {
-                    font: var(--font-heading2);
+                li a {
+                    color: var(--general-white);
                 }
             }
         }

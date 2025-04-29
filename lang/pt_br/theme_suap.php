@@ -123,53 +123,9 @@ $string['footer_social_media_instagram_desc'] = '';
 $string['footer_social_media_youtube'] = 'Youtube URL';
 $string['footer_social_media_youtube_desc'] = '';
 
-// Mapa do rodapé - primeira coluna.
-$string['footer_map_first_column_title'] = 'Título da primeira coluna';
-$string['footer_map_first_column_title_desc'] = 'Título da primeira coluna do rodapé.';
-
-$string['footer_map_first_column_first_line'] = 'Primeira coluna - linha 1';
-$string['footer_map_first_column_first_line_desc'] = 'Primeiro item da primeira coluna.';
-
-$string['footer_map_first_column_second_line'] = 'Primeira coluna - linha 2';
-$string['footer_map_first_column_second_line_desc'] = 'Segundo item da primeira coluna.';
-
-$string['footer_map_first_column_third_line'] = 'Primeira coluna - linha 3';
-$string['footer_map_first_column_third_line_desc'] = 'Terceiro item da primeira coluna.';
-
-$string['footer_map_first_column_fourth_line'] = 'Primeira coluna - linha 4';
-$string['footer_map_first_column_fourth_line_desc'] = 'Quarto item da primeira coluna.';
-
-// Mapa do rodapé - segunda coluna.
-$string['footer_map_second_column_title'] = 'Título da segunda coluna';
-$string['footer_map_second_column_title_desc'] = 'Título da segunda coluna do rodapé.';
-
-$string['footer_map_second_column_first_line'] = 'Segunda coluna - linha 1';
-$string['footer_map_second_column_first_line_desc'] = 'Primeiro item da segunda coluna.';
-
-$string['footer_map_second_column_second_line'] = 'Segunda coluna - linha 2';
-$string['footer_map_second_column_second_line_desc'] = 'Segundo item da segunda coluna.';
-
-$string['footer_map_second_column_third_line'] = 'Segunda coluna - linha 3';
-$string['footer_map_second_column_third_line_desc'] = 'Terceiro item da segunda coluna.';
-
-$string['footer_map_second_column_fourth_line'] = 'Segunda coluna - linha 4';
-$string['footer_map_second_column_fourth_line_desc'] = 'Quarto item da segunda coluna.';
-
-// Mapa do rodapé - terceira coluna.
-$string['footer_map_third_column_title'] = 'Título da terceira coluna';
-$string['footer_map_third_column_title_desc'] = 'Título da terceira coluna do rodapé.';
-
-$string['footer_map_third_column_first_line'] = 'Terceira coluna - linha 1';
-$string['footer_map_third_column_first_line_desc'] = 'Primeiro item da terceira coluna.';
-
-$string['footer_map_third_column_second_line'] = 'Terceira coluna - linha 2';
-$string['footer_map_third_column_second_line_desc'] = 'Segundo item da terceira coluna.';
-
-$string['footer_map_third_column_third_line'] = 'Terceira coluna - linha 3';
-$string['footer_map_third_column_third_line_desc'] = 'Terceiro item da terceira coluna.';
-
-$string['footer_map_third_column_fourth_line'] = 'Terceira coluna - linha 4';
-$string['footer_map_third_column_fourth_line_desc'] = 'Quarto item da terceira coluna.';
+// Mapa do rodapé
+$string['footer_map_list'] = 'Listas de links do rodapé';
+$string['footer_map_list_desc'] = '';
 
 // Créditos do rodapé.
 $string['footer_credits_text'] = 'Texto dos créditos';

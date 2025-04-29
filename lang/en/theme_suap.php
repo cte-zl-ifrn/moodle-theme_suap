@@ -124,53 +124,9 @@ $string['footer_social_media_instagram_desc'] = '';
 $string['footer_social_media_youtube'] = 'Youtube URL';
 $string['footer_social_media_youtube_desc'] = '';
 
-// Footer map - first column.
-$string['footer_map_first_column_title'] = 'First column title';
-$string['footer_map_first_column_title_desc'] = 'Title for the first footer column.';
-
-$string['footer_map_first_column_first_line'] = 'First column - line 1';
-$string['footer_map_first_column_first_line_desc'] = 'First item of the first column.';
-
-$string['footer_map_first_column_second_line'] = 'First column - line 2';
-$string['footer_map_first_column_second_line_desc'] = 'Second item of the first column.';
-
-$string['footer_map_first_column_third_line'] = 'First column - line 3';
-$string['footer_map_first_column_third_line_desc'] = 'Third item of the first column.';
-
-$string['footer_map_first_column_fourth_line'] = 'First column - line 4';
-$string['footer_map_first_column_fourth_line_desc'] = 'Fourth item of the first column.';
-
-// Footer map - second column.
-$string['footer_map_second_column_title'] = 'Second column title';
-$string['footer_map_second_column_title_desc'] = 'Title for the second footer column.';
-
-$string['footer_map_second_column_first_line'] = 'Second column - line 1';
-$string['footer_map_second_column_first_line_desc'] = 'First item of the second column.';
-
-$string['footer_map_second_column_second_line'] = 'Second column - line 2';
-$string['footer_map_second_column_second_line_desc'] = 'Second item of the second column.';
-
-$string['footer_map_second_column_third_line'] = 'Second column - line 3';
-$string['footer_map_second_column_third_line_desc'] = 'Third item of the second column.';
-
-$string['footer_map_second_column_fourth_line'] = 'Second column - line 4';
-$string['footer_map_second_column_fourth_line_desc'] = 'Fourth item of the second column.';
-
-// Footer map - third column.
-$string['footer_map_third_column_title'] = 'Third column title';
-$string['footer_map_third_column_title_desc'] = 'Title for the third footer column.';
-
-$string['footer_map_third_column_first_line'] = 'Third column - line 1';
-$string['footer_map_third_column_first_line_desc'] = 'First item of the third column.';
-
-$string['footer_map_third_column_second_line'] = 'Third column - line 2';
-$string['footer_map_third_column_second_line_desc'] = 'Second item of the third column.';
-
-$string['footer_map_third_column_third_line'] = 'Third column - line 3';
-$string['footer_map_third_column_third_line_desc'] = 'Third item of the third column.';
-
-$string['footer_map_third_column_fourth_line'] = 'Third column - line 4';
-$string['footer_map_third_column_fourth_line_desc'] = 'Fourth item of the third column.';
+// Footer map
+$string['footer_map_list'] = 'Footer Link Lists';
+$string['footer_map_list_desc'] = '';
 
 // Footer credits.
 $string['footer_credits_text'] = 'Footer credits';

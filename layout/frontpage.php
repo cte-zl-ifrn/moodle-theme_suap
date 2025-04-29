@@ -182,23 +182,7 @@ $templatecontext = [
     'footer_social_media_icon_1_alt' => $conf->footer_social_media_icon_1_alt,
     'footer_social_media_icon_2_alt' => $conf->footer_social_media_icon_2_alt,
 
-    'footer_map_first_column_title' => $conf->footer_map_first_column_title,
-    'footer_map_first_column_first_line' => $conf->footer_map_first_column_first_line,
-    'footer_map_first_column_second_line' => $conf->footer_map_first_column_second_line,
-    'footer_map_first_column_third_line' => $conf->footer_map_first_column_third_line,
-    'footer_map_first_column_fourth_line' => $conf->footer_map_first_column_fourth_line,
-
-    'footer_map_second_column_title' => $conf->footer_map_second_column_title,
-    'footer_map_second_column_first_line' => $conf->footer_map_second_column_first_line,
-    'footer_map_second_column_second_line' => $conf->footer_map_second_column_second_line,
-    'footer_map_second_column_third_line' => $conf->footer_map_second_column_third_line,
-    'footer_map_second_column_fourth_line' => $conf->footer_map_second_column_fourth_line,
-
-    'footer_map_third_column_title' => $conf->footer_map_third_column_title,
-    'footer_map_third_column_first_line' => $conf->footer_map_third_column_first_line,
-    'footer_map_third_column_second_line' => $conf->footer_map_third_column_second_line,
-    'footer_map_third_column_third_line' => $conf->footer_map_third_column_third_line,
-    'footer_map_third_column_fourth_line' => $conf->footer_map_third_column_fourth_line,
+    'footer_map_list' => $conf->footer_map_list,
 
     'footer_credits_text' => $conf->footer_credits_text,
     'footer_credits_first_link' => $conf->footer_credits_first_link,

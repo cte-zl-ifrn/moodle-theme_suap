@@ -47,23 +47,15 @@ class frontpage_settings_tab extends settings_page_tab {
         $this->add_setting_configtext('footer_social_media_instagram', 'https://www.instagram.com/ifrnzonaleste/');
         $this->add_setting_configtext('footer_social_media_youtube', 'https://www.youtube.com/c/ifrncampusead');
 
-        $this->add_setting_configtext('footer_map_first_column_title', 'Sobre');
-        $this->add_setting_configtext('footer_map_first_column_first_line', 'Item One');
-        $this->add_setting_configtext('footer_map_first_column_second_line', 'Item Two');
-        $this->add_setting_configtext('footer_map_first_column_third_line', 'Item Three');
-        $this->add_setting_configtext('footer_map_first_column_fourth_line', 'Item Four');
-
-        $this->add_setting_configtext('footer_map_second_column_title', 'Suporte');
-        $this->add_setting_configtext('footer_map_second_column_first_line', 'Item One');
-        $this->add_setting_configtext('footer_map_second_column_second_line', 'Item Two');
-        $this->add_setting_configtext('footer_map_second_column_third_line', 'Item Three');
-        $this->add_setting_configtext('footer_map_second_column_fourth_line', 'Item Four');
-
-        $this->add_setting_configtext('footer_map_third_column_title', 'Redes Sociais');
-        $this->add_setting_configtext('footer_map_third_column_first_line', 'Item One');
-        $this->add_setting_configtext('footer_map_third_column_second_line', 'Item Two');
-        $this->add_setting_configtext('footer_map_third_column_third_line', 'Item Three');
-        $this->add_setting_configtext('footer_map_third_column_fourth_line', 'Item Four');
+        $this->add_setting_confightmleditor('footer_map_list', true, '<div>
+                                                                        <span>Título da coluna</span>
+                                                                        <ul>
+                                                                            <li><a href="#">Item um</a></li>
+                                                                            <li><a href="#">Item dois</a></li>
+                                                                            ...
+                                                                        </ul>
+                                                                     </div>
+                                                                     ...');        
 
         $this->add_setting_configtext('footer_credits_text', 'Tema: © 2024 IFRN/ZL - DEAD. All Rights Reserved.');
         
