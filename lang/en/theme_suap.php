@@ -106,6 +106,90 @@ $string['frontpage_button_courses_desc'] = '';
 $string['frontpage_button_learningpaths'] = 'Learning paths';
 $string['frontpage_button_learningpaths_desc'] = '';
 
+// Footer settings.
+$string['footer_title'] = 'Footer title';
+$string['footer_title_desc'] = 'Main title displayed in the footer.';
+
+$string['footer_support_button'] = 'Support button';
+$string['footer_support_button_desc'] = 'Label for the support button in the footer.';
+$string['footer_support_button_url'] = 'Support button link';
+$string['footer_support_button_url_desc'] = '';
+
+$string['footer_social_media_text'] = 'Social media text';
+$string['footer_social_media_text_desc'] = 'Text about the IFRN ZL social media in the footer.';
+$string['footer_social_media_facebook'] = 'Facebook URL';
+$string['footer_social_media_facebook_desc'] = '';
+$string['footer_social_media_instagram'] = 'Instagram URL';
+$string['footer_social_media_instagram_desc'] = '';
+$string['footer_social_media_youtube'] = 'Youtube URL';
+$string['footer_social_media_youtube_desc'] = '';
+
+// Footer map - first column.
+$string['footer_map_first_column_title'] = 'First column title';
+$string['footer_map_first_column_title_desc'] = 'Title for the first footer column.';
+
+$string['footer_map_first_column_first_line'] = 'First column - line 1';
+$string['footer_map_first_column_first_line_desc'] = 'First item of the first column.';
+
+$string['footer_map_first_column_second_line'] = 'First column - line 2';
+$string['footer_map_first_column_second_line_desc'] = 'Second item of the first column.';
+
+$string['footer_map_first_column_third_line'] = 'First column - line 3';
+$string['footer_map_first_column_third_line_desc'] = 'Third item of the first column.';
+
+$string['footer_map_first_column_fourth_line'] = 'First column - line 4';
+$string['footer_map_first_column_fourth_line_desc'] = 'Fourth item of the first column.';
+
+// Footer map - second column.
+$string['footer_map_second_column_title'] = 'Second column title';
+$string['footer_map_second_column_title_desc'] = 'Title for the second footer column.';
+
+$string['footer_map_second_column_first_line'] = 'Second column - line 1';
+$string['footer_map_second_column_first_line_desc'] = 'First item of the second column.';
+
+$string['footer_map_second_column_second_line'] = 'Second column - line 2';
+$string['footer_map_second_column_second_line_desc'] = 'Second item of the second column.';
+
+$string['footer_map_second_column_third_line'] = 'Second column - line 3';
+$string['footer_map_second_column_third_line_desc'] = 'Third item of the second column.';
+
+$string['footer_map_second_column_fourth_line'] = 'Second column - line 4';
+$string['footer_map_second_column_fourth_line_desc'] = 'Fourth item of the second column.';
+
+// Footer map - third column.
+$string['footer_map_third_column_title'] = 'Third column title';
+$string['footer_map_third_column_title_desc'] = 'Title for the third footer column.';
+
+$string['footer_map_third_column_first_line'] = 'Third column - line 1';
+$string['footer_map_third_column_first_line_desc'] = 'First item of the third column.';
+
+$string['footer_map_third_column_second_line'] = 'Third column - line 2';
+$string['footer_map_third_column_second_line_desc'] = 'Second item of the third column.';
+
+$string['footer_map_third_column_third_line'] = 'Third column - line 3';
+$string['footer_map_third_column_third_line_desc'] = 'Third item of the third column.';
+
+$string['footer_map_third_column_fourth_line'] = 'Third column - line 4';
+$string['footer_map_third_column_fourth_line_desc'] = 'Fourth item of the third column.';
+
+// Footer credits.
+$string['footer_credits_text'] = 'Footer credits';
+$string['footer_credits_text_desc'] = 'Text for the footer credits.';
+
+$string['footer_credits_first_link'] = 'First credit link';
+$string['footer_credits_first_link_desc'] = '';
+$string['footer_credits_first_link_url'] = 'URL of first credit link';
+$string['footer_credits_first_link_url_desc'] = '';
+$string['footer_credits_first_link_new_window'] = 'Open new window first link';
+$string['footer_credits_first_link_new_window_desc'] = '';
+
+$string['footer_credits_second_link'] = 'Second credit link';
+$string['footer_credits_second_link_desc'] = '';
+$string['footer_credits_second_link_url'] = 'URL of second credit link';
+$string['footer_credits_second_link_url_desc'] = '';
+$string['footer_credits_second_link_new_window'] = 'Open new window second link';
+$string['footer_credits_second_link_new_window_desc'] = '';
+
 // Incourse aditional strings
 $string['contentbutton'] = 'Content';
 

@@ -3,47 +3,58 @@
     <div class="frontpage-footer page-suap"> 
         <div class="frontpage-footer-content max-width-suap">
             <div class="frontpage-footer-content-first-section">
-                <p class="frontpage-footer-title">{{{sitename}}}</p>
-                <a class="frontpage-footer-suport-button" href="{{config.wwwroot}}">Botão para o suporte</a>
-                <p>Texto sobre as redes sociais do IFRN ZL</p>
+                <p class="frontpage-footer-title">{{{footer_title}}}</p>
+                <a class="frontpage-footer-suport-button" href="{{footer_support_button_url}}">{{footer_support_button}}</a>
+                <p>{{footer_social_media_text}}</p>
                 <div class="frontpage-footer-socialmedia">
-                    <a href="https://www.facebook.com/" target="_blank">
-                        <img src="{{config.wwwroot}}/theme/suap/pix/logo-facebook.svg" alt="Facebook">
+                    {{#footer_social_media_facebook}}
+                    <a href="{{footer_social_media_facebook}}" target="_blank" alt="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
                     </a>
-                    <a href="https://www.instagram.com/" target="_blank">
-                        <img src="{{config.wwwroot}}/theme/suap/pix/logo-instagram.svg" alt="Instagram">
+                    {{/footer_social_media_facebook}}
+                    {{#footer_social_media_instagram}}
+                    <a href="{{footer_social_media_instagram}}" target="_blank" alt="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
                     </a>
+                    {{/footer_social_media_instagram}}
+                    {{#footer_social_media_youtube}}
+                    <a href="{{footer_social_media_youtube}}" target="_blank" alt="Youtube">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    {{/footer_social_media_youtube}}
                 </div>
             </div>
             <div class="frontpage-footer-content-second-section">
                 <div class="frontpage-footer-content-second-section-column">
-                    <p>Sobre</p>
-                    <p>Item One</p>
-                    <p>Item Two</p>
-                    <p>Item Three</p>
-                    <p>Item Four</p>
+                    <p>{{footer_map_first_column_title}}</p>
+                    <p>{{footer_map_first_column_first_line}}</p>
+                    <p>{{footer_map_first_column_second_line}}</p>
+                    <p>{{footer_map_first_column_third_line}}</p>
+                    <p>{{footer_map_first_column_fourth_line}}</p>
                 </div>
                 <div class="frontpage-footer-content-second-section-column">
-                    <p>Ambientes</p>
-                    <p>Item One</p>
-                    <p>Item Two</p>
-                    <p>Item Three</p>
-                    <p>Item Four</p>
+                    <p>{{footer_map_second_column_title}}</p>
+                    <p>{{footer_map_second_column_first_line}}</p>
+                    <p>{{footer_map_second_column_second_line}}</p>
+                    <p>{{footer_map_second_column_third_line}}</p>
+                    <p>{{footer_map_second_column_fourth_line}}</p>
                 </div>
                 <div class="frontpage-footer-content-second-section-column">
-                    <p>Contato</p>
-                    <p>Item One</p>
-                    <p>Item Two</p>
-                    <p>Item Three</p>
-                    <p>Item Four</p>
+                    <p>{{footer_map_third_column_title}}</p>
+                    <p>{{footer_map_third_column_first_line}}</p>
+                    <p>{{footer_map_third_column_second_line}}</p>
+                    <p>{{footer_map_third_column_third_line}}</p>
+                    <p>{{footer_map_third_column_fourth_line}}</p>
                 </div>
             </div>
         </div>
         <div class="frontpage-footer-credits max-width-suap">
-            <p>Tema: © 2024 IFRN/ZL - DEAD. All Rights Reserved.</p>
+            <p>{{footer_credits_text}}</p>
             <div class="frontpage-footer-credits-links">
-                <a href="{{config.wwwroot}}">Moodle</a>
-                <a href="{{config.wwwroot}}">Ajuda</a>
+                <a href="{{footer_credits_first_link_url}}" {{#footer_credits_first_link_new_window}} target="_blank"{{/footer_credits_first_link_new_window}}>
+                    {{footer_credits_first_link}}
+                </a>
+                <a href="{{footer_credits_second_link_url}}" {{#footer_credits_second_link_new_window}} target="_blank"{{/footer_credits_second_link_new_window}}>{{footer_credits_second_link}}</a>
             </div>
         </div>
     </div>

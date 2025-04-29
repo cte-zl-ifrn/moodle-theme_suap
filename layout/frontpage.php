@@ -168,6 +168,46 @@ $templatecontext = [
     'viewnavbar' => $viewNavbar,
     'getUserPreference' => $getUserPreference,
     'loggedin_and_notguestuser' => isloggedin() && !isguestuser(),
+
+    'footer_title' => $conf->footer_title,
+    'footer_support_button' => $conf->footer_support_button,
+    'footer_support_button_url' => $conf->footer_support_button_url,
+    'footer_social_media_text' => $conf->footer_social_media_text,
+    'footer_social_media_facebook' => $conf->footer_social_media_facebook,
+    'footer_social_media_instagram' => $conf->footer_social_media_instagram,
+    'footer_social_media_youtube' => $conf->footer_social_media_youtube,
+
+    'footer_social_media_icon_1' => $social_icon1_url,
+    'footer_social_media_icon_2' => $social_icon2_url,
+    'footer_social_media_icon_1_alt' => $conf->footer_social_media_icon_1_alt,
+    'footer_social_media_icon_2_alt' => $conf->footer_social_media_icon_2_alt,
+
+    'footer_map_first_column_title' => $conf->footer_map_first_column_title,
+    'footer_map_first_column_first_line' => $conf->footer_map_first_column_first_line,
+    'footer_map_first_column_second_line' => $conf->footer_map_first_column_second_line,
+    'footer_map_first_column_third_line' => $conf->footer_map_first_column_third_line,
+    'footer_map_first_column_fourth_line' => $conf->footer_map_first_column_fourth_line,
+
+    'footer_map_second_column_title' => $conf->footer_map_second_column_title,
+    'footer_map_second_column_first_line' => $conf->footer_map_second_column_first_line,
+    'footer_map_second_column_second_line' => $conf->footer_map_second_column_second_line,
+    'footer_map_second_column_third_line' => $conf->footer_map_second_column_third_line,
+    'footer_map_second_column_fourth_line' => $conf->footer_map_second_column_fourth_line,
+
+    'footer_map_third_column_title' => $conf->footer_map_third_column_title,
+    'footer_map_third_column_first_line' => $conf->footer_map_third_column_first_line,
+    'footer_map_third_column_second_line' => $conf->footer_map_third_column_second_line,
+    'footer_map_third_column_third_line' => $conf->footer_map_third_column_third_line,
+    'footer_map_third_column_fourth_line' => $conf->footer_map_third_column_fourth_line,
+
+    'footer_credits_text' => $conf->footer_credits_text,
+    'footer_credits_first_link' => $conf->footer_credits_first_link,
+    'footer_credits_second_link' => $conf->footer_credits_second_link,
+    'footer_credits_first_link_url' => $conf->footer_credits_first_link_url,
+    'footer_credits_second_link_url' => $conf->footer_credits_second_link_url,
+    'footer_credits_first_link_new_window' => $conf->footer_credits_first_link_new_window,
+    'footer_credits_second_link_new_window' => $conf->footer_credits_second_link_new_window,
+
 ];
 // throw new Exception("Error Processing Request", 1);
 

@@ -105,6 +105,90 @@ $string['frontpage_button_courses_desc'] = '';
 $string['frontpage_button_learningpaths'] = 'Trilhas';
 $string['frontpage_button_learningpaths_desc'] = '';
 
+// Configurações do rodapé.
+$string['footer_title'] = 'Título do rodapé';
+$string['footer_title_desc'] = 'Título principal exibido no rodapé.';
+
+$string['footer_support_button'] = 'Botão de suporte';
+$string['footer_support_button_desc'] = 'Texto do botão de suporte exibido no rodapé.';
+$string['footer_support_button_url'] = 'Link para o botão de suporte';
+$string['footer_support_button_url_desc'] = '';
+
+$string['footer_social_media_text'] = 'Texto das redes sociais';
+$string['footer_social_media_text_desc'] = 'Texto sobre as redes sociais do IFRN ZL no rodapé.';
+$string['footer_social_media_facebook'] = 'Facebook URL';
+$string['footer_social_media_facebook_desc'] = '';
+$string['footer_social_media_instagram'] = 'Instagram URL';
+$string['footer_social_media_instagram_desc'] = '';
+$string['footer_social_media_youtube'] = 'Youtube URL';
+$string['footer_social_media_youtube_desc'] = '';
+
+// Mapa do rodapé - primeira coluna.
+$string['footer_map_first_column_title'] = 'Título da primeira coluna';
+$string['footer_map_first_column_title_desc'] = 'Título da primeira coluna do rodapé.';
+
+$string['footer_map_first_column_first_line'] = 'Primeira coluna - linha 1';
+$string['footer_map_first_column_first_line_desc'] = 'Primeiro item da primeira coluna.';
+
+$string['footer_map_first_column_second_line'] = 'Primeira coluna - linha 2';
+$string['footer_map_first_column_second_line_desc'] = 'Segundo item da primeira coluna.';
+
+$string['footer_map_first_column_third_line'] = 'Primeira coluna - linha 3';
+$string['footer_map_first_column_third_line_desc'] = 'Terceiro item da primeira coluna.';
+
+$string['footer_map_first_column_fourth_line'] = 'Primeira coluna - linha 4';
+$string['footer_map_first_column_fourth_line_desc'] = 'Quarto item da primeira coluna.';
+
+// Mapa do rodapé - segunda coluna.
+$string['footer_map_second_column_title'] = 'Título da segunda coluna';
+$string['footer_map_second_column_title_desc'] = 'Título da segunda coluna do rodapé.';
+
+$string['footer_map_second_column_first_line'] = 'Segunda coluna - linha 1';
+$string['footer_map_second_column_first_line_desc'] = 'Primeiro item da segunda coluna.';
+
+$string['footer_map_second_column_second_line'] = 'Segunda coluna - linha 2';
+$string['footer_map_second_column_second_line_desc'] = 'Segundo item da segunda coluna.';
+
+$string['footer_map_second_column_third_line'] = 'Segunda coluna - linha 3';
+$string['footer_map_second_column_third_line_desc'] = 'Terceiro item da segunda coluna.';
+
+$string['footer_map_second_column_fourth_line'] = 'Segunda coluna - linha 4';
+$string['footer_map_second_column_fourth_line_desc'] = 'Quarto item da segunda coluna.';
+
+// Mapa do rodapé - terceira coluna.
+$string['footer_map_third_column_title'] = 'Título da terceira coluna';
+$string['footer_map_third_column_title_desc'] = 'Título da terceira coluna do rodapé.';
+
+$string['footer_map_third_column_first_line'] = 'Terceira coluna - linha 1';
+$string['footer_map_third_column_first_line_desc'] = 'Primeiro item da terceira coluna.';
+
+$string['footer_map_third_column_second_line'] = 'Terceira coluna - linha 2';
+$string['footer_map_third_column_second_line_desc'] = 'Segundo item da terceira coluna.';
+
+$string['footer_map_third_column_third_line'] = 'Terceira coluna - linha 3';
+$string['footer_map_third_column_third_line_desc'] = 'Terceiro item da terceira coluna.';
+
+$string['footer_map_third_column_fourth_line'] = 'Terceira coluna - linha 4';
+$string['footer_map_third_column_fourth_line_desc'] = 'Quarto item da terceira coluna.';
+
+// Créditos do rodapé.
+$string['footer_credits_text'] = 'Texto dos créditos';
+$string['footer_credits_text_desc'] = 'Texto exibido nos créditos do rodapé.';
+
+$string['footer_credits_first_link'] = 'Primeiro link dos créditos';
+$string['footer_credits_first_link_desc'] = '';
+$string['footer_credits_first_link_url'] = 'URL do primeiro link dos créditos';
+$string['footer_credits_first_link_url_desc'] = '';
+$string['footer_credits_first_link_new_window'] = 'Abrir nova aba no primeiro link';
+$string['footer_credits_first_link_new_window_desc'] = '';
+
+$string['footer_credits_second_link'] = 'Segundo link dos créditos';
+$string['footer_credits_second_link_desc'] = '';
+$string['footer_credits_second_link_url'] = 'URL do segundo link dos créditos';
+$string['footer_credits_second_link_url_desc'] = '';
+$string['footer_credits_second_link_new_window'] = 'Abrir nova aba no segundo link';
+$string['footer_credits_second_link_new_window_desc'] = '';
+
 // Incourse aditional strings
 $string['contentbutton'] = 'Conteúdo';
 

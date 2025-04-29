@@ -45,11 +45,11 @@
                 margin: 20px 0;
 
                 a {
-                    margin-right: 15px;
+                    margin-right: 1rem;
 
-                    img {
-                        width: 24px;
-                        height: 24px;
+                    i {
+                        color: var(--general-white);
+                        font-size: 22px;
                     }
                 }
             }
