@@ -106,6 +106,46 @@ $string['frontpage_button_courses_desc'] = '';
 $string['frontpage_button_learningpaths'] = 'Learning paths';
 $string['frontpage_button_learningpaths_desc'] = '';
 
+// Footer settings.
+$string['footer_title'] = 'Footer title';
+$string['footer_title_desc'] = 'Main title displayed in the footer.';
+
+$string['footer_support_button'] = 'Support button';
+$string['footer_support_button_desc'] = 'Label for the support button in the footer.';
+$string['footer_support_button_url'] = 'Support button link';
+$string['footer_support_button_url_desc'] = '';
+
+$string['footer_social_media_text'] = 'Social media text';
+$string['footer_social_media_text_desc'] = 'Text about the IFRN ZL social media in the footer.';
+$string['footer_social_media_facebook'] = 'Facebook URL';
+$string['footer_social_media_facebook_desc'] = '';
+$string['footer_social_media_instagram'] = 'Instagram URL';
+$string['footer_social_media_instagram_desc'] = '';
+$string['footer_social_media_youtube'] = 'Youtube URL';
+$string['footer_social_media_youtube_desc'] = '';
+
+// Footer map
+$string['footer_map_list'] = 'Footer Link Lists';
+$string['footer_map_list_desc'] = '';
+
+// Footer credits.
+$string['footer_credits_text'] = 'Footer credits';
+$string['footer_credits_text_desc'] = 'Text for the footer credits.';
+
+$string['footer_credits_first_link'] = 'First credit link';
+$string['footer_credits_first_link_desc'] = '';
+$string['footer_credits_first_link_url'] = 'URL of first credit link';
+$string['footer_credits_first_link_url_desc'] = '';
+$string['footer_credits_first_link_new_window'] = 'Open new window first link';
+$string['footer_credits_first_link_new_window_desc'] = '';
+
+$string['footer_credits_second_link'] = 'Second credit link';
+$string['footer_credits_second_link_desc'] = '';
+$string['footer_credits_second_link_url'] = 'URL of second credit link';
+$string['footer_credits_second_link_url_desc'] = '';
+$string['footer_credits_second_link_new_window'] = 'Open new window second link';
+$string['footer_credits_second_link_new_window_desc'] = '';
+
 // Incourse aditional strings
 $string['contentbutton'] = 'Content';
 

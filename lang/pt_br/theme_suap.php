@@ -105,6 +105,46 @@ $string['frontpage_button_courses_desc'] = '';
 $string['frontpage_button_learningpaths'] = 'Trilhas';
 $string['frontpage_button_learningpaths_desc'] = '';
 
+// Configurações do rodapé.
+$string['footer_title'] = 'Título do rodapé';
+$string['footer_title_desc'] = 'Título principal exibido no rodapé.';
+
+$string['footer_support_button'] = 'Botão de suporte';
+$string['footer_support_button_desc'] = 'Texto do botão de suporte exibido no rodapé.';
+$string['footer_support_button_url'] = 'Link para o botão de suporte';
+$string['footer_support_button_url_desc'] = '';
+
+$string['footer_social_media_text'] = 'Texto das redes sociais';
+$string['footer_social_media_text_desc'] = 'Texto sobre as redes sociais do IFRN ZL no rodapé.';
+$string['footer_social_media_facebook'] = 'Facebook URL';
+$string['footer_social_media_facebook_desc'] = '';
+$string['footer_social_media_instagram'] = 'Instagram URL';
+$string['footer_social_media_instagram_desc'] = '';
+$string['footer_social_media_youtube'] = 'Youtube URL';
+$string['footer_social_media_youtube_desc'] = '';
+
+// Mapa do rodapé
+$string['footer_map_list'] = 'Listas de links do rodapé';
+$string['footer_map_list_desc'] = '';
+
+// Créditos do rodapé.
+$string['footer_credits_text'] = 'Texto dos créditos';
+$string['footer_credits_text_desc'] = 'Texto exibido nos créditos do rodapé.';
+
+$string['footer_credits_first_link'] = 'Primeiro link dos créditos';
+$string['footer_credits_first_link_desc'] = '';
+$string['footer_credits_first_link_url'] = 'URL do primeiro link dos créditos';
+$string['footer_credits_first_link_url_desc'] = '';
+$string['footer_credits_first_link_new_window'] = 'Abrir nova aba no primeiro link';
+$string['footer_credits_first_link_new_window_desc'] = '';
+
+$string['footer_credits_second_link'] = 'Segundo link dos créditos';
+$string['footer_credits_second_link_desc'] = '';
+$string['footer_credits_second_link_url'] = 'URL do segundo link dos créditos';
+$string['footer_credits_second_link_url_desc'] = '';
+$string['footer_credits_second_link_new_window'] = 'Abrir nova aba no segundo link';
+$string['footer_credits_second_link_new_window_desc'] = '';
+
 // Incourse aditional strings
 $string['contentbutton'] = 'Conteúdo';
 
