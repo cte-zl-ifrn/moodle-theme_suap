@@ -90,6 +90,8 @@ $string['hero_fourth_column_text'] = 'Hero fourth column text';
 $string['hero_fourth_column_text_desc'] = '';
 $string['hero_button_text'] = 'Hero button text';
 $string['hero_button_text_desc'] = '';
+$string['hero_button_url'] = 'Hero button link';
+$string['hero_button_url_desc'] = '';
 
 $string['hero_configtextarea_test'] = 'Hero configtextarea test';
 $string['hero_configtextarea_test_desc'] = '';

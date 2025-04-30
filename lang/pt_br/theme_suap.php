@@ -89,6 +89,8 @@ $string['hero_fourth_column_text'] = 'Texto da quarta coluna da seção de desta
 $string['hero_fourth_column_text_desc'] = '';
 $string['hero_button_text'] = 'Texto do botão da seção de destaque';
 $string['hero_button_text_desc'] = '';
+$string['hero_button_url'] = 'Link do botão da seção de destaque';
+$string['hero_button_url_desc'] = '';
 
 $string['hero_configtextarea_test'] = 'Texto do botão da seção de destaque';
 $string['hero_configtextarea_test_desc'] = '';
