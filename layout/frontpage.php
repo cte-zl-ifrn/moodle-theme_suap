@@ -160,6 +160,7 @@ $templatecontext = [
     'hero_fourth_column_description' => $conf->hero_fourth_column_description,
     'hero_fourth_column_text' => $conf->hero_fourth_column_text,
     'hero_button_text' => $conf->hero_button_text,
+    'hero_button_url' => $conf->hero_button_url,
     'about_title' => isset($conf->about_title) ? $conf->about_title : '',
     'frontpage_buttons_configtextarea' => $frontpage_buttons_configtextarea,
     'frontpage_buttons_configtextarea_when_user_logged' => $frontpage_buttons_configtextarea_when_user_logged,
