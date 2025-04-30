@@ -14,8 +14,11 @@ class course_renderer extends \core_course_renderer
     public function frontpage()
     {
         global $CFG, $SITE;
+        $conf = get_config('theme_suap');
+        $data = ['frontpage_main_courses_title' => $conf->frontpage_main_courses_title];
 
         $output = '';
+        $output .= $this->render_from_template('theme_suap/frontpage/header-courses-area', $data);
 
         return $output .= $this->render_courses();
     }
