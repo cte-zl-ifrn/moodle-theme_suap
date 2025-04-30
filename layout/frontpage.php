@@ -163,7 +163,6 @@ $templatecontext = [
     'about_title' => isset($conf->about_title) ? $conf->about_title : '',
     'frontpage_buttons_configtextarea' => $frontpage_buttons_configtextarea,
     'frontpage_buttons_configtextarea_when_user_logged' => $frontpage_buttons_configtextarea_when_user_logged,
-    'frontpage_main_courses_title' => $conf->frontpage_main_courses_title,
     'learningpaths' => $learningpaths,
     'viewnavbar' => $viewNavbar,
     'getUserPreference' => $getUserPreference,

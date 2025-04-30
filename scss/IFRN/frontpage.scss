@@ -41,20 +41,23 @@ div[role="main"] {
     }
 }
 
+.frontpage-hero-main-header-about-button {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-block: 40px;
+    a {
+        color: var(--general-white);
+        text-decoration: none;
+    }
+}
+
 .frontpage-hero-main-header {
     margin-top: 50px;
     margin-bottom: 2rem;
 
-    .frontpage-hero-main-header-about-button {
-        width: 100%;
-        display: block;
-        text-align: center;
-        margin-bottom: 40px;
-        a {
-            color: var(--general-white);
-            text-decoration: none;
-        }
-    }
 
     .frontpage-hero-main-header-content {
         display: flex;
