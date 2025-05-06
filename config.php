@@ -58,7 +58,7 @@ $THEME->scss = function ($theme) {
 $THEME->layouts = [
     'frontpage' => [
         'file' => 'frontpage.php',
-        'regions' => ['side-pre'], // , 'side-post'
+        'regions' => ['side-pre', 'content-pre', 'content-pos'],
         'defaultregion' => 'side-pre',
     ],
     'mypublic' => [
