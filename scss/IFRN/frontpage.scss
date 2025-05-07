@@ -6,10 +6,19 @@ div[role="main"] {
     margin-right: 0 !important;
 }
 
-#page-site-index .section-item {
-    padding: 0;
-    border: none;
-}
+#page-site-index {
+    .card {
+        background-color: transparent;
+        border: none;
+    }
+    .card-body {
+        padding: 0 !important;
+    }
+    .section-item {
+        padding: 0;
+        border: none;
+    }
+} 
 
 .frontpage-hero-header {
     margin-bottom: 2rem;
