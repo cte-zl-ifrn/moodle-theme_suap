@@ -20,53 +20,6 @@ div[role="main"] {
     }
 } 
 
-.frontpage-hero-header {
-    margin-bottom: 2rem;
-}
-
-@media (max-width: 800px) {
-    .hero > div {
-        flex: 0 0 50%;
-        max-width: 50%;
-
-        .frontpage-hero-header-column {
-            .frontpage-hero-header-column-number {
-                margin-top: 10px;
-            }
-        }
-    }
-}
-
-.frontpage-hero-header-column {
-    .frontpage-hero-header-column-number {
-        margin: 0;
-        font: var(--font-heading7);
-    }
-
-    .frontpage-hero-header-column-title {
-        margin: 5px 0 10px 0;
-        font: var(--font-heading2);
-    }
-
-    .frontpage-hero-header-column-text {
-        margin: 0;
-        font: var(--font-heading4);
-    }
-}
-
-.frontpage-hero-main-header-about-button {
-    width: 100%;
-    display: block;
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-    margin-block: 40px;
-    a {
-        color: var(--general-white);
-        text-decoration: none;
-    }
-}
-
 .frontpage-hero-main-header {
     margin-top: 50px;
     margin-bottom: 2rem;
