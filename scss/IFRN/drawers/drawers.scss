@@ -18,6 +18,15 @@
             display: grid;
             grid-template-rows: auto 1fr;
         }
+
+        .card {
+            background-color: transparent;
+            border: none;
+        }
+        .card-body {
+            padding: 0 !important;
+        }
+
     }
     .drawer {
         width: var(--drawer-open);
@@ -183,6 +192,7 @@
     .drawercontent {
         z-index: 0;
         height: calc(100vh - 189px);
+        padding: 1rem;
     }
 }
 
