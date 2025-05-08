@@ -102,12 +102,16 @@ $getUserPreference = get_user_preferences('visual_preference');
 
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
 
+// áreas blocos
+$addcontentpreblockbutton = $OUTPUT->addblockbutton('content-pre');
+$contentpreblocks = $OUTPUT->custom_block_region('content-pre');
+
+$addcontentposblockbutton = $OUTPUT->addblockbutton('content-pos');
+$contentposblocks = $OUTPUT->custom_block_region('content-pos');
+
 $conf = get_config('theme_suap');
 $frontpage_buttons_configtextarea = parse_configtextarea_string($conf->frontpage_buttons_configtextarea);
 $frontpage_buttons_configtextarea_when_user_logged = parse_configtextarea_string($conf->frontpage_buttons_configtextarea_when_user_logged);
-
-$courses_request_url = $CFG->wwwroot . '/theme/suap/api/get_courses.php';
-$PAGE->requires->js_call_amd('theme_suap/frontpage_courses', 'init', [$courses_request_url]);
 
 $learningpaths_records = $DB->get_records('suap_learning_path', null, '', 'id, name');
 $learningpaths = [];
@@ -144,6 +148,12 @@ $templatecontext = [
     'overflow' => $overflow,
     'headercontent' => $headercontent,
     'addblockbutton' => $addblockbutton,
+
+    'addcontentpreblockbutton' => isset($addcontentpreblockbutton) ? $addcontentpreblockbutton : '',
+    'contentpreblocks' => isset($contentpreblocks) ? $contentpreblocks : '',
+    'addcontentposblockbutton' => isset($addcontentposblockbutton) ? $addcontentposblockbutton : '',
+    'contentposblocks' => isset($contentposblocks) ? $contentposblocks : '',
+
     'frontpage_title' => $conf->frontpage_title,
     'hero_title' => $conf->hero_title,
     'hero_subtitle' => $conf->hero_subtitle,

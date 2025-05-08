@@ -16,67 +16,21 @@
     
     <div id="page" data-region="mainpage" data-usertour="scroller" class="page-suap drag-container">
         <div class="max-width-suap">
-            <div class="frontpage-hero-header">
-                <h1>{{{hero_title}}}</h1>
-                <h5>{{{hero_subtitle}}}</h5>
-            </div>
-            <div class="row hero">
-                <div class="col-md-3">
-                    <div class="frontpage-hero-header-column">
-                        <p class="frontpage-hero-header-column-number text-green">{{{hero_first_column_number}}}</p>
-                        <p class="frontpage-hero-header-column-title">{{{hero_first_column_description}}}</p>
-                        <p class="frontpage-hero-header-column-text">{{{hero_first_column_text}}}</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="frontpage-hero-header-column">
-                        <p class="frontpage-hero-header-column-number text-green">{{{hero_second_column_number}}}</p>
-                        <p class="frontpage-hero-header-column-title">{{{hero_second_column_description}}}</p>
-                        <p class="frontpage-hero-header-column-text">{{{hero_second_column_text}}}</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="frontpage-hero-header-column">
-                        <p class="frontpage-hero-header-column-number text-green">{{{hero_third_column_number}}}</p>
-                        <p class="frontpage-hero-header-column-title">{{{hero_third_column_description}}}</p>
-                        <p class="frontpage-hero-header-column-text">{{{hero_third_column_text}}}</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="frontpage-hero-header-column">
-                        <p class="frontpage-hero-header-column-number text-green">{{{hero_fourth_column_number}}}</p>
-                        <p class="frontpage-hero-header-column-title">{{{hero_fourth_column_description}}}</p>
-                        <p class="frontpage-hero-header-column-text">{{{hero_fourth_column_text}}}</p>
-                    </div>
-                </div>
-            </div>
-
+            {{{ addcontentpreblockbutton }}}
+            {{{ contentpreblocks }}}
 
             <div id="topofscroll">
                 <section id="region-main" aria-label="{{#str}}content{{/str}}">
-                <div class="frontpage-hero-main-header-about-button">
-                    <a href="{{hero_button_url}}" class="btn btn-primary">{{{hero_button_text}}}</a>
-                </div>
                     {{{ output.main_content }}}
-
-                    <div class="pagination">
-                        <button id="prev-page" class="pagination-button" page="0">
-                            <img src="{{config.wwwroot}}/theme/suap/pix/arrow-back-outline.svg" alt="Anterior">
-                            <span>{{#str}} prev, core {{/str}}</span>
-                        </button>
-                        {{! <span id="page-info"></span> }}
-                        <span id="pagination-numbers"></span>
-                        <button id="next-page" class="pagination-button" page="0">
-                            <span>{{#str}} next, core {{/str}}</span>
-                            <img src="{{config.wwwroot}}/theme/suap/pix/arrow-forward-outline.svg" alt="Próximo">
-                        </button>
-                    </div>
                 </section>
                 {{! <div id="page-content" class="d-print-block main-inner bg-green">
                     <div id="region-main-box">
                     </div>
                 </div> }}
             </div>
+
+            {{{ addcontentposblockbutton }}}
+            {{{ contentposblocks }}}
         </div>
         
         {{> theme_boost/footer }}
@@ -86,49 +40,6 @@
     
     {{> theme_suap/footer}}
 
-    <div class="modal-overlay" id="modal-overlay"></div>
-
-    <div class="filter-area" id="filter-area">
-        <div class="filter-header">
-            <span class="filter-header-title">{{#str}}filter, theme_suap{{/str}}</span>
-            <button id="close-filter" class="filter-header-close-button">
-                <img src="{{config.wwwroot}}/theme/suap/pix/close.svg" alt="Fechar">
-            </button>
-        </div>
-        <div class="filter-content">
-            <div class="filter-content-workload-column">
-                <h5 class="filter-content-column-title">{{#str}}workload, theme_suap{{/str}}</h5>
-                <label><input type="checkbox" value="10"> {{#str}} upto_hours, theme_suap, 10 {{/str}}</label>
-                <label><input type="checkbox" value="20"> {{#str}} upto_hours, theme_suap, 20 {{/str}}</label>
-                <label><input type="checkbox" value="30"> {{#str}} upto_hours, theme_suap, 30 {{/str}}</label>
-                <label><input type="checkbox" value="40"> {{#str}} upto_hours, theme_suap, 40 {{/str}}</label>
-                <label><input type="checkbox" value="50"> {{#str}} upto_hours, theme_suap, 50 {{/str}}</label>
-                <label><input type="checkbox" value="60"> {{#str}} upto_hours, theme_suap, 60 {{/str}}</label>
-                <label><input type="checkbox" value="70"> {{#str}} upto_hours, theme_suap, 70 {{/str}}</label>
-                <label><input type="checkbox" value="80"> {{#str}} upto_hours, theme_suap, 80 {{/str}}</label>
-            </div>
-            <div class="filter-content-certificate-column">
-                <h5 class="filter-content-column-title">{{#str}}certificate, theme_suap{{/str}}</h5>
-                <label><input type="checkbox" value="1"> {{#str}}yes, core{{/str}}</label>
-                <label><input type="checkbox" value="0"> {{#str}}no, core{{/str}}</label>
-            </div>
-            <div class="filter-content-lang-column">
-                <h5 class="filter-content-column-title">{{#str}}language, core{{/str}}</h5>
-                <label><input type="checkbox" value="pt_br"> {{#str}}pt-br, theme_suap{{/str}}</label>
-                <label><input type="checkbox" value="es"> {{#str}}es, theme_suap{{/str}}</label>
-                <label><input type="checkbox" value="en"> {{#str}}english, core{{/str}}</label>
-            </div>
-            <div class="filter-content-learningpath-column">
-                <h5 class="filter-content-column-title">Trilha</h5>
-                {{#learningpaths}}
-                    <label><input type="checkbox" value="{{id}}"> {{name}}</label>
-                {{/learningpaths}}
-            </div>
-        </div>
-        <div class="filter-footer">
-            <button id="clear-filter" class="filter-footer-clear-button">{{#str}}clearfilters, core{{/str}}</button>
-            <button id="apply-filter" class="filter-footer-apply-button">{{#str}}applyfilters, core{{/str}}</button>
-    </div>
 </div>
 
 </body>
