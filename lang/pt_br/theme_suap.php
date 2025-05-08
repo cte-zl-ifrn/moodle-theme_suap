@@ -45,7 +45,6 @@ $string['allconversations'] = "todas";
 $string['unreadmessages'] = "Não lidas";
 
 // Frontpage aditional strings 
-$string['filter'] = 'Filtros';
 $string['workload'] = 'Carga horária';
 $string['certificate'] = 'Certificado';
 $string['pt-br'] = 'Português';

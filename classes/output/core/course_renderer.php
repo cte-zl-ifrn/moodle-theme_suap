@@ -11,18 +11,6 @@ use core_course\customfield\course_handler;
 
 class course_renderer extends \core_course_renderer
 {
-    public function frontpage()
-    {
-        global $CFG, $SITE;
-        $conf = get_config('theme_suap');
-        $data = ['frontpage_main_courses_title' => $conf->frontpage_main_courses_title];
-
-        $output = '';
-        $output .= $this->render_from_template('theme_suap/frontpage/header-courses-area', $data);
-
-        return $output .= $this->render_courses();
-    }
-
     /**
      * Renders course info box.
      *
@@ -104,36 +92,5 @@ class course_renderer extends \core_course_renderer
             'isguestuser' => isguestuser(),
         ];
         echo $OUTPUT->render_from_template('theme_suap/enroll_course', $templatecontext);
-    }
-
-    protected function get_course_category($categoryid)
-    {
-        global $DB;
-
-        return $DB->get_record('course_categories', ['id' => $categoryid]);
-    }
-
-    protected function render_courses()
-    {
-        global $OUTPUT;
-
-        $output = html_writer::start_div('course-area');
-
-        for ($i = 0; $i < 8; $i++) {
-            $output .= html_writer::start_div('frontpage-course-card');
-
-            $output .= html_writer::start_div('course-image-container skeleton-image');
-            $output .= html_writer::tag('div', '', ['class' => 'skeleton-image-placeholder skeleton']);
-            $output .= html_writer::end_div();
-
-            $output .= html_writer::tag('span', '', ['class' => 'skeleton-category skeleton']);
-            $output .= html_writer::tag('p', '', ['class' => 'skeleton-name skeleton']);
-
-            $output .= html_writer::end_div();
-        }
-
-        $output .= html_writer::end_div();
-
-        return $output;
     }
 }

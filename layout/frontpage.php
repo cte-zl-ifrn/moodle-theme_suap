@@ -113,9 +113,6 @@ $conf = get_config('theme_suap');
 $frontpage_buttons_configtextarea = parse_configtextarea_string($conf->frontpage_buttons_configtextarea);
 $frontpage_buttons_configtextarea_when_user_logged = parse_configtextarea_string($conf->frontpage_buttons_configtextarea_when_user_logged);
 
-$courses_request_url = $CFG->wwwroot . '/theme/suap/api/get_courses.php';
-$PAGE->requires->js_call_amd('theme_suap/frontpage_courses', 'init', [$courses_request_url]);
-
 $learningpaths_records = $DB->get_records('suap_learning_path', null, '', 'id, name');
 $learningpaths = [];
 foreach ($learningpaths_records as $learningpath) {
