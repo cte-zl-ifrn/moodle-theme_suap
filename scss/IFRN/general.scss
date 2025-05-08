@@ -49,6 +49,7 @@ p {
         margin-bottom: .5rem;
         cursor: pointer;
         border-radius: 2rem;
+        transition: all 0.2s ease-in-out;
         &.active-toggler, &:hover {
             background-color: var(--primary-dark);
         }
@@ -128,6 +129,11 @@ p {
     margin-bottom: 1rem;
     box-shadow: 0px 4px 4px 0px #00000040;
     cursor: pointer;
+    transition: all 0.2s ease-in;
+    &.active-toggler, &:hover {
+        background-color: var(--primary-dark);
+        color: var(--general-white);
+    }
     img {
         width: 40px;
         height: 40px;
