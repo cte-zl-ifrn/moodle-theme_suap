@@ -7,12 +7,14 @@ div[role="main"] {
 }
 
 #page-site-index {
-    .card {
-        background-color: transparent;
-        border: none;
-    }
-    .card-body {
-        padding: 0 !important;
+    .block-region {
+        .card {
+            background-color: transparent;
+            border: none;
+        }
+        .card-body {
+            padding: 0 !important;
+        }
     }
     .section-item {
         padding: 0;
