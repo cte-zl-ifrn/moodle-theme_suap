@@ -1,3 +1,22 @@
+#page-site-index{
+
+    &.counteroff {
+        width: auto;
+    }
+
+    .navbar-suap-container {
+        position: static;
+        width: fit-content;
+        margin-left: auto;
+        
+        .editmode-switch-form {
+            padding-left: 0;
+        }
+    }
+
+}
+
+
 .counter-close .navbar-suap {
     width: calc(100% - var(--counter-close) - 16px);
 }
@@ -20,6 +39,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        box-shadow: var(--shadow-primary);
 
         a {
             font: var(--font-heading1);
@@ -101,7 +121,7 @@
         height: auto;
     }
     .navbar-suap {
-        background-color: var(--bg-green);
+        background: transparent;
     }
 } 
 
@@ -140,7 +160,7 @@
             margin-left: 1rem;
         }
         &-ava-name {
-            display: none;
+            min-width: auto;
         }
     }
 
