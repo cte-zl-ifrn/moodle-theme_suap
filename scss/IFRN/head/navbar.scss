@@ -152,6 +152,11 @@
 }
 
 @include media-breakpoint-down(sm) {
+    #page-site-index .editmode-switch-form label { 
+        position: static;
+        width: auto;
+        height: auto;
+    }
     .counter-close .navbar-suap {
         width: calc(100% - var(--counter-close) - 8px);
     }
