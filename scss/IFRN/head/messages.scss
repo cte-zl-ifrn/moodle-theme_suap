@@ -59,6 +59,8 @@
             }
             &:hover {
                 background-color: var(--primary);
+            }
+            .btn-link:hover {
                 color: var(--general-white);
             }
             .overview-section-toggle {
