@@ -1,5 +1,5 @@
 .userprofile {
-    display: none;
+    // display: none;
 }
 .profile-view-suap {
     .user-title {
@@ -28,7 +28,7 @@
         margin-bottom: 1rem;
         border: 1px solid var(--light-dark);
         border-radius: 1rem;
-        &.contact-container {
+        .contact-container {
             display: flex;
             gap: 1rem;
             img {
@@ -117,7 +117,7 @@
             flex-direction: column;
         }
         .user-group-suap {
-            &.contact-container {
+            .contact-container {
                 gap: .5rem;
                 img {
                     height: 50px;
