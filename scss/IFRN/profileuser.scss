@@ -1,11 +1,19 @@
 .userprofile {
-    // display: none;
+    .description, .page-context-header {
+        display: none !important;
+    }
 }
+
 .profile-view-suap {
     .user-title {
         font: var(--font-heading2);
         color: var(--dark);
         margin-bottom: 1rem;
+    }
+    .user-title-sub {
+        font: var(--font-heading3);
+        margin-top: .5rem;
+        margin-bottom: .25rem;
     }
     p {
         font: var(--font-paragraph2);
@@ -110,6 +118,27 @@
                 margin-bottom: 0px;
             }
         }
+
+        .profile-section-expand {
+            margin-block: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .profile-content {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                .card {
+                    flex: 1;
+                    min-width: 260px;
+                }
+            }
+            .toggle-section {
+                margin-top: .5rem;
+                width: fit-content;
+            }
+        }
+        
     }
 
     @include media-breakpoint-down(sm) {

@@ -40,10 +40,6 @@ class myprofile_renderer extends base_renderer {
             $userid = $USER->id;
         }
 
-        if ($courseid != 1) {
-            $notCourseContextProfile = true;
-        }
-
         $user = \core_user::get_user($userid);
 
         // edit profile button
@@ -197,12 +193,25 @@ class myprofile_renderer extends base_renderer {
         $categories = [];
         $categories_user = [];
         foreach ($tree->categories as $category) {
-            // echo '<pre>';
-            // var_dump($category->name);
-            // echo '</pre>';
-
             if (in_array(strtolower($category->name), ['contact', 'loginactivity', 'coursedetails'])) {
-                $categories_user = $category;
+                $nodes = [];
+                foreach($category->nodes as $node) {
+                    if ($node->name == 'editprofile' || $node->name == 'email') continue;
+                    if ($node->url) {
+                        $url = $node->url->out();
+                    } else {
+                        $url = false;
+                    }
+                    $nodes[] = [
+                        'title' => $node->title,
+                        'url' => $url,
+                        'content' => $node->content  ?? null,
+                    ];
+                }
+                $categories_user[] = [
+                    'title' => $category->title,
+                    'nodes' => $nodes,
+                ];
                 continue;
             }
 
@@ -237,9 +246,9 @@ class myprofile_renderer extends base_renderer {
 
         }
         
-        echo '<pre>';
-        var_dump($categories_user);
-        echo '</pre>';
+        // echo '<pre>';
+        // var_dump($categories_user);
+        // echo '</pre>';
 
         $data = [
             'userfullname' => fullname($user),
@@ -283,14 +292,16 @@ class myprofile_renderer extends base_renderer {
             'theme_suap_items_user_menu_admin' => theme_suap_add_admin_items_user_menu(),
             'getUserPreference' => $getUserPreference,
             'is_my_profile' => $is_my_profile,
-            'not_course_context_profile' => $notCourseContextProfile,
+            // 'not_course_context_profile' => $notCourseContextProfile,
             'contentbutton' => get_string('contentbutton', 'theme_suap'),
             'contentbuttonurl' => $CFG->wwwroot . '/course/view.php?id=' . $COURSE->id,
             'isactivecontentbutton' => theme_suap_is_contentbutton_active(),
             // Categorias do dropdown-accordion
             'categories' => $categories,
+            'categories_user' => $categories_user
         ];
 
+        $PAGE->requires->js_call_amd('theme_suap/profile', 'init');
 
         return $this->render_from_template('theme_suap/profile_user', $data);
     }

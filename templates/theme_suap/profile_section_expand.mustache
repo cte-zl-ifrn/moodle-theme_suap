@@ -1,21 +1,18 @@
-<style>
-    .profile-section-expand {
-        margin-block: 1rem;
-        display: flex;
-        flex-direction: column;
-        .toggle-section {
-            margin-top: .5rem;
-        }
-    }
-</style>
-
 <div class="profile-section-expand">
-    <div class="collapse" id="collapseExample">
+    <div class="collapse" id="collapseProfile">
+        <div class="profile-content">
+        {{#categories_user}}
         <div class="card card-body">
-            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+            <h2 class="user-title">{{title}}</h2>
+            {{#nodes}}
+                <h3 class="user-title-sub">{{title}}</h3>
+                {{{content}}}
+            {{/nodes}}
+        </div>
+        {{/categories_user}}
         </div>
     </div>
-    <a class="toggle-section btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <a class="toggle-section btn btn-secondary" data-toggle="collapse" href="#collapseProfile" role="button" aria-expanded="false" aria-controls="collapseExample">
         Ver mais
     </a>
 </div>

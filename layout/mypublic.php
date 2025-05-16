@@ -112,15 +112,11 @@ $sitename = format_string($SITE->shortname, true, ['context' => context_course::
 $getUserPreference = get_user_preferences('visual_preference');
 
 
-// require_once("../config.php");
-// require_once($CFG->dirroot.'/user/profile/lib.php');
-// require_once($CFG->dirroot.'/user/lib.php');
-// require_once($CFG->libdir . '/filelib.php');
+$courseid = optional_param('course', SITEID, PARAM_INT);
 
-
-global $DB;
-
-
+if ($courseid != 1) {
+    $notCourseContextProfile = true;
+}
 
 include('_menu.php');
 
