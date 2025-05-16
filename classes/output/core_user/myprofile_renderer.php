@@ -246,9 +246,6 @@ class myprofile_renderer extends base_renderer {
 
         }
         
-        // echo '<pre>';
-        // var_dump($categories_user);
-        // echo '</pre>';
 
         $data = [
             'userfullname' => fullname($user),
@@ -292,11 +289,10 @@ class myprofile_renderer extends base_renderer {
             'theme_suap_items_user_menu_admin' => theme_suap_add_admin_items_user_menu(),
             'getUserPreference' => $getUserPreference,
             'is_my_profile' => $is_my_profile,
-            // 'not_course_context_profile' => $notCourseContextProfile,
             'contentbutton' => get_string('contentbutton', 'theme_suap'),
             'contentbuttonurl' => $CFG->wwwroot . '/course/view.php?id=' . $COURSE->id,
             'isactivecontentbutton' => theme_suap_is_contentbutton_active(),
-            // Categorias do dropdown-accordion
+
             'categories' => $categories,
             'categories_user' => $categories_user
         ];
