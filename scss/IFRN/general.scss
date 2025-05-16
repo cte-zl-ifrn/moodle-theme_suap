@@ -146,6 +146,7 @@ p {
     .user-info {
         line-height: 0px;
         width: 85%;
+        overflow: hidden;
     }
     .user-name {
         font: var(--font-heading4);
