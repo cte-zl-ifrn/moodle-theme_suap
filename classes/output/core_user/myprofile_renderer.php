@@ -235,7 +235,7 @@ class myprofile_renderer extends base_renderer {
                 if ($node->url) {
                     $url = $node->url->out();
                 } else {
-                    $url = false;
+                    continue; // sem url não entra na category
                 }
                 $text = $node->title;
 
@@ -248,7 +248,7 @@ class myprofile_renderer extends base_renderer {
             }
 
             if (empty($nodes)) {
-                continue;
+                continue; // sem nodes não vai para o mustache
             }
 
             $categories[] = [
