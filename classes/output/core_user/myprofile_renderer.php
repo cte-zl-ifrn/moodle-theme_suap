@@ -12,84 +12,9 @@ use core_user\output\myprofile\tree;
 use core_user\output\myprofile\manager;
 
 class myprofile_renderer extends base_renderer {
-    /**
-     * Render the whole profile tree as a dropdown-accordion via Mustache template.
-     *
-     * @param tree $tree The populated profile tree
-     * @return string HTML fragment
-     */
-    public function render_tree(tree $tree) {
 
-        global $DB, $CFG, $USER, $PAGE, $COURSE, $OUTPUT, $SITE;
-
-        require_once($CFG->libdir . '/badgeslib.php');
-        // require_once($CFG->libdir . '/behat/lib.php');
-        // require_once($CFG->dirroot . '/course/lib.php');
-
-        $isloggedin = isloggedin();
-        $is_admin = is_siteadmin($USER->id);
-
-        $userid         = optional_param('id', 0, PARAM_INT); // User id.
-        $courseid       = optional_param('course', SITEID, PARAM_INT); // course id (defaults to Site).
-        $sitename       = format_string($SITE->shortname, true, ['context' => \context_course::instance(SITEID), "escape" => false]);
-        // $showallcourses = optional_param('showallcourses', 0, PARAM_INT);
-
-        // See your own profile by default.
-        if (empty($userid)) {
-            require_login();
-            $userid = $USER->id;
-        }
-
-        $user = \core_user::get_user($userid);
-
-        // edit profile button
-        $has_edit_button = false;
-
-        if ($is_admin || $USER->id == $userid) {
-            $useremail = $user->email;
-            $has_edit_button = true;
-        }
-
-        $edit_itens = array(
-            'id' => $userid,
-            'course' => $courseid,
-            'returnto' => 'profile'
-        );
-
-        if ($is_admin) {
-            $edit_url = new \moodle_url('/user/editadvanced.php', $edit_itens);
-        } else {
-            $edit_url = new \moodle_url('/user/edit.php', $edit_itens);
-        }
-
-        // My profile
-        $is_my_profile = $USER->id == $userid;
-
-        // Send message button
-        if ($USER->id != $userid) {
-
-            $message_url = new \moodle_url('/message/index.php', ['id' => $userid]);
-        }
-
-        $context = \context_course::instance($COURSE->id);
-
-        $myrolestr;
-        $myroles = get_user_roles($context, $userid, true);
-
-        if (empty($myroles)) {
-            $myrolestr = "";
-        } else {
-            foreach ($myroles as $myrole) {
-                $myrolestr[] = role_get_name($myrole, $context);
-            }
-            $myrolestr = implode(', ', $myrolestr);
-        }
-
-        // Get profile image and alternative text
-        $profile_picture = new \user_picture($user);
-        $profile_picture->size = 50;
-        $profile_picture_url = $profile_picture->get_url($PAGE)->out();
-        $profile_picture_alt = $user->imagealt;
+    public function get_user_certificates($userid) {
+        global $DB;
 
         $all_certificates = array();
 
@@ -152,43 +77,130 @@ class myprofile_renderer extends base_renderer {
             return $b['dateraw'] - $a['dateraw'];
         });
 
+        return $all_certificates;
+    }
 
-        // Get user badges
+    public function get_user_badges($userid) {
+        global $CFG;
+        require_once($CFG->libdir . '/badgeslib.php');
+
         $badges = badges_get_user_badges($userid);
         $badges_formated = array();
 
-        if (!empty($badges)) {
-            foreach ($badges as $badge) {
-                $badgeObj = new \badge($badge->id);
-                $badge_context = $badgeObj->get_context();
-                $imageurl = \moodle_url::make_pluginfile_url($badge_context->id, 'badges', 'badgeimage', $badge->id, '/', 'f1', FALSE);
-                $badge_link = new \moodle_url('/badges/badge.php', ['hash' => $badge->uniquehash]);
-
-                $createdYear = date('Y', ($badge->timecreated));
-                $createdMonth = date('m', ($badge->timecreated));
-                $expirationYear = '';
-                $expirationMonth = '';
-
-                if ($badge->expiredate) {
-                    $expirationYear = date('Y', $badge->expiredate);
-                    $expirationMonth = date('m', $cert->expiredate);
-                }
-
-                $badge_linkedin = "https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name={$badge->name}
-                &organizationName={$badge->issuername}&issueYear={$createdYear}&issueMonth={$createdMonth}&expirationYear={$expirationYear}
-                &expirationMonth={$expirationMonth}&certId={$badge->uniquehash}";
-
-                $badges_formated[] = array(
-                    'name' => $badge->name,
-                    'description' => $badge->description,
-                    'datereceived' => date('d/m/Y', $badge_issued->dateissued),
-                    'imageurl' => $imageurl,
-                    'link' => $badge_link,
-                    'badgelink' => $badge_linkedin
-                );
-            }
+        if(empty($badges)) {
+            return false;
         }
 
+        foreach ($badges as $badge) {
+            $badgeObj = new \badge($badge->id);
+            $badge_context = $badgeObj->get_context();
+            $imageurl = \moodle_url::make_pluginfile_url($badge_context->id, 'badges', 'badgeimage', $badge->id, '/', 'f1', FALSE);
+            $badge_link = new \moodle_url('/badges/badge.php', ['hash' => $badge->uniquehash]);
+
+            $createdYear = date('Y', ($badge->timecreated));
+            $createdMonth = date('m', ($badge->timecreated));
+            $expirationYear = '';
+            $expirationMonth = '';
+
+            if ($badge->expiredate) {
+                $expirationYear = date('Y', $badge->expiredate);
+                $expirationMonth = date('m', $cert->expiredate);
+            }
+
+            $badge_linkedin = "https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name={$badge->name}
+            &organizationName={$badge->issuername}&issueYear={$createdYear}&issueMonth={$createdMonth}&expirationYear={$expirationYear}
+            &expirationMonth={$expirationMonth}&certId={$badge->uniquehash}";
+
+            $badges_formated[] = array(
+                'name' => $badge->name,
+                'description' => $badge->description,
+                'datereceived' => date('d/m/Y', $badge_issued->dateissued),
+                'imageurl' => $imageurl,
+                'link' => $badge_link,
+                'badgelink' => $badge_linkedin
+            );
+        }
+
+        return $badges_formated;
+    }
+
+    /**
+     * Render the whole profile tree as a dropdown-accordion via Mustache template.
+     *
+     * @param tree $tree The populated profile tree
+     * @return string HTML fragment
+     */
+    public function render_tree(tree $tree) {
+
+        global $DB, $CFG, $USER, $PAGE, $COURSE, $OUTPUT, $SITE;
+
+        $isloggedin = isloggedin();
+        $is_admin = is_siteadmin($USER->id);
+
+        $userid         = optional_param('id', 0, PARAM_INT); // User id.
+        $courseid       = optional_param('course', SITEID, PARAM_INT); // course id (defaults to Site).
+        $sitename       = format_string($SITE->shortname, true, ['context' => \context_course::instance(SITEID), "escape" => false]);
+
+        // See your own profile by default.
+        if (empty($userid)) {
+            require_login();
+            $userid = $USER->id;
+        }
+
+        $user = \core_user::get_user($userid);
+
+        // edit profile button
+        $has_edit_button = false;
+
+        if ($is_admin || $USER->id == $userid) {
+            $useremail = $user->email;
+            $has_edit_button = true;
+        }
+
+        $edit_itens = array(
+            'id' => $userid,
+            'course' => $courseid,
+            'returnto' => 'profile'
+        );
+
+        if ($is_admin) {
+            $edit_url = new \moodle_url('/user/editadvanced.php', $edit_itens);
+        } else {
+            $edit_url = new \moodle_url('/user/edit.php', $edit_itens);
+        }
+
+        // My profile
+        $is_my_profile = $USER->id == $userid;
+
+        // Send message button
+        if ($USER->id != $userid) {
+
+            $message_url = new \moodle_url('/message/index.php', ['id' => $userid]);
+        }
+
+        $context = \context_course::instance($COURSE->id);
+
+        $myrolestr;
+        $myroles = get_user_roles($context, $userid, true);
+
+        if (empty($myroles)) {
+            $myrolestr = "";
+        } else {
+            foreach ($myroles as $myrole) {
+                $myrolestr[] = role_get_name($myrole, $context);
+            }
+            $myrolestr = implode(', ', $myrolestr);
+        }
+
+        // Get profile image and alternative text
+        $profile_picture = new \user_picture($user);
+        $profile_picture->size = 50;
+        $profile_picture_url = $profile_picture->get_url($PAGE)->out();
+        $profile_picture_alt = $user->imagealt;
+
+        $all_certificates = $this->get_user_certificates($userid);
+
+        $badges = $this->get_user_badges($userid);
 
         $categories = [];
         $categories_user = [];
@@ -259,7 +271,7 @@ class myprofile_renderer extends base_renderer {
             'hascertificates' => !empty($all_certificates),
             'certificates' => $all_certificates,
             'hasbadges' => !empty($badges),
-            'badges' => $badges_formated,
+            'badges' => $badges,
             'sitename' => $sitename,
             'output' => $OUTPUT,
             'sidepreblocks' => $blockshtml,
