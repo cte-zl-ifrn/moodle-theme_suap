@@ -106,17 +106,10 @@ $navbar = $OUTPUT->navbar();
 
 $isloggedin = isloggedin();
 $sitename = format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
-// $userid = $USER->id;
 
 //pega a preferencia no banco
 $getUserPreference = get_user_preferences('visual_preference');
 
-
-$courseid = optional_param('course', SITEID, PARAM_INT);
-
-if ($courseid != 1) {
-    $notCourseContextProfile = true;
-}
 
 include('_menu.php');
 
@@ -162,7 +155,6 @@ $templatecontext = [
     'theme_suap_items_user_menu_admin' => theme_suap_add_admin_items_user_menu(),
     'getUserPreference' => $getUserPreference,
     'is_my_profile' => $is_my_profile,
-    'not_course_context_profile' => $notCourseContextProfile,
     'contentbutton' => get_string('contentbutton', 'theme_suap'),
     'contentbuttonurl' => $CFG->wwwroot . '/course/view.php?id=' . $COURSE->id,
     'isactivecontentbutton' => theme_suap_is_contentbutton_active(),

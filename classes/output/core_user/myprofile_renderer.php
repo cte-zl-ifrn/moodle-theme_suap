@@ -245,7 +245,8 @@ class myprofile_renderer extends base_renderer {
             ];
 
         }
-        
+
+        $PAGE->requires->js_call_amd('theme_suap/messages', 'getConversation'); 
 
         $data = [
             'userfullname' => fullname($user),

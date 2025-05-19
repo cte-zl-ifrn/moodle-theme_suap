@@ -81,6 +81,17 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
         })
     }
 
+    var getConversation = function() {
+        var originalButton = document.getElementById('message-user-button');
+        var customButton = document.getElementById('suap-message-user-button');
+        if (originalButton && customButton) {
+            customButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                originalButton.click(); // simula o clique no botão nativo do Moodle
+            });
+        }
+    }
+
 
     /**
      * Render the messages in the overview page.
@@ -241,5 +252,6 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
     return {
         init: init,
         renderUnreadCount: renderUnreadCount,
+        getConversation: getConversation
     }
 });
