@@ -134,7 +134,6 @@ class myprofile_renderer extends base_renderer {
 
         global $DB, $CFG, $USER, $PAGE, $COURSE, $OUTPUT, $SITE;
 
-        $isloggedin = isloggedin();
         $is_admin = is_siteadmin($USER->id);
 
         $userid         = optional_param('id', 0, PARAM_INT); // User id.
@@ -235,7 +234,7 @@ class myprofile_renderer extends base_renderer {
                 if ($node->url) {
                     $url = $node->url->out();
                 } else {
-                    $url = false;
+                    continue; // sem url não entra na category
                 }
                 $text = $node->title;
 
@@ -248,7 +247,7 @@ class myprofile_renderer extends base_renderer {
             }
 
             if (empty($nodes)) {
-                continue;
+                continue; // sem nodes não vai para o mustache
             }
 
             $categories[] = [
@@ -272,39 +271,9 @@ class myprofile_renderer extends base_renderer {
             'certificates' => $all_certificates,
             'hasbadges' => !empty($badges),
             'badges' => $badges,
-            'sitename' => $sitename,
-            'output' => $OUTPUT,
-            'sidepreblocks' => $blockshtml,
-            'hasblocks' => $hasblocks,
-            'bodyattributes' => $bodyattributes,
-            'courseindexopen' => $courseindexopen,
-            'blockdraweropen' => $blockdraweropen,
-            'courseindex' => $courseindex,
-            'primarymoremenu' => $primarymenu['moremenu'],
-            'secondarymoremenu' => $secondarynavigation ?: false,
-            'mobileprimarynav' => $primarymenu['mobileprimarynav'],
-            'usermenu' => $primarymenu['user'],
-            'langmenu' => $primarymenu['lang'],
-            'logout' => $_logoutlink,
-            'forceblockdraweropen' => $forceblockdraweropen,
-            'regionmainsettingsmenu' => $regionmainsettingsmenu,
-            'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
-            'overflow' => $overflow,
-            'headercontent' => $headercontent,
-            'addblockbutton' => $addblockbutton,
-            'navbar' => $navbar,
             'useridprofile' => $userid,
-            'rolename' => $rolestr,
             'myrolename' => $myrolestr,
-            'isloggedin' => $isloggedin,
-            'is_admin' => $is_admin,
-            'userid' => $USER->id,
-            'theme_suap_items_user_menu_admin' => theme_suap_add_admin_items_user_menu(),
-            'getUserPreference' => $getUserPreference,
             'is_my_profile' => $is_my_profile,
-            'contentbutton' => get_string('contentbutton', 'theme_suap'),
-            'contentbuttonurl' => $CFG->wwwroot . '/course/view.php?id=' . $COURSE->id,
-            'isactivecontentbutton' => theme_suap_is_contentbutton_active(),
 
             'categories' => $categories,
             'categories_user' => $categories_user
