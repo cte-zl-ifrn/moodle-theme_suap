@@ -134,7 +134,6 @@ class myprofile_renderer extends base_renderer {
 
         global $DB, $CFG, $USER, $PAGE, $COURSE, $OUTPUT, $SITE;
 
-        $isloggedin = isloggedin();
         $is_admin = is_siteadmin($USER->id);
 
         $userid         = optional_param('id', 0, PARAM_INT); // User id.
