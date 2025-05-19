@@ -1,11 +1,27 @@
 .userprofile {
-    display: none;
+    .description, .page-context-header {
+        display: none !important;
+    }
 }
+#page-user-profile.course-1 {
+    #page-header {
+        margin-bottom: 1rem;
+    }
+    .page-context-header, .description {
+        display: none !important;
+    }
+}
+
 .profile-view-suap {
     .user-title {
         font: var(--font-heading2);
         color: var(--dark);
         margin-bottom: 1rem;
+    }
+    .user-title-sub {
+        font: var(--font-heading3);
+        margin-top: .5rem;
+        margin-bottom: .25rem;
     }
     p {
         font: var(--font-paragraph2);
@@ -28,7 +44,7 @@
         margin-bottom: 1rem;
         border: 1px solid var(--light-dark);
         border-radius: 1rem;
-        &.contact-container {
+        .contact-container {
             display: flex;
             gap: 1rem;
             img {
@@ -110,6 +126,103 @@
                 margin-bottom: 0px;
             }
         }
+
+        .profile-section-expand {
+            margin-top: .5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .profile-content {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                .card {
+                    flex: 1;
+                    min-width: 260px;
+                }
+            }
+            .toggle-section {
+                margin-top: .5rem;
+                width: fit-content;
+            }
+        }
+        
+    }
+
+    /* container do botão + menu */
+    .dropdown-accordion {
+      position: relative;
+      display: inline-block;
+
+        /* botão de três pontinhos */
+        .dropdown-btn {
+            height: 100%;
+            color: var(--dark);
+            background-color: var(--light);
+            border-radius: 1rem;
+            border: none;
+            padding: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+            &:hover, &[aria-expanded="true"] {
+                background-color: var(--light-dark);
+            }
+        }
+
+        /* dropdown absoluto */
+        .dropdown-menu {
+            display: none;              /* escondido por padrão */
+            position: absolute;
+            top: 100%;                  /* logo abaixo do botão */
+            right: 0;
+            background: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        /* estilo básico do menu */
+        .menu,
+        .submenu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu > li {
+            margin-bottom: 2px;
+            cursor: pointer;
+            padding: 10px;
+            position: relative;
+            a {
+                color: var(--dark);
+                text-decoration: none;
+            }
+        }
+
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .menu > li.open .submenu {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+        .menu > li .arrow {
+            float: right;
+            transition: transform 0.3s;
+        }
+        .menu > li.open .arrow {
+            transform: rotate(90deg);   
+        }
     }
 
     @include media-breakpoint-down(sm) {
@@ -117,7 +230,7 @@
             flex-direction: column;
         }
         .user-group-suap {
-            &.contact-container {
+            .contact-container {
                 gap: .5rem;
                 img {
                     height: 50px;

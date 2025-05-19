@@ -1,0 +1,115 @@
+<div class="profile-view-suap">
+    <div class="profile-header">
+        <h1 class="user-title">{{#str}}profile{{/str}}</h1>
+        <div class="profile-header-buttons">
+            <a id="suap-message-user-button"
+                class="btn btn-secondary drawer-toggler"
+                role="button"
+                data-drawer="drawer-messages"
+                data-conversationid="0"
+                data-userid="{{useridprofile}}"
+                href="#"
+                >
+                <i class="fa-regular fa-comment"></i>
+                {{#str}}message,core{{/str}}
+            </a>
+            {{#haseditbutton}}
+                <a class="btn btn-secondary" href="{{{editprofile}}}">
+                    <i class="fa-solid fa-pencil"></i>
+                    {{#str}}editmyprofile{{/str}}
+                </a>
+            {{/haseditbutton}}
+            {{> theme_suap/profile_dropdown}}
+        </div>
+    </div>
+    <div class="user-group-suap">
+        <div class="contact-container">
+            <img src="{{ userpictureurl }}" alt="{{userpicturealt}}">
+            <div class="user-contacts">
+                <h2 class="user-title">{{userfullname}}</h2>
+                <p class="user-role">{{ myrolename }}</p>
+                <span class="user-mail">{{ useremail }}</span>
+            </div>
+        </div>
+        {{> theme_suap/profile_section_expand}}
+    </div>
+
+    <div class="user-group-suap aboutme-container">
+        <h2 class="aboutme-title">{{#str}} aboutme, theme_suap {{/str}}</h2>
+        {{#userdescription}}
+            <p>{{{ userdescription }}}</p>
+        {{/userdescription}}
+        {{^userdescription}}
+            <p>
+            {{#is_my_profile}}
+                <i>{{#str}} describe_yourself,theme_suap {{/str}}</i>
+            {{/is_my_profile}}
+            {{^is_my_profile}}
+                    <i>{{#str}} no_description,theme_suap {{/str}}</i>
+            {{/is_my_profile}}
+            </p>
+        {{/userdescription}}
+    </div>
+
+    <div class="user-group-suap">
+        <h2 class="user-title">{{#str}} certificates, theme_suap {{/str}}</h2>
+        <div class="cert-container">
+            {{#hascertificates}}
+                {{#certificates}}
+                    <div class="cert-item">
+                        <img src="{{config.wwwroot}}/theme/suap/pix/cert-preview.png">
+                        <div class="cert-item-info">
+                            <h3>{{name}}</h3>
+                            <p class="issued-date">{{#str}} dateawarded, badges {{/str}}: {{datereceived}}</p>
+                            {{#is_my_profile}}
+                            <a class="btn btn-tertiary" target="_blank" href="{{{link}}}">Abrir</a>
+                            <a class="btn btn-tertiary" target="_blank" href="{{{linkedin_url}}}">Enviar para Linkedin</a>
+                            {{/is_my_profile}}
+                        </div>
+                    </div>
+                {{/certificates}}
+            {{/hascertificates}}
+            {{^hascertificates}}
+                <p>
+                {{#is_my_profile}}
+                    <i>{{#str}} no_your_certificates,theme_suap {{/str}}</i>
+                {{/is_my_profile}}
+                {{^is_my_profile}}
+                    <i>{{#str}} no_certificates,theme_suap {{/str}}</i>
+                {{/is_my_profile}}
+                </p>
+            {{/hascertificates}}
+        </div>
+    </div>
+
+    <div class="user-group-suap">
+        <h2 class="user-title">{{#str}} badges, badges {{/str}}</h2>
+        <div class="badges-container">
+            {{#hasbadges}}
+                {{#badges}}
+                    <div class="badge-item">
+                    <a title="{{name}}" href="{{link}}" class="">
+                        <img src="{{imageurl}}">
+                        <h3 class="badge-title text-center">{{name}}</h3>
+                    </a>
+                    {{#is_my_profile}}
+                    <br>
+                    <a class="btn btn-tertiary" target="_blank" href="{{{badgelink}}}">Enviar para Linkedin</a>
+                    {{/is_my_profile}}
+                    </div>
+                {{/badges}}
+            {{/hasbadges}}
+            {{^hasbadges}}
+                <p>
+                {{#is_my_profile}}
+                    <i> {{#str}} no_your_badges,theme_suap {{/str}}</i>
+                {{/is_my_profile}}
+                {{^is_my_profile}}
+                    <i>{{#str}} no_badges,theme_suap {{/str}}</i>
+                {{/is_my_profile}}
+                </p>
+            {{/hasbadges}}
+        </div>
+    </div>
+</div>
+

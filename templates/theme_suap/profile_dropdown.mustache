@@ -1,0 +1,24 @@
+<div class="dropdown-accordion">
+  <button class="dropdown-btn" aria-label="Abrir menu">
+    <i class="icon fa fa-ellipsis-v fa-fw m-0"></i>
+  </button>
+  <div class="dropdown-menu dropdown-menu-right">
+    <ul class="menu">
+      {{#categories}}
+      <li class="item-dropdown">
+        {{title}}
+        <i class="fa-solid fa-chevron-right arrow"></i>
+        {{#nodes}}
+          {{#first}}<ul class="submenu">{{/first}}
+            {{#url}}
+            <li class="dropdown-item">
+              <a href="{{{url}}}">{{text}}</a>
+            </li>
+            {{/url}}
+          {{#last}}</ul>{{/last}}
+        {{/nodes}}
+      </li>
+      {{/categories}}
+    </ul>
+  </div>
+</div>

@@ -61,10 +61,6 @@ $THEME->layouts = [
         'regions' => ['side-pre', 'content-pre', 'content-pos'],
         'defaultregion' => 'side-pre',
     ],
-    'mypublic' => [
-        'file' => 'mypublic.php',
-        'regions' => ['side-pre'], // , 'side-post'
-    ],
     'course' => [
         'file' => 'drawers.php',
         'regions' => ['side-pre', 'content', 'footerblock'],
