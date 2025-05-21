@@ -246,3 +246,25 @@
         }
     }
 }
+
+span.meta.d-flex.viewingas {
+    position: absolute;
+    margin-top: 27px;
+    font-size: 80%;
+    margin-left: -15px;
+    color: #ccc;
+}
+
+.counter-close span.meta.d-flex.viewingas {
+    display: none !important;
+}
+
+span.avatar.realuser {
+    position: absolute;
+    margin-top: -4px;
+    margin-left: -50px;
+}
+
+span.avatar.current {
+    margin-left: -25px;
+}
