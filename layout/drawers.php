@@ -82,10 +82,13 @@ if (!$courseindex) {
     $courseindexopen = false;
 }
 
+
+$pageType = $PAGE->pagetype;
+
 // Checar se está na página de enrol de curso
 $is_enrol_course_page = false;
 $enrolpage_and_guestuser = false;
-if ($PAGE->pagetype === 'enrol-index') {
+if ($pageType == 'enrol-index') {
     $is_enrol_course_page = true;
     $extraclasses[] = 'layout-width-expanded';
     $extraclasses[] = 'enrol-page';
@@ -93,6 +96,11 @@ if ($PAGE->pagetype === 'enrol-index') {
         $enrolpage_and_guestuser = true;
         $extraclasses[] = 'counteroff';
     }
+}
+
+// Se está no dashboard
+if($pageType == 'my-index') {
+    $extraclasses[] = 'layout-width-expanded';
 }
 
 $conf = get_config('theme_suap');

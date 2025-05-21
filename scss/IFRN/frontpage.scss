@@ -6,7 +6,7 @@ div[role="main"] {
     margin-right: 0 !important;
 }
 
-#page-site-index {
+#page-site-index, #page-my-index {
     .block-region {
         .card {
             background-color: transparent;
@@ -21,6 +21,12 @@ div[role="main"] {
         border: none;
     }
 } 
+
+#page-my-index {
+    .page-header-headings {
+        display: none;
+    }
+}
 
 .bg-green-gradient {
     background: var(--bg-green-gradient);
