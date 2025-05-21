@@ -138,3 +138,44 @@ $string['no_description_instructor'] = 'No instructor description available';
 // Setting layout navigation menu
 $string['layouttype'] = 'Always show top menu';
 $string['layouttype_desc'] = 'The top navigation menu is used in Moodle that are not integrated into the Painel AVA';
+
+
+
+$string['hero_title'] = 'hero_title';
+$string['hero_title_desc'] = 'hero_title_desc';
+$string['hero_subtitle'] = 'hero_subtitle';
+$string['hero_subtitle_desc'] = 'hero_subtitle_desc';
+
+$string['hero_first_column_number'] = 'hero_first_column_number';
+$string['hero_first_column_number_desc'] = 'hero_first_column_number_desc';
+$string['hero_first_column_description'] = 'hero_first_column_description';
+$string['hero_first_column_description_desc'] = 'hero_first_column_description_desc';
+$string['hero_first_column_text'] = 'hero_first_column_text';
+$string['hero_first_column_text_desc'] = 'hero_first_column_text_desc';
+
+$string['hero_second_column_number'] = 'hero_second_column_number';
+$string['hero_second_column_number_desc'] = 'hero_second_column_number_desc';
+$string['hero_second_column_description'] = 'hero_second_column_description';
+$string['hero_second_column_description_desc'] = 'hero_second_column_description_desc';
+$string['hero_second_column_text'] = 'hero_second_column_text';
+$string['hero_second_column_text_desc'] = 'hero_second_column_text_desc';
+
+$string['hero_third_column_number'] = 'hero_third_column_number';
+$string['hero_third_column_number_desc'] = 'hero_third_column_number_desc';
+$string['hero_third_column_description'] = 'hero_third_column_description';
+$string['hero_third_column_description_desc'] = 'hero_third_column_description_desc';
+$string['hero_third_column_text'] = 'hero_third_column_text';
+$string['hero_third_column_text_desc'] = 'hero_third_column_text_desc';
+
+$string['hero_fourth_column_number'] = 'hero_fourth_column_number';
+$string['hero_fourth_column_number_desc'] = 'hero_fourth_column_number_desc';
+$string['hero_fourth_column_description'] = 'hero_fourth_column_description';
+$string['hero_fourth_column_description_desc'] = 'hero_fourth_column_description_desc';
+$string['hero_fourth_column_text'] = 'hero_fourth_column_text';
+$string['hero_fourth_column_text_desc'] = 'hero_fourth_column_text_desc';
+
+$string['hero_button_text'] = 'hero_button_text';
+$string['hero_button_text_desc'] = 'hero_button_text_desc';
+$string['hero_button_url'] = 'hero_button_url';
+$string['hero_button_url_desc'] = 'hero_button_url_desc';
+$string['frontpage_main_courses_title_desc'] = 'frontpage_main_courses_title_desc';
