@@ -66,9 +66,10 @@
 <nav aria-label="{{#str}}breadcrumb, access{{/str}}">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="{{config.wwwroot}}?redirect=0">
-                <i  class="icon fa fa-home"></i>
-            </a>
+            <a href="{{config.wwwroot}}?redirect=0"><i class="icon fa fa-home"></i></a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="{{config.wwwroot}}/my/">Meus cursos</a>
         </li>
         {{#get_items}}
             {{#has_action}}
