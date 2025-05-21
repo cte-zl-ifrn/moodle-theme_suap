@@ -1,0 +1,47 @@
+.block-myoverview {
+    .dropdown-toggle {
+        font: var(--font-button2);
+        color: var(--dark);
+        background-color: var(--light);
+        border: none;
+        border-radius: 40px;
+        padding: .5rem 1rem;
+    }
+    .simplesearchform .form-control {
+        background-color: var(--light);
+        border: none;
+        border-radius: 40px !important;
+    }
+
+    .card {
+        background-color: var(--general-white);
+        border: 1px solid var(--light-dark);
+        box-shadow: 0px 0px 4px 1px #2B2B2B40;
+
+        .card-img-top {
+            min-height: 175px;
+        }
+
+        .coursestats {
+            gap: .5rem;
+        }
+        .coursecategory, [data-region="favourite-icon"] > .text-primary:not(.hidden) {
+            display: inline-block;
+            background-color: var(--success-light);
+            padding: .25rem .5rem; // 4px 8px
+            border-radius: 32px;
+            color: var(--success-dark);
+        }
+        .coursename {
+            font: var(--font-heading2);
+            color: var(--dark);
+        }
+    }
+    .card-body {
+        margin-top: 1rem;
+        margin-inline: 1rem;
+    }
+    .card-footer {
+        padding-inline: 1rem;
+    }
+}

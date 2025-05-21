@@ -8,7 +8,7 @@ div[role="main"] {
 
 #page-site-index, #page-my-index {
     .block-region {
-        .card {
+        > .card {
             background-color: transparent;
             border: none;
         }
