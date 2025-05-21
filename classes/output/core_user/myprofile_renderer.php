@@ -16,13 +16,19 @@ class myprofile_renderer extends base_renderer {
     public function get_user_certificates($userid) {
         global $DB;
 
+        $manager = $DB->get_manager();
+
         $all_certificates = array();
 
         // Get user certificates (plugin Course Certificates)
-        $tool_certificates = $DB->get_records('tool_certificate_issues', array('userid' => $userid));
+        if ($manager->table_exists('tool_certificate_issues')) {
+            $tool_certificates = $DB->get_records('tool_certificate_issues', array('userid' => $userid));
+        }
 
         // Get user certificates (plugin Custom certificates)
-        $custom_certificates = $DB->get_records('customcert_issues', array('userid' => $userid));
+        if ($manager->table_exists('customcert_issues')) {
+            $custom_certificates = $DB->get_records('customcert_issues', array('userid' => $userid));
+        }
 
         if (!empty($tool_certificates)) {
             foreach ($tool_certificates as $cert) {
