@@ -44,13 +44,13 @@
 
                 <div id="content-part2">
                     {{#courseindex}}
-                        <div class="drawer-toggler counter-option" data-drawer="drawer-index">
+                        <div class="drawer-toggler counter-option {{#indexDrawerOpen}}active-toggler{{/indexDrawerOpen}}" data-drawer="drawer-index">
                             <i class="fa-solid fa-align-left"></i>
                             <span class="counter-label">{{#str}} drawer_course_index, theme_suap {{/str}}</span>
                         </div>
                     {{/courseindex}}
                     {{#hasblocks}}   
-                        <div class="drawer-toggler counter-option" data-drawer="drawer-blocks">
+                        <div class="drawer-toggler counter-option {{#blocksDrawerOpen}}active-toggler{{/blocksDrawerOpen}}" data-drawer="drawer-blocks">
                             {{#pix}}i/icon-fa-solid-drawer, theme_suap{{/pix}}
                             <span class="counter-label">{{#str}} drawer_blocks, theme_suap, {{/str}}</span>
                         </div>
@@ -117,7 +117,7 @@
                 {{{ output.standard_after_main_region_html }}}
             </div>
 
-            <div class="drawer-content" id="drawer-index">
+            <div class="drawer-content {{#indexDrawerOpen}}active-drawer{{/indexDrawerOpen}}" id="drawer-index">
                 <div class="drawer-header">
                     <div class="drawer-header-info">
                         <i class="fa-solid fa-align-left"></i>
@@ -148,7 +148,8 @@
                 {{/courseindex}}                      
             </div>
 
-            <div class="drawer-content" id="drawer-blocks">
+            {{#hasblocks}}
+            <div class="drawer-content {{#blocksDrawerOpen}}active-drawer{{/blocksDrawerOpen}}" id="drawer-blocks">
                 <div class="drawer-header">
                     <div class="drawer-header-info">
                         {{#pix}}i/icon-fa-solid-drawer-black, theme_suap{{/pix}}
@@ -160,7 +161,6 @@
                         </a>
                     </div>
                 </div>
-                {{#hasblocks}}
                     {{< theme_boost/drawer }}
                         {{$id}}theme_boost-drawers-blocks{{/id}}
                         {{$drawerclasses}}drawer{{#blockdraweropen}} show{{/blockdraweropen}}{{/drawerclasses}}
@@ -177,8 +177,8 @@
                         {{$drawercloseonresize}}1{{/drawercloseonresize}}
                         {{$closebuttontext}}{{#str}}closeblockdrawer, core{{/str}}{{/closebuttontext}}
                     {{/ theme_boost/drawer}}
-                {{/hasblocks}}
             </div> 
+            {{/hasblocks}}
 
         </div>
     </div>

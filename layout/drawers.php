@@ -68,6 +68,15 @@ if ($counterClose) {
     $extraclasses[] = 'counter-close';
 }
 
+// Preferência sobre as gavetas
+$indexDrawerOpen = get_user_preferences('theme_suap_index_drawer_open');
+$blocksDrawerOpen = get_user_preferences('theme_suap_blocks_drawer_open');
+// var_dump($blocksDrawerOpen);
+// die;
+if ($indexDrawerOpen || $blocksDrawerOpen) {
+    $extraclasses[] = 'drawer-open';
+}
+
 if (isguestuser()) {
     $extraclasses[] = 'guestuser';
 }
@@ -192,5 +201,7 @@ $templatecontext = [
     'contentbutton' => get_string('contentbutton', 'theme_suap'),
     'contentbuttonurl' => $CFG->wwwroot . '/course/view.php?id=' . $COURSE->id,
     'isactivecontentbutton' => theme_suap_is_contentbutton_active(),
+    'indexDrawerOpen' => $indexDrawerOpen,
+    'blocksDrawerOpen' => $blocksDrawerOpen
 ];
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);
