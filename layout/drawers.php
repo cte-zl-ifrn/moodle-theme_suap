@@ -71,8 +71,6 @@ if ($counterClose) {
 // Preferência sobre as gavetas
 $indexDrawerOpen = get_user_preferences('theme_suap_index_drawer_open');
 $blocksDrawerOpen = get_user_preferences('theme_suap_blocks_drawer_open');
-// var_dump($blocksDrawerOpen);
-// die;
 if ($indexDrawerOpen || $blocksDrawerOpen) {
     $extraclasses[] = 'drawer-open';
 }

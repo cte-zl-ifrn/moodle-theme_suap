@@ -117,6 +117,7 @@
                 {{{ output.standard_after_main_region_html }}}
             </div>
 
+            {{#courseindex}}
             <div class="drawer-content {{#indexDrawerOpen}}active-drawer{{/indexDrawerOpen}}" id="drawer-index">
                 <div class="drawer-header">
                     <div class="drawer-header-info">
@@ -130,7 +131,6 @@
                         </a>
                     </div>
                 </div>
-                {{#courseindex}}
                     {{< theme_boost/drawer }}
                         {{$id}}theme_boost-drawers-courseindex{{/id}}
                         {{$drawerheadercontent}}
@@ -144,9 +144,9 @@
                         {{$drawerstate}}show-drawer-left{{/drawerstate}}
                         {{$tooltipplacement}}right{{/tooltipplacement}}
                         {{$closebuttontext}}{{#str}}closecourseindex, core{{/str}}{{/closebuttontext}}
-                    {{/ theme_boost/drawer}}
-                {{/courseindex}}                      
+                    {{/ theme_boost/drawer}}                     
             </div>
+            {{/courseindex}} 
 
             {{#hasblocks}}
             <div class="drawer-content {{#blocksDrawerOpen}}active-drawer{{/blocksDrawerOpen}}" id="drawer-blocks">

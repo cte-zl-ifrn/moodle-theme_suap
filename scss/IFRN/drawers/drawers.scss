@@ -1,3 +1,17 @@
+.drawer-open .drawer-content.active-drawer {
+    width: var(--drawer-open);
+}
+
+@include media-breakpoint-down(sm) {
+    .drawer-open .drawer-content.active-drawer {
+        width: 0;
+    }
+    .drawer-open-mobile .drawer-content.active-drawer {
+        width: var(--drawer-open);
+    }
+}
+
+
 .drawers {
     &.show-drawer-right {
         margin-right: 0 !important;
@@ -31,9 +45,6 @@
     .drawer {
         width: var(--drawer-open);
         height: auto;
-    }
-    .drawer-content.active-drawer {
-        width: var(--drawer-open);
     }
 
     .drawer-header {
