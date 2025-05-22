@@ -24,7 +24,7 @@
 
 define(["core_user/repository"], function (RepositoryUser) {
     const body = document.body;
-    const breakpointSM = 767.98;
+    const breakpointSM = 768;
     let backdrop = document.querySelector('[data-region="suap-backdrop"]');
 
     let drawers = document.querySelectorAll('.drawer-content');
@@ -35,6 +35,26 @@ define(["core_user/repository"], function (RepositoryUser) {
 
     const searchForm = document.querySelector(".searchform-js");
 
+    const preferenceCounter = 'theme_suap_counter_close';
+    const preferenceIndexDrawer = 'theme_suap_index_drawer_open';
+    const preferenceBlocksDrawer = 'theme_suap_blocks_drawer_open';
+
+    var setDrawerPreference = (drawerId) => {
+        if (!drawerId || !(drawerId === 'drawer-index' || drawerId === 'drawer-blocks')) {
+            RepositoryUser.setUserPreference(preferenceIndexDrawer, false);
+            RepositoryUser.setUserPreference(preferenceBlocksDrawer, false);
+            return;
+        }
+        if(drawerId === 'drawer-index') {
+            RepositoryUser.setUserPreference(preferenceIndexDrawer, true);
+            return;
+        }
+        if(drawerId === 'drawer-blocks') {
+            RepositoryUser.setUserPreference(preferenceBlocksDrawer, true);
+            return;
+        }
+    }
+
     //Abre gaveta clicada e fecha outras que estiverem abertas
     var openDrawer = (toggler) => {
         toggler.addEventListener("click", () => {
@@ -44,32 +64,43 @@ define(["core_user/repository"], function (RepositoryUser) {
             if (drawer.classList.contains('active-drawer')) { //close drawer
                 drawer.classList.remove('active-drawer');
                 toggler.classList.remove('active-toggler');
-                body.classList.remove('drawer-open');
+                if (window.innerWidth <= breakpointSM) {
+                    body.classList.remove('drawer-open-mobile')
+                } else {
+                    body.classList.remove('drawer-open');
+                }
+                setDrawerPreference(false);
             } else { //open drawer
                 closeAllDrawers(drawers, drawersToggler);
+                setDrawerPreference(drawerId);
                 drawer.classList.add('active-drawer');
                 toggler.classList.add('active-toggler');
-                body.classList.add('drawer-open');
-
+                
                 if (window.innerWidth <= breakpointSM) {
                     body.classList.remove('counter-open-mobile');
-                }
-
+                    body.classList.add('drawer-open-mobile');
+                } else {
+                    body.classList.add('drawer-open');
+                }          
             }
         });
     }
 
     var closeAllDrawers = function (drawers) {
-        body.classList.remove("drawer-open");
+        if (window.innerWidth <= breakpointSM) {
+            body.classList.remove("drawer-open-mobile");
+        } else {
+            body.classList.remove("drawer-open");
+        }
         drawers.forEach((drawer) => {
             drawer.classList.remove("active-drawer");
         });
         drawersToggler.forEach((toggler) => {
             toggler.classList.remove("active-toggler");
         });
+        setDrawerPreference(false);
     };
 
-    const preferenceCounter = 'theme_suap_counter_close';
 
     var init = function() {
 
@@ -92,12 +123,16 @@ define(["core_user/repository"], function (RepositoryUser) {
             });
         }
 
+        if(window.innerWidth <= breakpointSM) {
+            closeAllDrawers(drawers);
+        }
+
         // Caso o usuário diminua largura e esteja com counter e drawer abertas
         window.addEventListener('resize', function() {
             if(window.innerWidth <= breakpointSM && 
             !body.classList.contains('counter-close') && 
             body.classList.contains('drawer-open')) {
-                body.classList.add('counter-close')
+                body.classList.add('counter-close');
             }
         });
 
@@ -105,7 +140,7 @@ define(["core_user/repository"], function (RepositoryUser) {
         backdrop.addEventListener('click', function(e) {
             if(e.target === e.currentTarget) {
                 body.classList.remove('counter-open-mobile');
-                if (body.classList.contains('drawer-open')) {
+                if (body.classList.contains('drawer-open-mobile')) {
                     closeAllDrawers(drawers);
                 }
             }

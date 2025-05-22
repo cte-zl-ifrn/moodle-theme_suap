@@ -336,7 +336,7 @@ p {
         } 
     }
 
-    .drawer-open, .counter-open-mobile {
+    .drawer-open-mobile, .counter-open-mobile {
         overflow: hidden;
         & .suap-backdrop {
             height: 100vh;
@@ -345,13 +345,8 @@ p {
         }
     }
 
-    .page-suap {
-        margin-left: calc(var(--counter-close));
-    }
+    .page-suap, .drawer-open .page-suap,
     .counter-close.drawer-open .page-suap {
-        margin-left: calc(var(--counter-close));
-    }
-    .drawer-open .page-suap {
         margin-left: calc(var(--counter-close));
     }
 }

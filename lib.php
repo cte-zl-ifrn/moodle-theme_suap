@@ -92,7 +92,19 @@ function theme_suap_user_preferences(): array
             'null' => NULL_NOT_ALLOWED,
             'default' => false,
             'permissioncallback' => [core_user::class, 'is_current_user'],
-        ]
+        ],
+        'theme_suap_index_drawer_open' => [
+            'type' => PARAM_BOOL,
+            'null' => NULL_NOT_ALLOWED,
+            'default' => false,
+            'permissioncallback' => [core_user::class, 'is_current_user'],
+        ],
+        'theme_suap_blocks_drawer_open' => [
+            'type' => PARAM_BOOL,
+            'null' => NULL_NOT_ALLOWED,
+            'default' => false,
+            'permissioncallback' => [core_user::class, 'is_current_user'],
+        ],
 
     ];
 }
