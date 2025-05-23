@@ -32,11 +32,18 @@ function theme_suap_get_main_scss_content($theme)
 
     // Pre CSS - this is loaded AFTER any prescss from the setting but before the main scss.                                        
     $pre = file_get_contents($CFG->dirroot . '/theme/suap/scss/pre.scss');
+
+    // Pre SCSS customizado via interface
+    $precustom = !empty($theme->settings->rawscsspre) ? $theme->settings->rawscsspre : '';
+
     // Post CSS - this is loaded AFTER the main scss but before the extra scss from the setting.                                    
     $post = file_get_contents($CFG->dirroot . '/theme/suap/scss/post.scss');
 
+    // Post SCSS customizado via interface
+    $postcustom = !empty($theme->settings->rawscss) ? $theme->settings->rawscss : '';
+
     // Combine them together.                                                                                                       
-    return $pre . "\n" . $scss . "\n" . $post;
+    return $pre . "\n" . $precustom . "\n" . $scss . "\n" . $post . "\n" . $postcustom;
 }
 
 // Essa função é responsável por transformar uma configtextarea(label, link, icon, target e capabilities) em um objeto.
