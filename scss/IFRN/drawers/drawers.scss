@@ -103,7 +103,6 @@
                 display: flex;
                 align-items: center;
                 height: 1.5rem; //24px
-                // padding-inline: 8px;
                 color: var(--danger-dark );
                 background-color: var(--danger-light);
                 border-radius: 1rem;
@@ -159,6 +158,10 @@
                 color: var(--danger-light);
             }  
         }  
+    }
+
+    .dropdown-item {
+        white-space: normal;
     }
 
     // menu de usuário
