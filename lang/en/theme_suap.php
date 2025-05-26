@@ -43,6 +43,7 @@ $string['drawer_blocks'] = "Blocks";
 $string['drawer_user'] = "User menu";
 $string['allconversations'] = "All";
 $string['unreadmessages'] = "Unread";
+$string['user_preference_menu'] = "Menu at the bottom";
 
 // Frontpage aditional strings 
 $string['workload'] = 'Total hours';

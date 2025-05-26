@@ -133,6 +133,9 @@ p {
     &.active-toggler, &:hover {
         background-color: var(--primary-dark);
         color: var(--general-white);
+        .user-role {
+            color: var(--light-dark);
+        }
     }
     img {
         width: 40px;
