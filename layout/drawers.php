@@ -116,19 +116,35 @@ $frontpage_buttons_configtextarea = parse_configtextarea_string($conf->frontpage
 $frontpage_buttons_configtextarea_when_user_logged = parse_configtextarea_string($conf->frontpage_buttons_configtextarea_when_user_logged);
 
 
-$idnumber = trim($COURSE->idnumber ?? '');
+use core_course\customfield\course_handler;
 
-if($idnumber !== '') {
-    $regexShortname = '/^(\d+\.\d+\.\d+\.\w+)\.(\w+\.\d+)(#(\d+))?$/';
-    if (preg_match($regexShortname, $idnumber, $m)) {
-        $parts = [
-            $m[1],
-            $m[2],
-            !empty($m[3]) ? $m[3] : ''
-        ];
-        foreach ($parts as $part) {
-            // substitui tudo o que não for letra, número, _ ou - por underscore
-            $extraclasses[] = preg_replace('/[^a-zA-Z0-9_-]/', '_', $part);
+$handler = course_handler::create();
+$datas = $handler->get_instance_data($COURSE->id, true);
+
+$customfields_suap_shortnames = [
+    'campus_sigla',
+    'curso_codigo',
+    'turma_codigo',
+    'disciplina_sigla',
+    'curso_sala_coordenacao'
+];
+
+$custom_fields = [];
+
+foreach ($datas as $data) {
+    $shortname = $data->get_field()->get('shortname');
+    $valor = $data->get_value();
+
+    if (in_array($shortname, $customfields_suap_shortnames) && !empty($valor)) {
+        $custom_fields[$shortname] = $valor;
+
+        if ($shortname === 'curso_sala_coordenacao') {
+            if (mb_strtolower(trim($valor)) === 'sim') {
+                $extraclasses[] = 'curso_sala_coordenacao';
+            }
+        } else {
+            $classe = $shortname . '_' . preg_replace('/[^a-zA-Z0-9_-]/', '_', $valor);
+            $extraclasses[] = $classe;
         }
     }
 }
