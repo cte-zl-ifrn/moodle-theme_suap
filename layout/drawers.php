@@ -115,6 +115,25 @@ $conf = get_config('theme_suap');
 $frontpage_buttons_configtextarea = parse_configtextarea_string($conf->frontpage_buttons_configtextarea);
 $frontpage_buttons_configtextarea_when_user_logged = parse_configtextarea_string($conf->frontpage_buttons_configtextarea_when_user_logged);
 
+
+$idnumber = trim($COURSE->idnumber ?? '');
+
+if($idnumber !== '') {
+    $regexShortname = '/^(\d+\.\d+\.\d+\.\w+)\.(\w+\.\d+)(#(\d+))?$/';
+    if (preg_match($regexShortname, $idnumber, $m)) {
+        $parts = [
+            $m[1],
+            $m[2],
+            !empty($m[3]) ? $m[3] : ''
+        ];
+        foreach ($parts as $part) {
+            // substitui tudo o que não for letra, número, _ ou - por underscore
+            $extraclasses[] = preg_replace('/[^a-zA-Z0-9_-]/', '_', $part);
+        }
+    }
+}
+
+
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
 $forceblockdraweropen = $OUTPUT->firstview_fakeblocks();
 
