@@ -97,8 +97,26 @@ define(['jquery', 'core/templates', 'core/notification', 'message_popup/notifica
         if (initial) {
             allMessages.innerHTML = '';
         }
-        data.notloading = true;
 
+        const newCount = data.notifications.length;
+        const alreadyHasItems = allMessages.children.length > 0;
+
+        // Se não vier nada novo...
+        if (newCount === 0) {
+            // ...e já tinha itens, não faz nada
+            if (alreadyHasItems) {
+                return;
+            }
+            // ...e não tinha itens, mostra “sem notificações”
+            Templates.renderForPromise('theme_suap/notification_list', { notifications: [], notloading: true })
+                .then(({ html, js }) => {
+                    Templates.appendNodeContents(allMessages, html, js);
+                }).catch((error) => displayException(error));
+            return;
+        }
+
+
+        data.notloading = true;
         Templates.renderForPromise('theme_suap/notification_list', data)
         .then(({html, js}) => {
             Templates.appendNodeContents(allMessages, html, js);
