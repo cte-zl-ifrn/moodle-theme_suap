@@ -6,6 +6,13 @@ p {
     font: var(--font-paragraph1);
 }
 
+a {
+  color: var(--primary);
+}
+a:hover {
+  color: var(--primary-dark);
+}
+
 #region-main {
     background-color: transparent;
 }
@@ -380,6 +387,15 @@ p {
 
 .custom-control-label::before{
     border: 2px solid var(--primary)
+}
+
+.btn.btn-icon.icons-collapse-expand {
+    color: var(--secondary);
+    background-color: var(--secondary-light);
+    &.collapsed {
+        color: var(--dark);
+        background-color: var(--light);
+    }
 }
 
 .btn-icon-text {
