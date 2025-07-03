@@ -29,23 +29,24 @@ define(["jquery", "core_user/repository"], function ($, Repository) {
         const countcontent = document.querySelector("#counter-content");
         const preferenceName = "visual_preference";
 
-        var settingsvisual = document.getElementById('settingsvisual').outerHTML;
-        document.querySelector('[aria-labelledby="carousel-item-title-user-preference"]').insertAdjacentHTML("beforeBegin", settingsvisual);
-        document.getElementById('settingsvisual').remove();
+        const preferCounter = document.getElementById("preferCounter");
+        const preferCounterTitle = document.getElementById("preferCounterTitle");
 
         document
-            .getElementById("preferVisual")
+            .getElementById("preferCounter")
             .addEventListener("change", function () {
                 if (this.checked) {
                     //se estiver selecionado, adiciona as classes e salva no banco de dados
                     contentpart1.classList.add("content-original");
                     countcontent.classList.add("content-reverse");
+                    preferCounterTitle.innerText = "Ativado";
 
                     // Salvar a preferência
                     Repository.setUserPreference(preferenceName, true);
                 } else {
                     contentpart1.classList.remove("content-original");
                     countcontent.classList.remove("content-reverse");
+                    preferCounterTitle.innerText = "Desativado";
 
                     // Salvar a preferência
                     Repository.setUserPreference(preferenceName, false);
@@ -54,12 +55,16 @@ define(["jquery", "core_user/repository"], function ($, Repository) {
 
         Repository.getUserPreference(preferenceName).then(function (result) {
             //recupera o valor de user preference salva no banco
-            let getUserPreference = result;
+            let preferenceCounter = result;
 
-            if (getUserPreference === "1") {
-                document.getElementById("preferVisual").checked = true;
-            } else {
-                document.getElementById("preferVisual").checked = false;
+            console.log(preferenceCounter);
+
+            if (preferenceCounter === "1") {
+                preferCounter.checked = true;
+                preferCounterTitle.innerText = 'Ativado';
+            } else {                
+                preferCounter.checked = false;
+                preferCounterTitle.innerText = 'Desativado';
             }
         });
 

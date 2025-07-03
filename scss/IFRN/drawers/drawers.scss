@@ -191,6 +191,18 @@
     }
     #settingsvisual {
         padding-bottom: .5rem;
+        .prefer-counter-title {
+            font: var(--font-heading3);
+        }
+        .custom-control.custom-switch {
+            display: flex;
+            align-items: center;
+            margin-top: .5rem;
+            font: var(--font-heading5);
+            input, label {
+                cursor: pointer;
+            }
+        }
     }
 }
 
