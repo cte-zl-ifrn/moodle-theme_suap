@@ -98,7 +98,7 @@ if (
     $viewNavbar = true;
 }
 // pega a preferencia no banco
-$getUserPreference = get_user_preferences('visual_preference');
+$preferenceCounter = get_user_preferences('visual_preference');
 
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
 
@@ -160,7 +160,7 @@ $templatecontext = [
     'frontpage_buttons_configtextarea_when_user_logged' => $frontpage_buttons_configtextarea_when_user_logged,
     'learningpaths' => $learningpaths,
     'viewnavbar' => $viewNavbar,
-    'getUserPreference' => $getUserPreference,
+    'preferenceCounter' => $preferenceCounter,
     'loggedin_and_notguestuser' => isloggedin() && !isguestuser(),
 
     'footer_title' => $conf->footer_title,

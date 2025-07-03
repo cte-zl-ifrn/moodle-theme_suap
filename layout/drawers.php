@@ -182,7 +182,7 @@ $is_admin = is_siteadmin($USER->id);
 $userid = $USER->id;
 
 // pega a preferencia no banco
-$getUserPreference = get_user_preferences('visual_preference');
+$preferenceCounter = get_user_preferences('visual_preference');
 
 // região de blocos apenas na página inicial dos cursos
 if ($PAGE->pagelayout == 'course') {
@@ -222,7 +222,7 @@ $templatecontext = [
     'isguestuser' => isguestuser(),
     'is_admin' => $is_admin,
     'theme_suap_items_user_menu_admin' => theme_suap_add_admin_items_user_menu(),
-    'getUserPreference' => $getUserPreference,
+    'preferenceCounter' => $preferenceCounter,
     'isenrolpage' => $is_enrol_course_page,
     'enrolpage_and_guestuser' => $enrolpage_and_guestuser,
     'frontpage_buttons_configtextarea' => $frontpage_buttons_configtextarea,
