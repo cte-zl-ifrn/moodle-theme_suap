@@ -372,6 +372,10 @@ a:hover {
     max-width: var(--max-width-layout-expanded);
 }
 
+.course-1.pagelayout-admin .max-width-suap {
+    max-width: none;
+}
+
 .secondary-navigation .navigation {
     padding: 0px;
     margin-inline: 0px;
