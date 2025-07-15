@@ -1,0 +1,12 @@
+.modal-dialog {
+    .modal-content {
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .modal-header, .modal-body, .modal-footer {
+        padding: 0px;
+    }
+}
+span[data-flexitour="container"][x-placement="right-start"] div[data-role="arrow"] {
+    margin-top: -1.3rem;
+}
