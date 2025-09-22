@@ -149,9 +149,11 @@ define(['jquery', 'core/templates', 'core/notification', 'message_popup/notifica
                         let openData = {
                             "shortenedsubject": notificationData.shortenedsubject,
                             "timecreatedpretty": notificationData.timecreatedpretty,
-                            "text": notificationData.text,
+                            "fullmessagehtml": notificationData.fullmessagehtml,
                             "contexturlname": notificationData.contexturlname,
-                            "contexturl": notificationData.contexturl.replace(/\\\//g, '/').replace(/&amp;/g, '&'),
+                            "contexturl": notificationData.contexturl
+                                ? notificationData.contexturl.replace(/\\\//g, '/').replace(/&amp;/g, '&')
+                                : '',
                         }
 
                         Templates.renderForPromise('theme_suap/notification_full', openData)
