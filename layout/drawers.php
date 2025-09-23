@@ -235,6 +235,29 @@ $templatecontext = [
     'contentbuttonurl' => $CFG->wwwroot . '/course/view.php?id=' . $COURSE->id,
     'isactivecontentbutton' => theme_suap_is_contentbutton_active(),
     'indexDrawerOpen' => $indexDrawerOpen,
-    'blocksDrawerOpen' => $blocksDrawerOpen
+    'blocksDrawerOpen' => $blocksDrawerOpen,
+
+    'footer_title' => $conf->footer_title,
+    'footer_support_button' => $conf->footer_support_button,
+    'footer_support_button_url' => $conf->footer_support_button_url,
+    'footer_social_media_text' => $conf->footer_social_media_text,
+    'footer_social_media_facebook' => $conf->footer_social_media_facebook,
+    'footer_social_media_instagram' => $conf->footer_social_media_instagram,
+    'footer_social_media_youtube' => $conf->footer_social_media_youtube,
+
+    'footer_social_media_icon_1' => $social_icon1_url,
+    'footer_social_media_icon_2' => $social_icon2_url,
+    'footer_social_media_icon_1_alt' => $conf->footer_social_media_icon_1_alt,
+    'footer_social_media_icon_2_alt' => $conf->footer_social_media_icon_2_alt,
+
+    'footer_map_list' => $conf->footer_map_list,
+
+    'footer_credits_text' => $conf->footer_credits_text,
+    'footer_credits_first_link' => $conf->footer_credits_first_link,
+    'footer_credits_second_link' => $conf->footer_credits_second_link,
+    'footer_credits_first_link_url' => $conf->footer_credits_first_link_url,
+    'footer_credits_second_link_url' => $conf->footer_credits_second_link_url,
+    'footer_credits_first_link_new_window' => $conf->footer_credits_first_link_new_window,
+    'footer_credits_second_link_new_window' => $conf->footer_credits_second_link_new_window,
 ];
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);
