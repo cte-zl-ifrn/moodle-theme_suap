@@ -93,6 +93,7 @@
                 &:hover, &:focus {
                     color: var(--primary);
                     background-color: var(--primary-light);
+                    text-decoration: none;
                 }
                 .badge {
                     background-color: var(--secondary-dark);

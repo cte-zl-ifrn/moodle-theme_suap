@@ -108,6 +108,10 @@ a:hover {
         width: var(--counter-close);
         .counter-toggler {
             background-color: transparent;
+            transition: all 0.2s ease-in;
+            &:hover {
+                background-color: var(--primary-dark);
+            }
         }
         .counter-option {
             justify-content: center;
@@ -177,6 +181,12 @@ a:hover {
     background-color: transparent;
     box-shadow: none;
     padding: 0;
+    border-radius: 5rem;
+    border: 2px solid transparent;
+    transition: all 0.2s ease-in;
+    &:hover, &.active-toggler {
+        border: 2px solid var(--primary-dark);
+    }
 }
 
 .counter .simplesearchform {
@@ -195,6 +205,9 @@ a:hover {
         color: var(--general-white);
         font: var(--font-paragraph2);
         padding-left: .5rem;
+        &:focus {
+            box-shadow: none;
+        }
         &::placeholder {
             color: var(--general-white);
         }
@@ -206,6 +219,11 @@ a:hover {
     }
 }
 .counter-close .counter .simplesearchform {
+    border-radius: 2rem;
+    transition: all 0.2s ease-in;
+    &:hover {
+        background-color: var(--primary-dark);
+    }
     .searchform-navbar {
         justify-content: center;
     }
@@ -214,7 +232,6 @@ a:hover {
         width: auto;
     }
     .form-control {
-        // display: none;
         position: absolute;
         opacity: 0;
     }
