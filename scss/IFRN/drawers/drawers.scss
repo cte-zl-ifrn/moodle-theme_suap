@@ -141,6 +141,7 @@
             font: var(--font-button2);
             color: var(--dark);
             border-radius: 2rem;
+            transition: all 0.2s ease-in-out;
             &:hover {
                 background-color: var(--light);
             }
@@ -163,6 +164,9 @@
 
     .dropdown-item {
         white-space: normal;
+        &:active {
+            background-color: var(--light);
+        }
     }
 
     // menu de usuário
