@@ -1,0 +1,35 @@
+#page .block_completion_progress {
+    .progressBarCell {
+        height: 1rem;
+        border-left: var(--general-white) 2px solid;
+
+        &.futureNotCompleted {
+            background-color: var(--secondary-light);
+        }
+        &.submittedNotComplete {
+            background-color: var(--warning);
+        }
+        &.completed {
+            background-color: var(--success);
+        }
+        &:first-of-type {
+            border-top-left-radius: 100px;
+            border-bottom-left-radius: 100px;
+        }
+        &:last-of-type {
+            border-top-right-radius: 100px;
+            border-bottom-right-radius: 100px;
+        }
+        .nowDiv {
+            top: -150%;
+        }
+    }
+
+    .progressEventInfo {
+        background-color: var(--light-lighter);
+        margin-top: 0.5rem;
+        padding: .25rem .5rem;
+        border-radius: .5rem;
+        max-width: 200px;
+    }
+}
