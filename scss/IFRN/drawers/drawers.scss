@@ -163,6 +163,9 @@
 
     .dropdown-item {
         white-space: normal;
+        &:active {
+            background-color: var(--light);
+        }
     }
 
     // menu de usuário
