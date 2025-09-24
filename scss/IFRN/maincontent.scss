@@ -1,0 +1,19 @@
+.course-content {
+    position: relative;
+    margin-top: 2.5rem;
+
+    #collapsesections {
+        position: absolute;
+        top: -2.5rem;
+        padding: .5rem 1rem;
+        border-radius: 30px;
+        font: var(--font-button3);
+        background-color: var(--light);
+        transition: background-color .3s ease-in;
+        color: var(--dark);
+        &:hover {
+            background-color: var(--light-dark);
+            text-decoration: none;
+        }
+    }
+}
