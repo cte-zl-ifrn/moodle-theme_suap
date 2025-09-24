@@ -1,3 +1,8 @@
+.drawer-open .modal-backdrop.show {
+    height: 0;
+    width: 0;
+}
+
 .drawers [data-region="right-hand-drawer"].drawer  {
 
     position: static;
