@@ -385,6 +385,10 @@ a:hover {
     margin-right: auto;
 }
 
+.path-mod-h5pactivity .max-width-suap, #page-contentbank .max-width-suap {
+    max-width: var(--max-width-layout-expanded);
+}
+
 .layout-width-expanded .max-width-suap {
     max-width: var(--max-width-layout-expanded);
 }
