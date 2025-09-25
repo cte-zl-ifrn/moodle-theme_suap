@@ -177,15 +177,29 @@ a:hover {
     }
 }
 .counter-close #user-toggler {
+    flex-direction: column-reverse;
+    text-align: center;
     justify-content: center;
     background-color: transparent;
     box-shadow: none;
     padding: 0;
-    border-radius: 5rem;
-    border: 2px solid transparent;
-    transition: all 0.2s ease-in;
-    &:hover, &.active-toggler {
+    .avatars {
+        border-radius: 5rem;
+        border: 2px solid transparent;
+        transition: all 0.2s ease-in;
+        width: 100%;
+        position: relative;
+        .avatar.current {
+            margin-left: 0;
+        }
+    }
+    .avatars:hover, &.active-toggler .avatars {
         border: 2px solid var(--primary-dark);
+    }
+    .usertext {
+        font: var(--font-heading6);
+        margin-right: 0 !important;
+        color: var(--general-white);
     }
 }
 
