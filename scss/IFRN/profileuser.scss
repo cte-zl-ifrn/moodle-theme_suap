@@ -251,6 +251,10 @@
     }
 }
 
+.counter-close .viewingas {
+    display: none !important;
+}
+
 .userloggedinas {
     & span.meta.d-flex.viewingas {
         position: absolute;
@@ -260,16 +264,12 @@
         color: #ccc;
     }
     
-    & .counter-close span.meta.d-flex.viewingas {
-        display: none !important;
-    }
-    
     & span.avatar.realuser {
         position: absolute;
         margin-top: -4px;
         margin-left: -40px;
         & .userinitials {
-            border: 1px dotted darkred;
+            border: 1px solid var(--light-dark);
         }   
     }
     
