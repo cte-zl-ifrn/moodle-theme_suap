@@ -245,10 +245,10 @@ $templatecontext = [
     'footer_social_media_instagram' => $conf->footer_social_media_instagram,
     'footer_social_media_youtube' => $conf->footer_social_media_youtube,
 
-    'footer_social_media_icon_1' => $social_icon1_url,
-    'footer_social_media_icon_2' => $social_icon2_url,
-    'footer_social_media_icon_1_alt' => $conf->footer_social_media_icon_1_alt,
-    'footer_social_media_icon_2_alt' => $conf->footer_social_media_icon_2_alt,
+    'footer_social_media_icon_1' => $conf->social_icon1_url ?? '',
+    'footer_social_media_icon_2' => $conf->social_icon2_url ?? '',
+    'footer_social_media_icon_1_alt' => $conf->footer_social_media_icon_1_alt ?? '',
+    'footer_social_media_icon_2_alt' => $conf->footer_social_media_icon_2_alt ?? '',
 
     'footer_map_list' => $conf->footer_map_list,
 
