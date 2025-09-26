@@ -59,7 +59,7 @@ $THEME->layouts = [
     'frontpage' => [
         'file' => 'frontpage.php',
         'regions' => ['side-pre', 'content-pre', 'content-pos'],
-        'defaultregion' => 'side-pre',
+        'defaultregion' => 'content-pre',
     ],
     'course' => [
         'file' => 'drawers.php',
