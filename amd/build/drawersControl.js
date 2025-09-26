@@ -40,19 +40,23 @@ define(["core_user/repository"], function (RepositoryUser) {
     const preferenceBlocksDrawer = 'theme_suap_blocks_drawer_open';
 
     var setDrawerPreference = (drawerId) => {
-        if (!drawerId || !(drawerId === 'drawer-index' || drawerId === 'drawer-blocks')) {
-            RepositoryUser.setUserPreference(preferenceIndexDrawer, false);
+        if (drawerId === 'drawer-index') {
+            RepositoryUser.setUserPreference(preferenceIndexDrawer, true);
             RepositoryUser.setUserPreference(preferenceBlocksDrawer, false);
             return;
         }
-        if(drawerId === 'drawer-index') {
-            RepositoryUser.setUserPreference(preferenceIndexDrawer, true);
-            return;
-        }
-        if(drawerId === 'drawer-blocks') {
+        if (drawerId === 'drawer-blocks') {
             RepositoryUser.setUserPreference(preferenceBlocksDrawer, true);
+            RepositoryUser.setUserPreference(preferenceIndexDrawer, false);
             return;
         }
+
+        clearDrawerPreference();
+    }
+
+    var clearDrawerPreference = () => {
+        RepositoryUser.setUserPreference(preferenceIndexDrawer, false);
+        RepositoryUser.setUserPreference(preferenceBlocksDrawer, false);
     }
 
     //Abre gaveta clicada e fecha outras que estiverem abertas
@@ -64,12 +68,14 @@ define(["core_user/repository"], function (RepositoryUser) {
             if (drawer.classList.contains('active-drawer')) { //close drawer
                 drawer.classList.remove('active-drawer');
                 toggler.classList.remove('active-toggler');
+
                 if (window.innerWidth <= breakpointSM) {
                     body.classList.remove('drawer-open-mobile')
                 } else {
                     body.classList.remove('drawer-open');
                 }
-                setDrawerPreference(false);
+
+                clearDrawerPreference();
             } else { //open drawer
                 closeAllDrawers(drawers, drawersToggler);
                 setDrawerPreference(drawerId);
@@ -98,7 +104,42 @@ define(["core_user/repository"], function (RepositoryUser) {
         drawersToggler.forEach((toggler) => {
             toggler.classList.remove("active-toggler");
         });
-        setDrawerPreference(false);
+    };
+
+    /**
+     * Abre automaticamente a gaveta de blocos na primeira página de um módulo específico.
+     * @param {string} path Substring do pathname para identificar o módulo (ex: 'attempt.php')
+     * @param {string} pageParam Nome do parâmetro que indica a página (ex: 'page', 'chapterid')
+     */
+    var openBlocksOnFirstPage = function(path, pageParam) {
+        if (!window.location.pathname.includes(path)) {
+            return;
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const isFirstPage = !params.has(pageParam);
+
+        if (!isFirstPage) {
+            return;
+        }
+
+        const blocksDrawer = document.getElementById('drawer-blocks');
+        const blocksToggler = document.querySelector('[data-drawer="drawer-blocks"]');
+
+        if (blocksDrawer && blocksToggler) {
+            closeAllDrawers(drawers, drawersToggler);
+
+            blocksDrawer.classList.add('active-drawer');
+            blocksToggler.classList.add('active-toggler');
+
+            if (window.innerWidth <= breakpointSM) {
+                body.classList.add('drawer-open-mobile');
+            } else {
+                body.classList.add('drawer-open');
+            }
+
+            setDrawerPreference('drawer-blocks');
+        }
     };
 
 
@@ -177,8 +218,16 @@ define(["core_user/repository"], function (RepositoryUser) {
             button.addEventListener("click", (e) => {
                 e.preventDefault();
                 closeAllDrawers(drawers, drawersToggler);
+                clearDrawerPreference();
             });
         });
+
+        // Para questionário
+        openBlocksOnFirstPage('/mod/quiz/attempt.php', 'page');
+
+        // Para livro
+        openBlocksOnFirstPage('/mod/book/view.php', 'chapterid');
+
     };
 
     return {

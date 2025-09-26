@@ -68,25 +68,30 @@ if ($counterClose) {
     $extraclasses[] = 'counter-close';
 }
 
-// Preferência sobre as gavetas
-$indexDrawerOpen = get_user_preferences('theme_suap_index_drawer_open');
-$blocksDrawerOpen = get_user_preferences('theme_suap_blocks_drawer_open');
-if ($indexDrawerOpen || $blocksDrawerOpen) {
-    $extraclasses[] = 'drawer-open';
-}
+// Pega as preferências do usuário
+$courseindexopen = get_user_preferences('theme_suap_index_drawer_open');
+$blockdraweropen = get_user_preferences('theme_suap_blocks_drawer_open');
 
-if (isguestuser()) {
-    $extraclasses[] = 'guestuser';
-}
-
+// Verifica se a gaveta de blocos existe
 $blockshtml = $OUTPUT->blocks('side-pre');
 $hasblocks = (strpos($blockshtml, 'data-block=') !== false || !empty($addblockbutton));
 if (!$hasblocks) {
     $blockdraweropen = false;
 }
+
+// Verifica se o índice do curso existe
 $courseindex = core_course_drawer();
 if (!$courseindex) {
     $courseindexopen = false;
+}
+
+// Adiciona a classe drawer-open apenas se alguma gaveta existir
+if ($courseindexopen || $blockdraweropen) {
+    $extraclasses[] = 'drawer-open';
+}
+
+if (isguestuser()) {
+    $extraclasses[] = 'guestuser';
 }
 
 
@@ -234,8 +239,6 @@ $templatecontext = [
     'contentbutton' => get_string('contentbutton', 'theme_suap'),
     'contentbuttonurl' => $CFG->wwwroot . '/course/view.php?id=' . $COURSE->id,
     'isactivecontentbutton' => theme_suap_is_contentbutton_active(),
-    'indexDrawerOpen' => $indexDrawerOpen,
-    'blocksDrawerOpen' => $blocksDrawerOpen,
 
     'footer_title' => $conf->footer_title,
     'footer_support_button' => $conf->footer_support_button,
