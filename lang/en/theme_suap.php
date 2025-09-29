@@ -44,7 +44,16 @@ $string['drawer_user'] = "User menu";
 $string['allconversations'] = "All";
 $string['unreadmessages'] = "Unread";
 $string['user_preference_menu'] = "Menu at the bottom";
+
 $string['accessibility'] = "Accessibility";
+$string['dyslexia_friendly'] = "Dyslexia friendly font";
+$string['align_left'] = "Align text to the left";
+$string['highlight_links'] = "Highlight links";
+$string['stop_animations'] = "Stop animations";
+$string['hide_illustrative_images'] = "Hide illustrative images";
+$string['increase_cursor_size'] = "Increase cursor size";
+$string['enable_vlibras'] = "Enable VLibras";
+$string['high_line_height'] = "High line height";
 
 // Frontpage aditional strings 
 $string['workload'] = 'Total hours';
