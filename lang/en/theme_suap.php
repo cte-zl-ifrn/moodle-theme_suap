@@ -44,6 +44,7 @@ $string['drawer_user'] = "User menu";
 $string['allconversations'] = "All";
 $string['unreadmessages'] = "Unread";
 $string['user_preference_menu'] = "Menu at the bottom";
+$string['accessibility'] = "Accessibility";
 
 // Frontpage aditional strings 
 $string['workload'] = 'Total hours';
