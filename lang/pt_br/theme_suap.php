@@ -46,7 +46,7 @@ $string['unreadmessages'] = "Não lidas";
 $string['user_preference_menu'] = "Menu na parte inferior";
 
 $string['accessibility'] = "Acessibilidade";
-$string['dyslexia_friendly'] = "Fonte amigável para disléxicos";
+$string['dyslexia_friendly'] = "Fonte amigável a disléxicos";
 $string['align_left'] = "Alinhar texto à esquerda";
 $string['highlight_links'] = "Destacar links";
 $string['stop_animations'] = "Parar animações";

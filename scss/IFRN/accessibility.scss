@@ -35,6 +35,13 @@ input[type="radio"]:checked + .radio-label {
     font-style: italic;
 }
 
+#drawer-accessibility .drawer-body {
+    height: calc(100vh - 189px);
+    width: var(--drawer-open);
+    overflow-y: auto;
+    position: relative;
+}
+
 .accessiblity-options {
   display: flex;
   flex-direction: column;

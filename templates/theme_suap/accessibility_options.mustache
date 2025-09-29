@@ -1,11 +1,10 @@
 <div class="accessiblity-options">
+
         <div class="custom-checkbox-access">
             <input
                 type="checkbox" 
-                v-model="preferences.dyslexia_font"
                 class="checkbox-access-input" 
                 id="dyslexia-friendly"
-                @change="togglePreference('dyslexia_font', 'enabled', $event.target.checked)"
             >
             <label class="checkbox-access-label" for="dyslexia-friendly" alt="OpenDyslexic, Dyslexie, Lexend">
                 <span class="label-container">
@@ -160,3 +159,7 @@
             </button>
         </div>
 </div>
+
+{{#js}}
+    require(['theme_suap/accessibility'], (module) => module.init());
+{{/js}}
