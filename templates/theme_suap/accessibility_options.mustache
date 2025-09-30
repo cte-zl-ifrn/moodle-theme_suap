@@ -4,9 +4,9 @@
             <input
                 type="checkbox" 
                 class="checkbox-access-input" 
-                id="dyslexia-friendly"
+                id="dyslexia_friendly"
             >
-            <label class="checkbox-access-label" for="dyslexia-friendly" alt="OpenDyslexic, Dyslexie, Lexend">
+            <label class="checkbox-access-label" for="dyslexia_friendly" alt="OpenDyslexic, Dyslexie, Lexend">
                 <span class="label-container">
                     <svg class="icon-id" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
                         <path fill="#2B2B2B"
@@ -23,10 +23,10 @@
                 type="checkbox" 
                 v-model="preferences.remove_justify_align"
                 class="checkbox-access-input" 
-                id="remove-justify"
+                id="remove_justify"
                 @change="togglePreference('remove_justify_align', 'enabled', $event.target.checked)"
             >
-            <label class="checkbox-access-label" for="remove-justify">
+            <label class="checkbox-access-label" for="remove_justify">
                 <span class="label-container">
                     <i class="fa-solid fa-align-left icon-id"></i>
                     {{#str}} align_left, theme_suap {{/str}}
@@ -40,9 +40,9 @@
                 type="checkbox" 
                 v-model="preferences.highlight_links"
                 class="checkbox-access-input"
-                id="highlight-links" 
+                id="highlight_links" 
                 @change="togglePreference('highlight_links', 'enabled', $event.target.checked)">
-            <label class="checkbox-access-label" for="highlight-links">
+            <label class="checkbox-access-label" for="highlight_links">
                 <span class="label-container">
                     <i class="fa-solid fa-highlighter icon-id"></i>
                    {{#str}} highlight_links, theme_suap {{/str}}
@@ -56,9 +56,9 @@
                 type="checkbox" 
                 v-model="preferences.stop_animations"
                 class="checkbox-access-input"
-                id="stop-animations" 
+                id="stop_animations" 
                 @change="togglePreference('stop_animations', 'enabled', $event.target.checked)">
-            <label class="checkbox-access-label" for="stop-animations">
+            <label class="checkbox-access-label" for="stop_animations">
                 <span class="label-container">
                     <i class="fa-solid fa-circle-pause icon-id"></i>
                     {{#str}} stop_animations, theme_suap {{/str}}
@@ -72,9 +72,9 @@
                 type="checkbox"
                 v-model="preferences.hidden_illustrative_image"
                 class="checkbox-access-input" 
-                id="hidden-illustrative-image"
+                id="hidden_illustrative_image"
                 @change="togglePreference('hidden_illustrative_image', 'enabled', $event.target.checked)">
-            <label class="checkbox-access-label" for="hidden-illustrative-image">
+            <label class="checkbox-access-label" for="hidden_illustrative_image">
                 <span class="label-container">
                     <svg class="icon-id" xmlns="http://www.w3.org/2000/svg" width="16" height="14" fill="none">
                         <path fill="#2B2B2B"
@@ -91,9 +91,9 @@
                 type="checkbox" 
                 v-model="preferences.big_cursor"
                 class="checkbox-access-input"
-                id="big-cursor" 
+                id="big_cursor" 
                 @change="togglePreference('big_cursor', 'enabled', $event.target.checked)">
-            <label class="checkbox-access-label" for="big-cursor">
+            <label class="checkbox-access-label" for="big_cursor">
                 <span class="label-container">
                     <i class="fa-solid fa-arrow-pointer icon-id"></i>
                     {{#str}} increase_cursor_size, theme_suap {{/str}}
@@ -108,9 +108,9 @@
                 type="checkbox"
                 v-model="preferences.vlibras_active"
                 class="checkbox-access-input"
-                id="vlibras-active" 
+                id="vlibras_active" 
                 @change="togglePreference('vlibras_active', 'enabled', $event.target.checked)">
-            <label class="checkbox-access-label" for="vlibras-active">
+            <label class="checkbox-access-label" for="vlibras_active">
                 <span class="label-container">
                     <i class="fa-solid fa-hands-asl-interpreting icon-id"></i>
                     {{#str}} enable_vlibras, theme_suap {{/str}}
@@ -124,10 +124,10 @@
                 type="checkbox" 
                 v-model="preferences.high_line_height"
                 class="checkbox-access-input" 
-                id="high-line-height"
+                id="high_line_height"
                 @change="togglePreference('high_line_height', 'enabled', $event.target.checked)"
             >    
-            <label class="checkbox-access-label" for="high-line-height">
+            <label class="checkbox-access-label" for="high_line_height">
                 <span class="label-container">
                     <svg class="icon-id" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
                         <g clip-path="url(#a)">

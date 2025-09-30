@@ -138,9 +138,18 @@ input[type="radio"]:checked + .radio-label {
 
 }
 
-body.accessibility-dyslexia-friendly {
+body.accessibility_dyslexia_friendly {
     --font-family: "opendyslexic", sans-serif !important;
     font-family: "opendyslexic", sans-serif !important;
+}
+
+body.accessibility_remove_justify p,
+body.accessibility_remove_justify span,
+body.accessibility_remove_justify li,
+body.accessibility_remove_justify blockquote,
+body.accessibility_remove_justify td,
+body.accessibility_remove_justify div {
+  text-align: start !important;
 }
 
 body.big_cursor * {
@@ -205,15 +214,6 @@ body.hidden_illustrative_image img[alt=""] {
 }
 body.hidden_illustrative_image * {
   background-image: none !important;
-}
-
-body.remove_justify_align p,
-body.remove_justify_align span,
-body.remove_justify_align li,
-body.remove_justify_align blockquote,
-body.remove_justify_align td,
-body.remove_justify_align div {
-  text-align: start !important;
 }
 
 body.high_line_height {

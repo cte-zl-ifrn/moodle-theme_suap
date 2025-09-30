@@ -7,8 +7,8 @@ define(["core/str", "core_user/repository"], function(str, Repository) {
             checkbox.addEventListener('change', (event) => {
                 let target = event.target;
                 const checked = target.checked;
-                const className = `accessibility-${target.id}`;
-                const prefName = `theme_suap_accessibility-${target.id}`;
+                const className = `accessibility_${target.id}`;
+                const prefName = `theme_suap_accessibility_${target.id}`;
 
                 if (checked) {
                     document.body.classList.add(className);
@@ -26,14 +26,13 @@ define(["core/str", "core_user/repository"], function(str, Repository) {
         init: () => {
             Repository.getUserPreferences().then(prefs => {
                 for (const key in prefs) {
-                    console.log(key + ' = ' + prefs[key]);
-                    if (key.startsWith('theme_suap_accessibility-') && prefs[key] === "1") {
-                        const id = key.replace('theme_suap_accessibility-', '');
-                        console.log(id);
+                    // console.log(key + ' = ' + prefs[key]);
+                    if (key.startsWith('theme_suap_accessibility_') && prefs[key] === "1") {
+                        const id = key.replace('theme_suap_accessibility_', '');
                         const input = document.getElementById(id);
                         if (input) {
                             input.checked = true;
-                            document.body.classList.add(`accessibility-${id}`);
+                            document.body.classList.add(`accessibility_${id}`);
                         }
                     }
                 }

@@ -112,49 +112,49 @@ function theme_suap_user_preferences(): array
             'default' => false,
             'permissioncallback' => [core_user::class, 'is_current_user'],
         ],
-        'theme_suap_accessibility-dyslexia-friendly' => [
+        'theme_suap_accessibility_dyslexia_friendly' => [
             'type' => PARAM_BOOL,
             'null' => NULL_NOT_ALLOWED,
             'default' => false,
             'permissioncallback' => [core_user::class, 'is_current_user'],
         ],
-        'theme_suap_accessibility-remove-justify' => [
+        'theme_suap_accessibility_remove_justify' => [
             'type' => PARAM_BOOL,
             'null' => NULL_NOT_ALLOWED,
             'default' => false,
             'permissioncallback' => [core_user::class, 'is_current_user'],
         ],
-        'theme_suap_accessibility-highlight-links' => [
+        'theme_suap_accessibility_highlight_links' => [
             'type' => PARAM_BOOL,
             'null' => NULL_NOT_ALLOWED,
             'default' => false,
             'permissioncallback' => [core_user::class, 'is_current_user'],
         ],
-        'theme_suap_accessibility-stop-animations' => [
+        'theme_suap_accessibility_stop_animations' => [
             'type' => PARAM_BOOL,
             'null' => NULL_NOT_ALLOWED,
             'default' => false,
             'permissioncallback' => [core_user::class, 'is_current_user'],
         ],
-        'theme_suap_accessibility-hidden-illustrative-image' => [
+        'theme_suap_accessibility_hidden_illustrative_image' => [
             'type' => PARAM_BOOL,
             'null' => NULL_NOT_ALLOWED,
             'default' => false,
             'permissioncallback' => [core_user::class, 'is_current_user'],
         ],
-        'theme_suap_accessibility-big-cursor' => [
+        'theme_suap_accessibility_big_cursor' => [
             'type' => PARAM_BOOL,
             'null' => NULL_NOT_ALLOWED,
             'default' => false,
             'permissioncallback' => [core_user::class, 'is_current_user'],
         ],
-        'theme_suap_accessibility-vlibras-active' => [
+        'theme_suap_accessibility_vlibras_active' => [
             'type' => PARAM_BOOL,
             'null' => NULL_NOT_ALLOWED,
-            'default' => false,
+            'default' => true,
             'permissioncallback' => [core_user::class, 'is_current_user'],
         ],
-        'theme_suap_accessibility-high-line-height' => [
+        'theme_suap_accessibility_high_line_height' => [
             'type' => PARAM_BOOL,
             'null' => NULL_NOT_ALLOWED,
             'default' => false,
