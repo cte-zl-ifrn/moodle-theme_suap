@@ -138,8 +138,9 @@ input[type="radio"]:checked + .radio-label {
 
 }
 
-body.dyslexia_font {
+body.accessibility-dyslexia-friendly {
     --font-family: "opendyslexic", sans-serif !important;
+    font-family: "opendyslexic", sans-serif !important;
 }
 
 body.big_cursor * {
