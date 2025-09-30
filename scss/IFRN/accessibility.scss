@@ -152,11 +152,7 @@ body.accessibility_remove_justify div {
   text-align: start !important;
 }
 
-body.big_cursor * {
-    cursor: url(https://cdn.userway.org/widgetapp/images/arrow_w.svg), auto;
-}
-
-.highlight_links a[href] {
+body.accessibility_highlight_links a[href] {
   background-color: var(--dark) !important;
   border: 2px solid #f90 !important;
   color: rgba(255, 255, 100, 1) !important;
@@ -170,8 +166,12 @@ body.big_cursor * {
     outline-offset: 2px;
   }
 }
-.highlight_links a[href] * {
+body.accessibility_highlight_links a[href] * {
   color: rgba(255, 255, 100, 1) !important;
+}
+
+body.accessibility_big_cursor * {
+    cursor: url(https://cdn.userway.org/widgetapp/images/arrow_w.svg), auto;
 }
 
 div[vw].enabled {
@@ -186,9 +186,9 @@ div[vw].enabled {
     display: block !important;
 }
 
-body.stop_animations *,
-body.stop_animations *::before,
-body.stop_animations *::after {
+body.accessibility_stop_animations *,
+body.accessibility_stop_animations *::before,
+body.accessibility_stop_animations *::after {
   animation: none !important;
   transition: none !important;
   scroll-behavior: auto !important;
@@ -208,26 +208,26 @@ body.stop_animations *::after {
   }
 }
 
-body.hidden_illustrative_image img:not([alt]), 
-body.hidden_illustrative_image img[alt=""] {
+body.accessibility_hidden_illustrative_image #page img:not([alt]), 
+body.accessibility_hidden_illustrative_image #page img[alt=""] {
   visibility: hidden !important;
 }
-body.hidden_illustrative_image * {
+body.accessibility_hidden_illustrative_image #page * {
   background-image: none !important;
 }
 
-body.high_line_height {
+body.accessibility_high_line_height {
   --font-paragraph1: 400 1rem/1.8 var(--font-family);
   --font-paragraph2: 400 0.875rem/1.8 var(--font-family);
 }
-body.high_line_height p,
-body.high_line_height li,
-body.high_line_height td,
-body.high_line_height th,
-body.high_line_height blockquote {
+body.accessibility_high_line_height p,
+body.accessibility_high_line_height li,
+body.accessibility_high_line_height td,
+body.accessibility_high_line_height th,
+body.accessibility_high_line_height blockquote {
   line-height: 1.8 !important;
 }
-body.high_line_height p {
+body.accessibility_high_line_height p {
   margin-bottom: 2rem !important;
 }
 
