@@ -92,6 +92,24 @@
         </div>
     </div>
 </footer>
+
+<div vw class="enabled">
+    <div vw-access-button class="active">
+    </div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+new window.VLibras.Widget({
+  rootPath: "https://vlibras.gov.br/app",
+  opacity: 0.75,
+  position: 'L',
+  avatar: 'random'
+});
+</script>
+
 {{{ output.standard_end_of_body_html }}}
 {{#js}}
 require(['theme_boost/footer-popover'], function(FooterPopover) {
