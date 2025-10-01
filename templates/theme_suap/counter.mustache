@@ -39,13 +39,6 @@
                         <span class="counter-label">{{#str}} messages,core_message {{/str}}</span>
                         <span class="count-notification hidden" data-region="count-container"></span>
                     </div>
-
-                    <div class="drawer-toggler counter-option" data-drawer="drawer-accessibility">
-                        <i class="fa-solid fa-universal-access"></i>
-                        <span class="counter-label">{{#str}} accessibility, theme_suap {{/str}}</span>
-                        <span class="count-notification hidden" data-region="count-container"></span>
-                    </div>
-
                 </div>
                 {{/isguestuser}}
 
@@ -62,6 +55,16 @@
                             <span class="counter-label">{{#str}} drawer_blocks, theme_suap, {{/str}}</span>
                         </div>
                     {{/hasblocks}}
+
+                    <div class="accessibility-container">
+                        <div class="drawer-divider"></div>
+                        <div class="drawer-toggler counter-option" data-drawer="drawer-accessibility">
+                            <i class="fa-solid fa-universal-access"></i>
+                            <span class="counter-label">{{#str}} accessibility, theme_suap {{/str}}</span>
+                            <span class="count-notification hidden" data-region="count-container"></span>
+                        </div>
+                    </div>
+
                 </div>
             </div>   
         </div>

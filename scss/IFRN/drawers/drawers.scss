@@ -256,14 +256,39 @@
         display: none;
     }
 }
-.content-reverse {
-    display: flex;
-    flex-direction: column-reverse;
-    height: 95%;
-    justify-content: space-between;
-}
 
-.content-original {
-    display: flex;
-    flex-direction: column-reverse;
+.counter {
+    .accessibility-container {
+        margin-top: 2rem;
+        flex: 1;
+        align-content: flex-end;
+    }
+
+    .content-reverse {
+        display: flex;
+        flex-direction: column-reverse;
+        height: 95%;
+        .accessibility-container {
+            margin-top: 0;
+        }
+    }
+    
+    .content-original {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    #content-part2 {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .drawer-divider {
+        height: 1px;
+        background-color: rgba(206, 253, 239, 0.35);
+        margin: 1rem 0;
+    }
+    
 }
