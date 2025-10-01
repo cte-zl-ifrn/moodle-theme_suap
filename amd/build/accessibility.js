@@ -55,9 +55,6 @@ define(["core/str", "core_user/repository"], function(str, Repository) {
         // Atualizar valor do zoom
         zoomValue.textContent = preferences.zoom_level + '%';
 
-        // Atualizar atributo no body
-        document.body.setAttribute('data-zoom', preferences.zoom_level);
-
         // Renderizar indicadores
         indicators.innerHTML = ''; // limpar antes de recriar
         preferences.zoom_options
@@ -79,6 +76,9 @@ define(["core/str", "core_user/repository"], function(str, Repository) {
         preferences.zoom_level = preferences.zoom_options[nextIndex];
 
         Repository.setUserPreference('theme_suap_accessibility_zoom_level', preferences.zoom_level);
+
+        // Atualizar atributo no body
+        document.body.setAttribute('data-zoom', preferences.zoom_level);
 
         renderZoom();
     }
