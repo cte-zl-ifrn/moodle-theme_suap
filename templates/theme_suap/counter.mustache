@@ -29,16 +29,19 @@
                         <div class="divider border-left h-75 align-self-center mx-1"></div>
                     {{/output.search_box}}
 
-                    <div class="drawer-toggler counter-option" data-drawer="drawer-notifications">
-                        <i class="fa-regular fa-bell"></i>
-                        <span class="counter-label">{{#str}} notifications, message {{/str}}</span>
-                        <span class="count-notification hidden" data-region="count-container"></span>
+                    <div class="notification-messages-container">                    
+                        <div class="drawer-toggler counter-option" data-drawer="drawer-notifications">
+                            <i class="fa-regular fa-bell"></i>
+                            <span class="counter-label">{{#str}} notifications, message {{/str}}</span>
+                            <span class="count-notification hidden" data-region="count-container"></span>
+                        </div>
+                        <div id="message-drawer-toggle-{{uniqid}}" class="drawer-toggler counter-option" data-drawer="drawer-messages"> 
+                            <i class="fa-regular fa-comment"></i>
+                            <span class="counter-label">{{#str}} messages,core_message {{/str}}</span>
+                            <span class="count-notification hidden" data-region="count-container"></span>
+                        </div>
                     </div>
-                    <div id="message-drawer-toggle-{{uniqid}}" class="drawer-toggler counter-option" data-drawer="drawer-messages"> 
-                        <i class="fa-regular fa-comment"></i>
-                        <span class="counter-label">{{#str}} messages,core_message {{/str}}</span>
-                        <span class="count-notification hidden" data-region="count-container"></span>
-                    </div>
+                    
                 </div>
                 {{/isguestuser}}
 
