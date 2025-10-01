@@ -45,7 +45,7 @@ input[type="radio"]:checked + .radio-label {
 .accessiblity-options {
   display: flex;
   flex-direction: column;
-  gap: .75rem;
+  gap: 1rem;
 }
 
 .custom-checkbox-access {
@@ -61,6 +61,7 @@ input[type="radio"]:checked + .radio-label {
   border-radius: 72px;
   background-color: var(--light);
   padding: .75rem 1rem;
+  margin-bottom: 0;
   width: 100%;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -110,8 +111,8 @@ input[type="radio"]:checked + .radio-label {
     padding: .75rem 1rem;
     width: 100%;
     font: var(--font-button2);
+    text-align: left;
     color: var(--dark);
-    margin-top: 0.5rem;
     transition: all 0.2s ease-in-out;
     &:hover {
       border-color: var(--primary);
