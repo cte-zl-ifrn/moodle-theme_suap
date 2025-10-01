@@ -160,6 +160,12 @@ function theme_suap_user_preferences(): array
             'default' => false,
             'permissioncallback' => [core_user::class, 'is_current_user'],
         ],
+        'theme_suap_accessibility_zoom_level' => [
+            'type' => PARAM_INT,
+            'null' => NULL_NOT_ALLOWED,
+            'default' => 100,
+            'permissioncallback' => [core_user::class, 'is_current_user'],
+        ],
     ];
 }
 

@@ -146,16 +146,12 @@
             </label>
         </div>
 
-        <div :class="['selector-cycle-access', { active: preferences.zoom_level > 100}]">
+        <div id="selector-cycle-access" class="selector-cycle-access">
             <label for="cycle-toggle">Zoom:</label>
-            <button id="cycle-toggle" @click="cycleAccessibility" class="cycle-btn">
+            <button id="cycle-toggle" class="cycle-btn">
                 <i class="fa-solid fa-magnifying-glass icon-id"></i>
-                [[ preferences.zoom_level ]]%
-                <div class="cycle-indicators">
-                    <span v-for="(level, index) in preferences.zoom_options.filter(l => l > 100)" :key="level"
-                        :class="['cycle-indicator', { active: level <= preferences.zoom_level }]"></span>
-                </div>
-
+                <span id="zoom-value">100%</span>
+                <div id="cycle-indicators" class="cycle-indicators"></div>
             </button>
         </div>
 </div>
