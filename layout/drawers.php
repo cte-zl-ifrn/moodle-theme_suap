@@ -155,6 +155,8 @@ foreach ($datas as $data) {
 }
 
 
+$extraclasses = array_merge($extraclasses, theme_suap_get_accessibility_classes($USER));
+
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
 $forceblockdraweropen = $OUTPUT->firstview_fakeblocks();
 

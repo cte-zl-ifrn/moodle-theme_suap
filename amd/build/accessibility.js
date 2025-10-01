@@ -92,13 +92,12 @@ define(["core/str", "core_user/repository"], function(str, Repository) {
                 }
 
                 for (const key in prefs) {
-                    // console.log(key + ' = ' + prefs[key]);
                     if (key.startsWith('theme_suap_accessibility_') && prefs[key] === "1") {
                         const id = key.replace('theme_suap_accessibility_', '');
                         const input = document.getElementById(id);
                         if (input) {
                             input.checked = true;
-                            document.body.classList.add(`accessibility_${id}`);
+                            // document.body.classList.add(`accessibility_${id}`);
                         }
                     }
                 }

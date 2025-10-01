@@ -169,6 +169,46 @@ function theme_suap_user_preferences(): array
     ];
 }
 
+
+/**
+ * Retorna as classes de acessibilidade baseadas nas preferências do usuário.
+ *
+ * @param stdClass $user O objeto de usuário atual (geralmente $USER).
+ * @return array Lista de classes CSS para aplicar no <body>.
+ */
+function theme_suap_get_accessibility_classes($user) {
+    global $USER;
+
+    $classes = [];
+
+    // Lista das preferências de acessibilidade do tema.
+    $accessibility_prefs = [
+        'theme_suap_accessibility_dyslexia_friendly',
+        'theme_suap_accessibility_remove_justify',
+        'theme_suap_accessibility_highlight_links',
+        'theme_suap_accessibility_stop_animations',
+        'theme_suap_accessibility_hidden_illustrative_image',
+        'theme_suap_accessibility_big_cursor',
+        'theme_suap_accessibility_vlibras_active',
+        'theme_suap_accessibility_high_line_height'
+    ];
+
+    // Itera cada preferência e adiciona a classe se estiver ativada.
+    foreach ($accessibility_prefs as $prefname) {
+        $value = get_user_preferences($prefname, false, $USER->id);
+        if ($value) {
+            // Gera uma classe CSS com nome limpo, ex.: theme_suap_accessibility_big_cursor → big-cursor
+            $classname = str_replace('theme_suap_', '', $prefname);
+            $classes[] = $classname;
+        }
+    }
+
+    return $classes;
+}
+
+
+
+
 /**
  * Adiciona itens específicos de administrador ao menu de usuário.
  *
