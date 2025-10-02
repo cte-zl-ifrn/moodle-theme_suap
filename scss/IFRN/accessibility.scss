@@ -159,6 +159,9 @@ body.accessibility_highlight_links a[href] {
   color: rgba(255, 255, 100, 1) !important;
   padding: 0.25em 0.5em;
   border-radius: 10px;
+  &::after, &::before {
+    color: rgba(255, 255, 100, 1) !important;
+  }
   &:hover {
     background-color: var(--dark) !important;
   }
@@ -172,7 +175,7 @@ body.accessibility_highlight_links a[href] * {
 }
 
 body.accessibility_big_cursor * {
-    cursor: url(https://cdn.userway.org/widgetapp/images/arrow_w.svg), auto;
+  cursor: url(https://cdn.userway.org/widgetapp/images/arrow_w.svg), auto !important;
 }
 
 div[vw].enabled {
