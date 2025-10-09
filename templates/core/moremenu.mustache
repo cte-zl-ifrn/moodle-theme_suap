@@ -86,3 +86,64 @@
         }
     }
 {{/js}}
+
+
+
+
+
+<!--
+
+<nav id="menuContainerParent" class="moremenu navigation">
+    <ul id="menuContainer" role="{{#istablist}}tablist{{/istablist}}{{^istablist}}menubar{{/istablist}}" class="nav more-nav {{navbarstyle}}">
+        {{#nodecollection}}
+            {{#isactivecontentbutton}}
+                <li class="nav-item" data-key="customcoursehome">
+                    <a class="nav-link" href="{{contentbuttonurl}}" aria-current="true">{{contentbutton}}</a>
+                </li>
+            {{/isactivecontentbutton}}
+            {{#children}}
+                {{> core/moremenu_children}}
+            {{/children}}
+        {{/nodecollection}}
+        {{#nodearray}}
+            {{> core/moremenu_children}}
+        {{/nodearray}}
+        <li role="none" id="moreDropdown" class="nav-item  dropleft d-none" data-region="morebutton">
+            <a class="dropdown-toggle nav-link {{#isactive}}active{{/isactive}}" href="#" id="moremenu-dropdown-{{moremenuid}}" role="{{#istablist}}tab{{/istablist}}{{^istablist}}menuitem{{/istablist}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tabindex="-1">
+                {{#str}}moremenu, core{{/str}}
+            </a>
+            <ul id='moreMenu' class="dropdown-menu dropdown-menu-start" data-region="moredropdown" aria-labelledby="moremenu-dropdown-{{moremenuid}}" role="menu" style="margin-top: 60px;">
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+  <script>
+    window.addEventListener('load', () => {
+      const containerParent = document.getElementById('menuContainerParent');
+      const container = document.getElementById('menuContainer');
+      const items = Array.from(container.querySelectorAll('.nav-item:not(#moreDropdown)'));
+      const moreDropdown = document.getElementById('moreDropdown');
+      const moreMenu = document.getElementById('moreMenu');
+
+      let containerWidth = container.offsetWidth;
+      let usedWidth = 90;
+
+      for (let item of items) {
+        usedWidth += item.offsetWidth;
+        if (usedWidth > containerWidth - moreDropdown.offsetWidth) {
+          moreDropdown.classList.remove('d-none');
+          console.log(item);
+          const clone = item.cloneNode(true);
+          clone.classList.remove('menu-item');
+          const li = document.createElement('li');
+          li.appendChild(clone);
+          moreMenu.appendChild(li);
+          item.remove();
+        }
+      }
+      containerParent.classList.add('observed');
+    });
+  </script><!--
+
+-->
