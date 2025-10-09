@@ -394,22 +394,37 @@ a:hover {
 
 .max-width-suap {
     width: 100%;
-    max-width: var(--max-width-layout);
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.path-mod-h5pactivity .max-width-suap, #page-contentbank .max-width-suap {
-    max-width: var(--max-width-layout-expanded);
+body.path-admin.path-admin-tool-lp .secondary-navigation .navigation .nav-tabs {
+    max-width: 100%;
 }
 
-.layout-width-expanded .max-width-suap {
-    max-width: var(--max-width-layout-expanded);
+body.path-course-view.pagelayout-course .max-width-suap,
+body.path-mod.pagelayout-incourse .max-width-suap
+{
+    max-width: var(--max-width-layout);
 }
 
-.course-1.pagelayout-admin .max-width-suap {
-    max-width: none;
+.secondary-navigation {
+    width: 100%;
 }
+
+
+// .path-mod-h5pactivity .max-width-suap, #page-contentbank .max-width-suap {
+//     max-width: var(--max-width-layout-expanded);
+// }
+
+// .layout-width-expanded .max-width-suap {
+//     max-width: var(--max-width-layout-expanded);
+// }
+
+// .course-1.pagelayout-admin .max-width-suap {
+//     max-width: none;
+// }
 
 .secondary-navigation .navigation {
     padding: 0px;
