@@ -46,11 +46,9 @@
     
     <div class="custom-checkbox-access">
         <input 
-            type="checkbox" 
-            v-model="preferences.highlight_links"
+            type="checkbox"
             class="checkbox-access-input"
-            id="highlight_links" 
-            @change="togglePreference('highlight_links', 'enabled', $event.target.checked)">
+            id="highlight_links">
         <label class="checkbox-access-label" for="highlight_links">
             <span class="label-container">
                 <i class="fa-solid fa-highlighter icon-id"></i>
@@ -155,7 +153,3 @@
         </label>
     </div>
 </div>
-
-{{#js}}
-    require(['theme_suap/accessibility'], (module) => module.init());
-{{/js}}

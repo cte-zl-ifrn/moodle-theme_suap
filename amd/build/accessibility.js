@@ -1,4 +1,4 @@
-define(["core/str", "core_user/repository"], function(str, Repository) {
+define(["core/str", "core_user/repository", "core/config"], function(str, Repository, Config) {
 
     function activeAccessibility() {
         let checkboxes = document.querySelectorAll('.custom-checkbox-access input[type="checkbox"]');
@@ -17,8 +17,31 @@ define(["core/str", "core_user/repository"], function(str, Repository) {
                 }
 
                 Repository.setUserPreference(prefName, checked);
+                syncPreference(target.id, checked);
             });
         })
+    }
+
+
+    function syncPreference(key, value) {        
+        const url = Config.wwwroot + '/local/suap/api/index.php?sync_user_preference'
+                + '&category=accessibility'
+                + '&key=' + key
+                + '&value=' + encodeURIComponent(value ? 'true' : 'false');
+
+        console.log('Syncing preference:', url);
+
+        fetch(url, {
+            method: 'GET',
+            credentials: 'same-origin' // garante que os cookies do Moodle sejam enviados
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            console.log('Sync response:', data);
+        })
+        .catch(err => {
+            console.error('Erro ao sincronizar preferência:', err);
+        });
     }
 
 
