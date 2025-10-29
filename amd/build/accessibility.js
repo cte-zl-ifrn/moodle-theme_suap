@@ -23,17 +23,16 @@ define(["core/str", "core_user/repository", "core/config"], function(str, Reposi
     }
 
 
-    function syncPreference(key, value) {        
+    function syncPreference(key, value) {
         const url = Config.wwwroot + '/local/suap/api/index.php?sync_user_preference'
                 + '&category=accessibility'
                 + '&key=' + key
-                + '&value=' + encodeURIComponent(value ? 'true' : 'false');
-
-        console.log('Syncing preference:', url);
+                + '&value=' + encodeURIComponent(value ? 'true' : 'false')
+                + '&sesskey=' + Config.sesskey;
 
         fetch(url, {
             method: 'GET',
-            credentials: 'same-origin' // garante que os cookies do Moodle sejam enviados
+            credentials: 'same-origin'
         })
         .then(resp => resp.json())
         .then(data => {
