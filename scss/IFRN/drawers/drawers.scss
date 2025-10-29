@@ -49,6 +49,7 @@
 
     .drawer-header {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid var(--light-dark);
@@ -120,7 +121,6 @@
         h2 {
             font: var(--font-heading2);
             margin-bottom: 0;
-            white-space: nowrap;
         }
         .drawer-close {
             color: var(--danger-dark);

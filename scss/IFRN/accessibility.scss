@@ -60,7 +60,7 @@ input[type="radio"]:checked + .radio-label {
   border: 1px solid transparent;
   border-radius: 72px;
   background-color: var(--light);
-  padding: .75rem 1rem;
+  padding: .75rem;
   margin-bottom: 0;
   width: 100%;
   cursor: pointer;
@@ -139,21 +139,17 @@ input[type="radio"]:checked + .radio-label {
 
 }
 
-body.accessibility_dyslexia_friendly {
-    --font-family: "opendyslexic", sans-serif !important;
-    font-family: "opendyslexic", sans-serif !important;
+
+body.accessibility_dyslexia_friendly *:not(i):not(input):not(#drawer-accessibility *),
+body.accessibility_dyslexia_friendly:not(#drawer-accessibility) {
+  font-family: "opendyslexic", sans-serif !important;
 }
 
-body.accessibility_remove_justify p,
-body.accessibility_remove_justify span,
-body.accessibility_remove_justify li,
-body.accessibility_remove_justify blockquote,
-body.accessibility_remove_justify td,
-body.accessibility_remove_justify div {
+body.accessibility_remove_justify *:not(#drawer-accessibility *):is(p, span, li, blockquote, td, div) {
   text-align: start !important;
 }
 
-body.accessibility_highlight_links a[href] {
+body.accessibility_highlight_links a[href]:not(#drawer-accessibility a) {
   background-color: var(--dark) !important;
   border: 2px solid #f90 !important;
   color: rgba(255, 255, 100, 1) !important;
@@ -170,11 +166,11 @@ body.accessibility_highlight_links a[href] {
     outline-offset: 2px;
   }
 }
-body.accessibility_highlight_links a[href] * {
+body.accessibility_highlight_links a[href]:not(#drawer-accessibility a) * {
   color: rgba(255, 255, 100, 1) !important;
 }
 
-body.accessibility_big_cursor * {
+body.accessibility_big_cursor *:not(#drawer-accessibility *) {
   cursor: url(https://cdn.userway.org/widgetapp/images/arrow_w.svg), auto !important;
 }
 
@@ -250,4 +246,18 @@ body[data-zoom="150"] {
 body[data-zoom="160"] {
   --font-scale: 1.6;
   font-size: 160%;
+}
+
+/* Exceção: restaurar o zoom dentro do drawer de acessiblidade */
+#drawer-accessibility * {
+  font-size: initial !important;
+}
+
+body[data-zoom] i,
+body[data-zoom] i *,
+body[data-zoom] .icon,
+body[data-zoom] [class^="fa"],
+body[data-zoom] [class*=" fa-"],
+body[data-zoom] .material-icons {
+  font-size: initial !important;
 }
