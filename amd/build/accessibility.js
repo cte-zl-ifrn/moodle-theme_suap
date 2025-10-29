@@ -24,10 +24,15 @@ define(["core/str", "core_user/repository", "core/config"], function(str, Reposi
 
 
     function syncPreference(key, value) {
+
+        const encodedValue = typeof value === 'boolean'
+            ? (value ? 'true' : 'false')
+            : value;
+
         const url = Config.wwwroot + '/local/suap/api/index.php?sync_user_preference'
                 + '&category=accessibility'
                 + '&key=' + key
-                + '&value=' + encodeURIComponent(value ? 'true' : 'false')
+                + '&value=' + encodeURIComponent(encodedValue)
                 + '&sesskey=' + Config.sesskey;
 
         fetch(url, {
@@ -98,6 +103,7 @@ define(["core/str", "core_user/repository", "core/config"], function(str, Reposi
         preferences.zoom_level = preferences.zoom_options[nextIndex];
 
         Repository.setUserPreference('theme_suap_accessibility_zoom_level', preferences.zoom_level);
+        syncPreference('zoom_level', preferences.zoom_level);
 
         // Atualizar atributo no body
         document.body.setAttribute('data-zoom', preferences.zoom_level);
