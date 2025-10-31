@@ -21,10 +21,8 @@
     <div class="custom-checkbox-access">
         <input 
             type="checkbox" 
-            v-model="preferences.remove_justify_align"
             class="checkbox-access-input" 
             id="remove_justify"
-            @change="togglePreference('remove_justify_align', 'enabled', $event.target.checked)"
         >
         <label class="checkbox-access-label" for="remove_justify">
             <span class="label-container">
@@ -52,10 +50,8 @@
     <div class="custom-checkbox-access">
         <input 
             type="checkbox" 
-            v-model="preferences.stop_animations"
             class="checkbox-access-input"
-            id="stop_animations" 
-            @change="togglePreference('stop_animations', 'enabled', $event.target.checked)">
+            id="stop_animations" >
         <label class="checkbox-access-label" for="stop_animations">
             <span class="label-container">
                 <i class="fa-solid fa-circle-pause icon-id"></i>
@@ -68,10 +64,8 @@
     <div class="custom-checkbox-access">
         <input 
             type="checkbox"
-            v-model="preferences.hidden_illustrative_image"
             class="checkbox-access-input" 
-            id="hidden_illustrative_image"
-            @change="togglePreference('hidden_illustrative_image', 'enabled', $event.target.checked)">
+            id="hidden_illustrative_image">
         <label class="checkbox-access-label" for="hidden_illustrative_image">
             <span class="label-container">
                 <svg class="icon-id" xmlns="http://www.w3.org/2000/svg" width="16" height="14" fill="none">
@@ -87,10 +81,8 @@
     <div class="custom-checkbox-access">
         <input 
             type="checkbox" 
-            v-model="preferences.big_cursor"
             class="checkbox-access-input"
-            id="big_cursor" 
-            @change="togglePreference('big_cursor', 'enabled', $event.target.checked)">
+            id="big_cursor" >
         <label class="checkbox-access-label" for="big_cursor">
             <span class="label-container">
                 <i class="fa-solid fa-arrow-pointer icon-id"></i>
@@ -104,10 +96,8 @@
     <div class="custom-checkbox-access">
         <input 
             type="checkbox"
-            v-model="preferences.vlibras_active"
             class="checkbox-access-input"
-            id="vlibras_active" 
-            @change="togglePreference('vlibras_active', 'enabled', $event.target.checked)">
+            id="vlibras_active">
         <label class="checkbox-access-label" for="vlibras_active">
             <span class="label-container">
                 <i class="fa-solid fa-hands-asl-interpreting icon-id"></i>
@@ -120,10 +110,8 @@
     <div class="custom-checkbox-access">
         <input 
             type="checkbox" 
-            v-model="preferences.high_line_height"
             class="checkbox-access-input" 
             id="high_line_height"
-            @change="togglePreference('high_line_height', 'enabled', $event.target.checked)"
         >    
         <label class="checkbox-access-label" for="high_line_height">
             <span class="label-container">
