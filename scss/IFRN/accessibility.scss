@@ -35,12 +35,18 @@ input[type="radio"]:checked + .radio-label {
     font-style: italic;
 }
 
-#drawer-accessibility .drawer-body {
-    height: calc(100vh - 189px);
-    width: var(--drawer-open);
-    overflow-y: auto;
-    position: relative;
-}
+#drawer-accessibility {
+  .drawer-header h2{
+    font-size: 1.125rem;
+  }
+
+  .drawer-body {
+      height: calc(100vh - 189px);
+      width: var(--drawer-open);
+      overflow-y: auto;
+      position: relative;
+  }
+} 
 
 .accessiblity-options {
   display: flex;
@@ -50,6 +56,7 @@ input[type="radio"]:checked + .radio-label {
 
 .custom-checkbox-access {
   font: var(--font-button2);
+  font-size: 0.875rem;
 }
 .checkbox-access-label {
   display: flex;
@@ -98,6 +105,7 @@ input[type="radio"]:checked + .radio-label {
 
 .selector-cycle-access {
   font: var(--font-button2);
+  font-size: 0.875rem;
   &.active .cycle-btn {
     color: var(--primary);
     border-color: var(--primary);
@@ -110,7 +118,7 @@ input[type="radio"]:checked + .radio-label {
     border-radius: 72px;
     padding: .75rem 1rem;
     width: 100%;
-    font: var(--font-button2);
+    font: inherit;
     text-align: left;
     color: var(--dark);
     transition: all 0.2s ease-in-out;
@@ -248,9 +256,8 @@ body[data-zoom="160"] {
   font-size: 160%;
 }
 
-/* Exceção: restaurar o zoom dentro do drawer de acessiblidade */
-#drawer-accessibility * {
-  font-size: initial !important;
+body {
+  transition: font-size 0.2s ease-in-out;
 }
 
 body[data-zoom] i,
