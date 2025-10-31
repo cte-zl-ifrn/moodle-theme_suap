@@ -95,6 +95,10 @@ a:hover {
             white-space: nowrap;
         }
     }
+
+    .drawer-toggler:not(#user-toggler) .counter-label {
+        white-space: wrap;
+    }
 }
 
 .counter-toggler .icon {

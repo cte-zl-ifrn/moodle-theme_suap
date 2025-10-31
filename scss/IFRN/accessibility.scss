@@ -256,6 +256,21 @@ body[data-zoom="160"] {
   font-size: 160%;
 }
 
+body[data-zoom="130"], body[data-zoom="150"], body[data-zoom="160"] {
+  .drawer-content:not(#drawer-accessibility) {
+    .drawer-header-info i, .drawer-header-info .icon {
+      display: none;
+    }
+    .drawer-header {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      .drawer-header-tools {
+        align-self: end;
+      }
+    }
+  }
+}
+
 body {
   transition: font-size 0.2s ease-in-out;
 }
@@ -266,5 +281,5 @@ body[data-zoom] .icon,
 body[data-zoom] [class^="fa"],
 body[data-zoom] [class*=" fa-"],
 body[data-zoom] .material-icons {
-  font-size: initial !important;
+  font-size: initial;
 }
