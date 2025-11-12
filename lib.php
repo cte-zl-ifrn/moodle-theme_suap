@@ -181,23 +181,21 @@ function theme_suap_get_accessibility_classes($user) {
 
     $classes = [];
 
-    // Lista das preferências de acessibilidade do tema.
-    $accessibility_prefs = [
-        'theme_suap_accessibility_dyslexia_friendly',
-        'theme_suap_accessibility_remove_justify',
-        'theme_suap_accessibility_highlight_links',
-        'theme_suap_accessibility_stop_animations',
-        'theme_suap_accessibility_hidden_illustrative_image',
-        'theme_suap_accessibility_big_cursor',
-        'theme_suap_accessibility_vlibras_active',
-        'theme_suap_accessibility_high_line_height'
-    ];
+    $prefs = theme_suap_user_preferences();
 
-    // Itera cada preferência e adiciona a classe se estiver ativada.
+    $accessibility_prefs = array_keys($prefs);
+
     foreach ($accessibility_prefs as $prefname) {
-        $value = get_user_preferences($prefname, false, $USER->id);
+        // pula preferências que não são de acessibilidade
+        if (strpos($prefname, 'theme_suap_accessibility_') !== 0) {
+            continue;
+        }
+
+        $default = $prefs[$prefname]['default'] ?? false;
+        $value = get_user_preferences($prefname, $default, $USER->id);
+
         if ($value) {
-            // Gera uma classe CSS com nome limpo, ex.: theme_suap_accessibility_big_cursor → big-cursor
+            // Gera uma classe CSS com nome limpo, ex.: theme_suap_accessibility_big_cursor → accessibility_big-cursor
             $classname = str_replace('theme_suap_', '', $prefname);
             $classes[] = $classname;
         }
