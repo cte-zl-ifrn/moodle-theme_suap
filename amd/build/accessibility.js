@@ -55,6 +55,16 @@ define(["core/str", "core_user/repository", "core/config"], function(str, Reposi
     const indicators = document.getElementById('cycle-indicators');
     const button = document.getElementById('cycle-toggle');
 
+    const colorContainer = document.getElementById('selector-cycle-color');
+    const colorLabel = document.getElementById('color-mode-label');
+    const colorIndicators = document.getElementById('color-indicators');
+    const colorButton = document.getElementById('color-mode-toggle');
+
+    let colorPreferences = {
+        color_mode: 'default',
+        color_mode_options: ['default', 'high_contrast', 'low_contrast', 'colorblind', 'grayscale', 'dark_mode'],
+    };
+
     let preferences = {
         zoom_level: 100,
         zoom_options: [100, 120, 130, 150, 160]
@@ -69,6 +79,16 @@ define(["core/str", "core_user/repository", "core/config"], function(str, Reposi
 
         renderZoom();
     })
+    
+    Repository.getUserPreference('theme_suap_accessibility_color_mode').then(value => {
+        if (value) {
+            colorPreferences.color_mode = value;
+        }
+
+        colorButton.addEventListener('click', cycleColorMode);
+
+        renderColorMode();
+    });
 
 
     function renderZoom() {
@@ -96,6 +116,54 @@ define(["core/str", "core_user/repository", "core/config"], function(str, Reposi
         });
     }
 
+    function renderColorMode() {
+        const mode = colorPreferences.color_mode;
+
+        // Atualiza o rótulo
+        const labels = {
+            default: 'Padrão',
+            high_contrast: 'Alto contraste',
+            low_contrast: 'Contraste reduzido',
+            colorblind: 'Amigável a daltônicos',
+            grayscale: 'Escala de cinza',
+            dark_mode: 'Modo escuro',
+        };
+
+        colorLabel.textContent = labels[mode] || 'Padrão';
+
+        // Atualiza os indicadores visuais
+        colorIndicators.innerHTML = '';
+        colorPreferences.color_mode_options
+            .filter(m => m !== 'default')
+            .forEach(m => {
+                const span = document.createElement('span');
+                span.classList.add('cycle-indicator');
+                if (m === mode) {
+                    span.classList.add('active');
+                }
+                colorIndicators.appendChild(span);
+            });
+
+        // Aplica a classe no <body>
+        document.body.classList.forEach(c => {
+            if (c.startsWith('accessibility_')) {
+                if (
+                    colorPreferences.color_mode_options
+                        .filter(m => m !== 'default')
+                        .some(m => c === `accessibility_${m}`)
+                ) {
+                    document.body.classList.remove(c);
+                }
+            }
+        });
+
+        if (mode !== 'default') {
+            document.body.classList.add(`accessibility_${mode}`);
+            colorContainer.classList.add('active');
+        } else {
+            colorContainer.classList.remove('active');
+        }
+    } 
 
     function cycleAccessibility() {
         const currentIndex = preferences.zoom_options.indexOf(preferences.zoom_level);
@@ -109,6 +177,19 @@ define(["core/str", "core_user/repository", "core/config"], function(str, Reposi
         document.body.setAttribute('data-zoom', preferences.zoom_level);
 
         renderZoom();
+    }
+
+    function cycleColorMode() {
+        const modes = colorPreferences.color_mode_options;
+        const currentIndex = modes.indexOf(colorPreferences.color_mode);
+        const nextIndex = (currentIndex + 1) % modes.length;
+        colorPreferences.color_mode = modes[nextIndex];
+
+        // Salvar no Moodle
+        Repository.setUserPreference('theme_suap_accessibility_color_mode', colorPreferences.color_mode);
+        syncPreference('color_mode', colorPreferences.color_mode);
+
+        renderColorMode();
     }
 
     return {        

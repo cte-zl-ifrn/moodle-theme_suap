@@ -166,6 +166,12 @@ function theme_suap_user_preferences(): array
             'default' => 100,
             'permissioncallback' => [core_user::class, 'is_current_user'],
         ],
+        'theme_suap_accessibility_color_mode' => [
+            'type' => PARAM_ALPHANUMEXT,
+            'null' => NULL_NOT_ALLOWED,
+            'default' => 'default',
+            'permissioncallback' => [core_user::class, 'is_current_user'],
+        ],
     ];
 }
 
@@ -180,9 +186,7 @@ function theme_suap_get_accessibility_classes($user) {
     global $USER;
 
     $classes = [];
-
     $prefs = theme_suap_user_preferences();
-
     $accessibility_prefs = array_keys($prefs);
 
     foreach ($accessibility_prefs as $prefname) {
@@ -194,7 +198,15 @@ function theme_suap_get_accessibility_classes($user) {
         $default = $prefs[$prefname]['default'] ?? false;
         $value = get_user_preferences($prefname, $default, $USER->id);
 
-        if ($value) {
+        // Caso especial: modo de cor (string, não booleano)
+        if ($prefname === 'theme_suap_accessibility_color_mode') {
+            if ($value && $value !== 'default') {
+                $classes[] = 'accessibility_' . $value;
+            }
+            continue;
+        }
+
+        if (is_bool($value) && $value) {
             // Gera uma classe CSS com nome limpo, ex.: theme_suap_accessibility_big_cursor → accessibility_big-cursor
             $classname = str_replace('theme_suap_', '', $prefname);
             $classes[] = $classname;
