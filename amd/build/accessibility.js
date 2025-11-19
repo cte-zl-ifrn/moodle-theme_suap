@@ -62,7 +62,7 @@ define(["core/str", "core_user/repository", "core/config"], function(str, Reposi
 
     let colorPreferences = {
         color_mode: 'default',
-        color_mode_options: ['default', 'high_contrast', 'low_contrast', 'colorblind', 'grayscale', 'dark_mode'],
+        color_mode_options: ['default', 'high_contrast', 'low_contrast', 'colorblind', 'grayscale'],
     };
 
     let preferences = {
@@ -126,7 +126,7 @@ define(["core/str", "core_user/repository", "core/config"], function(str, Reposi
             low_contrast: 'Contraste reduzido',
             colorblind: 'Amigável a daltônicos',
             grayscale: 'Escala de cinza',
-            dark_mode: 'Modo escuro',
+            // dark_mode: 'Modo escuro',
         };
 
         colorLabel.textContent = labels[mode] || 'Padrão';

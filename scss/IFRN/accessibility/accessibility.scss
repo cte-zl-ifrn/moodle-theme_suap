@@ -241,16 +241,6 @@ body.accessibility_high_line_height p {
 }
 
 
-body.accessibility_dark_mode {
-  // filter: invert(1) hue-rotate(180deg);
-  background-color: #121212 !important;
-  color: #eee !important;
-  a {
-    color: #80bfff !important;
-  }
-}
-
-
 body[data-zoom="120"] {
   --font-scale: 1.2;
   font-size: 120%;
