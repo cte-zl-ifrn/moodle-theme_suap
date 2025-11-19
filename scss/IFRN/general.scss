@@ -17,6 +17,11 @@ a:hover {
     height: auto;
 }
 
+.page-item.active .page-link {
+    background-color: var(--primary);
+    border: var(--primary);
+}
+
 #region-main {
     background-color: transparent;
 }
@@ -294,6 +299,9 @@ a:hover {
         border-radius: 1.5rem; //24px
         padding-block: .5rem;
         font: var(--font-button2);
+        &.active {
+            background-color: var(--primary);
+        }
         &:hover {
             background-color: var(--light);
             color: var(--dark);
@@ -524,6 +532,10 @@ body.path-mod.pagelayout-incourse .max-width-suap
         border-color: var(--primary-light);
         box-shadow: none;
     }
+}
+
+.btn.add-section {
+    color: var(--primary);
 }
 
 
