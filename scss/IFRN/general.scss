@@ -13,6 +13,10 @@ a:hover {
   color: var(--primary-dark);
 }
 
+.simplesearchform .input-group .form-control {
+    height: auto;
+}
+
 #region-main {
     background-color: transparent;
 }
@@ -138,6 +142,7 @@ a:hover {
     display: flex;
     align-items: center;
     background-color: var(--light-lighter);
+    color: var(--dark);
     gap: .25rem;
     padding: .5rem 1rem;
     border-radius: 1rem;

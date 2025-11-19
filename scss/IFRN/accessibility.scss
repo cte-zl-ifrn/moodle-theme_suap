@@ -247,9 +247,267 @@ body.accessibility_high_contrast {
   background-color: #000 !important;
   color: #fff !important;
   
-  a, button {
+  a:not(.btn,.button-light,.tool-item, #collapsesections, .courseindex-chevron,
+    [data-fieldtype="editor"] a, .form-textarea a,.pagination a, .message-app .nav-link, :focus)
+  // button:not(.btn,.btn-close, [data-fieldtype="editor"] button, .form-textarea button) 
+  {
     color: #ff0 !important;
-    border-color: #ff0 !important;
+    // border-color: #ff0 !important;
+  }
+
+  hr {
+    border-top-color: var(--dark-light);
+  }
+
+  .bg-light {
+    background-color: var(--dark) !important;
+  }
+
+  .bg-white {
+    background-color: black !important;
+  }
+
+  .header-action .text-primary {
+    color: white !important;
+  }
+
+  .table {
+    color: white;
+  }
+  .table-hover tbody tr:hover {
+    color: #ff0;
+  }
+  &.path-grade-report-grader .gradeparent .heading .cell, 
+  &.path-grade-report-grader .gradeparent .cell.category, 
+  &.path-grade-report-grader .gradeparent .avg .cell {
+    background-color: var(--dark);
+  }
+  &.path-grade-report-grader .gradeparent tr .cell, .path-grade-report-grader .gradeparent .floater .cell {
+    background-color: black;
+  }
+  .modal-dialog .modal-content {
+    background-color: var(--dark);
+    border: 1px solid #ff0;
+  }
+  .modchooser {
+    .modal-body .optionsummary, .modal-footer {
+      background-color: var(--dark);
+    }
+  } 
+
+  .generaltable {
+    color: white;
+    tbody {
+      tr:nth-of-type(even) {
+        background-color: var(--dark);
+      }
+      tr:hover {
+        color: white;
+        background-color: var(--dark);
+      }
+    } 
+  } 
+
+  .text-muted, .text-dark:not(.form-autocomplete-selection), .btn-outline-secondary {
+    color: var(--light-dark) !important;
+  }
+  .form-autocomplete-selection .text-dark {
+    color: var(--dark) !important;
+  }
+
+  .card, .activity-header {
+    background-color: var(--dark) !important;
+    border: 1px solid #ff0;
+  }
+  .activity-item .activity-dates {
+    color: var(--light);
+  }
+
+  // .btn:not(.btn-secondary, .block-add, .btn-light) {
+  //   color: white;
+  //   &.add-section:hover, &.add-section:focus {
+  //     color: black;
+  //   }
+  // }
+
+  #course-category-listings.columns-3 {
+    background-color: black;
+  }
+
+  .course-section .btn.btn-icon {
+    background-color: white;
+  }
+
+  .list-group-item {
+    background-color: var(--dark);
+    border: 1px solid #ff0;
+  }
+
+  .dropdown-menu {
+    background-color: var(--dark) !important;
+    border: 1px solid #ff0;
+    .dropdown-item {
+      color: white;
+      &:hover {
+        background-color: black !important;
+      }
+    }
+  }
+
+  .btn-icon, .tool-item {
+    color: white;
+    &:hover {
+      color: black;
+    }
+    &.drawer-close:hover {
+      color: white;
+    }
+  }
+
+  .icon-box {
+    color: black;
+  }
+
+  .btn-close {
+    opacity: 1;
+    color: white;
+  }
+
+  .navbar-suap {
+    background-color: black;
+    .navbar-suap-container {
+      background-color: var(--dark);
+      color: white;
+    }
+    .breadcrumb span {
+      color: white;
+    }
+    .editmode-switch-form .input-group {
+      color: black;
+    }
+  } 
+
+  .counter {
+    background-color: var(--dark);
+    .counter-header .counter-toggler {
+      background-color: black !important;
+    }
+  }
+
+  .nav-tabs .nav-link {
+    &:hover, &:focus, &.active {
+      background-color: var(--dark);
+    }
+    &:focus {
+      color: white;
+    }
+    &.active {
+      border-bottom-color: #ff0;
+    }
+  }
+
+  .secondary-navigation {
+    .navigation, .nav-tabs {
+      background-color: transparent;   
+    }
+  }
+
+  .tertiary-navigation .btn {
+    color: white;
+  }
+
+  #user-toggler .user-name {
+    // color: var(--dark);
+  }
+
+  .drawers {
+    .drawer-header {
+      color: var(--general-white);
+    }
+    .drawer-content {
+      background-color: var(--dark);
+      &#drawer-accessibility {
+        color: black
+      }
+    }
+    #drawer-index .courseindex-item.pageitem {
+      background-color: black;
+    }
+    .drawer-list {
+      .drawer-item:last-child {
+        color: var(--danger-dark) !important;
+        &:hover {
+          color: var(--danger-light) !important;
+        }
+      }
+      a:hover {
+        background-color: black;
+      }
+    }
+
+    #usermenu-carousel .carousel-item:not(.submenu) .carousel-navigation-link::after {
+      color: white;
+    }
+  } 
+
+  .accessiblity-options .selector-cycle-access {
+    .cycle-btn {
+      color: black !important;
+    }
+    label {
+      color: white;
+    }
+  }
+
+  .message-app {
+    background-color: var(--dark);
+    color: white !important;
+    .list-group .list-group-item:hover {
+      background-color: black;
+    }
+    .icon::before {
+      color: white;
+    }
+    .btn {
+      &[data-action="toggle-emoji-picker"] {
+        background-color: white;
+        i::before {
+          color: black;
+        }
+      }
+      &[data-toggle="dropdown"] i::before {
+        color: white;
+      }
+      i::before {
+        // background-color: white !important;
+        color: black;
+      }
+    }
+  }
+
+  .notification_list .notification-card .card-title {
+    color: black;
+  }
+
+  .btn-primary.search-icon {
+    background-color: var(--dark);
+    border: 1px solid;
+
+  }
+
+  .stickyfooter .btn {
+    color: white;
+  }
+  .popover-body {
+    background-color: var(--dark);
+    border: 1px solid #ff0;
+    color: white;
+    .footer-section a .icon {
+      color: white !important;
+    }
+  }
+  .footer-popover .btn-icon {
+    color: black;
   }
 }
 
