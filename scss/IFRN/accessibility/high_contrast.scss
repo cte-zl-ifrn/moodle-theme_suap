@@ -183,9 +183,17 @@ body.accessibility_high_contrast {
         color: black
       }
     }
-    #drawer-index .courseindex-item.pageitem {
-      background-color: black;
-    }
+    #drawer-index {
+        .courseindex-link {
+            color: #ff0;
+        }
+        .courseindex-chevron.collapsed+.courseindex-link {
+            color: white;
+        }
+        .courseindex-item.pageitem {
+            background-color: black;
+        }
+    } 
     .drawer-list {
       .drawer-item:last-child {
         color: var(--danger-dark) !important;
@@ -221,7 +229,13 @@ body.accessibility_high_contrast {
     .icon::before {
       color: white;
     }
+    .options-messages .section.expanded {
+      background-color: black !important;
+    }
     .btn {
+      &.btn-link {
+        color: white;
+      }
       &[data-action="toggle-emoji-picker"] {
         background-color: white;
         i::before {
