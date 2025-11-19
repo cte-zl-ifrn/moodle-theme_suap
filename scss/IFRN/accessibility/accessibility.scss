@@ -1,8 +1,6 @@
 @import "IFRN/accessibility/high_contrast";
-
-#content-container .content .sidebar-modal .modal-content .modal-content-body #modal-content-body-accessibility {
-    
-}
+@import "IFRN/accessibility/low_contrast";
+@import "IFRN/accessibility/grayscale";
 
 input[type="radio"]:checked + .radio-label {
     background-color: #007bff; /* Cor de fundo para quando o radio está marcado */
@@ -241,9 +239,6 @@ body.accessibility_high_line_height p {
   margin-bottom: 2rem !important;
 }
 
-body.accessibility_grayscale {
-  filter: grayscale(100%);
-}
 
 body.accessibility_dark_mode {
   // filter: invert(1) hue-rotate(180deg);
@@ -252,12 +247,6 @@ body.accessibility_dark_mode {
   a {
     color: #80bfff !important;
   }
-}
-
-body.accessibility_low_contrast {
-  background-color: #f6f6f6 !important;
-  color: #444 !important;
-  filter: contrast(85%) brightness(95%);
 }
 
 body.accessibility_colorblind {

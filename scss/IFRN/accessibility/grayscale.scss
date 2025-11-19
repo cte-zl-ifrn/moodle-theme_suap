@@ -1,0 +1,5 @@
+body.accessibility_grayscale {
+    #page, .container-counter, .navbar-suap-container {
+        filter: grayscale(100%);
+    }
+}
