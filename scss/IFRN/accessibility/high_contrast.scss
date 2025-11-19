@@ -6,7 +6,7 @@ body.accessibility_high_contrast {
     [data-fieldtype="editor"] a, .form-textarea a,.pagination a, .message-app .nav-link, :focus)
   // button:not(.btn,.btn-close, [data-fieldtype="editor"] button, .form-textarea button) 
   {
-    color: #ff0 !important;
+    color: #ff0;
     // border-color: #ff0 !important;
   }
 
@@ -125,6 +125,8 @@ body.accessibility_high_contrast {
     background-color: black;
     .navbar-suap-container {
       background-color: var(--dark);
+      border: 1px solid var(--dark-light);
+      border-left: none;
       color: white;
     }
     .breadcrumb span {
@@ -137,6 +139,7 @@ body.accessibility_high_contrast {
 
   .counter {
     background-color: var(--dark);
+    border: 1px solid var(--dark-light);
     .counter-header .counter-toggler {
       background-color: black !important;
     }
@@ -174,6 +177,8 @@ body.accessibility_high_contrast {
     }
     .drawer-content {
       background-color: var(--dark);
+      border: solid 1px var(--dark-light);
+      border-left: none;
       &#drawer-accessibility {
         color: black
       }
