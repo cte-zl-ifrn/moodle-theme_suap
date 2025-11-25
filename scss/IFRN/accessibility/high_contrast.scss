@@ -95,7 +95,7 @@ body.accessibility_color_mode_high_contrast {
   .dropdown-menu {
     background-color: var(--dark) !important;
     border: 1px solid #ff0;
-    .dropdown-item {
+    .dropdown-item, .item-dropdown {
       color: white;
       &:hover {
         background-color: black !important;
