@@ -201,12 +201,14 @@ function theme_suap_get_accessibility_classes($user) {
         // Caso especial: modo de cor (string, não booleano)
         if ($prefname === 'theme_suap_accessibility_color_mode') {
             if ($value && $value !== 'default') {
-                $classes[] = 'accessibility_' . $value;
+                $classes[] = 'accessibility_color_mode_' . $value;
             }
             continue;
         }
 
-        if (is_bool($value) && $value) {
+        $normalized = ($value === true || $value === "true" || $value === 1 || $value === "1");
+
+        if ($normalized) {
             // Gera uma classe CSS com nome limpo, ex.: theme_suap_accessibility_big_cursor → accessibility_big-cursor
             $classname = str_replace('theme_suap_', '', $prefname);
             $classes[] = $classname;

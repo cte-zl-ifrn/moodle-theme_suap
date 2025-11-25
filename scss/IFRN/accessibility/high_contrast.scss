@@ -1,6 +1,7 @@
-body.accessibility_high_contrast {
+body.accessibility_color_mode_high_contrast {
   background-color: #000 !important;
   color: #fff !important;
+  --bg-green-gradient: black;
   
   a:not(.btn,.button-light,.tool-item, #collapsesections, .courseindex-chevron,
     [data-fieldtype="editor"] a, .form-textarea a,.pagination a, .message-app .nav-link, :focus)
@@ -165,10 +166,6 @@ body.accessibility_high_contrast {
 
   .tertiary-navigation .btn {
     color: white;
-  }
-
-  #user-toggler .user-name {
-    // color: var(--dark);
   }
 
   .drawers {

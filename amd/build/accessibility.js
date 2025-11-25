@@ -144,21 +144,7 @@ define(["core/str", "core_user/repository", "core/config"], function(str, Reposi
                 colorIndicators.appendChild(span);
             });
 
-        // Aplica a classe no <body>
-        document.body.classList.forEach(c => {
-            if (c.startsWith('accessibility_')) {
-                if (
-                    colorPreferences.color_mode_options
-                        .filter(m => m !== 'default')
-                        .some(m => c === `accessibility_${m}`)
-                ) {
-                    document.body.classList.remove(c);
-                }
-            }
-        });
-
         if (mode !== 'default') {
-            document.body.classList.add(`accessibility_${mode}`);
             colorContainer.classList.add('active');
         } else {
             colorContainer.classList.remove('active');
@@ -189,28 +175,42 @@ define(["core/str", "core_user/repository", "core/config"], function(str, Reposi
         Repository.setUserPreference('theme_suap_accessibility_color_mode', colorPreferences.color_mode);
         syncPreference('color_mode', colorPreferences.color_mode);
 
+        // --- Atualizar classes no <body>
+        const allModes = colorPreferences.color_mode_options;
+        allModes.forEach(m => {
+            document.body.classList.remove(`accessibility_color_mode_${m}`);
+        });
+
+        document.body.classList.add(`accessibility_color_mode_${colorPreferences.color_mode}`);
+
         renderColorMode();
+    }
+
+    function syncInputWithBody() {
+
+        document.querySelectorAll('.custom-checkbox-access input[type="checkbox"]').forEach(input => {
+            input.checked = false;
+        });
+
+        document.body.classList.forEach(cls => {
+
+            if (cls.startsWith('accessibility_')) {
+
+                const id = cls.replace('accessibility_', '');
+
+                // Marca input booleano
+                const checkbox = document.getElementById(id);
+                if (checkbox && checkbox.type === "checkbox") {
+                    checkbox.checked = true;
+                }
+            }
+
+        })
     }
 
     return {        
         init: () => {            
-            Repository.getUserPreferences().then(prefs => {
-
-                if (prefs['theme_suap_accessibility_vlibras_active'] === undefined) {
-                    prefs['theme_suap_accessibility_vlibras_active'] = "1";
-                }
-
-                for (const key in prefs) {
-                    if (key.startsWith('theme_suap_accessibility_') && prefs[key] === "1") {
-                        const id = key.replace('theme_suap_accessibility_', '');
-                        const input = document.getElementById(id);
-                        if (input) {
-                            input.checked = true;
-                            // document.body.classList.add(`accessibility_${id}`);
-                        }
-                    }
-                }
-            });
+            syncInputWithBody();
 
             activeAccessibility();
 
