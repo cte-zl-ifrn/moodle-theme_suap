@@ -1,0 +1,287 @@
+@import "IFRN/accessibility/high_contrast";
+@import "IFRN/accessibility/low_contrast";
+@import "IFRN/accessibility/grayscale";
+@import "IFRN/accessibility/colorblind";
+
+input[type="radio"]:checked + .radio-label {
+    background-color: #007bff; /* Cor de fundo para quando o radio está marcado */
+    color: white;              /* Cor do texto para quando o radio está marcado */
+}
+
+@font-face {
+  font-family: 'opendyslexic';
+  src: url('https://ava-painel-statics.pages.dev/vendors/OpenDyslexic/OpenDyslexic-Regular.otf') format('opentype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+    font-family: 'opendyslexic';
+    src: url('https://ava-painel-statics.pages.dev/vendors/OpenDyslexic/OpenDyslexic-Italic.woff2') format('opentype');
+    font-style: italic;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'opendyslexic';
+    src: url('https://ava-painel-statics.pages.dev/vendors/OpenDyslexic/OpenDyslexic-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+} 
+
+@font-face {
+    font-family: 'opendyslexic';
+    src: url('https://ava-painel-statics.pages.dev/vendors/OpenDyslexic/OpenDyslexic-Bold-Italic.otf') format('opentype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+#drawer-accessibility {
+  .drawer-header h2{
+    font-size: 1.125rem;
+  }
+
+  .drawer-body {
+      height: calc(100vh - 189px);
+      width: var(--drawer-open);
+      overflow-y: auto;
+      position: relative;
+  }
+} 
+
+.accessiblity-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.custom-checkbox-access {
+  font: var(--font-button2);
+  font-size: 0.875rem;
+}
+.checkbox-access-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: .5rem;
+  border: 1px solid transparent;
+  border-radius: 72px;
+  background-color: var(--light);
+  padding: .75rem;
+  margin-bottom: 0;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    border-color: var(--primary);
+  }
+  .label-container {
+    display: flex;
+    align-items: center;
+  }
+  .icon-id {
+    color: var(--dark);
+    margin-right: .25rem;
+  }
+  .icon-checked {
+    display: none;
+  }
+}
+.checkbox-access-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  &:checked + .checkbox-access-label {
+    color: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-light);
+  }
+  &:checked + .checkbox-access-label .icon-checked {
+    display: block;
+    color: var(--primary);
+  }
+}
+
+.selector-cycle-access {
+  font: var(--font-button2);
+  font-size: 0.875rem;
+  &.active .cycle-btn {
+    color: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-light);
+  }
+  .cycle-btn {
+    display: block;
+    background-color: var(--light);
+    border: 1px solid transparent;
+    border-radius: 72px;
+    padding: .75rem 1rem;
+    width: 100%;
+    font: inherit;
+    text-align: left;
+    color: var(--dark);
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      border-color: var(--primary);
+    }
+    .icon-id {
+      color: var(--dark);
+    }
+  }
+
+  .cycle-indicators {
+    display: flex;
+    gap: .25rem;
+    margin-top: 0.25rem;
+    .cycle-indicator {
+      height: 4px;
+      width: 100%;
+      background-color: var(--light-dark);
+      border-radius: 4px;
+      &.active {
+        background-color: var(--primary);
+      }
+    }
+  }
+
+}
+
+
+body.accessibility_dyslexia_friendly *:not(i):not(input):not(#drawer-accessibility *),
+body.accessibility_dyslexia_friendly:not(#drawer-accessibility) {
+  font-family: "opendyslexic", sans-serif !important;
+}
+
+body.accessibility_remove_justify *:not(#drawer-accessibility *):is(p, span, li, blockquote, td, div) {
+  text-align: start !important;
+}
+
+body.accessibility_highlight_links a[href]:not(#drawer-accessibility a) {
+  background-color: var(--dark) !important;
+  border: 2px solid #f90 !important;
+  color: rgba(255, 255, 100, 1) !important;
+  padding: 0.25em 0.5em;
+  border-radius: 10px;
+  &::after, &::before {
+    color: rgba(255, 255, 100, 1) !important;
+  }
+  &:hover {
+    background-color: var(--dark) !important;
+  }
+  &:focus {
+    outline: 3px solid #f90;
+    outline-offset: 2px;
+  }
+}
+body.accessibility_highlight_links a[href]:not(#drawer-accessibility a) * {
+  color: rgba(255, 255, 100, 1) !important;
+}
+
+body.accessibility_big_cursor *:not(#drawer-accessibility *) {
+  cursor: url(https://cdn.userway.org/widgetapp/images/arrow_w.svg), auto !important;
+}
+
+div[vw].enabled {
+    display: none !important;
+    margin: 0 !important;
+    top: 60% !important;
+    left: 8px !important;
+    right: initial !important;
+}
+
+.accessibility_vlibras_active div[vw].enabled {
+    display: block !important;
+}
+
+body.accessibility_stop_animations *,
+body.accessibility_stop_animations *::before,
+body.accessibility_stop_animations *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  transition-timing-function: step-end !important;
+  transition-duration: 0s !important;
+  animation-timing-function: step-end !important;
+  animation-iteration-count: 1 !important;
+  animation-duration: 0s !important;
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body.accessibility_hidden_illustrative_image #page img:not([alt]), 
+body.accessibility_hidden_illustrative_image #page img[alt=""] {
+  visibility: hidden !important;
+}
+body.accessibility_hidden_illustrative_image #page * {
+  background-image: none !important;
+}
+
+body.accessibility_high_line_height {
+  --font-paragraph1: 400 1rem/1.8 var(--font-family);
+  --font-paragraph2: 400 0.875rem/1.8 var(--font-family);
+}
+body.accessibility_high_line_height p,
+body.accessibility_high_line_height li,
+body.accessibility_high_line_height td,
+body.accessibility_high_line_height th,
+body.accessibility_high_line_height blockquote {
+  line-height: 1.8 !important;
+}
+body.accessibility_high_line_height p {
+  margin-bottom: 2rem !important;
+}
+
+
+body[data-zoom="120"] {
+  --font-scale: 1.2;
+  font-size: 120%;
+}
+body[data-zoom="130"] {
+  --font-scale: 1.3;
+  font-size: 130%;
+}
+body[data-zoom="150"] {
+  --font-scale: 1.5;
+  font-size: 150%;
+}
+body[data-zoom="160"] {
+  --font-scale: 1.6;
+  font-size: 160%;
+}
+
+body[data-zoom="130"], body[data-zoom="150"], body[data-zoom="160"] {
+  .drawer-content:not(#drawer-accessibility) {
+    .drawer-header-info i, .drawer-header-info .icon {
+      display: none;
+    }
+    .drawer-header {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      .drawer-header-tools {
+        align-self: end;
+      }
+    }
+  }
+}
+
+body {
+  transition: font-size 0.2s ease-in-out;
+}
+
+body[data-zoom] i,
+body[data-zoom] i *,
+body[data-zoom] .icon,
+body[data-zoom] [class^="fa"],
+body[data-zoom] [class*=" fa-"],
+body[data-zoom] .material-icons {
+  font-size: initial;
+}

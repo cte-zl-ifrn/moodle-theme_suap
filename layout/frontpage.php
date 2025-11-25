@@ -100,6 +100,8 @@ if (
 // pega a preferencia no banco
 $preferenceCounter = get_user_preferences('visual_preference');
 
+$extraclasses = array_merge($extraclasses, theme_suap_get_accessibility_classes($USER));
+
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
 
 // áreas blocos
@@ -186,6 +188,7 @@ $templatecontext = [
     'footer_credits_first_link_new_window' => $conf->footer_credits_first_link_new_window,
     'footer_credits_second_link_new_window' => $conf->footer_credits_second_link_new_window,
 
+    'accessibility_zoom_level' => get_user_preferences('theme_suap_accessibility_zoom_level', 100),
 ];
 // throw new Exception("Error Processing Request", 1);
 

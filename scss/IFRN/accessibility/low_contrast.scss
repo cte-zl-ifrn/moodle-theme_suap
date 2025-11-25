@@ -1,0 +1,5 @@
+body.accessibility_color_mode_low_contrast {
+    #page, .container-counter, .navbar-suap-container {
+        filter: saturate(.5);
+    }
+}

@@ -1,8 +1,10 @@
-@import "IFRN/general";
+@import "IFRN/accessibility/accessibility";
+@import "IFRN/general/general";
 @import "IFRN/variables";
 
 @import "IFRN/head/navbar.scss";
 @import "IFRN/head/messages.scss";
+@import "IFRN/head/header.scss";
 
 
 @import "IFRN/drawers/drawers";

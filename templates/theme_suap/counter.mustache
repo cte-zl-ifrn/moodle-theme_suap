@@ -29,16 +29,19 @@
                         <div class="divider border-left h-75 align-self-center mx-1"></div>
                     {{/output.search_box}}
 
-                    <div class="drawer-toggler counter-option" data-drawer="drawer-notifications">
-                        <i class="fa-regular fa-bell"></i>
-                        <span class="counter-label">{{#str}} notifications, message {{/str}}</span>
-                        <span class="count-notification hidden" data-region="count-container"></span>
+                    <div class="notification-messages-container">                    
+                        <div class="drawer-toggler counter-option" data-drawer="drawer-notifications">
+                            <i class="fa-regular fa-bell"></i>
+                            <span class="counter-label">{{#str}} notifications, message {{/str}}</span>
+                            <span class="count-notification hidden" data-region="count-container"></span>
+                        </div>
+                        <div id="message-drawer-toggle-{{uniqid}}" class="drawer-toggler counter-option" data-drawer="drawer-messages"> 
+                            <i class="fa-regular fa-comment"></i>
+                            <span class="counter-label">{{#str}} messages,core_message {{/str}}</span>
+                            <span class="count-notification hidden" data-region="count-container"></span>
+                        </div>
                     </div>
-                    <div id="message-drawer-toggle-{{uniqid}}" class="drawer-toggler counter-option" data-drawer="drawer-messages"> 
-                        <i class="fa-regular fa-comment"></i>
-                        <span class="counter-label">{{#str}} messages,core_message {{/str}}</span>
-                        <span class="count-notification hidden" data-region="count-container"></span>
-                    </div>
+                    
                 </div>
                 {{/isguestuser}}
 
@@ -55,6 +58,16 @@
                             <span class="counter-label">{{#str}} drawer_blocks, theme_suap, {{/str}}</span>
                         </div>
                     {{/hasblocks}}
+
+                    <div class="accessibility-container">
+                        <div class="drawer-divider"></div>
+                        <div class="drawer-toggler counter-option" data-drawer="drawer-accessibility">
+                            <i class="fa-solid fa-universal-access"></i>
+                            <span class="counter-label">{{#str}} accessibility, theme_suap {{/str}}</span>
+                            <span class="count-notification hidden" data-region="count-container"></span>
+                        </div>
+                    </div>
+
                 </div>
             </div>   
         </div>
@@ -117,6 +130,24 @@
 
             <div class="drawer-content" id="drawer-messages">
                 {{{ output.standard_after_main_region_html }}}
+            </div>
+
+            <div class="drawer-content" id="drawer-accessibility">
+                <div class="drawer-header">
+                    <div class="drawer-header-info">
+                        <i class="fa-solid fa-universal-access"></i>
+                        <h2>{{#str}} accessibility, theme_suap {{/str}}</h2>
+                    </div>
+                    <div class="drawer-header-tools">
+                        <a href="#" class="drawer-close tool-item" data-drawer="drawer-accessibility">
+                            <i class="fa-solid fa-xmark"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="drawer-body p-3">
+                    {{> theme_suap/accessibility_options }}
+                </div>
+            
             </div>
 
             {{#courseindex}}

@@ -125,28 +125,35 @@
     }
 } 
 
-.custom-switch{
+.custom-switch {
     padding-left: 2.3rem;
+    .custom-control-label {
+        position: static;
+    }
 }
 
 .custom-switch .custom-control-label::before{
     width: 28px;
     height: 16px;
-    left: -2rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: var(--light-dark);
     border: none;
 }
 .custom-switch .custom-control-label::after{
     width: 12px;
     height: 12px;
-    left: -1.9rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-10%, -50%);
     background-color: var(--general-white);
 }
 
-
 .custom-switch .custom-control-input:checked~.custom-control-label::after{
-    transform: translateX(0.8rem);
+    transform: translate(-90%, -50%);
 }
+
 .text-primary{
     color: var(--primary) !important;
 }

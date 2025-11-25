@@ -39,7 +39,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         $output = parent::standard_head_html();
 
-        global $CFG;
+        global $CFG, $PAGE;
         $theme_folder = $CFG->wwwroot . '/theme/suap';
 
         $output .= <<<HTML
@@ -55,6 +55,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
         <link rel="manifest" href="{$theme_folder}/favicon/site.webmanifest" />
         <link rel="mask-icon" href="{$theme_folder}/favicon/safari-pinned-tab.svg" color="#5bbad5" />
         HTML;
+
+        $PAGE->requires->js_call_amd('theme_suap/accessibility', 'init');
 
         return $output;
     }

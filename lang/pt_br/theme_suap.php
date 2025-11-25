@@ -45,6 +45,16 @@ $string['allconversations'] = "todas";
 $string['unreadmessages'] = "Não lidas";
 $string['user_preference_menu'] = "Menu na parte inferior";
 
+$string['accessibility'] = "Acessibilidade";
+$string['dyslexia_friendly'] = "Fonte amigável a disléxicos";
+$string['align_left'] = "Alinhar texto à esquerda";
+$string['highlight_links'] = "Destacar links";
+$string['stop_animations'] = "Parar animações";
+$string['hide_illustrative_images'] = "Ocultar imagens ilustrativas";
+$string['increase_cursor_size'] = "Cursor do mouse grande";
+$string['enable_vlibras'] = "Habilitar VLibras";
+$string['high_line_height'] = "Linhas mais distantes";
+
 // Frontpage aditional strings 
 $string['workload'] = 'Carga horária';
 $string['certificate'] = 'Certificado';
