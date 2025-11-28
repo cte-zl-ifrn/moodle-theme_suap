@@ -53,13 +53,6 @@ $preferences_submenu = [
         'url' => '/user/language.php'
     ],
 
-
-
-
-
-
-
-
 ];
 
 $menu_obj = new stdClass();
@@ -83,5 +76,10 @@ foreach ($preferences_submenu as $_submenu):
         'url' => new core\url($_submenu['url'])
     ];
 endforeach;
+
+$submenu_obj->items[] = [
+    'title' => 'settingsvisualblock',
+    'customhtml' => true
+];
 
 $primarymenu["user"]["submenus"][] = $submenu_obj;

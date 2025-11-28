@@ -21,6 +21,9 @@ body.accessibility_color_mode_high_contrast {
 
   .bg-white {
     background-color: black !important;
+    .btn i {
+      color: white !important;
+    }
   }
 
   .header-action .text-primary {
