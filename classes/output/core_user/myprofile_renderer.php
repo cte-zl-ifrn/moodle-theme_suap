@@ -210,6 +210,13 @@ class myprofile_renderer extends base_renderer {
         $categories = [];
         $categories_user = [];
         foreach ($tree->categories as $category) {
+
+            $categoryname = strtolower($category->name);
+
+            if ($categoryname === 'contact' && !$is_admin && !$is_my_profile) {
+                continue;
+            }
+
             if (in_array(strtolower($category->name), ['contact', 'loginactivity', 'coursedetails'])) {
                 $nodes = [];
                 foreach($category->nodes as $node) {
