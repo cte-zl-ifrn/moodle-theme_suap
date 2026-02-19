@@ -92,7 +92,7 @@ define(['jquery', 'core/templates', 'core/notification', 'message_popup/notifica
     }
 
     function renderNotifications(data, initial = true) {
-        allMessages = notificationContainer.querySelector("[data-region='notification-list']");
+        let allMessages = notificationContainer.querySelector("[data-region='notification-list']");
 
         if (initial) {
             allMessages.innerHTML = '';
