@@ -77,7 +77,7 @@ define(["core_user/repository"], function (RepositoryUser) {
 
                 clearDrawerPreference();
             } else { //open drawer
-                closeAllDrawers(drawers, drawersToggler);
+                closeAllDrawers(drawers);
                 setDrawerPreference(drawerId);
                 drawer.classList.add('active-drawer');
                 toggler.classList.add('active-toggler');
