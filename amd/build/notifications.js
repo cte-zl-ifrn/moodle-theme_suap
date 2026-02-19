@@ -170,7 +170,7 @@ define(['jquery', 'core/templates', 'core/notification', 'message_popup/notifica
     }
 
     function returnToList(drawerHeader, fullMessage, allMessages) {
-        returnButton = drawerHeader.querySelector('[data-action="return-list"]');
+        const returnButton = drawerHeader.querySelector('[data-action="return-list"]');
         returnButton.addEventListener('click', () => {
             fullMessage.classList.add('hidden');
             drawerHeader.classList.remove('open-message');
