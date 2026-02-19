@@ -245,8 +245,6 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
             listItens.classList.remove('hidden');
             listPlaceholder.classList.add('hidden');
         })
-
-        var LOAD_LIMIT = 50;
     }
 
     return {
