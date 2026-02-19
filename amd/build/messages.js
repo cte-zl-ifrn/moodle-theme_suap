@@ -33,9 +33,9 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
     const userid = viewOverview.getAttribute('data-user-id');
     const toggleMessages = document.querySelector('[data-drawer="drawer-messages"]');
     
-    const viewAll = viewOverview.querySelectorAll('[data-region="view-overview-all-messages"]')
+    const viewAll = viewOverview.querySelectorAll('[data-region="view-overview-all-messages"]');
     
-    const listItens = viewAll[1].querySelector('[data-region="content-container"]');
+    const listItems = viewAll[1].querySelector('[data-region="content-container"]');
     const listPlaceholder = viewAll[1].querySelector('[data-region="placeholder-container"]');
     
     var CONVERSATION_TYPES = Constants.CONVERSATION_TYPES;
@@ -66,7 +66,7 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
         keepOpenView(viewFavourites);
         keepOpenView(viewGroup);
         keepOpenView(viewMessages);
-    }
+    };
 
     var keepOpenView = function(viewOverview) {
         let lazyView = viewOverview[1].querySelector('[data-region="lazy-load-list"]');
@@ -79,7 +79,7 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
             }
             clickCount++;
         })
-    }
+    };
 
     var getConversation = function() {
         var originalButton = document.getElementById('message-user-button');
@@ -90,7 +90,7 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
                 originalButton.click(); // simula o clique no botão nativo do Moodle
             });
         }
-    }
+    };
 
 
     /**
