@@ -87,7 +87,7 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
         if (originalButton && customButton) {
             customButton.addEventListener('click', function (e) {
                 e.preventDefault();
-                originalButton.click(); // simula o clique no botão nativo do Moodle
+                originalButton.click(); // Simulate a click on Moodle's native message button
             });
         }
     };
