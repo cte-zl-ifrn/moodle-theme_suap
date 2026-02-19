@@ -46,7 +46,7 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
     };
 
     var renderUnreadCount = function() {
-        id = parseInt(userid, 10);
+        const id = parseInt(userid, 10);
         const count = toggleMessages.querySelector('[data-region="count-container"]');
         var args = {
             useridto: id,
