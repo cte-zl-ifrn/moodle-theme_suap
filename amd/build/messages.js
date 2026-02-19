@@ -33,7 +33,7 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
     const userid = viewOverview.getAttribute('data-user-id');
     const toggleMessages = document.querySelector('[data-drawer="drawer-messages"]');
     
-    const viewAll = viewOverview.querySelectorAll('[data-region="view-overview-all-messages"]')
+    const viewAll = viewOverview.querySelectorAll('[data-region="view-overview-all-messages"]');
     
     const listItems = viewAll[1].querySelector('[data-region="content-container"]');
     const listPlaceholder = viewAll[1].querySelector('[data-region="placeholder-container"]');
