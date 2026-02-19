@@ -24,9 +24,9 @@
 define(['jquery', 'core/ajax', 'core/notification', 'core/templates', 'core_message/message_repository', 
     'core_message/message_drawer_view_conversation_constants',
     'core_message/message_drawer_view_overview', 'core_message/message_drawer_view_overview_section',
-    'core/pending'
+    'core/pending', 'core/str'
 ],
-function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, ViewOverviewSection, Pending) {
+function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, ViewOverviewSection, Pending, Str) {
     
     const viewOverview = document.querySelector('[data-region="body-container"] [data-region="view-overview"]');
     
@@ -58,7 +58,7 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
             }
         });
 
-        // Retirar desta função
+        // TODO: Move this block out of renderUnreadCount.
         let viewFavourites = document.querySelectorAll('[data-region="view-overview-favourites"]');
         let viewGroup = document.querySelectorAll('[data-region="view-overview-group-messages"]');
         let viewMessages = document.querySelectorAll('[data-region="view-overview-messages"]');
@@ -87,7 +87,7 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
         if (originalButton && customButton) {
             customButton.addEventListener('click', function (e) {
                 e.preventDefault();
-                originalButton.click(); // simula o clique no botão nativo do Moodle
+                originalButton.click(); // Simulate a click on Moodle's native message button
             });
         }
     };
@@ -235,14 +235,14 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
                 render(conversations.conversations, userid)
                 .then(function(html) {
                     // listItens.append(html);
-                    listItens.innerHTML = html;
+                    listItems.innerHTML = html;
                     return html;
                 })
                 .catch(Notification.exception);
 
             });
 
-            listItens.classList.remove('hidden');
+            listItems.classList.remove('hidden');
             listPlaceholder.classList.add('hidden');
         })
     }
