@@ -58,7 +58,7 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
             }
         });
 
-        // Retirar desta função
+        // TODO: Move this block out of renderUnreadCount.
         let viewFavourites = document.querySelectorAll('[data-region="view-overview-favourites"]');
         let viewGroup = document.querySelectorAll('[data-region="view-overview-group-messages"]');
         let viewMessages = document.querySelectorAll('[data-region="view-overview-messages"]');
