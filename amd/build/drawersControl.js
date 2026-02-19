@@ -70,7 +70,7 @@ define(["core_user/repository"], function (RepositoryUser) {
                 toggler.classList.remove('active-toggler');
 
                 if (window.innerWidth <= breakpointSM) {
-                    body.classList.remove('drawer-open-mobile')
+                    body.classList.remove('drawer-open-mobile');
                 } else {
                     body.classList.remove('drawer-open');
                 }
