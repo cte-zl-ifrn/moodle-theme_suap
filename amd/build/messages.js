@@ -56,7 +56,7 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
             if (result > 0) {
                 count.classList.remove('hidden');
             }
-        })
+        });
 
         // Retirar desta função
         let viewFavourites = document.querySelectorAll('[data-region="view-overview-favourites"]');
