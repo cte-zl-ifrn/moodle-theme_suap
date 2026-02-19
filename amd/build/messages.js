@@ -79,7 +79,7 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
             }
             clickCount++;
         })
-    }
+    };
 
     var getConversation = function() {
         var originalButton = document.getElementById('message-user-button');
