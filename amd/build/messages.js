@@ -35,7 +35,7 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
     
     const viewAll = viewOverview.querySelectorAll('[data-region="view-overview-all-messages"]')
     
-    const listItens = viewAll[1].querySelector('[data-region="content-container"]');
+    const listItems = viewAll[1].querySelector('[data-region="content-container"]');
     const listPlaceholder = viewAll[1].querySelector('[data-region="placeholder-container"]');
     
     var CONVERSATION_TYPES = Constants.CONVERSATION_TYPES;
