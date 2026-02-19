@@ -137,7 +137,7 @@ define(['jquery', 'core/templates', 'core/notification', 'message_popup/notifica
 
                 fullMessage.classList.remove('hidden');
                 fullMessage.innerHTML = '';
-                notificationID = parseInt(notification.getAttribute("data-id"), 10);
+                let notificationID = parseInt(notification.getAttribute("data-id"), 10);
                 
                 setReadOne(notificationID);
 
