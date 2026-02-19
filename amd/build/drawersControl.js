@@ -185,7 +185,7 @@ define(["core_user/repository"], function (RepositoryUser) {
                     closeAllDrawers(drawers);
                 }
             }
-        })
+        });
 
         counterToggler.addEventListener('click', () => {
             if (window.innerWidth <= breakpointSM) {
