@@ -39,7 +39,7 @@ define(["core_user/repository"], function (RepositoryUser) {
     const preferenceIndexDrawer = 'theme_suap_index_drawer_open';
     const preferenceBlocksDrawer = 'theme_suap_blocks_drawer_open';
 
-    var setDrawerPreference = (drawerId) => {
+    const setDrawerPreference = (drawerId) => {
         if (drawerId === 'drawer-index') {
             RepositoryUser.setUserPreference(preferenceIndexDrawer, true);
             RepositoryUser.setUserPreference(preferenceBlocksDrawer, false);
@@ -54,7 +54,7 @@ define(["core_user/repository"], function (RepositoryUser) {
         clearDrawerPreference();
     }
 
-    var clearDrawerPreference = () => {
+    const clearDrawerPreference = () => {
         RepositoryUser.setUserPreference(preferenceIndexDrawer, false);
         RepositoryUser.setUserPreference(preferenceBlocksDrawer, false);
     }
