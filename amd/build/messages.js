@@ -66,7 +66,7 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
         keepOpenView(viewFavourites);
         keepOpenView(viewGroup);
         keepOpenView(viewMessages);
-    }
+    };
 
     var keepOpenView = function(viewOverview) {
         let lazyView = viewOverview[1].querySelector('[data-region="lazy-load-list"]');
