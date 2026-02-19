@@ -127,7 +127,7 @@ define(["core_user/repository"], function (RepositoryUser) {
         const blocksToggler = document.querySelector('[data-drawer="drawer-blocks"]');
 
         if (blocksDrawer && blocksToggler) {
-            closeAllDrawers(drawers, drawersToggler);
+            closeAllDrawers(drawers);
 
             blocksDrawer.classList.add('active-drawer');
             blocksToggler.classList.add('active-toggler');
