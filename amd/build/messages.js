@@ -90,7 +90,7 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
                 originalButton.click(); // simula o clique no botão nativo do Moodle
             });
         }
-    }
+    };
 
 
     /**
