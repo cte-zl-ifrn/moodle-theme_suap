@@ -235,14 +235,14 @@ function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, 
                 render(conversations.conversations, userid)
                 .then(function(html) {
                     // listItens.append(html);
-                    listItens.innerHTML = html;
+                    listItems.innerHTML = html;
                     return html;
                 })
                 .catch(Notification.exception);
 
             });
 
-            listItens.classList.remove('hidden');
+            listItems.classList.remove('hidden');
             listPlaceholder.classList.add('hidden');
         })
     }
