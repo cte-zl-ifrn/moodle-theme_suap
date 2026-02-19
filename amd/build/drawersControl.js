@@ -39,7 +39,7 @@ define(["core_user/repository"], function (RepositoryUser) {
     const preferenceIndexDrawer = 'theme_suap_index_drawer_open';
     const preferenceBlocksDrawer = 'theme_suap_blocks_drawer_open';
 
-    var setDrawerPreference = (drawerId) => {
+    const setDrawerPreference = (drawerId) => {
         if (drawerId === 'drawer-index') {
             RepositoryUser.setUserPreference(preferenceIndexDrawer, true);
             RepositoryUser.setUserPreference(preferenceBlocksDrawer, false);
@@ -54,7 +54,7 @@ define(["core_user/repository"], function (RepositoryUser) {
         clearDrawerPreference();
     }
 
-    var clearDrawerPreference = () => {
+    const clearDrawerPreference = () => {
         RepositoryUser.setUserPreference(preferenceIndexDrawer, false);
         RepositoryUser.setUserPreference(preferenceBlocksDrawer, false);
     }
@@ -64,6 +64,12 @@ define(["core_user/repository"], function (RepositoryUser) {
         toggler.addEventListener("click", () => {
             let drawerId = toggler.getAttribute("data-drawer");
             let drawer = document.getElementById(drawerId);
+            // Garantir que o drawer e a lista de drawers existem no momento do clique.
+            let currentDrawers = document.querySelectorAll('.drawer-content');
+
+            if (!drawer) {
+                return;
+            }
 
             if (drawer.classList.contains('active-drawer')) { //close drawer
                 drawer.classList.remove('active-drawer');
@@ -77,7 +83,9 @@ define(["core_user/repository"], function (RepositoryUser) {
 
                 clearDrawerPreference();
             } else { //open drawer
-                closeAllDrawers(drawers);
+                if (currentDrawers && currentDrawers.length) {
+                    closeAllDrawers(currentDrawers);
+                }
                 setDrawerPreference(drawerId);
                 drawer.classList.add('active-drawer');
                 toggler.classList.add('active-toggler');
