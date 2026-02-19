@@ -24,9 +24,9 @@
 define(['jquery', 'core/ajax', 'core/notification', 'core/templates', 'core_message/message_repository', 
     'core_message/message_drawer_view_conversation_constants',
     'core_message/message_drawer_view_overview', 'core_message/message_drawer_view_overview_section',
-    'core/pending'
+    'core/pending', 'core/str'
 ],
-function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, ViewOverviewSection, Pending) {
+function($, Ajax, Notification, Templates, Repository, Constants, ViewOverview, ViewOverviewSection, Pending, Str) {
     
     const viewOverview = document.querySelector('[data-region="body-container"] [data-region="view-overview"]');
     
