@@ -426,6 +426,10 @@ body.path-mod.pagelayout-incourse .max-width-suap
     max-width: var(--max-width-layout);
 }
 
+#page-mod-scorm-player .max-width-suap {
+    max-width: var(--max-width-layout-expanded);
+}
+
 .secondary-navigation {
     width: 100%;
 }
