@@ -1,93 +1,116 @@
-# theme_suap
+# Tema SUAP (`theme_suap`)
 
+O **Tema SUAP** é um tema customizado para a plataforma Moodle, desenvolvido como um tema filho (child theme) do tema **Boost** padrão. Ele foi projetado especialmente para o ecossistema do **IFRN (Instituto Federal do Rio Grande do Norte)**, em particular para o **Campus Avançado Natal - Zona Leste (ZL)**, alinhando a experiência visual e funcional do Moodle com a identidade do SUAP (Sistema Unificado de Administração Pública).
 
+---
 
-## Getting started
+## 🌟 Principais Recursos
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+### ♿ Acessibilidade Avançada
+O tema integra um conjunto robusto de preferências de acessibilidade para garantir uma navegação inclusiva aos estudantes:
+- **VLibras:** Opção para habilitar o widget de tradução automática em Libras.
+- **Modo Amigável para Disléxicos:** Utilização de fontes otimizadas para leitura por pessoas com dislexia.
+- **Alinhamento à Esquerda:** Força o alinhamento de textos à esquerda (removendo a justificação), facilitando a leitura.
+- **Destaque de Links:** Aplica um destaque visual mais evidente em todos os links da página.
+- **Parar Animações:** Interrompe transições e animações visuais para evitar distração ou desconforto.
+- **Ocultar Imagens Ilustrativas:** Esconde imagens puramente decorativas para simplificar a interface.
+- **Cursor Grande:** Aumenta o tamanho do cursor do mouse.
+- **Maior Espaçamento de Linhas (Line Height):** Aumenta a distância entre linhas de texto, melhorando o foco na leitura.
+- **Modos de Cores/Contraste:** Suporte para diferentes temas de contraste (como o Modo Escuro ou Alto Contraste).
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+### 🏠 Página Inicial Personalizada e Dinâmica
+- **Layout sob medida (`frontpage.mustache`):** Desenvolvido especificamente para exibir de forma elegante as Trilhas de Aprendizagem e os cursos.
+- **Botões Dinâmicos e Condicionais:** Permite configurar botões diferentes no cabeçalho/página inicial para visitantes (usuários não logados) e estudantes logados.
+- **Informações Adicionais de Curso:** Exibição de carga horária ("Até X horas") e indicador de certificado diretamente nos cards de cursos na página inicial.
 
-## Add your files
+### 📚 Visual de Curso e Matrícula Aprimorado
+- **Painel de Matrícula (`enroll_course.mustache`):** Página de inscrição personalizada que apresenta de forma atraente uma visão geral do curso, a lista de docentes (com foto e descrição puxadas via API integrada) e comentários dos estudantes.
+- **Facilidade na Emissão de Certificados:** Botões dedicados para emissão rápida de certificados no término do curso.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+### 👤 Perfil do Usuário Customizado
+- Visualização do perfil dividida em abas interativas contendo:
+  - **Sobre mim:** Descrição personalizada do usuário.
+  - **Certificados:** Lista de certificados conquistados na plataforma.
+  - **Emblemas (Badges):** Medalhas obtidas pelo estudante.
 
+### 🛠️ Configurações Flexíveis para Administradores
+- Painel administrativo do tema contendo abas para **Configurações Gerais**, **Configurações Avançadas** e **Configurações da Página Inicial**.
+- Suporte para envio de arquivos de **Presets de SCSS** personalizados.
+- Campos para injeção de **SCSS Bruto** (inicial e pós-compilação) permitindo customizações ágeis diretamente pela interface administrativa.
+
+---
+
+## 🛠️ Requisitos de Instalação
+
+- **Versão Moodle mínima:** Moodle 4.2+ (requer suporte de core para Boost e componentes modernos de drawer).
+- **Tema Pai:** Requer o tema padrão **Boost** (`theme_boost`) instalado e ativado no core do Moodle.
+
+---
+
+## 🚀 Como Instalar
+
+1. **Baixe ou clone** este repositório dentro do diretório de temas do seu servidor Moodle:
+   ```bash
+   cd /caminho/do/seu/moodle/theme
+   git clone https://github.com/suap-moodletheme-suite/moodle-theme_suap.git suap
+   ```
+   *Nota: O nome da pasta do tema no Moodle deve ser estritamente `suap` para que o plugin seja reconhecido como `theme_suap`.*
+
+2. **Execute a atualização do banco de dados**:
+   - Acesse a área administrativa do seu Moodle pelo navegador (a tela de atualização será exibida automaticamente).
+   - Ou utilize o terminal via CLI na pasta raiz do Moodle:
+     ```bash
+     php admin/cli/upgrade.php
+     ```
+
+3. **Ative o tema**:
+   - Vá em *Administração do Site > Aparência > Temas > Seletor de Temas*.
+   - Altere o tema padrão para o **SUAP**.
+
+---
+
+## ⚙️ Configuração de Botões Dinâmicos
+
+A configuração de links e botões da página inicial (tanto para visitantes quanto para usuários logados) é feita a partir de uma caixa de texto administrativo no formato de texto com separador (`|`).
+
+### Sintaxe
+Cada linha representa um botão e deve seguir o padrão abaixo:
+```text
+Rótulo (Texto ou String Moodle) | URL do Link | Ícone FontAwesome | Target (_blank ou _self) | Capabilities Necessárias
 ```
-cd existing_repo
-git remote add origin https://codelab.ifrn.edu.br/dead-zl/ava/lms/theme_suap.git
-git branch -M main
-git push -uf origin main
+
+* **Rótulo:** Pode ser texto puro (ex: `Início`) ou uma string de tradução do Moodle se possuir vírgula no formato `identificador,componente` (ex: `frontpage_button_home,theme_suap`).
+* **URL do Link:** Link para onde o botão redireciona (ex: `/my/courses.php`).
+* **Ícone FontAwesome:** A classe CSS do ícone (ex: `fa-graduation-cap` ou `fa-home`).
+* **Target:** Define como o link abrirá (`_blank` para nova aba ou `_self` para a mesma aba).
+* **Capabilities:** Regras de acesso necessárias para o botão ser exibido. Caso não possua restrição, use `N/A`.
+
+#### Exemplo prático de configuração:
+```text
+Início | / | fa-home | _self | N/A
+Cursos | /course/index.php | fa-graduation-cap | _self | N/A
+Administração | /admin/search.php | fa-cogs | _self | moodle/site:config
 ```
 
-## Integrate with your tools
+---
 
-- [ ] [Set up project integrations](https://codelab.ifrn.edu.br/dead-zl/ava/lms/theme_suap/-/settings/integrations)
+## 💻 Estrutura de Desenvolvimento
 
-## Collaborate with your team
+O tema é composto pelas seguintes pastas e arquivos de destaque:
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+- **`classes/`**: Contém classes auxiliares para navegação (`boostnavbar.php`), APIs e renderizadores customizados.
+- **`templates/`**: Arquivos `.mustache` responsáveis pela estruturação do HTML (ex. layouts de página, barra de navegação, painel de matrícula e área de rodapé).
+- **`scss/`**: Código de estilização. O tema centraliza suas estilizações sob a pasta `scss/IFRN/`, que organiza em arquivos modulares itens como acessibilidade, rodapé (`footer.scss`), página de matrícula (`enrollcourse.scss`), perfil de usuário (`profileuser.scss`), gavetas (`drawers/`), entre outros.
+- **`api/get_teacher_data.php`**: Endpoint para recuperação dinâmica de dados sobre os docentes vinculados aos cursos.
+- **`lang/`**: Traduções e chaves de idiomas (com suporte nativo a `pt_br` e `en`).
 
-## Test and Deploy
+### CI/CD
+O repositório está configurado com ferramentas automatizadas no diretório `.github/workflows/`:
+- **`moodle-plugin-ci.yml`**: Executa análises estáticas de qualidade de código (PHPCS, PHPMD), testes de unidade (PHPUnit) e testes de aceitação (Behat) garantindo a conformidade com as diretrizes do ecossistema Moodle.
+- **`release.yml`**: Automação para empacotamento e entrega de novas versões da extensão.
 
-Use the built-in continuous integration in GitLab.
+---
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+## 📄 Licença
 
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Este plugin é distribuído sob a licença pública **GNU General Public License (GPL) versão 3** ou posterior. Para mais detalhes, consulte o arquivo [LICENSE](file:///C:/Users/2080882/projetos/IFRN/suap-moodletheme-suite/theme_suap/LICENSE).
